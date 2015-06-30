@@ -4,8 +4,8 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+__VoterVOX__ is a translation app that connects bilingual AAPIs with limited English proficient voters in their communities to make sure every eligible voter has access to a translated ballot and voting information, for every election. In addition to connecting volunteers and voters, VoterVOX assists voters in ordering a mail-in ballot and is also a dynamic resource that builds on the previous efforts of translators to make voting possible for millions of citizens who face language barriers or feel intimidated by the process of exercising their rights.
 
-You can find the source code for the Jekyll new theme at: [github.com/jglovier/jekyll-new](https://github.com/jglovier/jekyll-new)
+[__18MR.org__](http://18mr.org) is a nonprofit online hub for social change and civic participation serving Asian Americans and Pacific Islanders (AAPIs) in the United States. We serve a network of more than 80 organizational partners--civic engagement, community organizing, policy advocacy, and new media groups--plus over 80,000 individual members.
 
-You can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
+You can find VoterVOX on GitHub at [github.com/18mr/votervox](https://github.com/18mr/votervox).

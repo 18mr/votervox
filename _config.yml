@@ -1,14 +1,13 @@
 # Site settings
-title: Your awesome title
-email: your-email@domain.com
+title: VoterVOX | Building Access, Building Community
+email: info@votervox.org
 description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  VoterVOX makes voting possible for millions of citizens who face language barriers or feel intimidated by the process of exercising their rights. By connecting people to help each other and building a collective resource for ballot translation, VoterVOX will increase voter turnout and civic participation for millions of people.
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://yourdomain.com" # the base hostname & protocol for your site
-twitter_username: jekyllrb
-github_username:  jekyll
+url: "http://votervox.org" # the base hostname & protocol for your site
+twitter_username: votervox
+github_username:  18mr
+facebook_url: https://www.facebook.com/votervox
 
 # Build settings
 markdown: kramdown

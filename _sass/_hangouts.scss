@@ -1,0 +1,35 @@
+/**
+  * Google Hangout Homepage
+  **/
+  
+.hangout {
+	float: left;
+	
+	@include media-query(1067px) {
+		float: none;
+		
+		iframe {
+			width: 100%;
+		}
+	}
+}
+
+.timeline-header {
+	display: none;
+}
+
+.twitter {
+	float: right;
+	width: 35%;
+}
+
+@include media-query(1067px) {
+	#twitter-widget-0 {
+		width: 100% !important;
+	}
+	
+	.twitter {
+		float: none;
+		width: 100%;
+	}
+}

@@ -3,10 +3,38 @@
 ---
 @charset "utf-8";
 
+@font-face { font-family: Spartan;
+			 src: url('../static/fonts/league-spartan/leaguespartan-bold.eot'),
+			 url('../static/fonts/league-spartan/leaguespartan-bold.eot?#iefix') format('embedded-opentype'),
+			 url('../static/fonts/league-spartan/leaguespartan-bold.woff2') format('woff2'),
+			 url('../static/fonts/league-spartan/leaguespartan-bold.woff') format('woff'),
+			 url('../static/fonts/league-spartan/leaguespartan-bold.ttf') format('truetype'),
+			 url('../static/fonts/league-spartan/leaguespartan-bold.svg#league_spartanbold') format('svg');
+			}
 
+@font-face { font-family: Karla;
+			 src: url('../static/fonts/karla/Karla-Regular.ttf');
+			 font-weight: regular;
+			}
+			
+@font-face { font-family: Karla;
+			 src: url('../static/fonts/karla/Karla-Bold.ttf');
+			 font-weight: bold;
+			}
+
+@font-face { font-family: 'Karla Italic';
+			 src: url('../static/fonts/karla/Karla-Italic.ttf');
+			 font-weight: regular;
+			}
+
+@font-face { font-family: 'Karla Italic';
+			 src: url('../static/fonts/karla/Karla-BoldItalic.ttf');
+			 font-weight: bold;
+			}
 
 // Our variables
-$base-font-family: Helvetica, Arial, sans-serif;
+$headline-font-family: Spartan;
+$base-font-family: Karla, Helvetica, Arial, sans-serif;
 $base-font-size:   16px;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
@@ -17,17 +45,22 @@ $text-color:       #111;
 $background-color: #fdfdfd;
 $brand-color:      #2a7ae2;
 
-$grey-color:       #828282;
+$grey-color:       #221e20;
 $grey-color-light: lighten($grey-color, 40%);
 $grey-color-dark:  darken($grey-color, 25%);
 
+$the-pink: #ea2485;
+$the-green:       #8bc63e;
+$the-blue:        #2b99c1;
+$the-yellow:      #ebdd14;
+$the-beige:		  #f1e5c6;
+$the-light-beige: lighten($the-beige, 25%);
+
 // Width of the content area
-$content-width:    800px;
+$content-width:    1200px;
 
 $on-palm:          600px;
 $on-laptop:        800px;
-
-
 
 // Using media queries with like this:
 // @include media-query($on-palm) {
@@ -36,17 +69,17 @@ $on-laptop:        800px;
 //         padding-left: $spacing-unit / 2;
 //     }
 // }
+
 @mixin media-query($device) {
     @media screen and (max-width: $device) {
         @content;
     }
 }
 
-
-
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
         "base",
         "layout",
-        "syntax-highlighting"
+        "syntax-highlighting",
+		"hangouts"
 ;
