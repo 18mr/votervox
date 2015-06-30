@@ -262,3 +262,119 @@
         }
     }
 }
+
+/**
+  * Action Network
+  */
+  
+#can_embed_form_inner {
+	h2 {
+		display: none;
+	}
+	
+	h3 {
+		display: none;
+	}
+	
+	h4 {
+		display: none;
+	}
+	
+	textarea {
+		display: none;
+	}
+	
+	.action_info_user {
+		display: none;
+	}
+	
+	#logo_wrap {
+		display: none;
+	}
+	
+	.country_wrap {
+		display: none;
+	}
+	
+	#d_sharing {
+		display: none;
+	}
+	
+	#form-first_name, #form-last_name, #form-zip_code {
+		display: none;
+	}
+	
+	#form_col1 {
+		float: left;
+	}
+	
+	#form_col2 {
+		display: inline;
+	}
+	
+	.can_embed {
+		padding: 0 25px;
+	}
+	
+	input[type="submit"] {
+		text-decoration: none;
+		display: inline;
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		border-radius: 3px;
+		padding: 5px 10px;
+		border: 1px solid rgba(0, 0, 0, .04);
+		line-height: 1em;
+		text-shadow: 0 1px 0 rgba(0, 0, 0, .5);
+		-webkit-transition: all .25s linear;
+		-moz-transition: all .25s linear;
+		-ms-transition: all .25s linear;
+		-o-transition: all .25s linear;
+		transition: all .25s linear;
+		color: #FFFFFF;
+		box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0) inset;
+		-moz-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0) inset;
+		-webkit-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0) inset;
+		text-align: center;
+		outline: none;
+		-webkit-appearance: none;
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		display: block;
+		width: 150px;
+		white-space: normal;
+		background-color: #ea2485 !important;
+		font-family: Spartan;
+		font-size: 18px !important;
+		font-weight: 400 !important;
+		text-transform: uppercase;
+	}
+	
+	form-email {
+		margin: 5px;
+	}
+}
+
+.can_thank_you_wrap {
+	#action_info {
+		display: none;
+	}
+	
+	.clearfix {
+		display: none;
+	}
+	
+	#logo_wrap {
+		display: none;
+	}
+	
+	h4 {
+		display: none;
+	}
+}
+
+#signupbox {
+	width: 40%;
+	margin: auto;
+	text-align: center;
+}
