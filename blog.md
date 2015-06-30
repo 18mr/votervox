@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Blog
+title: VoterVOX Project Blog
 permalink: /blog/
 ---
 
@@ -8,11 +8,12 @@ permalink: /blog/
 	{% for post in site.posts %}
 		{% if post.featured-image %}
 			<li class="featured-img">
-				<img class="thumbnail" src="{{ post.featured-image }}">
+				<img class="thumbnail float-left" src="{{ post.featured-image }}">
 				<h2>
 					<a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
 				</h2>
-				<span>{{ post.blurb | truncatewords: 50, '...' }} <a href="{{ post.url | prepend: site.baseurl }}">Read More</a></span>
+				<span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}{% if post.author %} • Posted by {{ post.author }}{% endif %}{% if post.meta %} • {{ post.meta }}{% endif %}</span><br /><br />
+				<span>{{ post.blurb | truncatewords: 125, '...' }} <a href="{{ post.url | prepend: site.baseurl }}">Read More</a></span>
 			</li>
 		{% else %}
 			<li class="no-img">

@@ -45,7 +45,10 @@ img {
     vertical-align: middle;
 }
 
-
+.float-left {
+		float: left;
+		margin-right: $spacing-unit;
+}
 
 /**
  * Figures
