@@ -37,4 +37,4 @@ By empowering individuals to participate in democracy, we’re sending the clear
 
 ## So What?
 
-I'm excited about the potential for our work to address not just access to the mechanics of voting, but these other forms of access as well. In many ways, I see these five forms of access working together to yield more than the sum of their parts. This is what's most exciting to me about the potential of good voter outreach and empowerment efforts: getting out the vote, in this framework, can mean more than just getting people to the polls. Voting can become a building block of real grassroots power.
+Our work has the potential to address not just access to the mechanics of voting, but these other forms of access as well. In many ways, these five forms of access working together yield more than the sum of their parts. This is what's most exciting to me about the potential of VoterVOX as a voter outreach and empowerment effort: getting out the vote, in this framework, can mean more than just getting people to the polls. Voting can become a building block of real grassroots power.
