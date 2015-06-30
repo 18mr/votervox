@@ -1,5 +1,5 @@
 ---
-layout: blogindex
+layout: page
 title: Blog
 permalink: /blog/
 ---
