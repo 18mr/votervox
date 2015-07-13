@@ -20,6 +20,7 @@ permalink: /blog/
 				<h2>
 					<a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
 				</h2>
+				<span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}{% if post.author %} • Posted by {{ post.author }}{% endif %}{% if post.meta %} • {{ post.meta }}{% endif %}</span><br /><br />
 				<span>{{ post.blurb | truncatewords: 100, '...' }} <a href="{{ post.url | prepend: site.baseurl }}">Read More</a></span>
 			</li>
 		{% endif %}

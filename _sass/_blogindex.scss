@@ -4,4 +4,10 @@
 	.thumbnail {
 		max-width: 35%;
 	}
+	
+	li {
+		margin-bottom: $spacing-unit;
+		border-bottom: 1px solid;
+		padding-bottom: $spacing-unit;
+	}
 }
