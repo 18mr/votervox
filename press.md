@@ -13,10 +13,10 @@ permalink: /press/
 Standard resolution images for web, high resolution images for print.
 
 - People Using VoterVOX [Hi-res]
-- [18MR Team](http://votervox.org/static/images/presskit/who-we-are.png) [[Hi-res](http://votervox.org/static/images/presskit/who-we-are2x.png)]
-- [18MR Logo](http://votervox.org/static/images/presskit/18MR-logo.png) [[Hi-res](http://votervox.org/static/images/presskit/18MR-logo2x.png)]
+- [18MR Team](http://www.votervox.org/static/images/presskit/who-we-are.png) [[Hi-res](http://www.votervox.org/static/images/presskit/who-we-are2x.png)]
+- [18MR Logo](http://www.votervox.org/static/images/presskit/18MR-logo.png) [[Hi-res](http://www.votervox.org/static/images/presskit/18MR-logo2x.png)]
 - [VoterVOX Logo - Horizontal](http://www.votervox.org/static/images/logo-horizontal.png)
-- [VoterVOX Logo - Square](http://votervox.org/static/images/logo-square.png)
+- [VoterVOX Logo - Square](http://www.votervox.org/static/images/logo-square.png)
 
 ## Video
 
