@@ -76,6 +76,22 @@ $on-laptop:        800px;
     }
 }
 
+// Fade mixin
+@mixin fade-transition($fvars...) {
+  -webkit-transition: $fvars;
+  -moz-transition: $fvars;
+  -ms-transition: $fvars;
+  -o-transition: $fvars;
+  transition: $fvars;
+}
+
+// Border radius mixin
+@mixin radius($radius...) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
         "base",

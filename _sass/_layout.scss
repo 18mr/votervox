@@ -27,6 +27,81 @@
 	}
 }
 
+.home-header {
+
+	.wrapper {
+		padding: 0;
+		margin: 0;
+		max-width: 100%;
+
+		.longhead {
+			background-image: url("/static/images/campaign/users-library.png");
+			background-repeat: no-repeat;
+			background-position: center;
+			background-attachment: fixed;
+			background-size: cover;
+			min-height: 500px;
+			
+			.logo {
+				padding-left: 5em;
+				padding-top: 3em;
+				float: left;
+				max-width: 500px;
+			}
+			
+			.tagline {
+				width: 40%;
+				margin: auto;
+				
+				img {
+					margin-top: ($spacing-unit*2);
+					width: 100%;
+				}
+			}
+			
+			.aboutline {
+				width: 70%;
+				margin: auto;
+				text-align: center;
+				padding: ($spacing-unit*1.5) 0;
+			
+				p {
+					color: white;
+					font-size: 1.1em;
+				}
+			}
+			
+			.igg-button {
+				width: 300px;
+				margin: auto;
+				text-align: center;
+				padding-bottom: ($spacing-unit*2);
+				
+				a {
+					display: block;
+					padding: 10px;
+					border: white 1px solid;
+					color: white;
+					@include radius(30px);
+					
+					&:hover {
+						background-color: lighten($the-pink, 30%);
+						@include fade-transition(500ms);
+					}
+				}
+			}
+		}
+		
+		.site-nav {
+			padding-top: 2.5em;
+		
+			.page-link a {
+				color: white;
+			}
+		}
+	}
+}
+
 .site-title {
     font-size: 26px;
     line-height: 56px;
@@ -113,6 +188,28 @@
  */
 .site-footer {
     padding: $spacing-unit 0;
+	background-image: url("/static/images/footergradient.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: cover;
+	background-position-y: 200px;
+	color: white;
+	
+	.wrapper {
+		padding: ($spacing-unit*2) 0;
+		
+		.site-nav {
+			padding-top: 2.5em;
+			float: left;
+			margin-left: 0;
+			padding: 0;
+		
+			.page-link a {
+				color: white;
+			}
+		}
+	}
 }
 
 .footer-heading {
@@ -212,7 +309,40 @@
     font-size: 24px;
 }
 
+.featureimage {
+	width: 70%;
+	margin: auto;
+	text-align: center;
+	padding: $spacing-unit 0;
+}
 
+.homepage-button {
+	width: 300px;
+	margin: auto;
+	text-align: center;
+	padding-bottom: ($spacing-unit*2);
+				
+	a {
+		display: block;
+		padding: 10px;
+		border: $the-blue 1px solid;
+		color: $the-blue;
+		@include radius(30px);
+				
+		&:hover {
+			background-color: lighten($the-pink, 30%);
+			@include fade-transition(500ms);
+		}
+	}
+}
+
+.right {
+	float: right;
+}
+
+.left {
+	float: left;
+}
 
 /**
  * Posts
@@ -378,7 +508,7 @@
 }
 
 #signupbox {
-	width: 40%;
+	max-width: 60%;
 	margin: auto;
 	text-align: center;
 }
