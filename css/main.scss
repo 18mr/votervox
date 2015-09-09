@@ -33,11 +33,13 @@
 			}
 
 // Our variables
-$headline-font-family: Spartan;
-$base-font-family: Karla, Helvetica, Arial, sans-serif;
-$base-font-size:   16px;
-$small-font-size:  $base-font-size * 0.875;
-$base-line-height: 1.5;
+$site-base-url:			''; // used to fix url resolution for testing
+
+$headline-font-family:	Spartan;
+$base-font-family: 		Karla, Helvetica, Arial, sans-serif;
+$base-font-size:   		16px;
+$small-font-size:  		$base-font-size * 0.875;
+$base-line-height: 		1.5;
 
 $spacing-unit:     30px;
 
@@ -49,18 +51,18 @@ $grey-color:       #221e20;
 $grey-color-light: lighten($grey-color, 40%);
 $grey-color-dark:  darken($grey-color, 25%);
 
-$the-pink: #ea2485;
-$the-green:       #8bc63e;
-$the-blue:        #2b99c1;
-$the-yellow:      #ebdd14;
-$the-beige:		  #f1e5c6;
-$the-light-beige: lighten($the-beige, 25%);
+$the-pink: 			#ea2485;
+$the-green:     	#8bc63e;
+$the-blue:      	#2b99c1;
+$the-yellow:   		#ebdd14;
+$the-beige:			#f1e5c6;
+$the-light-beige: 	lighten($the-beige, 25%);
 
 // Width of the content area
-$content-width:    1200px;
+$content-width:    	1200px;
 
-$on-palm:          600px;
-$on-laptop:        800px;
+$on-palm:          	600px;
+$on-laptop:        	900px;
 
 // Using media queries with like this:
 // @include media-query($on-palm) {

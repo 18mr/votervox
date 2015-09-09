@@ -5,20 +5,24 @@
     <div class="longhead">
 	
 		<div class="logo">
-			<a href="{{ site.url }}"><img src="{{ baseurl }}/static/images/logo-white.png" alt="VoterVOX logo"></a>
+			<a href="{{ site.url }}"><img src="{{ site.baseurl }}/static/images/logo-white.png" alt="VoterVOX logo"></a>
+		</div>
+
+		<div class="mobile-nav-open">
+			<a href="#!" id="mobile-nav-open"></a>
 		</div>
 	
 		<ul class="site-nav">
-			<li class="page-link"><a href="/about">About</a></li>
-			<li class="page-link"><a href="https://github.com/18mr/votervox">Github</a></li>
-			<li class="page-link"><a href="/blog">Blog</a></li>
-			<li class="page-link"><a href="/press">Press</a></li>
-			<li class="page-link"><a href="http://www.facebook.com/votervox">Facebook</a></li>
-			<li class="page-link"><a href="http://www.twitter.com/votervox">Twitter</a></li>
+			<li class="page-link"><a href="{{ site.baseurl }}/about">About</a></li>
+			<li class="page-link"><a target="_blank" href="https://github.com/18mr/votervox">Github</a></li>
+			<li class="page-link"><a href="{{ site.baseurl }}/blog">Blog</a></li>
+			<li class="page-link"><a href="{{ site.baseurl }}/press">Press</a></li>
+			<li class="page-link"><a target="_blank" href="http://www.facebook.com/votervox">Facebook</a></li>
+			<li class="page-link"><a target="_blank" href="http://www.twitter.com/votervox">Twitter</a></li>
 		</ul>
 		
 		<div class="tagline">
-			<img src="{{ baseurl }}/static/images/democracy-in-every-language.png" alt="Democracy in Every Language">
+			<img src="{{ site.baseurl }}/static/images/democracy-in-every-language.png" alt="Democracy in Every Language">
 		</div>
 		
 		<div class="aboutline">
@@ -26,7 +30,7 @@
 		</div>
 		
 		<div class="igg-button">
-			<a href="http://bit.ly/VoterVOX">Back Us On Indiegogo</a>
+			<a href="http://bit.ly/VoterVOX" target="_blank">Back Us On Indiegogo</a>
 		</div>
 	
 	</div>

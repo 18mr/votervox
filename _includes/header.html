@@ -3,16 +3,20 @@
   <div class="wrapper">
 	
 	<div class="logo">
-		<a href="{{ site.url }}"><img src="{{ baseurl }}/static/images/logo-horizontal.png" alt="VoterVOX Logo"></a>
+		<a href="{{ site.url }}"><img src="{{ site.baseurl }}/static/images/logo-horizontal.png" alt="VoterVOX Logo"></a>
 	</div>
-	
+
+	<div class="mobile-nav-open">
+		<a href="#!" id="mobile-nav-open"></a>
+	</div>
+
 	<ul class="site-nav">
-		<li class="page-link"><a href="/about">About</a></li>
-		<li class="page-link"><a href="https://github.com/18mr/votervox">Github</a></li>
-		<li class="page-link"><a href="/blog">Blog</a></li>
-		<li class="page-link"><a href="/press">Press</a></li>
-		<li class="page-link"><a href="http://www.facebook.com/votervox">Facebook</a></li>
-		<li class="page-link"><a href="http://www.twitter.com/votervox">Twitter</a></li>
+		<li class="page-link"><a href="{{ site.baseurl }}/about">About</a></li>
+		<li class="page-link"><a target="_blank" href="https://github.com/18mr/votervox">Github</a></li>
+		<li class="page-link"><a href="{{ site.baseurl }}/blog">Blog</a></li>
+		<li class="page-link"><a href="{{ site.baseurl }}/press">Press</a></li>
+		<li class="page-link"><a target="_blank" href="http://www.facebook.com/votervox">Facebook</a></li>
+		<li class="page-link"><a target="_blank" href="http://www.twitter.com/votervox">Twitter</a></li>
 	</ul>
 	
   </div>
