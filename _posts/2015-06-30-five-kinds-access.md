@@ -4,7 +4,7 @@ title: 'Five Kinds of Access'
 permalink: /five-kinds-access/
 category: blog
 author: Cayden
-featured-image: '{{ site.url }}/static/images/featured/AccessPoints.jpg'
+featured-image: '/static/images/featured/AccessPoints.jpg'
 featured-alttext: 'A graphic illustrating the five types of access AAPI voters need to engage in the electoral process.'
 blurb: "When we talk about access to the polls, we often talk solely about people's literal ability to get to their polling place and cast a ballot. In many places, this kind of access is curtailed due to transportation and infrastructure, mobility, language, and work and family schedules, to name a few factors. However, this kind of literal access is just the beginning of what 'access' means when it comes to moving a potential voter from registration to action. Asian American and Pacific Islander (AAPI) voting expert Tanzila Ahmed recently explained to me the five key types of access that AAPI voters need in order to be motivated and engaged with the electoral system. Our conversation made me think about ways in which VoterVOX and 18MR are positioned well to address not just the mechanics of helping our communities cast their ballots, but also these crucial other areas that mean folks feel included and empowered."
 ---
