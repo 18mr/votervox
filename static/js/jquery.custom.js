@@ -27,7 +27,7 @@ $(document).ready(function() {
 
 	// Load IndieGoGo popup after set time
 
-	var load_time = 3500; //ms
+	var load_time = 5000; //ms
 
 	setTimeout(function() {
 		if ($('#indie-gogo-pop').length && !$.magnificPopup.instance.isOpen) {
