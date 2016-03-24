@@ -21,6 +21,7 @@ permalink: /press/
 - 9/2/2015 [Civic Hall](http://civichall.org/civicist/translation-is-not-enough-organizing-for-a-polyglot-democracy/)
 - 9/17/2015 [New America Weekly Wonk](https://www.newamerica.org/the-weekly-wonk/this-is-what-democracy-sounds-like/)
 - 9/19/2015 [Plex](http://umdplex.com/global/new-app-takes-on-language-barriers-crippling-asian-american-vote/)
+- 11/6/2015 [Bustle](http://www.bustle.com/articles/122144-heres-exactly-how-intersectional-feminists-are-challenging-the-status-quo)
 
 ## Press Releases
 
