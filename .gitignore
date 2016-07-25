@@ -1,6 +1,16 @@
 _site/
 .sass-cache/
 
+# Ignore environment files
+/.env
+
+# Ignore all logfiles and tempfiles.
+/log/*
+!/log/.keep
+/tmp
+.DS_Store
+*/.DS_Store
+
 # =========================
 # Operating System Files
 # =========================

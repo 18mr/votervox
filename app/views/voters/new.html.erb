@@ -1,0 +1,57 @@
+<h1>Find a Translator</h1>
+
+<%= form_for :voter, url: voters_path, method: 'POST' do |f| %>
+
+	<% if @voter.errors.any? %>
+        <% @voter.errors.full_messages.each do |msg| %>
+        	<p class='error'><%= msg %></p>
+        <% end %>
+	<% end %>
+
+	<fieldset>
+		<%= f.label :firstname %>:
+		<%= f.text_field :firstname, { :placeholder => 'First Name' } %>
+	</fieldset>
+
+	<fieldset>
+		<%= f.label :lastname %>:
+		<%= f.text_field :lastname, { :placeholder => 'Last Name' } %>
+	</fieldset>
+
+	<fieldset>
+		<%= f.label :communication_mode %>:
+		<%= f.select :communication_mode,
+			options_for_select(@communication_options, @voter.communication_mode || false),
+			{ include_blank: '[ Preferred Communication Mode ]' } %>
+	</fieldset>
+
+	<fieldset>
+		<%= f.label :contact %>:
+		<%= f.text_field :contact, { :placeholder => 'Contact Information (phone number or email address)' } %>
+	</fieldset>
+
+	<fieldset>
+		<%= f.label :address %>:
+		<%= f.text_field :address, { :placeholder => 'Address' } %>
+	</fieldset>
+
+	<fieldset>
+		<%= f.label :language %>:
+		<%= f.text_field :language, { :placeholder => 'Language(s)' } %>
+	</fieldset>
+
+	<fieldset>
+		<%= f.label :english_comfort %>:
+		<%= f.select :english_comfort,
+			options_for_select(@comfort_options, @voter.english_comfort || false),
+			{ include_blank: '[ Comfort level (1-5) ]' } %>
+	</fieldset>
+
+	<fieldset>
+		<%= f.check_box :first_time_voter, { :placeholder => 'Are you a first-time voter?' } %>
+		<%= f.label :first_time_voter %>
+	</fieldset>
+
+	<%= f.submit 'Sign Up', :class => 'big-button' %>
+
+<% end %>

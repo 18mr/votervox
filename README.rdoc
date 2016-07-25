@@ -1,0 +1,21 @@
+== VoterVOX
+
+This repo contains the code for the VoterVOX application.
+
+Local installation process:
+
+* Run a local PostgreSQL server, add user 'postgres', and set password to blank.
+
+* Install all Gems: <tt>bundle install</tt>
+
+* Create the application database: <tt>rake db:create</tt>
+
+* Update the database schema: <tt>rake db:migrate</tt>
+
+* Set up your local <tt>.env</tt> file for use with Foreman, including the following config variables:
+
+  * <tt>PORT</tt> - The port that the server should run on locally
+
+* Run <tt>foreman s</tt> to start the local server.
+
+You should then be able to access the application at http://localhost:PORT.
