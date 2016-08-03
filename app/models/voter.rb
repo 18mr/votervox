@@ -18,7 +18,7 @@ class Voter < ActiveRecord::Base
 	validates :communication_mode, inclusion: { in: COMMUNICATION_OPTIONS.map(&:last) }
 	validates :contact, uniqueness: { scope: :communication_mode,
 		message: "has been used already. Please visit the homepage link send to you to access your match information." }
-	validates :contact, format: { with: /\A\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}z/,
+	validates :contact, format: { with: /\A\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\z/,
 		message: "must be a valid phone number" }, if: :sms_contact?
 	validates :contact, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/,
 		message: "must be a valid email address" }, if: :email_contact?

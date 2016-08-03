@@ -7,7 +7,6 @@ class VotersController < ApplicationController
 
 	def create
 		@voter = Voter.new(voter_params)
-		@voter.save
 
 		if @voter.save
 			redirect_to @voter.home_url
