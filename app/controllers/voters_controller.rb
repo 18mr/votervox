@@ -2,6 +2,7 @@ class VotersController < ApplicationController
 	def new
 		@voter = Voter.new
 		@communication_options = Voter.communication_options
+		@languages = Voter.language_list
 		@comfort_options = Voter.comfort_options
 	end
 
@@ -12,6 +13,7 @@ class VotersController < ApplicationController
 			redirect_to @voter.home_url
 		else
 			@communication_options = Voter.communication_options
+			@languages = Voter.language_list
 			@comfort_options = Voter.comfort_options
 			render 'new'
 		end
@@ -24,7 +26,7 @@ class VotersController < ApplicationController
 	private
 		def voter_params
 			params.require(:voter).permit(:firstname, :lastname, :communication_mode,
-				:contact, :address, :language, :english_comfort, :first_time_voter)
+				:contact, :address, {:languages => []}, :english_comfort, :first_time_voter)
 		end
 
 end

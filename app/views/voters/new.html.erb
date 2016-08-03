@@ -36,8 +36,10 @@
 	</fieldset>
 
 	<fieldset>
-		<%= f.label :language %>:
-		<%= f.text_field :language, { :placeholder => 'Language(s)' } %>
+	<% @languages.each do |language| %>
+		<%= check_box_tag 'voter[languages][]', language, chosen_language(language), id: 'language_'+language %>
+		<%= label_tag 'language_'+language, language %>
+	<% end %>
 	</fieldset>
 
 	<fieldset>
