@@ -31,5 +31,6 @@ gem 'foreman'
 # For Sass & Compass
 gem 'sass-rails'
 gem 'compass-rails'
+gem 'font-awesome-rails'
 
 
