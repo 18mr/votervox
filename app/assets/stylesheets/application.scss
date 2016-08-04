@@ -1508,6 +1508,9 @@ body.metrics {
 	}
 	/*TABLET FOOTER */ 
 	footer div.wrapper {
+		> div {
+			border: none;
+		}
 
 		div.terms {
 			float: right;
