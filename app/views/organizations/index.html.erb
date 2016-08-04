@@ -1,0 +1,11 @@
+<h1>Organizations</h1>
+
+<% @organizations.each do |organization| %>
+<p>
+	<%= organization.name %>, <%= link_to 'Delete', organization_path(organization), method: :delete, data: { confirm: 'Are you sure?' } %>
+</p>
+<% end %>
+
+<%= link_to 'Add Organization', new_organization_path %>
+
+
