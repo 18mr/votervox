@@ -1,59 +1,66 @@
-<h1>Find a Translator</h1>
+<main class="sign-up">
+	<div class="wrapper">
 
-<%= form_for :voter, url: voters_path, method: 'POST' do |f| %>
+		<h1>Find a Translator</h1>
+		<div class="pink-line"></div>
+		<%= form_for :voter, url: voters_path, method: 'POST' do |f| %>
 
-	<% if @voter.errors.any? %>
-        <% @voter.errors.full_messages.each do |msg| %>
-        	<p class='error'><%= msg %></p>
-        <% end %>
-	<% end %>
+			<% if @voter.errors.any? %>
+		        <% @voter.errors.full_messages.each do |msg| %>
+		        	<p class='error'><%= msg %></p>
+		        <% end %>
+			<% end %>
 
-	<fieldset>
-		<%= f.label :firstname %>:
-		<%= f.text_field :firstname, { :placeholder => 'First Name' } %>
-	</fieldset>
+			<div class="float-left first-name">
+				<%= f.label :"First Name*", {:for => "voter_firstname"} %>
+				<%= f.text_field :firstname, { :placeholder => 'First Name', :class => 'first-name' } %>
+			</div>
 
-	<fieldset>
-		<%= f.label :lastname %>:
-		<%= f.text_field :lastname, { :placeholder => 'Last Name' } %>
-	</fieldset>
+			<div class="float-left">
+				<%= f.label :"Last Name*", {:for => "voter_lastname"} %>
+				<%= f.text_field :lastname, { :placeholder => 'Last Name', :class => 'last-name' } %>
+			</div>
 
-	<fieldset>
-		<%= f.label :communication_mode %>:
-		<%= f.select :communication_mode,
-			options_for_select(@communication_options, @voter.communication_mode || false),
-			{ include_blank: '[ Preferred Communication Mode ]' } %>
-	</fieldset>
+			<%= f.label :"What is your preferred form of communication?*", {:for => "voter_communication_mode"} %>
+			<%= f.select :communication_mode,
+				options_for_select(@communication_options, @voter.communication_mode || false),
+				{ include_blank: 'Preferred communication' } %>
 
-	<fieldset>
-		<%= f.label :contact %>:
-		<%= f.text_field :contact, { :placeholder => 'Contact Information (phone number or email address)' } %>
-	</fieldset>
+			<%= f.label :"Your contact information*", {:for => "voter_contact"} %>
+			<%= f.text_field :contact, { :placeholder => 'Contact Information (phone number or email address)' } %>
 
-	<fieldset>
-		<%= f.label :address %>:
-		<%= f.text_field :address, { :placeholder => 'Address' } %>
-	</fieldset>
+			<%= f.label :"Your Home Address*", {:for => "voter_address"} %>
+			<%= f.text_field :address, { :placeholder => 'Home Address', :required => true } %>
 
-	<fieldset>
-	<% language_list.each do |language| %>
-		<%= check_box_tag 'voter[languages][]', language, chosen_language(@voter, language), id: 'language_'+language %>
-		<%= label_tag 'language_'+language, language %>
-	<% end %>
-	</fieldset>
 
-	<fieldset>
-		<%= f.label :english_comfort %>:
-		<%= f.select :english_comfort,
-			options_for_select(@comfort_options, @voter.english_comfort || false),
-			{ include_blank: '[ Comfort level (1-5) ]' } %>
-	</fieldset>
 
-	<fieldset>
-		<%= f.check_box :first_time_voter, { :placeholder => 'Are you a first-time voter?' } %>
-		<%= f.label :first_time_voter %>
-	</fieldset>
+			<%= field_set_tag 'Which language(s) would you like translation help with?*:', class: 'languages' do %>
+			<% language_list.each do |language| %>
+				<%= label_tag 'language_'+language, language do %> 
+				  <%= check_box_tag 'voter[languages][]', language, chosen_language(@voter, language), id: 'language_'+language %><%=language%>
+				<% end %>
+			  	
+			  <% end %>
+			  <div class="other_fields">
+			  	<label for="other"><input type="checkbox" name="language" id="other" value="other" >Other:</label><input name="other_language" type="text" id="other_text">
+			  	<div class="clear-fix"></div>
+			  </div><!--#other_fields-->
+			<% end %>
 
-	<%= f.submit 'Sign Up', :class => 'big-button' %>
 
-<% end %>
+			<%= f.label :"How comfortable are you with English?*", {:for => "english_comfort"}  %>:
+			<%= f.select :english_comfort,
+				options_for_select(@comfort_options, @voter.english_comfort || false),
+				{ include_blank: 'Select One' } %>
+
+			<%= f.label :"Are you a first time voter?", {:for => "first_time_voter" } do %>
+				<%= f.check_box :first_time_voter, { :placeholder => 'Are you a first-time voter?' } %>Are you a first-time voter?
+			<% end %>
+			<%= f.submit 'Sign Up', :class => 'big-button button' %>
+			<div class="opt-in-language">
+				By signing up, you are opting to join <a href="">18 Million Rising</a>
+			</div><!--.opt-in-language-->
+
+		<% end %>
+	</div><!--.wrapper-->
+</main>
