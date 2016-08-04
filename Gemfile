@@ -7,6 +7,9 @@ gem 'rails_12factor', group: :production
 # PostgreSQL database
 gem 'pg'
 
+# Volunteer/admin authentication
+gem 'devise'
+
 # Make requests to external APIs
 gem 'rest-client'
 gem 'nokogiri'

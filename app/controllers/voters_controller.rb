@@ -2,7 +2,6 @@ class VotersController < ApplicationController
 	def new
 		@voter = Voter.new
 		@communication_options = Voter.communication_options
-		@languages = Voter.language_list
 		@comfort_options = Voter.comfort_options
 	end
 
@@ -13,7 +12,6 @@ class VotersController < ApplicationController
 			redirect_to @voter.home_url
 		else
 			@communication_options = Voter.communication_options
-			@languages = Voter.language_list
 			@comfort_options = Voter.comfort_options
 			render 'new'
 		end

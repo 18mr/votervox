@@ -1,7 +1,6 @@
 class Voter < ActiveRecord::Base
 
 	COMMUNICATION_MODES = ['Text Message','Email']
-	LANGUAGES = ['Thai','Vietnamese','Cantonese','Mandarin','Khmer']
 	COMFORT_LEVEL = ['1','2','3','4','5']
 
 	validates :firstname, length: { in: 1..128 }
@@ -9,7 +8,7 @@ class Voter < ActiveRecord::Base
 	validates :communication_mode, inclusion: { in: COMMUNICATION_MODES }
 	validates :contact, uniqueness: { scope: :communication_mode,
 		message: "has been used already. Please visit the homepage link send to you to access your match information." }
-	validates :contact, format: { with: /\A\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\z/,
+	validates :contact, format: { with: /\A\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}\z/,
 		message: "must be a valid phone number" }, if: :sms_contact?
 	validates :contact, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/,
 		message: "must be a valid email address" }, if: :email_contact?
@@ -34,9 +33,6 @@ class Voter < ActiveRecord::Base
 	end
 	def self.communication_options
 		COMMUNICATION_MODES.zip(COMMUNICATION_MODES)
-	end
-	def self.language_list
-		LANGUAGES
 	end
 	def self.comfort_options
 		COMFORT_LEVEL.zip(COMFORT_LEVEL)

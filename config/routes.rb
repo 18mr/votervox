@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :volunteers, :path => '', :controllers => {:registrations => "registrations"}
+
   resources :voters, only: [:new, :create]
   resources :organizations, only: [:index, :new, :create, :destroy]
 

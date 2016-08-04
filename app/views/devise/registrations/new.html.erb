@@ -1,0 +1,63 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <fieldset>
+    <%= f.label :firstname %>:
+    <%= f.text_field :firstname, { :placeholder => 'First Name' } %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :lastname %>:
+    <%= f.text_field :lastname, { :placeholder => 'Last Name' } %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :email %><br />
+    <%= f.email_field :email, { :placeholder => 'Email Address' } %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :phone %>:
+    <%= f.text_field :phone, { :placeholder => 'Phone Number' } %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :address %>:
+    <%= f.text_field :address, { :placeholder => 'Address' } %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :organization %>:
+    <%= f.select :organization_id,
+      options_for_select(Organization.all.map{ |org| [org.id, org.name] }, resource.organization_id || false),
+      { include_blank: 'No Organization' } %>
+  </fieldset>
+
+  <fieldset>
+  <% language_list.each do |language| %>
+    <%= check_box_tag 'volunteer[languages][]', language, chosen_language(resource, language), id: 'language_'+language %>
+    <%= label_tag 'language_'+language, language %>
+  <% end %>
+  </fieldset>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
