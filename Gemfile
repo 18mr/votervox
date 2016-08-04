@@ -28,4 +28,8 @@ end
 gem 'bundler'
 gem 'foreman'
 
+# For Sass & Compass
+gem 'sass-rails'
+gem 'compass-rails'
+
 
