@@ -1,0 +1,19 @@
+<h1>VoterVOX Volunteers</h1>
+
+<% @volunteers.each do |volunteer| %>
+<p>
+	<%= volunteer.email %>,
+	<%= organization_name volunteer %>,
+
+	<% if !volunteer.approved? %>
+	<%= link_to 'Approve', approve_volunteer_path(volunteer) %>
+	<% end %>
+
+	<%= link_to 'Ban', ban_volunteer_path(volunteer), method: :get, data: { confirm: 'Are you sure you want to ban this volunteer?' } %>
+
+	<% if !volunteer.admin? %>
+	<%= link_to 'Make Admin', make_admin_volunteer_path(volunteer), method: :get,
+		data: { confirm: 'Are you sure you want to make this volunteer an administrator?' } %>
+	<% end %>
+</p>
+<% end %>

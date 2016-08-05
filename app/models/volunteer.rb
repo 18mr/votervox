@@ -1,4 +1,6 @@
 class Volunteer < ActiveRecord::Base
+	belongs_to :organization
+
 	# Include default devise modules. Others available are:
 	# :confirmable, :lockable, :timeoutable and :omniauthable
 	devise :database_authenticatable, :registerable,
@@ -16,6 +18,9 @@ class Volunteer < ActiveRecord::Base
 	end
 	def approved?
 		status == 1
+	end
+	def admin?
+		admin
 	end
 
 end

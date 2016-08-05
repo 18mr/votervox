@@ -30,8 +30,7 @@
 
   <fieldset>
     <%= f.label :organization %>:
-    <%= f.select :organization_id,
-      options_for_select(Organization.all.map{ |org| [org.id, org.name] }, resource.organization_id || false),
+    <%= f.collection_select :organization_id, Organization.all, :id, :name,
       { include_blank: 'No Organization' } %>
   </fieldset>
 
