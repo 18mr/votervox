@@ -1,72 +1,84 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<main class="sign-up">
+  <div class="wrapper">
+  <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
 
-  <fieldset>
-    <%= f.label :firstname %>:
-    <%= f.text_field :firstname, { :placeholder => 'First Name' } %>
-  </fieldset>
+      <div class="float-left first-name">
 
-  <fieldset>
-    <%= f.label :lastname %>:
-    <%= f.text_field :lastname, { :placeholder => 'Last Name' } %>
-  </fieldset>
+        <%= f.label :"First Name*", { :for => "volunteer_firstname" } %>
+        <%= f.text_field :firstname, { :placeholder => 'First Name' } %>
+      </div>
 
-  <fieldset>
-    <%= f.label :email %><br />
-    <%= f.email_field :email, { :placeholder => 'Email Address' } %>
-  </fieldset>
+      <div class="float-left">
+        <%= f.label :"Last Name*", { :for => "volunteer_lastname" }  %>
+        <%= f.text_field :lastname, { :placeholder => 'Last Name' } %>
+      </div>
 
-  <fieldset>
-    <%= f.label :phone %>:
-    <%= f.text_field :phone, { :placeholder => 'Phone Number' } %>
-  </fieldset>
+      <div class="float-left email">
+        <%= f.label :"Email Address *", { :for => "email" } %>
+        <%= f.email_field :email, { :placeholder => 'Email Address' } %>
+      </div>
 
-  <fieldset>
-    <%= f.label :address %>:
-    <%= f.text_field :address, { :placeholder => 'Address' } %>
-  </fieldset>
+      <div class="float-left">
+        <%= f.label :"Phone Number *", { :for => "phone" } %>
+        <%= f.text_field :phone, { :placeholder => 'Phone Number' } %>
+      </div>
+      <div class="clear-fix"></div>
+      <%= f.label :address do %>Your Home Address *
+        <span class="helper-text">(This is needed to find matches closest to you.)</span>
+      <% end %>
+      <%= f.text_field :address, { :placeholder => 'Home Address' } %>
 
-  <fieldset>
-    <%= f.label :organization %>:
-    <%= f.collection_select :organization_id, Organization.all, :id, :name,
-      { include_blank: 'No Organization' } %>
-  </fieldset>
+      <%= f.label :"Are you volunteering through an organization?", { :for => "organization" } %>
+      <%= f.collection_select :organization_id, Organization.all, :id, :name,
+        { include_blank: 'No Organization' } %>
 
-  <fieldset>
-  <% language_list.each do |language| %>
-    <%= check_box_tag 'volunteer[languages][]', language, chosen_language(resource, language), id: 'language_'+language %>
-    <%= label_tag 'language_'+language, language %>
-  <% end %>
-  </fieldset>
+      <%= field_set_tag 'Language(s you speak proficiently*: ', class: 'languages' do %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+            <a class="tooltip-hover" href="">?</a>
+            <div class="tooltip hidden">
+              By proficient we mean any languages you feel comfortable speaking casually about voting and various issues
+            </div>
+        <% language_list.each do |language| %>
+            <%= label_tag 'language_'+language, language do %> 
+              <%= check_box_tag 'volunteer[languages][]', language, chosen_language(resource, language), id: 'language_'+language %><%=language%>
+            <% end %>
+        <% end %>
+        <div class="other_fields">
+          <label for="other"><input type="checkbox" name="language" id="other" value="other" >Other:</label><input name="other_language" type="text" id="other_text">
+          <div class="clear-fix"></div>
+        </div><!--#other_fields-->
+           <div class="clear-fix"></div>
+      <% end %>
+      <div class="passwords">
+        <div class="float-left password">
+          <%= f.label :password %><i>(leave blank if you don't want to change it)</i><br />
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
+
+        <div class="float-left confirm-password">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        </div>
+        <div class="clear-fix"></div>
+      </div>
+
+      <%= f.submit "Update", class: "button" %>
     <% end %>
   </div>
+</main>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
+<section>
+  <div class="wrapper">
 <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn-outline" %></p>
 
 <%= link_to "Back", :back %>
+  </div>
+</section>
