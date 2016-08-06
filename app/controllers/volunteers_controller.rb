@@ -1,5 +1,6 @@
 class VolunteersController < ApplicationController
 	before_filter :authenticate_admin!
+	layout "volunteer", :except => :new
 
 	def index
 		if current_org.nil?

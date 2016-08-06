@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>VoterVox</title>
+  	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" >
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" >
+  	  <!--[if lt IE 9]>
+  	  <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv-printshiv.js"></script>
+  	  <![endif]-->
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="dashboard">
+	<header class="mobile-only">
+		<div class="wrapper">
+			<a class="brand">VoterVox Branding</a>
+			<div class="close-icon mobile-only"></div>
+			<div class="clear-fix mobile-only"></div>
+			<div class="green">Voter Dashboard</div>
+			<nav class="main close">
+				<ul>
+					<li><a href="/your-translator.html">Your Translator</a></li>
+					<li><a href="/voter-resources.html">Voter Resources</a></li>
+				</ul>
+			</nav>
+		</div><!--.wrapper-->
+
+	</header>
+
+	<%= render "/shared/voter_sidebar" %>
+
+	<p class="notice"><%= notice %></p>
+	<p class="alert"><%= alert %></p>
+
+<%= yield %>
+
+
+
+	<footer>
+		<div class="wrapper">
+			<div class="mobile-only">
+				Give Feedback
+			</div><!--.mobile-only-->
+			<div class="share-with-community">
+				<div>Share with Your Community</div>
+			<div class="buttons">
+				<a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+				<a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+				<a href="" class=""><i class="fa fa-envelope" aria-hidden="true"></i></a>
+				<div class="clear-fix"></div>
+				</div>
+
+			</div><!--.share-with-community-->
+			<div class="terms">
+				<ul>
+					<li><a href="">&copy; VoterVOX</a></li>
+					<li><a href="">Privacy Policy</a></li>
+					<li><a href="">Terms</a></li>
+				</ul>
+				<div class="clear-fix"></div>
+			</div>
+
+
+
+		</div><!--.wrapper-->
+
+	</footer>
+
+</body>
+</html>

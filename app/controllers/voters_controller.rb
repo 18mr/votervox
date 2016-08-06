@@ -1,4 +1,6 @@
 class VotersController < ApplicationController
+	layout "application", :only => :new
+	layout "voter", :except => :new
 	def new
 		@voter = Voter.new
 		@communication_options = Voter.communication_options
