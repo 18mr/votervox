@@ -1,5 +1,5 @@
 class OrganizationsController < ApplicationController
-	layout "admin", :except => :new
+	layout "admin"
 	def index
 		@organizations = Organization.all
 	end

@@ -1,19 +1,21 @@
-<h1>Add an Organization</h1>
+<section>
+	<h1>Add an Organization</h1>
 
-<%= form_for :organization, url: organizations_path, method: 'POST' do |f| %>
+	<%= form_for :organization, url: organizations_path, method: 'POST' do |f| %>
 
-	<% if @organization.errors.any? %>
-        <% @organization.errors.full_messages.each do |msg| %>
-        	<p class='error'><%= msg %></p>
-        <% end %>
+		<% if @organization.errors.any? %>
+	        <% @organization.errors.full_messages.each do |msg| %>
+	        	<p class='error'><%= msg %></p>
+	        <% end %>
+		<% end %>
+
+		<fieldset>
+			<%= f.label :"Organizational Name", { :for => "name"} %>
+			<%= f.text_field :name, { :placeholder => 'Organization Name' } %>
+		</fieldset>
+
+		<%= f.submit 'Add Organization', :class => 'button big-button' %>
+
 	<% end %>
-
-	<fieldset>
-		<%= f.label :name %>:
-		<%= f.text_field :name, { :placeholder => 'Organization Name' } %>
-	</fieldset>
-
-	<%= f.submit 'Add Organization', :class => 'big-button' %>
-
-<% end %>
+</section>
 
