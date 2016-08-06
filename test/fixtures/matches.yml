@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  voter_id: 
+  volunteer_id: 
+  status: 1
+
+two:
+  voter_id: 
+  volunteer_id: 
+  status: 1

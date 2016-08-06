@@ -5,7 +5,7 @@
 	<%= volunteer.email %>,
 	<%= organization_name volunteer %>,
 
-	<% if !volunteer.approved? %>
+	<% if volunteer.unapproved? %>
 	<%= link_to 'Approve', approve_volunteer_path(volunteer) %>
 	<% end %>
 

@@ -11,10 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160804040601) do
+ActiveRecord::Schema.define(version: 20160806205428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "interactions", force: :cascade do |t|
+    t.integer  "match_id"
+    t.integer  "duration",     default: 0
+    t.integer  "contact_type"
+    t.string   "message"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "interactions", ["match_id"], name: "index_interactions_on_match_id", using: :btree
+
+  create_table "matches", force: :cascade do |t|
+    t.integer  "voter_id"
+    t.integer  "volunteer_id"
+    t.integer  "status",       default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "matches", ["volunteer_id"], name: "index_matches_on_volunteer_id", using: :btree
+  add_index "matches", ["voter_id"], name: "index_matches_on_voter_id", using: :btree
 
   create_table "organizations", force: :cascade do |t|
     t.string   "name"
@@ -43,6 +65,8 @@ ActiveRecord::Schema.define(version: 20160804040601) do
     t.integer  "status",                 default: 0
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.string   "city"
+    t.string   "state"
   end
 
   add_index "volunteers", ["email"], name: "index_volunteers_on_email", unique: true, using: :btree
@@ -56,9 +80,15 @@ ActiveRecord::Schema.define(version: 20160804040601) do
     t.string   "address"
     t.integer  "english_comfort"
     t.boolean  "first_time_voter"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.string   "languages",          default: [],              array: true
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "languages",          default: [],                array: true
+    t.string   "city"
+    t.string   "state"
+    t.boolean  "active",             default: true
   end
 
+  add_foreign_key "interactions", "matches"
+  add_foreign_key "matches", "volunteers"
+  add_foreign_key "matches", "voters"
 end

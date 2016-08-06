@@ -1,0 +1,7 @@
+<h1>VoterVOX Voters</h1>
+
+<% @voters.each do |voter| %>
+<p>
+	<%= voter.firstname %> <%= voter.lastname %>, <%= voter.communication_mode %>, <%= voter.contact %>
+</p>
+<% end %>

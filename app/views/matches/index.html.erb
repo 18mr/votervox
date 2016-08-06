@@ -1,0 +1,48 @@
+<h1>Your Matches</h1>
+
+<p>
+	Match requests: <%= @requests.count %>
+</p>
+<p>
+	Accepted matches: <%= @accepted.count %>
+</p>
+<p>
+	Documents translated: TBD
+</p>
+<p>
+	People helped: <%= @completed.count %>
+</p>
+
+<h2>Match Requests</h2>
+<% @requests.each do |voter| %>
+<p>
+	<%= voter.firstname %> <%= voter.lastname %>, <%= voter.contact %>,
+
+	<%= form_for :match, url: matches_path, method: 'POST' do |f| %>
+		<%= f.hidden_field :voter_id, :value => voter.id %>
+		<%= f.submit 'Accept' %>
+	<% end %>
+	
+	<%= form_for :match, url: matches_path, method: 'POST' do |f| %>
+		<%= f.hidden_field :voter_id, :value => voter.id %>
+		<%= f.hidden_field :status, :value => MatchesHelper::STATUS_VOLUNTEER_DECLINED %>
+		<%= f.submit 'Decline' %>
+	<% end %>
+</p>
+<% end %>
+
+<h2>Accepted Matches</h2>
+<% @accepted.each do |match| %>
+<p>
+	<%= match.voter.firstname %> <%= match.voter.lastname %>, <%= match.voter.contact %>,
+	<%= link_to 'View Match', match_path(match) %>
+	<%= link_to 'Decline', decline_match_path(match), method: :get, data: { confirm: 'Are you sure you want to decline this match?' } %>
+</p>
+<% end %>
+
+<h2>Completed Matches</h2>
+<% @completed.each do |match| %>
+<p>
+	<%= match.voter.firstname %> <%= match.voter.lastname %>, <%= match.voter.contact %>
+</p>
+<% end %>

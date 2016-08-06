@@ -1,4 +1,6 @@
 class OrganizationsController < ApplicationController
+	before_filter :authenticate_admin!
+	
 	def index
 		@organizations = Organization.all
 	end

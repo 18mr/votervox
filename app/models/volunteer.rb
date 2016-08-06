@@ -1,5 +1,10 @@
 class Volunteer < ActiveRecord::Base
+	scope :active, -> { where("status in (0,1)") }
+	scope :unapproved, -> { where("status = 0") }
+	scope :approved, -> { where("status = 1") }
+
 	belongs_to :organization
+	has_many :matches
 
 	# Include default devise modules. Others available are:
 	# :confirmable, :lockable, :timeoutable and :omniauthable
@@ -13,6 +18,23 @@ class Volunteer < ActiveRecord::Base
 	validates :address, length: { in: 5..255 }
 	validates :languages, presence: true
 
+	# Voter match functions
+	def language_match voter
+		languages && voter.languages
+	end
+	def match_quality voter
+		return 2 if city == voter.city && state = voter.state
+		return 1 if state == voter.state
+		return 0
+	end
+	def match_requests
+		# Find language matches, exclude rejected matches, and sort by quality
+		matches = Voter.unmatched.select{ |v| self.language_match v }
+		matches.reject!{ |m| self.matches.declined.map(&:voter_id).include? m.id }
+		matches.sort{ |a, b| self.match_quality(b) <=> self.match_quality(a) }
+	end
+
+	# Helper functions
 	def unapproved?
 		status == 0
 	end

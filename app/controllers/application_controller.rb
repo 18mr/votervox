@@ -11,11 +11,11 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
-	def current_org
-		volunteer_signed_in? && current_volunteer.admin? && Volunteer.find(current_volunteer.id).organization
+	def current_record
+		volunteer_signed_in? && Volunteer.find(current_volunteer.id)
 	end
 
-	def matching_volunteer? volunteer
-		current_org.nil? || current_org == volunteer.organization
+	def current_org
+		volunteer_signed_in? && current_record.organization
 	end
 end

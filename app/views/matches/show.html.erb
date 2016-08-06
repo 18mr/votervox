@@ -1,0 +1,56 @@
+<h1>Voter Match</h1>
+
+<h2><%= @voter.firstname %> <%= @voter.lastname %></h2>
+<p>Languages: <%= @voter.languages.join(', ') %></p>
+
+<% if @match.accepted? %>
+	<%= link_to "Match Completed", "#" %>
+<% end %>
+
+<%= link_to 'Decline', decline_match_path(@match), method: :get, data: { confirm: 'Are you sure you want to decline this match?' } %>
+
+<% if @match.accepted? %>
+
+	<% if @reschedule.present? %>
+		<h2><%= @voter.firstname %> has requested a new time:</h2>
+		<p><em><%= @reschedule.message %></em></p>
+	<% else %>
+		<h2><%= @voter.firstname %> has accepted your suggested time:</h2>
+	<% end %>
+
+	<p>Contact <%= @voter.firstname %> to confirm specific time and location.</p>
+	<p>Contact info: <%= @voter.contact %></p>
+
+<% end %>
+
+<% if @proposal.nil? %>
+
+	<%= form_for :match, url: message_match_path(@match), method: 'POST' do |f| %>
+		<h2>Contact <%= @voter.firstname %></h2>
+		<textarea name="message"></textarea>
+		<%= f.submit 'Accept' %>
+	<% end %>
+
+<% else %>
+
+	<p>Your original message:</p>
+	<p>
+		<em><%= @proposal.message %></em>
+	</p>
+
+<% end %>
+
+
+<!-- SHOULD GO IN LIGHTBOX -->
+<% if @match.accepted? %>
+
+	<h2>This form should go in a lightbox that appears when the user clicks "Match Completed"</h2>
+
+	<%= form_for :match, url: complete_match_path(@match), method: 'POST' do |f| %>
+		<input type="text" name="duration" placeholder="HH:MM" value="" />
+		<textarea name="message" placeholder="Feedback on experience"></textarea>
+		<%= f.submit 'Submit' %>
+	<% end %>
+
+<% end %>
+

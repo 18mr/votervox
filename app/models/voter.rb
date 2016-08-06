@@ -1,14 +1,28 @@
 class Voter < ActiveRecord::Base
+	scope :active, -> { where("active = true") }
+	scope :inactive, -> { where("active = false") }
+
+	has_many :matches
 
 	COMMUNICATION_MODES = ['Text Message','Email']
 	COMFORT_LEVEL = ['1','2','3','4','5']
+
+	before_validation :format_phone
+
+	def format_phone
+		return unless sms_contact?
+		phone_regex = /\A\(?(\d{3})\)?[\s.-]?(\d{3})[\s.-]?(\d{4})\z/
+		re_match = self.contact.match(phone_regex)
+		return if re_match.nil?
+		self.contact = re_match[1] + re_match[2] + re_match[3]
+	end
 
 	validates :firstname, length: { in: 1..128 }
 	validates :lastname, length: { in: 1..128 }
 	validates :communication_mode, inclusion: { in: COMMUNICATION_MODES }
 	validates :contact, uniqueness: { scope: :communication_mode,
 		message: "has been used already. Please visit the homepage link send to you to access your match information." }
-	validates :contact, format: { with: /\A\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}\z/,
+	validates :contact, format: { with: /\A\d{10}\z/,
 		message: "must be a valid phone number" }, if: :sms_contact?
 	validates :contact, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/,
 		message: "must be a valid email address" }, if: :email_contact?
@@ -21,15 +35,18 @@ class Voter < ActiveRecord::Base
 		(((0x0000FFFF & id)<<16) + ((0xFFFF0000 & id)>>16)).to_s(36)
 	end
 	def home_url
-		['http://', ActionMailer::Base.default_url_options[:host], '/voters/', hashed_id].join('')
+		['/voters/', hashed_id].join('')
 	end
 
 	# Helper functions
+	def active?
+		active
+	end
 	def sms_contact?
-		communication_mode == 'sms'
+		communication_mode == 'Text Message'
 	end
 	def email_contact?
-		communication_mode == 'email'
+		communication_mode == 'Email'
 	end
 	def self.communication_options
 		COMMUNICATION_MODES.zip(COMMUNICATION_MODES)
@@ -40,5 +57,11 @@ class Voter < ActiveRecord::Base
 	def self.find_by_hashed_id hashed_id
 		voter_id = hashed_id.to_i(36)
 		Voter.find( ((0x0000FFFF & voter_id)<<16) + ((0xFFFF0000 & voter_id)>>16) )
+	end
+	def self.matched
+		Voter.includes(:matches).active.select{ |v| v.matches.active.present? }
+	end
+	def self.unmatched
+		Voter.includes(:matches).active.select{ |v| v.matches.active.empty? }
 	end
 end

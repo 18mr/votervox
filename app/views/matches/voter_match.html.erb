@@ -1,0 +1,41 @@
+<h1>You've been matched!</h1>
+
+<p>Here's your translator.</p>
+<h2><%= @volunteer.firstname %> <%= @volunteer.lastname %></h2>
+<p>Languages: <%= @volunteer.languages.join(', ') %></p>
+
+<% if @proposal.present? %>
+
+	<p><%= @volunteer.firstname %>'s available times:</p>
+	<p><em><%= @proposal.message %></em></p>
+
+	<% unless @match.accepted? %>
+
+		<%= link_to 'Accept', @match.voter_accept_url %>
+		<%= link_to 'Decline', @match.voter_reject_url %>
+
+		<%= form_for :match, url: @match.voter_request_time_url, method: 'POST' do |f| %>
+			<h2>Request new time</h2>
+			<textarea name="message" placeholder="Write your date and time preference here."></textarea>
+			<%= f.submit 'Submit' %>
+		<% end %>
+
+	<% end %>
+
+<% end %>
+
+<% if @match.status == MatchesHelper::STATUS_ACCEPTED %>
+	<h2>Lightbox with accepted match info</h2>
+	<p>Contact info: <%= @volunteer.phone %></p>
+<% end %>
+
+<% if @match.status == MatchesHelper::STATUS_VOTER_DECLINED %>
+	<h2>Lightbox with declined match info</h2>
+	<p>We're sorry this match won't work out for you.</p>
+<% end %>
+
+<% if @match.status == MatchesHelper::STATUS_VOLUNTEER_DECLINED %>
+	<h2>Lightbox with volunteer declined match info</h2>
+	<p>Unfortunately, your volunteer can no longer meet.</p>
+<% end %>
+

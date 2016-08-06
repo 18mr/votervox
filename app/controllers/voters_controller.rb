@@ -1,4 +1,10 @@
 class VotersController < ApplicationController
+	before_filter :authenticate_admin!, only: [:index]
+
+	def index
+		@voters = Voter.all
+	end
+
 	def new
 		@voter = Voter.new
 		@communication_options = Voter.communication_options
@@ -21,10 +27,23 @@ class VotersController < ApplicationController
 		@voter = Voter.find_by_hashed_id params[:hashed_id]
 	end
 
+	def cancel_request
+		@voter = Voter.find_by_hashed_id params[:hashed_id]
+		@voter.update(:active => false)
+		redirect_to @voter.home_url
+	end
+
+	def activate_request
+		@voter = Voter.find_by_hashed_id params[:hashed_id]
+		@voter.update(:active => true)
+		redirect_to @voter.home_url
+	end
+
 	private
-		def voter_params
-			params.require(:voter).permit(:firstname, :lastname, :communication_mode,
-				:contact, :address, {:languages => []}, :english_comfort, :first_time_voter)
-		end
+
+	def voter_params
+		params.require(:voter).permit(:firstname, :lastname, :communication_mode, :contact,
+			:address, :city, :state, {:languages => []}, :english_comfort, :first_time_voter)
+	end
 
 end
