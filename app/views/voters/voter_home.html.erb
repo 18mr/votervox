@@ -1,3 +1,41 @@
-<h1>Voter Homepage</h1>
+<section class="message">
+	<div class="wrapper">
+		<h1><%= @voter.firstname %>, your translator request has been submitted</h1>
+	</div>
+</section><!--.message-->
+<section class="next-steps">
+	<div class="wrapper">
+		<h2>Your Next Steps</h2>
+		<ul>
+			<li><strong>Step 1:</strong> You will be contacted once a translator matches up.</li>
+			<li><strong>Step 2:</strong> Set a date, time and location with your translator.</li>
+			<li><strong>Step 3:</strong> Meet in person and get your voting questions answered.</li>
+			<li><strong>Step 4:</strong> Vote!</li>
+		</ul>
+	</div>
+</section><!--.next-steps-->
 
-<p>This is the dashboard for the current voter: <%= @voter.firstname %> <%= @voter.lastname %>.</p>
+<section class="more-info">
+	<div class="wrapper">
+
+		<p>To view your profile, save and use this link:</p>
+		<input type="text" value="www.votervox.org/profile=?buakaw">
+		<p>(You will also find this link in your confirmation email).</p>
+	</div><!--.wrapper-->
+
+</section><!--.more-info-->
+<section class="cancel-request">
+	<div class="wrapper">
+		<button class="button btn-outline">Cancel Your Request</button>
+		<div class="clear-fix"></div>
+	</div>
+	
+</section>
+
+<section class="voter-resources">
+	<div class="wrapper">
+		<h2>Feel free to check out our Voter Resources in the mean time.</h2>
+		<a href="/voter-resources" class="button">Voter Resources</a>
+	</div>
+	
+</section>
