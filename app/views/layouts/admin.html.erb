@@ -20,11 +20,11 @@
 			<a class="brand">VoterVox Branding</a>
 			<div class="close-icon mobile-only"></div>
 			<div class="clear-fix mobile-only"></div>
-			<div class="green">Volunteer Dashboard</div>
+			<div class="green">Admin Dashboard</div>
 			<nav class="main close">
 				<ul>
-					<li><a href="/thank-you-volunteer-signup.html">Getting Started</a></li>
-					<li><a href="/your-matches.html">Your Matches</a></li>
+					<li><a href="/">Volunteers</a></li>
+					<li><a href="">Metrics</a></li>
 					<li><a href="/voter-resources.html">Voter Resources</a></li>
 					<li><a href="/add-resource.html">Add a Translated Resource</a></li>
 				</ul>
@@ -33,16 +33,12 @@
 
 	</header>
 
-	<%= render "/shared/volunteer_sidebar" %>
+	<%= render "/shared/admin_sidebar" %>
 
 	<p class="notice"><%= notice %></p>
 	<p class="alert"><%= alert %></p>
 
-	<main class="dashboard">
-		<div class="wrapper">
-			<%= yield %>
-		</div>
-	</main>	
+	<%= yield %>
 
 	<%= render "/shared/footer" %>
 
