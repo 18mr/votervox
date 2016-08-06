@@ -1,5 +1,7 @@
 class VotersController < ApplicationController
 	before_filter :authenticate_admin!, only: [:index]
+	layout "application", :only => :new
+	layout "voter", :except => :new
 
 	def index
 		@voters = Voter.all
