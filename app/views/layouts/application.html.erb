@@ -22,22 +22,26 @@
 			<div class="clear-fix mobile-only"></div>
 			<nav class="close">
 				<ul>
+					<li><a href="/about">About VoterVOX</a></li>
+					<% if volunteer_signed_in? %>
+					<li><a href="/volunteers/">Getting Started</a></li>
+					<li><a href="/matches">Your Matches</a></li>
+					<li><%= link_to('Logout', destroy_volunteer_session_path, :method => :delete) %></li>
+					<% else %>
 					<li><a href="/" class="active">Find a Translator</a></li>
 					<li><a href="/volunteer/new">Be a Translator</a></li>
 					<li><a href="/volunteer/sign_in">Translator Login</a></li>
-					<li><a href="/about">About VoterVOX</a></li>
-					<% if volunteer_signed_in? %>
-					<li><%= link_to('Logout', destroy_volunteer_session_path, :method => :delete) %></li>
 					<% end %>
+					<div class="clear-fix"></div>	
 				</ul>
 			</nav>
+			<div class="clear-fix"></div>
 		</div><!--.wrapper-->
 
 	</header>
 
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
-	
+	<div class="notice"><%= notice %></div>
+	<div class="alert"><%= alert %></div>
 
 	<%= yield %>
 	
