@@ -1576,6 +1576,14 @@ body.metrics {
 		div.first-name, div.email, div.password {
 			margin-right: 4%;
 		}
+		div.passwords {
+			position: relative;
+			div.confirm-password {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+			}
+		}
 		input.file {
 			float: left;
 			width: 100%;

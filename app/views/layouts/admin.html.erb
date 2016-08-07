@@ -38,8 +38,12 @@
 	<p class="notice"><%= notice %></p>
 	<p class="alert"><%= alert %></p>
 
-	<%= yield %>
-
+	<main class="dashboard">
+		<div class="wrapper">
+			<%= yield %>
+		</div>
+	</main>
+	
 	<%= render "/shared/footer" %>
 
 </body>

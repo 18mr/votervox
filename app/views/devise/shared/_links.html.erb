@@ -1,4 +1,8 @@
-<%- if controller_name != 'sessions' %>
+<%- if controller_name != 'sessions' && controller_name == 'passwords' %>
+  <%= link_to "Remember your password? Click here.", new_session_path(resource_name), { :class => "small" } %><br />
+<% end -%>
+
+<%- if controller_name != 'sessions' && controller_name != 'passwords' %>
   <%= link_to "Already Signed Up? Login Here.", new_session_path(resource_name), { :class => "small" } %><br />
 <% end -%>
 
