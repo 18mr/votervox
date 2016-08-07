@@ -1,0 +1,43 @@
+<h1>Resources for You</h1>
+
+<h2>Search Filters</h2>
+
+<%= form_for :document, url: documents_path, method: 'GET' do |f| %>
+
+	<%= field_set_tag 'Language:' do %>
+		<% language_list.each do |language| %>
+			<%= check_box_tag 'languages[]', language, @languages.include?(language), id: 'language_'+slugify(language) %>
+			<%= label_tag 'language_'+slugify(language), language %>
+		<% end %>
+	<% end %>
+
+	<%= field_set_tag 'Resource Type:' do %>
+		<% resource_type_list.each do |resource_type| %>
+			<%= check_box_tag 'resource_type[]', resource_type, @resource_type.include?(resource_type), id: 'resource_'+slugify(resource_type) %>
+			<%= label_tag 'resource_'+slugify(resource_type), resource_type %>
+		<% end %>
+	<% end %>
+
+	<%= field_set_tag 'Location:' do %>
+		<%= text_field_tag 'location', @location %>
+	<% end %>
+
+	<%= f.submit 'Search' %>
+
+<% end %>
+
+<% @languages.each do |language| %>
+<span>Language Tag: <%= language %></span><br/>
+<% end %>
+
+<% @resource_type.each do |resource| %>
+<span>Resource Tag: <%= resource %></span><br/>
+<% end %>
+
+<% @documents.each do |document| %>
+<p>
+	<%= document.name %>,
+	Language: <%= document.translated_language %>,
+	<%= link_to 'View', document_path(document) %>
+</p>
+<% end %>

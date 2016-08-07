@@ -36,8 +36,9 @@
 
 			<%= field_set_tag 'Which language(s) would you like translation help with?*:', class: 'languages' do %>
 			<% language_list.each do |language| %>
-				<%= label_tag 'language_'+language, language do %> 
-				  <%= check_box_tag 'voter[languages][]', language, chosen_language(@voter, language), id: 'language_'+language %><%=language%>
+				<%= label_tag 'language_'+slugify(language), language do %> 
+				  <%= check_box_tag 'voter[languages][]', language, chosen_language(@voter, language), id: 'language_'+slugify(language) %>
+				  <%=language%>
 				<% end %>
 			  	
 			  <% end %>

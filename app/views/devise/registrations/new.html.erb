@@ -36,8 +36,8 @@
 
   <fieldset>
   <% language_list.each do |language| %>
-    <%= check_box_tag 'volunteer[languages][]', language, chosen_language(resource, language), id: 'language_'+language %>
-    <%= label_tag 'language_'+language, language %>
+    <%= check_box_tag 'volunteer[languages][]', language, chosen_language(resource, language), id: 'language_'+slugify(language) %>
+    <%= label_tag 'language_'+slugify(language), language %>
   <% end %>
   </fieldset>
 

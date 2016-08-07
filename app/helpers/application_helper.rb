@@ -12,4 +12,8 @@ module ApplicationHelper
 	def chosen_language(user,language)
 	  user.languages.nil? ? false : user.languages.include?(language)
 	end
+
+	def slugify name
+		name.gsub(/ /,'_').downcase
+	end
 end

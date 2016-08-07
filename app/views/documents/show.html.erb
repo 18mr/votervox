@@ -1,0 +1,8 @@
+<h1><%= @document.name %></h1>
+
+<p>Translated Language: <%= @document.translated_language %></p>
+<p>Submitted by: <%= @document.submitter.firstname %> <%= @document.submitter.lastname[0] %>.</p>
+<p>Submitted on: <%= @document.created_at.strftime("%B %-d, %Y") %></p>
+
+<p>Document embed coming soon!</p>
+

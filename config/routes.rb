@@ -34,6 +34,14 @@ Rails.application.routes.draw do
   get 'matches/:id/reject/:hashed_id', to: 'matches#reject', as: 'reject_match'
   post 'matches/:id/request_time/:hashed_id', to: 'matches#request_time', as: 'request_match_time'
 
+  # Document routes
+  get 'documents/volunteer_index', to: 'documents#volunteer_index', as: 'volunteer_documents'
+  resources :documents, only: [:index, :show, :new, :create, :update, :destroy] do
+    member do
+      get 'volunteer_show'
+    end
+  end
+
   root :to => 'voters#new'
   
 end

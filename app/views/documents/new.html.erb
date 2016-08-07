@@ -1,0 +1,51 @@
+<h1>Add a Resource</h1>
+
+<%= form_for :document, url: documents_path, method: 'POST' do |f| %>
+
+	<% if @document.errors.any? %>
+        <% @document.errors.full_messages.each do |msg| %>
+        	<p class='error'><%= msg %></p>
+        <% end %>
+	<% end %>
+
+	<div>
+		<%= f.label "Document Title", {:for => "document_name"} %>
+		<%= f.text_field :name %>
+	</div>
+
+	<div>
+		<%= f.label "Document Language", {:for => "document_language"} %>
+		<%= f.select :language,
+			options_for_select(source_language_list.zip(source_language_list), @document.language),
+			{ include_blank: 'Document Language' } %>
+	</div>
+
+	<div>
+		<%= f.label "Translated Language", {:for => "document_translated_language"} %>
+		<%= f.select :translated_language,
+			options_for_select(language_list.zip(language_list), @document.translated_language),
+			{ include_blank: 'Translated Language' } %>
+	</div>
+
+	<div>
+		<%= f.label "Document Type", {:for => "document_resource_type"} %>
+		<%= f.select :resource_type,
+			options_for_select(resource_type_list.zip(resource_type_list), @document.resource_type),
+			{ include_blank: 'Document Type' } %>
+	</div>
+
+	<div>
+		<%= f.label "Location Document Is For", {:for => "document_location"} %>
+		<%= f.text_field :location %>
+	</div>
+
+	<div>
+		<%= f.label "Type of Location", {:for => "document_location_type"} %>
+		<%= f.select :location_type,
+			options_for_select(document_location_list.zip(document_location_list), @document.location_type),
+			{ include_blank: 'Type of Location' } %>
+	</div>
+
+	<%= f.submit 'Submit' %>
+
+<% end %>

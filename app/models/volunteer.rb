@@ -20,7 +20,7 @@ class Volunteer < ActiveRecord::Base
 
 	# Voter match functions
 	def language_match voter
-		languages && voter.languages
+		(languages & voter.languages).present?
 	end
 	def match_quality voter
 		return 2 if city == voter.city && state = voter.state

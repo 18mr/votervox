@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160806205428) do
+ActiveRecord::Schema.define(version: 20160807003450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "documents", force: :cascade do |t|
+    t.integer  "submitter_id"
+    t.string   "name"
+    t.string   "language"
+    t.string   "translated_language"
+    t.string   "resource_type"
+    t.string   "location"
+    t.string   "location_type"
+    t.integer  "status",              default: 0
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "documents", ["submitter_id"], name: "index_documents_on_submitter_id", using: :btree
 
   create_table "interactions", force: :cascade do |t|
     t.integer  "match_id"
@@ -88,6 +103,7 @@ ActiveRecord::Schema.define(version: 20160806205428) do
     t.boolean  "active",             default: true
   end
 
+  add_foreign_key "documents", "volunteers", column: "submitter_id"
   add_foreign_key "interactions", "matches"
   add_foreign_key "matches", "volunteers"
   add_foreign_key "matches", "voters"
