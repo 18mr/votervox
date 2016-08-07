@@ -9,7 +9,7 @@
 	<p><%= @volunteer.firstname %>'s available times:</p>
 	<p><em><%= @proposal.message %></em></p>
 
-	<% unless @match.accepted? %>
+	<% if @match.proposed? %>
 
 		<%= link_to 'Accept', @match.voter_accept_url %>
 		<%= link_to 'Decline', @match.voter_reject_url %>
@@ -37,5 +37,20 @@
 <% if @match.status == MatchesHelper::STATUS_VOLUNTEER_DECLINED %>
 	<h2>Lightbox with volunteer declined match info</h2>
 	<p>Unfortunately, your volunteer can no longer meet.</p>
+<% end %>
+
+<% if @match.status == MatchesHelper::STATUS_COMPLETED %>
+	<h2>Lightbox with match completion information</h2>
+	<%= link_to 'Submit a Match Request', voter_activate_request_path(:hashed_id => @match.voter.hashed_id) %>
+
+	<h3>Submit some feedback!</h3>
+	<%= form_tag submit_feedback_path, method: 'POST' do %>
+		<%= hidden_field_tag 'subject', 'Match completion feedback' %>
+		<%= hidden_field_tag 'voter_id', @match.voter.id %>
+
+		<%= text_area_tag 'message', '', { :placeholder => 'Your feedback to VoterVOX' } %>
+
+		<%= submit_tag 'Submit' %>
+	<% end %>
 <% end %>
 

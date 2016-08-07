@@ -31,8 +31,14 @@ class Match < ActiveRecord::Base
 	def active?
 		status == 0 || status == 1
 	end
+	def proposed?
+		status == 0
+	end
 	def accepted?
 		status == 1
+	end
+	def completed?
+		status == 4
 	end
 	def matches_volunteer? volunteer_id
 		self.volunteer_id == volunteer_id

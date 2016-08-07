@@ -35,13 +35,16 @@ Rails.application.routes.draw do
   post 'matches/:id/request_time/:hashed_id', to: 'matches#request_time', as: 'request_match_time'
 
   # Document routes
-  get 'documents/volunteer_index', to: 'documents#volunteer_index', as: 'volunteer_documents'
-  resources :documents, only: [:index, :show, :new, :create, :update, :destroy] do
-    member do
-      get 'volunteer_show'
-    end
-  end
+  resources :documents, only: [:index, :show, :new, :create, :update, :destroy]
 
-  root :to => 'voters#new'
+  # Metrics routes
+  resources :metrics, only: [:index]
+
+  # Application routes
+  get '/', to: 'application#index', as: 'homepage'
+  get '/feedback', to: 'application#feedback', as: 'feedback'
+  post '/submit_feedback', to: 'application#submit_feedback', as: 'submit_feedback'
+
+  root :to => 'application#index'
   
 end

@@ -1,0 +1,24 @@
+<h1>VoterVOX Feedback</h1>
+
+<%= form_tag submit_feedback_path, method: 'POST' do %>
+	<%= hidden_field_tag 'subject', 'Feedback from ' + @user_type.upcase %>
+
+	<%= field_set_tag 'First Name *' do %>
+		<%= text_field_tag 'firstname', '', { :placeholder => 'First Name' } %>
+	<% end %>
+
+	<%= field_set_tag 'Last Name *' do %>
+		<%= text_field_tag 'lastname', '', { :placeholder => 'Last Name' } %>
+	<% end %>
+
+	<%= field_set_tag 'Email Address *' do %>
+		<%= text_field_tag 'email', '', { :placeholder => 'Email Address' } %>
+	<% end %>
+
+	<%= field_set_tag 'Your feedback to VoterVOX *' do %>
+		<%= text_area_tag 'message', '', { :placeholder => 'Your feedback to VoterVOX' } %>
+	<% end %>
+
+	<%= submit_tag 'Submit' %>
+
+<% end %>

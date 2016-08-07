@@ -16,4 +16,7 @@ module ApplicationHelper
 	def slugify name
 		name.gsub(/ /,'_').downcase
 	end
+	def iso_format date
+		date.strftime("%Y-%m-%d")
+	end
 end
