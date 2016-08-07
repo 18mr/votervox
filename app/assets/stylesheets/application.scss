@@ -213,6 +213,23 @@ hr {
 .clear-fix {
 	clear: both;
 }
+div.notice {
+	text-align: center;
+	background-color: $lightgrey;
+	color: $darkgrey;
+	font-size: 28px;
+	margin: 0 auto;
+	width: auto;
+	font-weight: 700;
+}
+div.alert {
+	text-align: center;
+    margin: 0 auto;
+    width: auto;
+    font-size: 28px;
+    color: $darkpink;
+    font-weight: 700;
+}
 .tooltip {
 	border: 5px solid #cd1076;
 	padding: 18px;
