@@ -1,0 +1,54 @@
+<h1>VoterVOX Metrics</h1>
+
+<%= form_tag metrics_path, method: 'GET' do %>
+	<%= hidden_field_tag 'start_date', 1.week.ago %>
+	<%= hidden_field_tag 'end_date', 1.second.ago %>
+	<%= hidden_field_tag 'timeframe', 'week' %>
+	<%= submit_tag 'Last Week' %>
+<% end %>
+
+<%= form_tag metrics_path, method: 'GET' do %>
+	<%= hidden_field_tag 'start_date', 1.month.ago %>
+	<%= hidden_field_tag 'end_date', 1.second.ago %>
+	<%= hidden_field_tag 'timeframe', 'month' %>
+	<%= submit_tag 'Last Month' %>
+<% end %>
+
+<%= form_tag metrics_path, method: 'GET' do %>
+	<%= hidden_field_tag 'start_date', 10.years.ago %>
+	<%= hidden_field_tag 'end_date', 1.second.ago %>
+	<%= hidden_field_tag 'timeframe', 'all_time' %>
+	<%= submit_tag 'All Time' %>
+<% end %>
+
+
+<%= form_tag metrics_path, method: 'GET' do %>
+	<%= hidden_field_tag 'timeframe', 'custom' %>
+
+	<%= field_set_tag 'Start Date:' do %>
+		<%= text_field_tag 'start_date', @timeframe == 'custom' ? iso_format(@start_dt) : '', { :placeholder => 'YYYY-MM-DD' } %>
+	<% end %>
+
+	<%= field_set_tag 'End Date:' do %>
+		<%= text_field_tag 'end_date', @timeframe == 'custom' ? iso_format(@end_dt) : '', { :placeholder => 'YYYY-MM-DD' } %>
+	<% end %>
+
+	<%= submit_tag 'Search' %>
+<% end %>
+
+<p>language_count: <%= @metrics[:language_count] %></p>
+<p>site_visitors: <%= @metrics[:site_visitors] %></p>
+<p>registrations: <%= @metrics[:registrations] %></p>
+<p>views_per_language: <%= @metrics[:views_per_language] %></p>
+<p>volunteer_count: <%= @metrics[:volunteer_count] %></p>
+<p>active_volunteer_count: <%= @metrics[:active_volunteer_count] %></p>
+<p>new_volunteer_count: <%= @metrics[:new_volunteer_count] %></p>
+<p>average_duration: <%= @metrics[:average_duration] %></p>
+<p>min_duration: <%= @metrics[:min_duration] %></p>
+<p>max_duration: <%= @metrics[:max_duration] %></p>
+<p>voter_count: <%= @metrics[:voter_count] %></p>
+<p>active_match_count: <%= @metrics[:active_match_count] %></p>
+<p>new_voter_count: <%= @metrics[:new_voter_count] %></p>
+<p>completed_match_count: <%= @metrics[:completed_match_count] %></p>
+<p>unmatched_voter_count: <%= @metrics[:unmatched_voter_count] %></p>
+

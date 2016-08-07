@@ -2,7 +2,7 @@
 
 <h2>Search Filters</h2>
 
-<%= form_for :document, url: documents_path, method: 'GET' do |f| %>
+<%= form_tag documents_path, method: 'GET' do %>
 
 	<%= field_set_tag 'Language:' do %>
 		<% language_list.each do |language| %>
@@ -22,7 +22,7 @@
 		<%= text_field_tag 'location', @location %>
 	<% end %>
 
-	<%= f.submit 'Search' %>
+	<%= submit_tag 'Search' %>
 
 <% end %>
 
