@@ -25,19 +25,20 @@
 				<ul>
 					<li><a href="/your-translator.html">Your Translator</a></li>
 					<li><a href="/voter-resources.html">Voter Resources</a></li>
+					<div class="clear-fix"></div>
 				</ul>
 			</nav>
+			<div class="clear-fix"></div>
 		</div><!--.wrapper-->
 
 	</header>
 
 	<%= render "/shared/voter_sidebar" %>
 
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
-
 	<main class="dashboard">
 		<div class="wrapper">
+			<div class="notice"><%= notice %></div>
+			<div class="alert"><%= alert %></div>
 			<%= yield %>
 		</div><!--.wrapper-->
 	</main>	<!--.wrapper-->

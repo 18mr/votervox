@@ -23,23 +23,30 @@
 			<div class="green">Volunteer Dashboard</div>
 			<nav class="main close">
 				<ul>
-					<li><a href="/thank-you-volunteer-signup.html">Getting Started</a></li>
-					<li><a href="/your-matches.html">Your Matches</a></li>
-					<li><a href="/voter-resources.html">Voter Resources</a></li>
-					<li><a href="/add-resource.html">Add a Translated Resource</a></li>
+					<% if volunteer_signed_in? %>
+					<li><a href="/volunteers/">Getting Started</a></li>
+					<li><a href="/matches">Your Matches</a></li>
+					<li><a href="/resources">Voter Resources</a></li>
+					<li><a href="/resources/new">Add a Translated Resource</a></li>
+					<li><%= link_to('Logout', destroy_volunteer_session_path, :method => :delete) %></li>
+					<% else %>
+
+					<% end %>
+					<div class="clear-fix"></div>
+					
 				</ul>
 			</nav>
+			<div class="clear-fix"></div>
 		</div><!--.wrapper-->
 
 	</header>
 
 	<%= render "/shared/volunteer_sidebar" %>
 
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
-
 	<main class="dashboard">
 		<div class="wrapper">
+			<div class="notice"><%= notice %></div>
+			<div class="alert"><%= alert %></div>
 			<%= yield %>
 		</div>
 	</main>	

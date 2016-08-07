@@ -213,6 +213,23 @@ hr {
 .clear-fix {
 	clear: both;
 }
+div.notice {
+	text-align: center;
+	background-color: $lightgrey;
+	color: $darkgrey;
+	font-size: 28px;
+	margin: 0 auto;
+	width: auto;
+	font-weight: 700;
+}
+div.alert {
+	text-align: center;
+    margin: 0 auto;
+    width: auto;
+    font-size: 28px;
+    color: $darkpink;
+    font-weight: 700;
+}
 .tooltip {
 	border: 5px solid #cd1076;
 	padding: 18px;
@@ -1015,14 +1032,14 @@ ul.status li {
 }
 /*Volunteer & Voter Matches Mobile Styling*/
 
-body.matches {
+main.matches {
 	section.message {
 		padding: 50px 0 10px;
 	}	
 }
 
 /*Voter Single Match Contact Mobile Styling */
-body.match-contact {
+main.match-contact {
 	.voter-info, .contact-box, .actions {
 		padding: 20px;
 	}
@@ -1616,7 +1633,7 @@ body.metrics {
 		}
 	}
 	fieldset.languages {
-
+		margin-bottom: 20px;
 		label {
 			float: left;
 			width: 29%;
@@ -1910,7 +1927,7 @@ body.metrics {
 	}
 	/*Matches of Volunteers & Voters Tablet*/
 
-	body.matches {
+	main.matches {
 		section.filters {
 			div.filters {
 				fieldset.languages {
@@ -1923,53 +1940,45 @@ body.metrics {
 		} 
 	}
 	/* Match Contact by Volunteer Tablet */
-	body.match-contact {
-		main.dashboard >.wrapper {
-			width: 354px;
+	main.dashboard.matches >.wrapper {
+		width: 354px;
+	}
+	main.dashboard.thank-you {
+		section {
+			.wrapper, .share-with-community {
+				width: 100%;
+			}
+		}
+		section.message {
+			p {
+				max-width: 510px;
+
+			}
+			h1 {
+				max-width: 413px;
+			}
+		}
+	}
+	main.dashboard.getting-started {
+		section.message {
+			h1 {
+				max-width: 400px;
+			}
+			p {
+				max-width: 350px;
+
+			}
+		}
+	}
+	main.dashboard.sorry  {
+		section.message, section.translator-selection {
+			h1, h2, p {
+				width: 320px;
+				
+			}
 		}
 	}
 	
-	body.thank-you {
-		main.dashboard {
-			section {
-				.wrapper, .share-with-community {
-					width: 100%;
-				}
-			}
-			section.message {
-				p {
-					max-width: 510px;
-
-				}
-				h1 {
-					max-width: 413px;
-				}
-			}
-		}
-	}
-	body.getting-started {
-		main.dashboard {
-			section.message {
-				h1 {
-					max-width: 400px;
-				}
-				p {
-					max-width: 350px;
-
-				}
-			}
-		}
-	}
-	body.sorry {
-		main.dashboard {
-			section.message, section.translator-selection {
-				h1, h2, p {
-					width: 320px;
-					
-				}
-			}
-		}
-	}
 	/* Lightbox & Green Overlay */
 
 	div#light {
@@ -1978,21 +1987,19 @@ body.metrics {
 		margin-top: 129px;
 	}
 	/*Tablet Resources */
-	body.resources {
-		main.dashboard {
-			section {
-				>.wrapper {
-					width: 100%;
-				}
+	main.dashboard.resources {
+		section {
+			>.wrapper {
+				width: 100%;
 			}
-			a.filters {
-				width: 95%;
-			}
-			
-			section.add-resource {
-				.wrapper {
-					margin: 0;
-				}
+		}
+		a.filters {
+			width: 95%;
+		}
+		
+		section.add-resource {
+			.wrapper {
+				margin: 0;
 			}
 		}
 	}
@@ -2128,7 +2135,7 @@ body.metrics {
 		}
 	}
 	/*Matches Desktop */
-	body.matches {
+	main.matches {
 		section.filters div.filters {
 			fieldset.languages {
 				label {
