@@ -1,15 +1,28 @@
 <aside class="tablet desktop">
 	<a class="brand">VoterVox</a>
 	<div class="volunteer-dashboard">
+		<% if admin_signed_in? %>
+			<h1>Admin Dashboard</h1>
+		<% else %>
+		
 		<h1>Volunteer Dashboard</h1>
+		<% end %>
 	</div><!--.volunteer-dashboard-->
-	<button <% if volunteer_home? %>class="selected"<% end %> >Getting Started</button>
-	<button>Your Matches</button>
-	<button>Voter Resources</button>
+
+	<% if admin_signed_in? %>
+		<button>Volunteers</button>
+		<button <% if organization_home? %>class="selected"<% end %>>Organizations</button>
+		<button >Metrics</button>
+	<% else %>
+		<button <% if volunteer_home? %>class="selected"<% end %> >Getting Started</button>
+		<button>Your Matches</button>
+	<% end %>
+
 	<button>Voter Resources</button>
 	<a class="button">
 		Give Feedback
 	</a><!--.mobile-only-->
+	<%= link_to('Logout', destroy_volunteer_session_path, :method => :delete, class: "button") %>
 	<div class="share-with-community">
 		<div>Share with Your Community</div>
 		<div class="buttons">

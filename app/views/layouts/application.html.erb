@@ -22,10 +22,13 @@
 			<div class="clear-fix mobile-only"></div>
 			<nav class="close">
 				<ul>
-					<li><a href="/find-a-translator" class="active">Find a Translator</a></li>
-					<li><a href="/be-a-translator">Be a Translator</a></li>
-					<li><a href="/translator-login">Translator Login</a></li>
+					<li><a href="/" class="active">Find a Translator</a></li>
+					<li><a href="/volunteer/new">Be a Translator</a></li>
+					<li><a href="/volunteer/sign_in">Translator Login</a></li>
 					<li><a href="/about">About VoterVOX</a></li>
+					<% if volunteer_signed_in? %>
+					<li><%= link_to('Logout', destroy_volunteer_session_path, :method => :delete) %></li>
+					<% end %>
 				</ul>
 			</nav>
 		</div><!--.wrapper-->

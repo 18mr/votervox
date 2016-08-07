@@ -23,10 +23,13 @@
 			<div class="green">Volunteer Dashboard</div>
 			<nav class="main close">
 				<ul>
-					<li><a href="/thank-you-volunteer-signup.html">Getting Started</a></li>
-					<li><a href="/your-matches.html">Your Matches</a></li>
-					<li><a href="/voter-resources.html">Voter Resources</a></li>
-					<li><a href="/add-resource.html">Add a Translated Resource</a></li>
+					<li><a href="/volunteer/">Getting Started</a></li>
+					<li><a href="/volunteer/voters">Your Matches</a></li>
+					<li><a href="/resources">Voter Resources</a></li>
+					<li><a href="/resources/new">Add a Translated Resource</a></li>
+					<% if volunteer_signed_in? %>
+					<li><%= link_to('Logout', destroy_volunteer_session_path, :method => :delete) %></li>
+					<% end %>
 				</ul>
 			</nav>
 		</div><!--.wrapper-->
