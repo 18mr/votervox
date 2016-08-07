@@ -1,43 +1,90 @@
-<h1>Resources for You</h1>
+<main class="dashboard">
+	<div class="wrapper">
+		<section class="message">
+			<div class="wrapper">
+				<h1>Resources for You</h1>
+			</div>
+		</section><!--.message-->
 
-<h2>Search Filters</h2>
+		<section class="filters">
+			<a class="filters" href="#">Search Filters<i class="fa fa-caret-up" aria-hidden="true"></i></a>
+			<div class="close filters">
+				<div class="wrapper">
+					<fieldset class="languages">
 
-<%= form_tag documents_path, method: 'GET' do %>
+					<%= form_tag documents_path, method: 'GET' do %>
 
-	<%= field_set_tag 'Language:' do %>
-		<% language_list.each do |language| %>
-			<%= check_box_tag 'languages[]', language, @languages.include?(language), id: 'language_'+slugify(language) %>
-			<%= label_tag 'language_'+slugify(language), language %>
-		<% end %>
-	<% end %>
+						<%= field_set_tag 'Language:', class: "languages" do %>
+							<% language_list.each do |language| %>
 
-	<%= field_set_tag 'Resource Type:' do %>
-		<% resource_type_list.each do |resource_type| %>
-			<%= check_box_tag 'resource_type[]', resource_type, @resource_type.include?(resource_type), id: 'resource_'+slugify(resource_type) %>
-			<%= label_tag 'resource_'+slugify(resource_type), resource_type %>
-		<% end %>
-	<% end %>
+								<%= label_tag 'language_'+slugify(language), language do %> 
+								  <%= check_box_tag 'languages[]', language, @languages.include?(language), id: 'language_'+slugify(language) %>
+								  <%=language%>
+								<% end %>
+							<% end %>
+						<% end %>
 
-	<%= field_set_tag 'Location:' do %>
-		<%= text_field_tag 'location', @location %>
-	<% end %>
+						<%= field_set_tag 'Resource Type:', class: "resource-type" do %>
+							<% resource_type_list.each do |resource_type| %>
+								<%= label_tag 'resource_'+slugify(resource_type), resource_type do %> 
+								  <%= check_box_tag 'resource_type[]', resource_type, @resource_type.include?(resource_type), id: 'resource_'+slugify(resource_type) %>
+								  <%=resource_type %>
+								<% end %>
+							<% end %>
+						<% end %>
 
-	<%= submit_tag 'Search' %>
+						<%= field_set_tag 'Location', class: "location" do %>
+							<%= text_field_tag 'location', @location, placeholder: "City, County, State or National" %>
+							<%= submit_tag 'Search', class: "button" %>
+						<% end %>
 
-<% end %>
+					<% end %>
 
-<% @languages.each do |language| %>
-<span>Language Tag: <%= language %></span><br/>
-<% end %>
+					<div class="clear-fix"></div>
+				</div><!--.wrapper-->
 
-<% @resource_type.each do |resource| %>
-<span>Resource Tag: <%= resource %></span><br/>
-<% end %>
+			</div><!--.close.filters-->
+		</section><!--.filters-->
 
-<% @documents.each do |document| %>
-<p>
-	<%= document.name %>,
-	Language: <%= document.translated_language %>,
-	<%= link_to 'View', document_path(document) %>
-</p>
-<% end %>
+		<section class="resources">
+			<div class="wrapper">
+				<div class="filter-boxes">
+					<% @languages.each do |language| %>
+					<div class='filter-box'>Language Tag: <%= language %><i class="fa fa-times"></div>
+					<% end %>
+
+					<% @resource_type.each do |resource| %>
+					<div class="filter-box">Resource Tag: <%= resource %><i class="fa fa-times"></div>
+					<% end %>
+					<div class="clear-fix"></div>
+				</div><!--.filter-boxes-->
+
+				<% @documents.each do |document| %>
+				<a class="document-box" href="<% document_path(document) %>">
+					<header><%= document.name %></header>
+					<div class="language">Translated Language:<strong><%= document.translated_language %></strong></div>
+					<div class="details">
+						<p>Percent translated: 80%</p>
+						<p>Submitted by: <%= @document.submitter.firstname %> <%= @document.submitter.lastname[0] %>.</p>
+						<p>Submitted on: <%= @document.created_at.strftime("%B %-d, %Y") %></p>
+					</div>
+				</a><!--.document-box-->
+				<% end %>
+
+				<div class="clear-fix"></div><!--.clear-fix-->
+			
+			</div><!--.wrapper-->
+		</section><!--.resources-->
+		<nav class="pagination">
+			<div class="wrapper">
+				<ul>
+					<li><a href="" class="current">1</a></li>
+					<li><a href="">2</a></li>
+					<div class="clear-fix"></div>
+				</ul>
+			</div><!--.wrapper-->
+		</nav><!--.pagination-->
+		
+	</div><!--.wrapper-->
+</main>
+
