@@ -1,6 +1,6 @@
 class OrganizationsController < ApplicationController
 	before_filter :authenticate_admin!
-	layout "admin"
+	layout "volunteer"
 	
 	def index
 		@organizations = Organization.all
