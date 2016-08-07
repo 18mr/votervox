@@ -3,11 +3,11 @@
 	<div class="voter-dashboard">
 		<h1>Voter Dashboard</h1>
 	</div><!--.voter-dashboard-->
-	<button <% if voter_home? %>class="selected"<% end %>>Your Translator</button>
-	<button>Voter Resources</button>
-	<div>
+	<a href="/" <% if voter_home? %>class="button selected"<% else %>class="button"<% end %>>Your Translator</button>
+	<a href="/resources" class="button pink">Voter Resources</a>
+	<a class="button" href="/feedback">
 		Give Feedback
-	</div><!--.mobile-only-->
+	</a><!--.mobile-only-->
 	<div class="share-with-community">
 		<div>Share with Your Community</div>
 		<div class="buttons">

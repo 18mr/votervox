@@ -10,15 +10,15 @@
 	</div><!--.volunteer-dashboard-->
 
 	<% if admin_signed_in? %>
-		<button>Volunteers</button>
-		<button <% if organization_home? %>class="selected"<% end %>>Organizations</button>
-		<button >Metrics</button>
+		<a class="button pink" href="/volunteers">Volunteers</a>
+		<a href="/organizations" <% if organization_home? %>class="selected button"<%else%>class="pink button"<% end %>>Organizations</a>
+		<a href="/metrics" class="button pink" >Metrics</a>
 	<% else %>
-		<button <% if volunteer_home? %>class="selected"<% end %> >Getting Started</button>
-		<button>Your Matches</button>
+		<a <% if volunteer_home? %>class="selected button"<% else %> class=" button"<% end %> >Getting Started</a>
+		<a href="/matches" class="pink button">Your Matches</a>
 	<% end %>
 
-	<button>Voter Resources</button>
+	<a href="/resources" class="pink button">Voter Resources</a>
 	<a class="button">
 		Give Feedback
 	</a><!--.mobile-only-->
