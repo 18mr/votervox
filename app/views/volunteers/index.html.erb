@@ -1,19 +1,143 @@
-<h1>VoterVOX Volunteers</h1>
+	<main class="dashboard">
+		<div class="wrapper">
+			<section class="message">
+				<div class="wrapper">
 
-<% @volunteers.each do |volunteer| %>
-<p>
-	<%= volunteer.email %>,
-	<%= organization_name volunteer %>,
+				<h1>VoterVOX Volunteers</h1>
+				<ul class="status">
+						<li><a href="">Pending</a></li>
+						<li><a href="" class="current">Approved</a></li>
+					</ul>
+					<div class='clear-fix'></div>
+				</div>
+			</section><!--.message-->
 
-	<% if volunteer.unapproved? %>
-	<%= link_to 'Approve', approve_volunteer_path(volunteer) %>
-	<% end %>
+			<section class="filters">
+				<div class='wrapper'>
+					<a class="filters" href="#">Search Filters<i class="fa fa-caret-up" aria-hidden="true"></i></a>
+				</div>
+				<div class="close filters">
+					<div class="wrapper">
+						<fieldset class="languages">
+						<!--TODO: JS and backend coding to check that one checbox is filled out-->
+							<legend>Language</legend>
+							<label for="thai"><input type="checkbox" name="language" id="thai" value="thai" >Thai</label>
+							<label for="mandarin"><input type="checkbox" name="language" id="mandarin" value="mandarin" >Mandarin</label>
+							<label for="cantonese"><input type="checkbox" name="language" id="thai" value="cantonese" >Cantonese</label>
+							<label for="korean"><input type="checkbox" name="language" id="korean" value="korean" >Korean</label>
+							<label for="japanese"><input type="checkbox" name="language" id="japanese" value="japanese" >Japanese</label>
+							<label for="vietnamese"><input type="checkbox" name="language" id="vietnamese" value="vietnamese" >Vietnamese</label>
+							<label for="thai"><input type="checkbox" name="language" id="thai" value="thai" >Thai</label>
+							<label for="tagalog"><input type="checkbox" name="language" id="tagalog" value="tagalog" >Tagalog</label>
+							<label for="hmong"><input type="checkbox" name="language" id="hmong" value="hmong" >Hmong</label>
+							<label for="lao"><input type="checkbox" name="language" id="lao" value="lao" >Lao</label>
+							<label for="hindi"><input type="checkbox" name="language" id="hindi" value="hindi" >Hindi</label>
+							<label for="punjabi"><input type="checkbox" name="language" id="punjabi" value="punjabi" >Punjabi</label>
+						</fieldset><!--.languages-->
+						
+						<fieldset class="location">
+							<label for="location">Location</label>
+							<input type="text" id="location" name="location" placeholder="City, County, State or National">
+							<input class="button" type="button" value="Search">
+						</fieldset>
+						<div class="clear-fix"></div>
+					</div><!--.wrapper-->
 
-	<%= link_to 'Ban', ban_volunteer_path(volunteer), method: :get, data: { confirm: 'Are you sure you want to ban this volunteer?' } %>
+				</div><!--.close.filters-->
+				
+			</section><!--.filters-->
 
-	<% if !volunteer.admin? %>
-	<%= link_to 'Make Admin', make_admin_volunteer_path(volunteer), method: :get,
-		data: { confirm: 'Are you sure you want to make this volunteer an administrator?' } %>
-	<% end %>
-</p>
-<% end %>
+			<section class="match-results accepted">
+				<div class="wrapper">
+
+
+				<% @volunteers.each do |volunteer| %>
+	
+				<div class="volunteer-box">
+					<div class="image"><img src="<%= asset_path('volunteer.jpg') %>"></div><!--.image-->
+					<div class="volunteer-info">
+						<span class="mobile-only accepted-tag">Accepted</span>
+						<h2><%= volunteer.firstname %> <%= volunteer.lastname %>, <%= organization_name volunteer %><span class="desktop accepted-tag">Accepted</span></h2> 
+						<hr/>
+						<ul>
+							<li><strong>City:</strong> <%= volunteer.city %></li>
+							<li><strong>Languages Spoken:</strong> <%= volunteer.languages.each do |language| %> <% language %> <% end %></li>
+							<li><strong>Phone Number:</strong> <%= volunteer.phone %></li>
+							<li><strong>Email Address:</strong> <%= volunteer.email %></li>
+							<li><strong>Number of Active Matches:</strong> 5</li>
+							<li><strong>Number of Completed Matches:</strong> 7</li>
+							<li><strong>Total # of Volunteer Hours:</strong> 39</li>
+						</ul>
+					</div><!--.voter-info-->
+					<div class="actions">
+						
+						<% if volunteer.unapproved? %>
+						<%= link_to 'Approve', approve_volunteer_path(volunteer), class: "button accept" %>
+						<% end %>
+
+						<%= link_to 'Ban', ban_volunteer_path(volunteer), method: :get, class: "deactivate btn-outline", data: { confirm: 'Are you sure you want to ban this volunteer?' } %>
+
+						<% if !volunteer.admin? %>
+						<%= link_to 'Make Admin', make_admin_volunteer_path(volunteer), class: "btn-outline", method: :get,
+							data: { confirm: 'Are you sure you want to make this volunteer an administrator?' } %>
+						<% end %>
+					</div><!--.actions-->
+					
+				</div><!--.volunteer-box-->
+				<% end %>
+				</div><!--.wrapper-->
+	
+			</section><!--.match-results-->
+
+			<section class="match-results pending">
+				<div class="wrapper">
+
+
+				<% @volunteers.each do |volunteer| %>
+			
+				<div class="volunteer-box">
+					<div class="image"><img src="<%= asset_path('volunteer.jpg') %>"></div><!--.image-->
+					<div class="volunteer-info">
+						<span class="mobile-only accepted-tag">Accepted</span>
+						<h2><%= volunteer.firstname %> <%= volunteer.lastname %>, <%= organization_name volunteer %></h2> 
+						<hr/>
+						<ul>
+							<li><strong>City:</strong> <%= volunteer.city %></li>
+							<li><strong>Languages Spoken:</strong> <%= volunteer.languages.each do |language| %> <% language %> <% end %></li>
+							<li><strong>Phone Number:</strong> <%= volunteer.phone %></li>
+							<li><strong>Email Address:</strong> <%= volunteer.email %></li>
+							<li><strong>Number of Active Matches:</strong> 5</li>
+							<li><strong>Number of Completed Matches:</strong> 7</li>
+							<li><strong>Total # of Volunteer Hours:</strong> 39</li>
+						</ul>
+					</div><!--.voter-info-->
+					<div class="actions">
+						
+						<% if volunteer.unapproved? %>
+						<%= link_to 'Approve', approve_volunteer_path(volunteer), class: "button accept" %>
+						<% end %>
+
+						<%= link_to 'Ban', ban_volunteer_path(volunteer), method: :get, class: "deactivate btn-outline", data: { confirm: 'Are you sure you want to ban this volunteer?' } %>
+
+						<% if !volunteer.admin? %>
+						<%= link_to 'Make Admin', make_admin_volunteer_path(volunteer), class: "btn-outline", method: :get,
+							data: { confirm: 'Are you sure you want to make this volunteer an administrator?' } %>
+						<% end %>
+					</div><!--.actions-->
+					
+				</div><!--.volunteer-box-->
+				<% end %>
+				</div><!--.wrapper-->
+			
+			</section><!--.match-results-->
+
+			<nav class="pagination"><!--TODO: pagination-->
+				<ul>
+					<li><a href="">1</a></li>
+					<li><a href="">2</a></li>
+					<li><a href="">3</a></li>
+					<li><a href="">4</a></li>
+					<li><a href="">5</a></li>
+				</ul>
+
+			</nav>
