@@ -43,13 +43,11 @@
 				<% end %>
 			  	
 			  <% end %>
-			  
 			  	<div class="clear-fix"></div>
-			  </div><!--#other_fields-->
 			<% end %>
 
 
-			<%= f.label :"How comfortable are you with English?*", {:for => "english_comfort"}  %>:
+			<%= f.label :"How comfortable are you with English?*", {:for => "english_comfort"}  %>
 			<%= f.select :english_comfort,
 				options_for_select(@comfort_options, @voter.english_comfort || false),
 				{ include_blank: 'Select One' } %>
