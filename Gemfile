@@ -10,6 +10,9 @@ gem 'pg'
 # Volunteer/admin authentication
 gem 'devise'
 
+# Visit tracking
+gem 'ahoy_matey'
+
 # Make requests to external APIs
 gem 'rest-client'
 gem 'nokogiri'

@@ -38,7 +38,7 @@ class MetricsController < ApplicationController
 
 		# Calculate metrics
 		language_count = language_list.count
-		visitors = 1000000 # TODO: Figure out visitor tracking
+		visitors = Visit.all.count
 		registrations = voters.select{ |v| v.created_at > @start_dt }.count + volunteers.select{ |v| v.created_at > @start_dt }.count
 		durations = interactions.map(&:duration).select{ |d| d > 0 }
 		average_duration = (durations.sum / durations.count).round rescue 0
