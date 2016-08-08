@@ -6,9 +6,14 @@
 		<% else %>
 		
 		<h1>Volunteer Dashboard</h1>
+		<% at_voters_list? %>
 		<% end %>
 	</div><!--.volunteer-dashboard-->
-
+	<% if admin_signed_in? %>
+		<a class="button" href="/voters">
+			Voters
+		</a><!--.mobile-only-->
+	<% end %>
 	<% if admin_signed_in? %>
 		<a class="button pink" href="/volunteers">Volunteers</a>
 		<a href="/organizations" <% if at_organization_home? %>class="selected button"<%else%>class="pink button"<% end %>>Organizations</a>
@@ -18,7 +23,7 @@
 		<a href="/matches" class="pink button">Your Matches</a>
 	<% end %>
 
-	<a href="/resources" class="pink button">Voter Resources</a>
+	<a href="/documents" class="pink button">Voter Resources</a>
 	<% if !admin_signed_in? %>
 		<a <% if at_feedback? %> class="selected button"<% else %> class="button"<% end %> href="/feedback">
 			Give Feedback

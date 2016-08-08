@@ -3,8 +3,9 @@
 	<div class="voter-dashboard">
 		<h1>Voter Dashboard</h1>
 	</div><!--.voter-dashboard-->
+	<!--TODO: Add Voter Match Match.where(:voter_id => 1).first.voter_show_url-->
 	<a href="/" <% if at_voter_home? %>class="button selected"<% else %>class="button"<% end %>>Your Translator</button>
-	<a href="/resources" class="button pink">Voter Resources</a>
+	<a href="/documents" class="button pink">Voter Resources</a>
 	<a <% if at_feedback? %> class="selected button"<% else %> class="button"<% end %> href="/feedback">
 		Give Feedback
 	</a><!--.mobile-only-->
