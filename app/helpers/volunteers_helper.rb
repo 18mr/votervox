@@ -5,4 +5,7 @@ module VolunteersHelper
 	def at_volunteer_home?
 		controller_name == 'volunteers' && action_name == 'index'
 	end
+	def at_feedback?
+		controller_name == 'application' && action_name == 'feedback' || action_name == 'submit_feedback'
+	end
 end

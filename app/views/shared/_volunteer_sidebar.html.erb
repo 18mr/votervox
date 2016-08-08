@@ -19,9 +19,11 @@
 	<% end %>
 
 	<a href="/resources" class="pink button">Voter Resources</a>
-	<a class="button">
-		Give Feedback
-	</a><!--.mobile-only-->
+	<% if !admin_signed_in? %>
+		<a <% if at_feedback? %> class="selected button"<% else %> class="button"<% end %> href="/feedback">
+			Give Feedback
+		</a><!--.mobile-only-->
+	<% end %>
 	<%= link_to('Logout', destroy_volunteer_session_path, :method => :delete, class: "button") %>
 	<div class="share-with-community">
 		<div>Share with Your Community</div>
