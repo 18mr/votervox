@@ -1,56 +1,101 @@
-<h1>Voter Match</h1>
+<main class="dashboard match-contact">
+		<div class="wrapper">
+			
+			<section class="match-results">
+				<div class="wrapper">
+					<h1>Voter Match</h1>
 
-<h2><%= @voter.firstname %> <%= @voter.lastname %></h2>
-<p>Languages: <%= @voter.languages.join(', ') %></p>
+					<div class="voter-box">
+						<div class="top-container">
+							<div class="image"><img src=""></div><!--.image-->
+							<div class="voter-info">
+								<h2><%= @voter.firstname %> <%= @voter.lastname %> <span class="desktop accepted-tag">Accepted</span></h2>
+								<span class="accepted-tag mobile-only">Accepted</span>
+								<hr/>
+								<ul>
+									<li><strong>City:</strong> <%= @voter.city %></li>
+									<li><strong>Proximity to You:</strong> 19 miles</li>
+									<li><strong>Requested Language:</strong> <%= @voter.languages.join(', ') %></li>
+									<li><strong>English Proficiency:</strong> <%= @voter.english_comfort %></li>
+								</ul>
+							</div><!--.voter-info-->
+							<div class="actions desktop">
+								<button class="decline btn-outline">Decline</button>
+							</div>
+							<div class="clear-fix"></div>
+						</div>
+					
+					<div class="contact-box">
+						<div class="wrapper">
+
+							<% if @proposal.nil? %>
+
+								<%= form_for :match, url: message_match_path(@match), method: 'POST' do |f| %>
+									<h2>Contact <%= @voter.firstname %></h2>
+									<textarea name="message"></textarea>
+									<%= f.submit 'Send Your Message', class: "button" %>
+								<% end %>
+
+							<% else %>
+
+								<p>Your original message:</p>
+								<p>
+									<em><%= @proposal.message %></em>
+								</p>
+
+							<% end %>
+						</div><!--.wrapper-->
+					</div><!--.contact-box-->
+					<div class="actions tablet mobile-only">
+						<% if @match.accepted? %>
+							<%= link_to "Match Completed", "#", class: "button accept" %>
+						<% end %>
+
+						<%= link_to 'Decline', decline_match_path(@match), method: :get, data: { confirm: 'Are you sure you want to decline this match?' }, class: "btn-outline decline" %>
+
+						<% if @match.accepted? %>
+
+							<% if @reschedule.present? %>
+								<h2><%= @voter.firstname %> has requested a new time:</h2>
+								<p><em><%= @reschedule.message %></em></p>
+							<% else %>
+								<h2><%= @voter.firstname %> has accepted your suggested time:</h2>
+							<% end %>
+
+							<p>Contact <%= @voter.firstname %> to confirm specific time and location.</p>
+							<p>Contact info: <%= @voter.contact %></p>
+
+						<% end %>
+					</div><!--.actions-->
+				</div><!--.voter-box-->
+			</div><!--.wrapper-->
+				
+		</section><!--.match-results-->
+
+	</div><!--.wrapper-->
+</main>
 
 <% if @match.accepted? %>
-	<%= link_to "Match Completed", "#" %>
-<% end %>
+	<div id="light" class="white_content">
+		<div class="close-icon"></div>
+		<h2>Thank you for helping out Buakaw!</h2>
+		
+		<p>Please take a few seconds to answer some questions.</p>
+		<div class="pink-hr"></div>
+		
+		<%= form_for :match, url: complete_match_path(@match), method: 'POST' do |f| %>
+			<label for="time_spent">How much time did you spend helping Buakaw?</label>
+			<input id="time_spent" type="text" name="duration" placeholder="HH:MM" value="" />
+			<label for="feedback">What was your experience like? Do you have feedback or suggestions?</label>
+			<textarea id="feedback" name="message" placeholder="Feedback on experience"></textarea>
+			<%= f.submit 'Submit', class: "button" %>
+		<% end %>
+			
+		</div><!--.request-->
 
-<%= link_to 'Decline', decline_match_path(@match), method: :get, data: { confirm: 'Are you sure you want to decline this match?' } %>
-
-<% if @match.accepted? %>
-
-	<% if @reschedule.present? %>
-		<h2><%= @voter.firstname %> has requested a new time:</h2>
-		<p><em><%= @reschedule.message %></em></p>
-	<% else %>
-		<h2><%= @voter.firstname %> has accepted your suggested time:</h2>
-	<% end %>
-
-	<p>Contact <%= @voter.firstname %> to confirm specific time and location.</p>
-	<p>Contact info: <%= @voter.contact %></p>
-
-<% end %>
-
-<% if @proposal.nil? %>
-
-	<%= form_for :match, url: message_match_path(@match), method: 'POST' do |f| %>
-		<h2>Contact <%= @voter.firstname %></h2>
-		<textarea name="message"></textarea>
-		<%= f.submit 'Accept' %>
-	<% end %>
-
-<% else %>
-
-	<p>Your original message:</p>
-	<p>
-		<em><%= @proposal.message %></em>
-	</p>
+	</div><!--.white_content-->
+	<div id="fade" class="green-overlay"></div><!--.green_overlay-->
 
 <% end %>
 
-
-<!-- SHOULD GO IN LIGHTBOX -->
-<% if @match.accepted? %>
-
-	<h2>This form should go in a lightbox that appears when the user clicks "Match Completed"</h2>
-
-	<%= form_for :match, url: complete_match_path(@match), method: 'POST' do |f| %>
-		<input type="text" name="duration" placeholder="HH:MM" value="" />
-		<textarea name="message" placeholder="Feedback on experience"></textarea>
-		<%= f.submit 'Submit' %>
-	<% end %>
-
-<% end %>
 

@@ -1,48 +1,114 @@
-<h1>Your Matches</h1>
+<main class="dashboard">
+	<div class="wrapper">
+		<section class="stats">
+			<div class="stat-info">
+				<div class="number"><%= @requests.count %></div>
+				<div class="metric">match requests</div>
+				<div class="clear-fix"></div>
+			</div><!--.stat-info-->
+			<div class="stat-info">
+				<div class="number"><%= @accepted.count %></div>
+				<div class="metric">accepted matches</div>
+				<div class="clear-fix"></div>
+			</div><!--.stat-info-->
+			<div class="stat-info">
+				<div class="number">TBD</div>
+				<div class="metric">documents translated</div>
+				<div class="clear-fix"></div>
+			</div><!--.stat-info-->
+			<div class="stat-info">
+				<div class="number"><%= @completed.count %></div>
+				<div class="metric">matches completed</div>
+				<div class="clear-fix"></div>
+			</div><!--.stat-info-->
+			<div class="clear-fix"></div>
+		</section><!--.stats-->
 
-<p>
-	Match requests: <%= @requests.count %>
-</p>
-<p>
-	Accepted matches: <%= @accepted.count %>
-</p>
-<p>
-	Documents translated: TBD
-</p>
-<p>
-	People helped: <%= @completed.count %>
-</p>
+		<section class="match-results">
+			<div class="wrapper">
+				<h1>Your Matches</h1>
+				<ul class="status">
+					<li><a href="">Your Matches</a></li>
+					<li><a class="current" href="">Accepted Matches</a></li>
+					<li><a href="">Completed Matches</a></li>
+					<div class="clear-fix"></div>
+				</ul>
 
-<h2>Match Requests</h2>
-<% @requests.each do |voter| %>
-<p>
-	<%= voter.firstname %> <%= voter.lastname %>, <%= voter.contact %>,
+				<% @requests.each do |voter| %>
 
-	<%= form_for :match, url: matches_path, method: 'POST' do |f| %>
-		<%= f.hidden_field :voter_id, :value => voter.id %>
-		<%= f.submit 'Accept' %>
-	<% end %>
-	
-	<%= form_for :match, url: matches_path, method: 'POST' do |f| %>
-		<%= f.hidden_field :voter_id, :value => voter.id %>
-		<%= f.hidden_field :status, :value => MatchesHelper::STATUS_VOLUNTEER_DECLINED %>
-		<%= f.submit 'Decline' %>
-	<% end %>
-</p>
-<% end %>
+				<div class="voter-box requests">
+					<div class="image"><img src="./asset/imgs/smart-payakaroon.jpg"></div><!--.image-->
+					<div class="voter-info">
+						<h2><%= voter.firstname %> <%= voter.lastname %>, <%= voter.contact %></h2>
+						<hr/>
+						<ul>
+							<li><strong>City:</strong> <%= voter.city %></li>
+							<li><strong>Proximity to You:</strong> 19 miles</li>
+							<li><strong>Requested Language:</strong> <%= @voter.languages.join(', ') %></li>
+							<li><strong>English Proficiency:</strong> <%= voter.english_comfort %></li>
+						</ul>
+					</div><!--.voter-info-->
+					<div class="actions">
+						<button class="accept">Accept</button>
+						<button class="decline  btn-outline">Decline</button>
+						<%= form_for :match, url: matches_path, method: 'POST' do |f| %>
+							<%= f.hidden_field :voter_id, :value => voter.id %>
+							<%= f.submit 'Accept', class: "button accept" %>
+						<% end %>
+						
+						<%= form_for :match, url: matches_path, method: 'POST' do |f| %>
+							<%= f.hidden_field :voter_id, :value => voter.id %>
+							<%= f.hidden_field :status, :value => MatchesHelper::STATUS_VOLUNTEER_DECLINED %>
+							<%= f.submit 'Decline', class: "button decline" %>
+						<% end %>
+					</div><!--.actions-->
+				</div><!--.voter-box-->
 
-<h2>Accepted Matches</h2>
-<% @accepted.each do |match| %>
-<p>
-	<%= match.voter.firstname %> <%= match.voter.lastname %>, <%= match.voter.contact %>,
-	<%= link_to 'View Match', match_path(match) %>
-	<%= link_to 'Decline', decline_match_path(match), method: :get, data: { confirm: 'Are you sure you want to decline this match?' } %>
-</p>
-<% end %>
+				<% end %>
 
-<h2>Completed Matches</h2>
-<% @completed.each do |match| %>
-<p>
-	<%= match.voter.firstname %> <%= match.voter.lastname %>, <%= match.voter.contact %>
-</p>
-<% end %>
+				<% @accepted.each do |match| %>
+				<div class="voter-box accepted">
+					<div class="image"><img src=""></div><!--.image-->
+
+					<div class="voter-info">
+						<h2><%= match.voter.firstname %> <%= match.voter.lastname %> <span class="accepted-tag desktop">Accepted</span></h2> 
+						<span class="accepted-tag mobile-only">Accepted</span>
+						<hr/> 
+						<ul>
+							<li><strong>City:</strong> <%= match.voter.city %></li>
+							<li><strong>Proximity to You:</strong> 19 miles</li>
+							<li><strong>Requested Language:</strong> <%= match.voter.languages.join(', ') %></li>
+							<li><strong>English Proficiency:</strong> <%= match.voter.english_comfort %></li>
+						</ul>
+					</div><!--.voter-info-->
+					<div class="actions">
+						<%= link_to 'View Match', match_path(match), class: "button accept" %>
+						<%= link_to 'Decline', decline_match_path(match), method: :get, data: { confirm: 'Are you sure you want to decline this match?' }, class: "btn-outline decline" %>
+					</div><!--.actions-->
+				</div><!--.voter-box-->
+				<% end %>
+
+				<% @completed.each do |match| %>
+				<div class="voter-box completed">
+					<div class="image"><img src="./asset/imgs/smart-payakaroon.jpg"></div><!--.image-->
+					<div class="voter-info">
+						<h2><%= match.voter.firstname %> <%= match.voter.lastname %> <span class="completed-tag desktop">Completed</span></h2>
+						<span class="completed-tag mobile-only">Completed</span> 
+						<hr/>
+						<ul>
+							<li><strong>City:</strong> <%= match.voter.city %></li>
+							<li><strong>Proximity to You:</strong> 19 miles</li>
+							<li><strong>Requested Language:</strong> <%= match.voter.languages.join(', ') %></li>
+							<li><strong>English Proficiency:</strong> <%= match.voter.english_comfort %></li>
+						</ul>
+					</div><!--.voter-info-->
+					
+				</div><!--.voter-box-->
+				<% end %>
+
+			</div><!--.wrapper-->
+
+		</section><!--.match-results-->
+
+	</div><!--.wrapper-->
+</main>

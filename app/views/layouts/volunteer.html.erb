@@ -42,14 +42,10 @@
 	</header>
 
 	<%= render "/shared/volunteer_sidebar" %>
+	<div class="notice"><%= notice %></div>
+	<div class="alert"><%= alert %></div>
 
-	<main class="dashboard">
-		<div class="wrapper">
-			<div class="notice"><%= notice %></div>
-			<div class="alert"><%= alert %></div>
-			<%= yield %>
-		</div>
-	</main>	
+	<%= yield %>
 
 	<%= render "/shared/footer" %>
 

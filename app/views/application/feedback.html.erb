@@ -1,24 +1,34 @@
-<h1>VoterVOX Feedback</h1>
+<main class="dashboard">
+		<div class="wrapper">
+			<section class="message">
 
-<%= form_tag submit_feedback_path, method: 'POST' do %>
-	<%= hidden_field_tag 'subject', 'Feedback from ' + @user_type.upcase %>
+				<h1>VoterVOX Feedback</h1>
+				<p>We built VoterVOX for you.</p>
+				<p>That's why we'd love any feedback you have on how we can improve this application, what else you'd like, or what you enjoyed.</p>
+			</section><!--.message-->
 
-	<%= field_set_tag 'First Name *' do %>
-		<%= text_field_tag 'firstname', '', { :placeholder => 'First Name' } %>
-	<% end %>
+			<section class="feedback">
 
-	<%= field_set_tag 'Last Name *' do %>
-		<%= text_field_tag 'lastname', '', { :placeholder => 'Last Name' } %>
-	<% end %>
+				<%= form_tag submit_feedback_path, method: 'POST' do %>
+					<%= hidden_field_tag 'subject', 'Feedback from ' + @user_type.upcase %>
 
-	<%= field_set_tag 'Email Address *' do %>
-		<%= text_field_tag 'email', '', { :placeholder => 'Email Address' } %>
-	<% end %>
+					<%= field_set_tag 'First Name *' do %>
+						<%= text_field_tag 'firstname', '', { :placeholder => 'First Name' } %>
+					<% end %>
 
-	<%= field_set_tag 'Your feedback to VoterVOX *' do %>
-		<%= text_area_tag 'message', '', { :placeholder => 'Your feedback to VoterVOX' } %>
-	<% end %>
+					<%= field_set_tag 'Last Name *' do %>
+						<%= text_field_tag 'lastname', '', { :placeholder => 'Last Name' } %>
+					<% end %>
 
-	<%= submit_tag 'Submit' %>
+					<%= field_set_tag 'Email Address *' do %>
+						<%= text_field_tag 'email', '', { :placeholder => 'Email Address' } %>
+					<% end %>
 
-<% end %>
+					<%= field_set_tag 'Your feedback to VoterVOX *' do %>
+						<%= text_area_tag 'message', '', { :placeholder => 'Your feedback to VoterVOX' } %>
+					<% end %>
+
+					<%= submit_tag 'Submit', class: "button" %>
+
+				<% end %>
+			</section><!--.feedback-->

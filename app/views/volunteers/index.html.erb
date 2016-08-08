@@ -57,7 +57,7 @@
 						<hr/>
 						<ul>
 							<li><strong>City:</strong> <%= volunteer.city %></li>
-							<li><strong>Languages Spoken:</strong> <%= volunteer.languages.each do |language| %> <% language %> <% end %></li>
+							<li><strong>Languages Spoken:</strong> <%= volunteer.languages.join(', ') %></li>
 							<li><strong>Phone Number:</strong> <%= volunteer.phone %></li>
 							<li><strong>Email Address:</strong> <%= volunteer.email %></li>
 							<li><strong>Number of Active Matches:</strong> <%= volunteer.matches.active.count %></li>
@@ -81,17 +81,10 @@
 					
 				</div><!--.volunteer-box-->
 				<% end %>
-				</div><!--.wrapper-->
-	
-			</section><!--.match-results-->
-
-			<section class="match-results pending">
-				<div class="wrapper">
-
 
 				<% @pending_volunteers.each do |volunteer| %>
-			
-				<div class="volunteer-box">
+				
+				<div class="volunteer-box pending">
 					<div class="image"><img src="<%= asset_path('volunteer.jpg') %>"></div><!--.image-->
 					<div class="volunteer-info">
 						<span class="mobile-only accepted-tag">Accepted</span>
@@ -99,7 +92,7 @@
 						<hr/>
 						<ul>
 							<li><strong>City:</strong> <%= volunteer.city %></li>
-							<li><strong>Languages Spoken:</strong> <%= volunteer.languages.each do |language| %> <% language %> <% end %></li>
+							<li><strong>Languages Spoken:</strong> <%= volunteer.languages.join(', ') %></li>
 							<li><strong>Phone Number:</strong> <%= volunteer.phone %></li>
 							<li><strong>Email Address:</strong> <%= volunteer.email %></li>
 							<li><strong>Number of Active Matches:</strong> 5</li>
@@ -124,8 +117,9 @@
 				</div><!--.volunteer-box-->
 				<% end %>
 				</div><!--.wrapper-->
-			
+	
 			</section><!--.match-results-->
+
 
 			<nav class="pagination"><!--TODO: pagination-->
 				<ul>
