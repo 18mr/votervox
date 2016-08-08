@@ -708,6 +708,70 @@ main.dashboard {
 				margin-bottom: 30px;
 			}
 		}
+		.voter-box, .volunteer-box {
+			border: 1px solid #000;
+			text-align: center;
+			margin-bottom: 30px;
+			h2, li {
+				text-align: center;
+			}
+			.image {
+				padding: 20px 25px 0;
+			}
+			.voter-info, .volunteer-info {
+				padding: 20px 25px;
+				h2 {
+					margin-bottom: 10px;
+				}
+				hr {
+					margin-bottom: 17px;
+				}
+				li {
+					font-size: 13px;
+					margin-bottom: 8px;
+				}
+
+			}
+			a.button {
+				padding: 5px;
+				min-height: 0;
+				font-size: 14px;
+				width: 100%;
+				border-radius: 10px;
+				margin-bottom: 20px;
+			}
+			a.btn-outline {
+				width: auto;
+			}
+			.actions {
+				border-top: 1px solid $darkgrey;
+				padding: 20px 25px;
+				background-color: $lightgrey;
+			}
+			.accept, a.button.accept {
+				height: 30px;
+				margin: 0 auto 20px;
+				padding: 10px;
+			}
+			.decline, a.button.deactivate, button.deactivate {
+				font-size: 12px;
+				height: 22px;
+				border-width: 1px;
+				padding: 4px;
+			}
+			span.accepted-tag, span.completed-tag {
+				background-color: $pink;
+				color: $white;
+				padding: 2px 5px;
+				text-transform: uppercase;
+				font-size: 15px;
+				display: inline;
+				&.desktop {
+					display: none;
+				}
+			}
+
+		}
 
 	}
 	section.voter-resources {
@@ -977,60 +1041,7 @@ ul.status li {
 		margin-right: 0;
 	}
 }
-.voter-box, .volunteer-box {
-	border: 1px solid #000;
-	text-align: center;
-	margin-bottom: 30px;
-	h2, li {
-		text-align: center;
-	}
-	.image {
-		padding: 20px 25px 0;
-	}
-	.voter-info, .volunteer-info {
-		padding: 20px 25px;
-		h2 {
-			margin-bottom: 10px;
-		}
-		hr {
-			margin-bottom: 17px;
-		}
-		li {
-			font-size: 13px;
-			margin-bottom: 8px;
-		}
 
-	}
-	.actions {
-		border-top: 1px solid $darkgrey;
-		padding: 20px 25px;
-		background-color: $lightgrey;
-	}
-	.accept {
-		width: 125px;
-		height: 30px;
-		margin: 0 auto 20px;
-	}
-	.decline, .deactivate {
-		width: 60px;
-		font-size: 12px;
-		padding: 0;
-		height: 22px;
-		border-width: 1px;
-	}
-	span.accepted-tag, span.completed-tag {
-		background-color: $pink;
-		color: $white;
-		padding: 2px 5px;
-		text-transform: uppercase;
-		font-size: 15px;
-		display: inline;
-		&.desktop {
-			display: none;
-		}
-	}
-
-}
 /*Volunteer & Voter Matches Mobile Styling*/
 
 main.matches {
@@ -2009,7 +2020,7 @@ section.organizations {
 		margin-top: 129px;
 	}
 	/*Tablet Resources */
-	main.dashboard.resources {
+	main.dashboard {
 		section {
 			>.wrapper {
 				width: 100%;
@@ -2187,103 +2198,108 @@ section.organizations {
 			}
 		}
 	}
-	h2 {
-		font-size: 27px;
-	}
-	.voter-info, .image {
-		background: $lightgrey;
-		border: none;
-		float: left;
-		padding: 0;
-	}
-	.image {
-		width: 136px;
-		height: 136px;
-		margin: 0 20px 0 0;
-		img {
-			width: 100%;
-			height: 100%;
+	main.dashboard {
+		h2 {
+			font-size: 27px;
 		}
-	}
-	.voter-box {
-		padding: 0;
-		// >.actions {
-		// 	display: none;
-		// }
-	}
-	.top-container {
-		border-bottom: 2px solid $darkgrey;
-		padding: 20px;
-		position: relative;
-		.actions {
-			position: absolute;
-			bottom: 20px;
-			right: 20px;
-			background-color: $lightgrey;
-			padding: 0;
-			button {
-				padding: 2px 13px;
-				height: 30px;
-				font-size: 16px;
-			}
-			button.decline {
-				margin: 20px 0 0px auto;
-				font-size: 12px;
-				height: auto;
-			}
-		}
-	}	
-	
-	.voter-box, .volunteer-box {
-		padding: 20px;
-		display: flex;
-		flex-direction: row;
-		position: relative;
-		h2, li {
-			text-align: left;
-		}
-		hr {
-			margin: 0 0 15px;
-		}
-		.voter-info, .volunteer-info, .image, .actions {
-			background-color: $white;
+		.voter-info, .image {
+			background: $lightgrey;
 			border: none;
+			float: left;
 			padding: 0;
-		}
-		.voter-info {
-			flex: 4;
-		}
-		.volunteer-info {
-			flex: 4;
-		}
-		.image, .actions {
-			flex: 1;
 		}
 		.image {
-			margin-right: 20px;
-		}
-		.actions {
-			position: absolute;
-			bottom: 20px;
-			right: 20px;
-			button, input, a {
+			width: 136px;
+			height: 136px;
+			margin: 0 20px 0 0;
+			img {
+				width: 100%;
 				height: auto;
-				width: auto;
-				font-size: 14px;
-				padding: 2px 25px;
 			}
 		}
-		span.accepted-tag, span.completed-tag {
-			font-size: 10px;
-			&.mobile-only {
-				display: none;
-			}
-			&.desktop {
-				display: inline;
-				line-height: 1em;
+		.voter-box {
+			padding: 0;
+			// >.actions {
+			// 	display: none;
+			// }
+		}
+		.top-container {
+			border-bottom: 2px solid $darkgrey;
+			padding: 20px;
+			position: relative;
+			.actions {
+				position: absolute;
+				bottom: 20px;
+				right: 20px;
+				background-color: $lightgrey;
+				padding: 0;
+				button {
+					padding: 2px 13px;
+					height: 30px;
+					font-size: 16px;
+				}
+				button.decline {
+					margin: 20px 0 0px auto;
+					font-size: 12px;
+					height: auto;
+				}
 			}
 		}	
+		section {
+			.voter-box, .volunteer-box {
+				padding: 20px;
+				display: flex;
+				flex-direction: row;
+				position: relative;
+				h2, li {
+					text-align: left;
+				}
+				hr {
+					margin: 0 0 15px;
+				}
+				.voter-info, .volunteer-info, .image, .actions {
+					background-color: $white;
+					border: none;
+					padding: 0;
+				}
+				.voter-info {
+					flex: 4;
+				}
+				.volunteer-info {
+					flex: 4;
+				}
+				.image, .actions {
+					flex: 1;
+				}
+				.image {
+					margin-right: 20px;
+				}
+				.actions {
+					position: absolute;
+					bottom: 20px;
+					right: 20px;
+					button, input, a {
+						height: auto;
+						width: auto;
+						font-size: 14px;
+						padding: 2px 25px;
+					}
+				}
+				span.accepted-tag, span.completed-tag {
+					font-size: 10px;
+					&.mobile-only {
+						display: none;
+					}
+					&.desktop {
+						display: inline;
+						line-height: 1em;
+					}
+				}	
+			}
+		}
+		
 	}
+	
 	/*Desktop Resources */
 
 	.document-box {
