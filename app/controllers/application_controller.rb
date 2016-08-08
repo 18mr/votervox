@@ -13,26 +13,7 @@ class ApplicationController < ActionController::Base
 	def submit_feedback
 		subject = params[:subject]
 
-		# Prepare message
-		if params[:firstname].present? && params[:lastname].present?
-			body = "Name: params[:firstname] params[:lastname]\n"
-			body += "Email: params[:email]\n" if params[:email].present?
-			body += "\nparams[:message]"
-		elsif params[:voter_id]
-			voter = Voter.find params[:voter_id]
-			body = "Name: voter.firstname voter.lastname\n"
-			body += "Contact: voter.contact\n"
-			body += "\nparams[:message]"
-		elsif volunteer_signed_in?
-			volunteer = current_record
-			body = "Name: volunteer.firstname volunteer.lastname\n"
-			body += "Email: volunteer.email\n"
-			body += "\nparams[:message]"
-		else
-			body = params[:message]
-		end
-
-		# TODO: Send email message to admin
+		# TODO: Send email message to admin with subject and feedback_message
 
 		authenticate_render 'submit_feedback'
 	end
@@ -61,5 +42,26 @@ class ApplicationController < ActionController::Base
 			@user_type = 'voter'
 			render action, layout: 'voter'
 		end
+	end
+
+	def feedback_message
+		if params[:firstname].present? && params[:lastname].present?
+			message = "Name: params[:firstname] params[:lastname]\n"
+			message += "Email: params[:email]\n" if params[:email].present?
+			message += "\nparams[:message]"
+		elsif params[:voter_id]
+			voter = Voter.find params[:voter_id]
+			message = "Name: voter.firstname voter.lastname\n"
+			message += "Contact: voter.contact\n"
+			message += "\nparams[:message]"
+		elsif volunteer_signed_in?
+			volunteer = current_record
+			message = "Name: volunteer.firstname volunteer.lastname\n"
+			message += "Email: volunteer.email\n"
+			message += "\nparams[:message]"
+		else
+			message = params[:message]
+		end
+		message
 	end
 end
