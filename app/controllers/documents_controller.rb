@@ -1,6 +1,7 @@
 class DocumentsController < ApplicationController
 	before_filter :authenticate_volunteer!, only: [:new, :create]
 	before_filter :authenticate_admin!, only: [:update, :destroy]
+	layout "volunteer"
 
 	### VOLUNTEER ROUTES
 	def new
@@ -12,7 +13,7 @@ class DocumentsController < ApplicationController
 
 		if @document.save
 			flash[:notice] = "Thank you for uploading your translated document!"
-			redirect_to volunteer_show_document_path(@document)
+			redirect_to @document
 		else
 			render 'new'
 		end
