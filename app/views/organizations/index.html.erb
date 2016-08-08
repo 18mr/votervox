@@ -1,15 +1,17 @@
-<section>
-	<h1>List of Organizations</h1>
-	<div class="volunteer-box">
-		<ul>
-			<% @organizations.each do |organization| %>
-			<li>
-			<%= organization.name %> <%= link_to 'Delete', organization_path(organization), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-outline decline" %>
-			</li>
-			<% end %>
-		</ul>
+<main class="dashboard">
+	<div class="wrapper">
+		<section class="organizations">
+			<h1>List of Organizations</h1>
+			<ul>
+				<% @organizations.each do |organization| %>
+				<li>
+				<%= organization.name %> <%= link_to 'Delete', organization_path(organization), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-outline decline" %>
+				</li>
+				<% end %>
+			</ul>
+			<div>
+			<%= link_to 'Add Organization', new_organization_path, class: "button add" %>
+			</div>
+		</section>
 	</div>
-	<div>
-	<%= link_to 'Add Organization', new_organization_path, class: "button add" %>
-	</div>
-</section>
+</main>
