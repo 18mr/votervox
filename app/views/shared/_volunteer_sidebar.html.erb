@@ -10,20 +10,20 @@
 		<% end %>
 	</div><!--.volunteer-dashboard-->
 	<% if admin_signed_in? %>
-		<a <% if at_voters_list? %> class="selected button"<% else %> class="button"<% end %> href="/voters">
+		<a <% if at_voters_list? %> class="selected button"<% else %> class="pink button"<% end %> href="/voters">
 			Voters
 		</a><!--.mobile-only-->
 	<% end %>
 	<% if admin_signed_in? %>
-		<a class="button pink" href="/volunteers">Volunteers</a>
+		<a <% if at_volunteer_list %>class="selected button"<% else %> class="pink button"<% end %> href="/volunteers">Volunteers</a>
 		<a href="/organizations" <% if at_organization_home? %>class="selected button"<%else%>class="pink button"<% end %>>Organizations</a>
-		<a href="/metrics" <% if at_metrics? %> class="selected pink button"<% else %> class="button pink"<% end %> >Metrics</a>
+		<a href="/metrics" <% if at_metrics? %> class="selected button"<% else %> class="button pink"<% end %> >Metrics</a>
 	<% else %>
-		<a <% if at_volunteer_home? %>class="selected button"<% else %> class=" button"<% end %> >Getting Started</a>
-		<a href="/matches" class="pink button">Your Matches</a>
+		<a href="/volunteer/getting-started" <% if at_volunteer_home? %>class="selected button"<% else %> class="pink button"<% end %> >Getting Started</a>
+		<a href="/matches" <% if at_matches? %>class="selected button"<% else %> class="pink button"<% end %>>Your Matches</a>
 	<% end %>
 
-	<a href="/documents" class="pink button">Voter Resources</a>
+	<a href="/documents" <% if at_documents? %>class="selected button"<%else%>class="pink button"<% end %> class="pink button">Voter Resources</a>
 	<% if !admin_signed_in? %>
 		<a <% if at_feedback? %> class="selected button"<% else %> class="button"<% end %> href="/feedback">
 			Give Feedback

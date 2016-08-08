@@ -25,4 +25,11 @@ module ApplicationHelper
 	def at_metrics? 
 		controller_name == 'metrics' && action_name == 'index'
 	end
+	def at_matches? 
+		controller_name == 'matches'
+	end
+	def at_documents? 
+		controller_name == 'documents' && action_name == 'index' || action_name == 'new' || action_name == 'show'
+	end
+	
 end
