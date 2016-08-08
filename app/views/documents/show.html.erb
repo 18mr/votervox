@@ -1,8 +1,26 @@
-<h1><%= @document.name %></h1>
+<main class="dashboard">
+	<div class="wrapper">
+		<section class="message">
+			<div class="wrapper">
 
-<p>Translated Language: <%= @document.translated_language %></p>
-<p>Submitted by: <%= @document.submitter.firstname %> <%= @document.submitter.lastname[0] %>.</p>
-<p>Submitted on: <%= @document.created_at.strftime("%B %-d, %Y") %></p>
+				<h1><%= @document.name %></h1>
+				<div class="language">Translated Langauge:<strong><%= @document.translated_language %></strong></div>
+				<div class="details">
+					<p>Percent translated: 80%</p>
+					<p>Submitted by: <%= @document.submitter.firstname %> <%= @document.submitter.lastname[0] %>.</p>
+					<p>Submitted on: <%= @document.created_at.strftime("%B %-d, %Y") %></p>
+				</div>
+			</div><!--.wrapper-->
+		</section><!--.message-->
 
-<p>Document embed coming soon!</p>
+		<section class="contents">
+			<div class="wrapper">
+				<!--.pdf or word or other document rendering-->
+				<p>Document embed coming soon!</p>
 
+				<img src="<%= asset_path('sample-resource.jpg') %>">
+			</div>
+
+		</section><!--.contents-->
+	</div><!--.wrapper-->
+</main>
