@@ -18,15 +18,15 @@ ActiveRecord::Schema.define(version: 20160808023758) do
 
   create_table "ahoy_events", force: :cascade do |t|
     t.integer  "visit_id"
-    t.integer  "user_id"
+    t.integer  "volunteer_id"
     t.string   "name"
     t.json     "properties"
     t.datetime "time"
   end
 
   add_index "ahoy_events", ["name", "time"], name: "index_ahoy_events_on_name_and_time", using: :btree
-  add_index "ahoy_events", ["user_id", "name"], name: "index_ahoy_events_on_user_id_and_name", using: :btree
   add_index "ahoy_events", ["visit_id", "name"], name: "index_ahoy_events_on_visit_id_and_name", using: :btree
+  add_index "ahoy_events", ["volunteer_id", "name"], name: "index_ahoy_events_on_volunteer_id_and_name", using: :btree
 
   create_table "documents", force: :cascade do |t|
     t.integer  "submitter_id"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20160808023758) do
     t.text     "user_agent"
     t.text     "referrer"
     t.text     "landing_page"
-    t.integer  "user_id"
+    t.integer  "volunteer_id"
     t.string   "referring_domain"
     t.string   "search_keyword"
     t.string   "browser"
@@ -100,8 +100,8 @@ ActiveRecord::Schema.define(version: 20160808023758) do
     t.datetime "started_at"
   end
 
-  add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
   add_index "visits", ["visit_token"], name: "index_visits_on_visit_token", unique: true, using: :btree
+  add_index "visits", ["volunteer_id"], name: "index_visits_on_volunteer_id", using: :btree
 
   create_table "volunteers", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false

@@ -14,7 +14,7 @@ class CreateVisits < ActiveRecord::Migration
       t.text :landing_page
 
       # user
-      t.integer :user_id
+      t.integer :volunteer_id
       # add t.string :user_type if polymorphic
 
       # traffic source
@@ -52,6 +52,6 @@ class CreateVisits < ActiveRecord::Migration
     end
 
     add_index :visits, [:visit_token], unique: true
-    add_index :visits, [:user_id]
+    add_index :visits, [:volunteer_id]
   end
 end
