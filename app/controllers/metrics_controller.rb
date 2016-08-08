@@ -1,6 +1,7 @@
 class MetricsController < ApplicationController
 	include ApplicationHelper
 	before_filter :authenticate_admin!
+	layout 'volunteer'
 
 	def index
 		@start_dt = params[:start_date].to_date rescue 1.week.ago

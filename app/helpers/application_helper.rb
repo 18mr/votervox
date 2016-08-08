@@ -22,4 +22,7 @@ module ApplicationHelper
 	def at_voters_list? 
 		controller_name == 'voters' && action_name == 'index'
 	end
+	def at_metrics? 
+		controller_name == 'metrics' && action_name == 'index'
+	end
 end
