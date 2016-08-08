@@ -11,10 +11,10 @@
 
 	<% if admin_signed_in? %>
 		<a class="button pink" href="/volunteers">Volunteers</a>
-		<a href="/organizations" <% if organization_home? %>class="selected button"<%else%>class="pink button"<% end %>>Organizations</a>
+		<a href="/organizations" <% if at_organization_home? %>class="selected button"<%else%>class="pink button"<% end %>>Organizations</a>
 		<a href="/metrics" class="button pink" >Metrics</a>
 	<% else %>
-		<a <% if volunteer_home? %>class="selected button"<% else %> class=" button"<% end %> >Getting Started</a>
+		<a <% if at_volunteer_home? %>class="selected button"<% else %> class=" button"<% end %> >Getting Started</a>
 		<a href="/matches" class="pink button">Your Matches</a>
 	<% end %>
 

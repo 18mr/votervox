@@ -2,7 +2,7 @@ module VolunteersHelper
 	def organization_name volunteer
 		volunteer.organization.nil? ? 'No Organization' : volunteer.organization.name
 	end
-	def volunteer_home? 
-		controller_name == 'volunteers' && current_page?(action: 'index')
+	def at_volunteer_home?
+		controller_name == 'volunteers' && action_name == 'index'
 	end
 end

@@ -1,5 +1,5 @@
 module OrganizationsHelper
-	def organization_home? 
-		controller_name == 'organizations' && current_page?(action: 'index')
+	def at_organization_home?
+		controller_name == 'organizations' && action_name == 'index'
 	end
 end
