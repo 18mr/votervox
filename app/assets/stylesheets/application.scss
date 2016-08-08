@@ -1055,7 +1055,7 @@ main.match-contact.dashboard {
 	.voter-info, .contact-box, .actions {
 		padding: 20px;
 	}
-	.voter-info, .contact-box {
+	.voter-info {
 		border-bottom: 2px solid $darkgrey;
 	}
 	div.voter-box {
@@ -2183,6 +2183,12 @@ section.organizations {
 
 	main.dashboard.match-contact >.wrapper {
 		width: 100%;
+		.voter-box {
+			padding: 0;
+		}
+		.image, .voter-info, .actions {
+			background-color: $lightgrey;
+		}
 		div.contact-box {
 			border-bottom: none;
 			h2 {
@@ -2193,6 +2199,7 @@ section.organizations {
 				width: 330px;
 				margin: 0 auto;
 			}
+
 		}
 	}
 	main.dashboard {
