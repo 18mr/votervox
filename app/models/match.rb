@@ -9,6 +9,7 @@ class Match < ActiveRecord::Base
 
 	belongs_to :voter
 	belongs_to :volunteer
+	has_many :interactions
 
 	# Accessor functions
 	def voter_url method

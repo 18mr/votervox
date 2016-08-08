@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
 
 	def submit_feedback
 		subject = params[:subject]
-		body = params[:message]
 
 		# Prepare message
 		if params[:firstname].present? && params[:lastname].present?

@@ -5,6 +5,7 @@ class Volunteer < ActiveRecord::Base
 
 	belongs_to :organization
 	has_many :matches
+	has_many :interactions, through: :matches
 
 	# Include default devise modules. Others available are:
 	# :confirmable, :lockable, :timeoutable and :omniauthable
@@ -32,6 +33,11 @@ class Volunteer < ActiveRecord::Base
 		matches = Voter.unmatched.select{ |v| self.language_match v }
 		matches.reject!{ |m| self.matches.declined.map(&:voter_id).include? m.id }
 		matches.sort{ |a, b| self.match_quality(b) <=> self.match_quality(a) }
+	end
+
+	# Accessor functions
+	def total_duration
+		self.interactions.map(&:duration).sum
 	end
 
 	# Helper functions

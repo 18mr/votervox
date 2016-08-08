@@ -18,29 +18,25 @@
 				</div>
 				<div class="close filters">
 					<div class="wrapper">
-						<fieldset class="languages">
-						<!--TODO: JS and backend coding to check that one checbox is filled out-->
-							<legend>Language</legend>
-							<label for="thai"><input type="checkbox" name="language" id="thai" value="thai" >Thai</label>
-							<label for="mandarin"><input type="checkbox" name="language" id="mandarin" value="mandarin" >Mandarin</label>
-							<label for="cantonese"><input type="checkbox" name="language" id="thai" value="cantonese" >Cantonese</label>
-							<label for="korean"><input type="checkbox" name="language" id="korean" value="korean" >Korean</label>
-							<label for="japanese"><input type="checkbox" name="language" id="japanese" value="japanese" >Japanese</label>
-							<label for="vietnamese"><input type="checkbox" name="language" id="vietnamese" value="vietnamese" >Vietnamese</label>
-							<label for="thai"><input type="checkbox" name="language" id="thai" value="thai" >Thai</label>
-							<label for="tagalog"><input type="checkbox" name="language" id="tagalog" value="tagalog" >Tagalog</label>
-							<label for="hmong"><input type="checkbox" name="language" id="hmong" value="hmong" >Hmong</label>
-							<label for="lao"><input type="checkbox" name="language" id="lao" value="lao" >Lao</label>
-							<label for="hindi"><input type="checkbox" name="language" id="hindi" value="hindi" >Hindi</label>
-							<label for="punjabi"><input type="checkbox" name="language" id="punjabi" value="punjabi" >Punjabi</label>
-						</fieldset><!--.languages-->
-						
-						<fieldset class="location">
-							<label for="location">Location</label>
-							<input type="text" id="location" name="location" placeholder="City, County, State or National">
-							<input class="button" type="button" value="Search">
-						</fieldset>
-						<div class="clear-fix"></div>
+						<%= form_tag documents_path, method: 'GET' do %>
+							<fieldset class="languages">
+							<!--TODO: JS and backend coding to check that one checbox is filled out-->
+								<legend>Language</legend>
+								<% language_list.each do |language| %>
+								<%= label_tag 'language_'+slugify(language), language do %> 
+								  <%= check_box_tag 'languages[]', language, @languages.include?(language), id: 'language_'+slugify(language) %>
+								  <%=language%>
+								<% end %>
+								<% end %>
+							</fieldset><!--.languages-->
+							
+							<fieldset class="location">
+								<label for="location">Location</label>
+								<%= text_field_tag 'location', @location, placeholder: "City, County, State or National" %>
+								<input class="button" type="button" value="Search">
+							</fieldset>
+							<div class="clear-fix"></div>
+						<% end %>
 					</div><!--.wrapper-->
 
 				</div><!--.close.filters-->
@@ -51,7 +47,7 @@
 				<div class="wrapper">
 
 
-				<% @volunteers.each do |volunteer| %>
+				<% @approved_volunteers.each do |volunteer| %>
 	
 				<div class="volunteer-box">
 					<div class="image"><img src="<%= asset_path('volunteer.jpg') %>"></div><!--.image-->
@@ -64,9 +60,9 @@
 							<li><strong>Languages Spoken:</strong> <%= volunteer.languages.each do |language| %> <% language %> <% end %></li>
 							<li><strong>Phone Number:</strong> <%= volunteer.phone %></li>
 							<li><strong>Email Address:</strong> <%= volunteer.email %></li>
-							<li><strong>Number of Active Matches:</strong> 5</li>
-							<li><strong>Number of Completed Matches:</strong> 7</li>
-							<li><strong>Total # of Volunteer Hours:</strong> 39</li>
+							<li><strong>Number of Active Matches:</strong> <%= volunteer.matches.active.count %></li>
+							<li><strong>Number of Completed Matches:</strong> <%= volunteer.matches.completed.count %></li>
+							<li><strong>Total # of Volunteer Hours:</strong> <%= (volunteer.total_duration / 60.0).round(1) %></li>
 						</ul>
 					</div><!--.voter-info-->
 					<div class="actions">
@@ -93,7 +89,7 @@
 				<div class="wrapper">
 
 
-				<% @volunteers.each do |volunteer| %>
+				<% @pending_volunteers.each do |volunteer| %>
 			
 				<div class="volunteer-box">
 					<div class="image"><img src="<%= asset_path('volunteer.jpg') %>"></div><!--.image-->

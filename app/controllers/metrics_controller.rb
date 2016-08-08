@@ -7,7 +7,7 @@ class MetricsController < ApplicationController
 		@end_dt = params[:end_date].to_date rescue 1.second.ago
 		@timeframe = params[:timeframe]
 		@metrics = metrics_data
-		
+
 		respond_to do |format|
 			format.html do
 				render :index
@@ -30,14 +30,10 @@ class MetricsController < ApplicationController
 			matches = Match.where("created_at < ?", @end_dt)
 			interactions = Interaction.where("created_at >= ? AND created_at < ?", @start_dt, @end_dt)
 		else
-			volunteers = Volunteer.all.where("organization_id = ? AND created_at < ?", current_org.id, @end_dt)
-			volunteers_active = Volunteer.active.where("organization_id = ? AND created_at < ?", current_org.id, @end_dt)
-			matches = Match.includes(:volunteers)
-				.where("volunteers.organization_id == ? AND matches.created_at < ?", current_org.id, @end_dt)
-				.references(:volunteers)
-			interactions = Interaction.includes(matches: :volunteers)
-				.where("volunteers.organization_id = ? AND interactions.created_at >= ? AND interactions.created_at < ?", current_org.id, @start_dt, @end_dt)
-				.references(:matches, :volunteers)
+			volunteers = current_org.volunteers.where("volunteers.created_at < ?", @end_dt)
+			volunteers_active = current_org.volunteers.active.where("volunteers.created_at < ?", @end_dt)
+			matches = current_org.matches.where("matches.created_at < ?", @end_dt)
+			interactions = current_org.interactions.where("interactions.created_at >= ? AND interactions.created_at < ?", @start_dt, @end_dt)
 		end
 
 		# Calculate metrics

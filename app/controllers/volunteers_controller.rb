@@ -3,10 +3,25 @@ class VolunteersController < ApplicationController
 	layout "volunteer", :except => :new
 
 	def index
+		@languages = params[:languages] || []
+		@location = params[:location] || ''
+
 		if current_org.nil?
-			@volunteers = Volunteer.active
+			@pending_volunteers = Volunteer.unapproved
+			@approved_volunteers = Volunteer.approved
 		else
-			@volunteers = Volunteer.active.where(:organization => current_org.id)
+			@pending_volunteers = current_org.volunteers.unapproved
+			@approved_volunteers = current_org.volunteers.approved
+		end
+
+		# Filter based on language and location
+		if @languages.present?
+			@pending_volunteers.reject!{ |v| (v.languages & @languages).empty? }
+			@approved_volunteers.reject!{ |v| (v.languages & @languages).empty? }
+		end
+		if @location.present?
+			@pending_volunteers.reject!{ |v| v.city != @location && v.state != @location }
+			@approved_volunteers.reject!{ |v| v.city != @location && v.state != @location }
 		end
 	end
 
