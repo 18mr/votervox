@@ -1315,46 +1315,7 @@ main.metrics {
 			margin-right: 20px;
 		}
 	}
-	#light.breakdown-language {
-		margin: 0;
-		top: 68px;
-		left: 75px;
-		position: fixed;
-		header {
-			min-height: 0;
-		}
-		ul {
-			min-height: 20px;
-			height: auto;
-			text-align: left;
-			li {
-				float: none;
-				display: inline-block;
-				height: auto;
-				border: none;
-				padding: 10px 0;
-				padding-left: 10px;
-				&:first-of-type {
-					
-				}
-				&:after {
-					padding-left: 10px;
-					margin-right: 0px;
-				}
-			}
-		}
-		.metric-box {
-			height: 153px;
-			.language {
-				font-size: 15px;
-				font-weight: 700;
-				padding: 20px 5px;
-			}
-		}
-		.download {
-			padding: 10px 0;
-		}
-	}
+	
 	section, .breakdown-language {
 		border: none;
 		padding: 0 0 50px;
@@ -1395,56 +1356,97 @@ main.metrics {
 			}
 		}
 	}
+}
 
-	.metric {
-		width: 48%;
-		margin-right: 4%;
-		float: left;
-		margin-bottom: 50px;
-		button {
-			font-size: 11px;
-			width: auto;
-			padding: 2px 5px;
+#light.breakdown-language {
+	margin: 0;
+	top: 68px;
+	left: 75px;
+	position: fixed;
+	header {
+		min-height: 0;
+		border-bottom: none;
+	}
+	ul {
+		min-height: 20px;
+		height: auto;
+		text-align: left;
+		li {
+			float: none;
+			display: inline-block;
 			height: auto;
-			border-width: 1px;
-			box-shadow: 0px 2px 1px $darkpink;
-		}
-		&:nth-of-type(2n){
-			margin-right: 0px;
+			border: none;
+			padding: 10px 0;
+			padding-left: 10px;
+			&:first-of-type {
+				
+			}
+			&:after {
+				padding-left: 10px;
+				margin-right: 0px;
+			}
 		}
 	}
 	.metric-box {
-		height: 182px;
-		text-align: center;
-		border: 2px solid $darkgrey;
-		margin-bottom: 10px;
-		.number {
-			background-color: $pink;
-			font-size: 50px;
-			color: $white;
-			padding: 20px 12px;
+		height: 153px;
+		.language {
+			font-size: 15px;
 			font-weight: 700;
-			border-bottom: 1px solid $darkgrey;
-		}
-		.details {
-			padding: 20px;
+			padding: 20px 5px;
 		}
 	}
-	section.download {
-		padding: 50px 0;
-		text-align: center;
-		font-size: 20px;
-		background-color: $white;
-		span {
-			margin-bottom: 20px;
-			display: block;
-		}
-		button {
-			width: auto;
-			height: auto;
-			margin: 0 auto;
-			padding: 10px 40px;
-		}
+	.download {
+		padding: 10px 0;
+	}
+}
+.metric {
+	width: 48%;
+	margin-right: 4%;
+	float: left;
+	margin-bottom: 50px;
+	button {
+		font-size: 11px;
+		width: auto;
+		padding: 2px 5px;
+		height: auto;
+		border-width: 1px;
+		box-shadow: 0px 2px 1px $darkpink;
+	}
+	&:nth-of-type(2n){
+		margin-right: 0px;
+	}
+}
+.metric-box {
+	height: 182px;
+	text-align: center;
+	border: 2px solid $darkgrey;
+	margin-bottom: 10px;
+	.number {
+		background-color: $pink;
+		font-size: 50px;
+		color: $white;
+		padding: 20px 12px;
+		font-weight: 700;
+		border-bottom: 1px solid $darkgrey;
+	}
+	.details {
+		padding: 20px;
+	}
+}
+section.download {
+	padding: 50px 0;
+	text-align: center;
+	font-size: 20px;
+	background-color: $white;
+	span {
+		margin-bottom: 20px;
+		display: block;
+	}
+	button {
+		width: auto;
+		height: auto;
+		margin: 0 auto;
+		padding: 10px 40px;
 	}
 }
 section.organizations {
@@ -2077,48 +2079,49 @@ section.organizations {
 				}
 			}
 		}
-		#light.breakdown-language {
-			width: 630px;
-			top: 5px;
-			left: 5px;
-			padding: 30px;
-			.close-icon {
-				left: 33px;
-			}
-			.metric-box {
-				float: left;
-				width: 23%;
-				margin-right: 2.66666666666667%;
-				height: 150px;
-
-				&:nth-of-type(4n+1) {
-					margin-right: 0;
-				}
-			}
-			section.download {
-				padding: 20px 0;
-			}
-			.download-report {
-				width: 400px;
-				float: right;
-				span, button {
-					display: inline-block;
-					font-size: 14px;
-				}
-				span {
-					margin-right: 20px;
-					
-				}
-				button {
-					padding: 5px 20px;
-
-				}
-			}
-
+	}
+	#light.breakdown-language {
+		width: 630px;
+		top: 5px;
+		left: 5px;
+		padding: 30px;
+		.close-icon {
+			left: 26px;
+			top: -21px;
 		}
-		
+		.metric-box {
+			float: left;
+			width: 23%;
+			margin-right: 2.66666666666667%;
+			height: 150px;
+
+			&:nth-of-type(4n+1) {
+				margin-right: 0;
+			}
+		}
+		section.download {
+			padding: 20px 0;
+		}
+		.download-report {
+			width: 400px;
+			float: right;
+			span, button {
+				display: inline-block;
+				font-size: 14px;
+			}
+			span {
+				margin-right: 20px;
+				
+			}
+			button {
+				padding: 5px 20px;
+
+			}
+		}
+
 	}
 }
+
 
 
 /***********************
@@ -2327,6 +2330,8 @@ section.organizations {
 		width: 700px;
 		top: 2%;
 		left: 22%;
+		margin-left: 0;
+		margin-top: 0;
 	}
 	.metrics {
 		section {

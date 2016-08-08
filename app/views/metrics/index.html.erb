@@ -1,4 +1,24 @@
-<h1>VoterVOX Metrics</h1>
+<main class="dashboard metrics">
+		<div class="wrapper">
+			<section>
+				<div class="wrapper">
+
+					<h1>VoterVOX Metrics</h1>
+
+					<ul class="status">
+						<li><a href="" class="current this-week">This Week</a></li>
+						<li><a href="" class="this-month">This Month</a></li>
+						<li><a href="" class="all-time">All-Time</a></li>
+						<div class="clear-fix"></div>
+					</ul>
+					<div class="search">
+						<input type="search" name="" placeholder="Search by Month or Week">
+						<button class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></button>
+					</div><!--.search-->
+					<div class="clear-fix"></div>
+				</div>
+
+			</section>
 
 <%= form_tag metrics_path, method: 'GET' do %>
 	<%= hidden_field_tag 'start_date', 1.week.ago %>
@@ -33,22 +53,264 @@
 		<%= text_field_tag 'end_date', @timeframe == 'custom' ? iso_format(@end_dt) : '', { :placeholder => 'YYYY-MM-DD' } %>
 	<% end %>
 
-	<%= submit_tag 'Search' %>
+	<button class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></button>
 <% end %>
 
-<p>language_count: <%= @metrics[:language_count] %></p>
-<p>site_visitors: <%= @metrics[:site_visitors] %></p>
-<p>registrations: <%= @metrics[:registrations] %></p>
-<p>views_per_language: <%= @metrics[:views_per_language] %></p>
-<p>volunteer_count: <%= @metrics[:volunteer_count] %></p>
-<p>active_volunteer_count: <%= @metrics[:active_volunteer_count] %></p>
-<p>new_volunteer_count: <%= @metrics[:new_volunteer_count] %></p>
-<p>average_duration: <%= @metrics[:average_duration] %></p>
-<p>min_duration: <%= @metrics[:min_duration] %></p>
-<p>max_duration: <%= @metrics[:max_duration] %></p>
-<p>voter_count: <%= @metrics[:voter_count] %></p>
-<p>active_match_count: <%= @metrics[:active_match_count] %></p>
-<p>new_voter_count: <%= @metrics[:new_voter_count] %></p>
-<p>completed_match_count: <%= @metrics[:completed_match_count] %></p>
-<p>unmatched_voter_count: <%= @metrics[:unmatched_voter_count] %></p>
+		<section class="overall-metrics">
+			<header>
+				<h3>Overall</h3>
+			</header>
+
+			<div class="wrapper">
+				<div class="metric">
+					<div class="metric-box">
+						<div class="number"><%= @metrics[:language_count] %></div>
+						<div class="details">Total # Languages Supported</div>
+						<div class="clear-fix"></div><!--.clear-fix-->
+					</div><!--.metric-box-->
+					<button class="btn-outline">Breakdown by Language</button>
+
+				</div><!--.metric-->
+				<div class="metric">
+					<div class="metric-box">
+						<div class="number"><%= @metrics[:site_visitors] %></div>
+						<div class="details">Total # Site Visitors</div>
+						
+					</div><!--.metric-box-->
+				</div><!--.metric-->
+
+				<div class="metric">
+					<div class="metric-box">
+						<div class="number"><%= @metrics[:registrations] %></div>
+						<div class="details">Total # of VoterVOX Registrations</div>
+					</div><!--.metric-box-->
+					<button class="btn-outline">Breakdown by Language</button>
+				</div><!--.metric-->
+				<div class="metric">
+					<div class="metric-box">
+						<div class="number"><%= @metrics[:views_per_language] %></div>
+						<div class="details">Total # Views per Language</div>
+						
+					</div><!--.metric-box-->
+					<button class="btn-outline">Breakdown by Language</button>
+				</div><!--.metric-->
+				<div class="metric">
+					<div class="metric-box">
+						<div class="number">12</div>
+						<div class="details">Total # Languages Supported</div>
+						
+					</div><!--.metric-box-->
+					<button class="btn-outline">Breakdown by Language</button>
+				</div><!--.metric-->
+			</div>
+
+			<div class="clear-fix"></div><!--.clear-fix-->
+
+		</section><!--.overall-metrics-->
+
+		<section class="volunteer-metrics">
+			<header>
+				<h3>Volunteers</h3>
+			</header>
+
+			<div class="wrapper">
+				<div class="metric">
+					<div class="metric-box">
+						<div class="number"><%= @metrics[:volunteer_count] %></div>
+						<div class="details">Total # of Volunteers</div>
+					</div><!--.metric-box-->
+					<button class="btn-outline">Breakdown by Language</button>
+				</div><!--.metric-->
+				<div class="metric">
+					<div class="metric-box">
+						<div class="number"><%= @metrics[:active_volunteer_count] %></div>
+						<div class="details">Total # Active Volunteers</div>
+					</div><!--.metric-box-->
+					<button class="btn-outline">Breakdown by Language</button>
+				</div><!--.metric-->
+
+				<div class="metric">
+					<div class="metric-box">
+						<div class="number"><%= @metrics[:new_volunteer_count] %></div>
+						<div class="details">Total # of New Volunteers</div>
+						
+					</div><!--.metric-box-->
+					<button class="btn-outline">Breakdown by Language</button>
+				</div><!--.metric-->
+				<div class="metric">
+					<div class="metric-box">
+						<div class="number"><%= @metrics[:average_duration] %></div>
+						<div class="details">Avg Total Time Spent with a Voter</div>
+						
+					</div><!--.metric-box-->
+					<button class="btn-outline">Breakdown by Language</button>
+				</div><!--.metric-->
+				<div class="metric">
+					<div class="metric-box">
+						<div class="number"><%= @metrics[:min_duration] %></div>
+						<div class="details">Min. Total Time Spent with a Voter</div>
+					</div><!--.metric-box-->
+					<button class="btn-outline">Breakdown by Language</button>
+				</div><!--.metric-->
+
+				<div class="metric">
+					<div class="metric-box">
+						<div class="number"><%= @metrics[:max_duration] %></div>
+						<div class="details">Max. Total Time Spent with a Voter</div>
+					</div><!--.metric-box-->
+					<button class="btn-outline">Breakdown by Language</button>
+				</div><!--.metric-->
+				<div class="clear-fix"></div><!--.clear-fix-->
+			</div>
+
+		</section><!--.volunteer-metrics-->
+
+		<section class="voters-metrics">
+			<header>
+				<h3>Voters</h3>
+			</header>
+
+			<div class="wrapper">
+
+				<div class="metric">
+					<div class="metric-box">
+						<div class="number"><%= @metrics[:voter_count] %></div>
+						<div class="details">Total # of Voters</div>
+						
+					</div><!--.metric-box-->
+					<button class="btn-outline">Breakdown by Language</button>
+				</div><!--.metric-->
+				<div class="metric">
+					<div class="metric-box">
+						<div class="number"><%= @metrics[:active_match_count] %></div>
+						<div class="details">Total # Active Matches</div>
+						
+					</div><!--.metric-box-->
+				</div><!--.metric-->
+
+				<div class="metric">
+					<div class="metric-box">
+						<div class="number">???</div>
+						<div class="details">Total # of VoterVOX Registrations</div>
+						
+					</div><!--.metric-box-->
+					<button class="btn-outline">Breakdown by Language</button>
+				</div><!--.metric-->
+				<div class="metric">
+					<div class="metric-box">
+						<div class="number"><%= @metrics[:new_voter_count] %></div>
+						<div class="details">Total # New Voters</div>
+						
+					</div><!--.metric-box-->
+					<button class="btn-outline">Breakdown by Language</button>
+				</div><!--.metric-->
+				<div class="metric">
+					<div class="metric-box">
+						<div class="number"><%= @metrics[:completed_match_count] %></div>
+						<div class="details">Total # of Completed Matches</div>
+						
+					</div><!--.metric-box-->
+					<button class="btn-outline">Breakdown by Language</button>
+				</div><!--.metric-->
+
+				<div class="metric">
+					<div class="metric-box">
+						<div class="number"><%= @metrics[:unmatched_voter_count] %></div>
+						<div class="details">Total # of Voters Without Matches</div>
+						
+					</div><!--.metric-box-->
+					<button class="btn-outline">Breakdown by Language</button>
+				</div><!--.metric-->
+
+				<div class="clear-fix"></div><!--.clear-fix-->
+			</div><!--.wrapper-->
+
+		</section><!--.voters-metrics-->
+
+		<section class="download">
+			<div class="download-report">
+				<span>Download this data report</span>
+				<button>Download</button>
+			</div><!--.download-report-->
+			<div class="clear-fix"></div>
+
+		</section>
+
+	</div><!--.wrapper-->
+</main>
+
+<div id="light" class="white_content breakdown-language">
+	<div class="close-icon"></div>
+	<header>
+		<ul class="status">
+			<li><a class="volunteers current">Total # of Volunteers</a></li>
+			<li><a class="this-week">This Week</a></li>
+			<div class="clear-fix"></div>
+		</ul>
+	</header>
+	<div class="metric-box">
+		<div class="number">105</div>
+		<div class="language">Mandarin</div>
+		
+	</div><!--.metric-box-->
+	<div class="metric-box">
+		<div class="number">78</div>
+		<div class="language">Cantonese</div>
+		
+	</div><!--.metric-box-->
+	<div class="metric-box">
+		<div class="number">64</div>
+		<div class="language">Mandarin</div>
+		
+	</div><!--.metric-box-->
+	<div class="metric-box">
+		<div class="number">93</div>
+		<div class="language">Japanese</div>
+		
+	</div><!--.metric-box-->
+	<div class="metric-box">
+		<div class="number">91</div>
+		<div class="language">Tagalog</div>
+		
+	</div><!--.metric-box-->
+	<div class="metric-box">
+		<div class="number">104</div>
+		<div class="language">Hmong</div>
+		
+	</div><!--.metric-box-->
+	<div class="metric-box">
+		<div class="number">102</div>
+		<div class="language">Lao</div>
+		
+	</div><!--.metric-box-->
+
+	<div class="metric-box">
+		<div class="number">84</div>
+		<div class="language">Vietnamese</div>
+		
+	</div><!--.metric-box-->
+
+	<div class="metric-box">
+		<div class="number">57</div>
+		<div class="language">Punjabi</div>
+		
+	</div><!--.metric-box-->
+	<div class="metric-box">
+		<div class="number">68</div>
+		<div class="language">Hindi</div>
+		
+	</div><!--.metric-box-->
+	<div class="clear-fix"></div>
+	<section class="download">
+		<div class="download-report">
+			<span>Download this data report</span>
+			<button>Contact</button>
+			<div class="clear-fix"></div>
+		</div><!--.download-report-->
+
+	</section>
+
+</div><!--.white_content.breakdown-language-->
+
+<div id="fade" class="green-overlay"></div><!--.green_overlay-->
 
