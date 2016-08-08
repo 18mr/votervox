@@ -10,7 +10,7 @@
 		<% end %>
 	</div><!--.volunteer-dashboard-->
 	<% if admin_signed_in? %>
-		<a class="button" href="/voters">
+		<a <% if at_voters_list? %> class="selected button"<% else %> class="button"<% end %> href="/voters">
 			Voters
 		</a><!--.mobile-only-->
 	<% end %>

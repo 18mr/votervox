@@ -7,7 +7,4 @@ module VotersHelper
 		controller_name == 'application' && action_name == 'feedback' || action_name == 'submit_feedback'
 	end
 
-	def at_voters_list? 
-		controller_name == 'voters' && action_name == 'index'
-	end
 end
