@@ -19,6 +19,7 @@ module ApplicationHelper
 	def iso_format date
 		date.strftime("%Y-%m-%d")
 	end
+
 	def at_voters_list? 
 		controller_name == 'voters' && action_name == 'index'
 	end
