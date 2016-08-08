@@ -1,6 +1,6 @@
 class MatchesController < ApplicationController
 	before_filter :authenticate_volunteer!, only: [:index, :create, :message, :decline, :complete, :show]
-
+	layout "volunteer"
 	PROPOSAL_INTERACTION = 0
 	RESCHEDULE_INTERACTION = 1
 	ASSISTANCE_INTERACTION = 2
