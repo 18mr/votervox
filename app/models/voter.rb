@@ -37,6 +37,12 @@ class Voter < ActiveRecord::Base
 	def home_url
 		['/voters/', hashed_id].join('')
 	end
+	def active_match
+		self.matches.active.first
+	end
+	def completed_match
+		self.matches.completed.last
+	end
 
 	# Helper functions
 	def active?
@@ -56,7 +62,7 @@ class Voter < ActiveRecord::Base
 	end
 	def self.find_by_hashed_id hashed_id
 		voter_id = hashed_id.to_i(36)
-		Voter.find( ((0x0000FFFF & voter_id)<<16) + ((0xFFFF0000 & voter_id)>>16) )
+		Voter.find( ((0x0000FFFF & voter_id)<<16) + ((0xFFFF0000 & voter_id)>>16) ) rescue nil
 	end
 	def self.matched
 		Voter.includes(:matches).active.select{ |v| v.matches.active.present? }

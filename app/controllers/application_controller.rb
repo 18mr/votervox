@@ -43,6 +43,21 @@ class ApplicationController < ActionController::Base
 		volunteer_signed_in? && current_record.organization
 	end
 
+	def identify_voter!
+		if params[:hashed_id].present?
+			cookies[:_vv_hashed_id] = { value: params[:hashed_id], expires: 10.minutes.from_now }
+		end
+		@voter = cookies[:_vv_hashed_id].present? ? Voter.find_by_hashed_id(cookies[:_vv_hashed_id]) : nil
+	end
+
+	def authenticate_voter!
+		identify_voter!
+		if @voter.nil?
+			puts "What up"
+			redirect_to :new_voter
+		end
+	end
+
 	def authenticate_render action
 		if volunteer_signed_in?
 			@user_type = 'volunteer'

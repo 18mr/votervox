@@ -1,6 +1,7 @@
 class DocumentsController < ApplicationController
-	before_filter :authenticate_volunteer!, only: [:new, :create]
-	before_filter :authenticate_admin!, only: [:update, :destroy]
+	before_action :authenticate_volunteer!, only: [:new, :create]
+	before_action :authenticate_admin!, only: [:update, :destroy]
+	before_action :identify_voter!, only: [:index, :show]
 	layout "volunteer"
 
 	### VOLUNTEER ROUTES

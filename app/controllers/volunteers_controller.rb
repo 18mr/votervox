@@ -1,6 +1,6 @@
 class VolunteersController < ApplicationController
-	before_filter :authenticate_admin!, except: [:home]
-	before_filter :authenticate_volunteer!, only: [:home]
+	before_action :authenticate_admin!, except: [:home]
+	before_action :authenticate_volunteer!, only: [:home]
 	layout "volunteer", :except => :new
 
 

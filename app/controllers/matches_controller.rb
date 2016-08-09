@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-	before_filter :authenticate_volunteer!, only: [:index, :create, :message, :decline, :complete, :show]
+	before_action :authenticate_volunteer!, only: [:index, :create, :message, :decline, :complete, :show]
 	layout "volunteer"
 
 	### VOLUNTEER ROUTES

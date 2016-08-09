@@ -1,5 +1,6 @@
 class VotersController < ApplicationController
-	before_filter :authenticate_admin!, only: [:index]
+	before_action :authenticate_admin!, only: [:index]
+	before_action :authenticate_voter!, only: [:voter_home, :cancel_request, :activate_request]
 	layout :determine_layout
 
 	def index
@@ -28,9 +29,8 @@ class VotersController < ApplicationController
 	end
 
 	def voter_home
-		@voter = Voter.find_by_hashed_id params[:hashed_id]
-		@match = @voter.matches.active.first
-		@completed = @voter.matches.completed.last
+		@match = @voter.active_match
+		@completed = @voter.completed_match
 
 		if @match.present?
 			@proposal = Interaction.where(:match_id => @match.id, :contact_type => MatchesHelper::PROPOSAL_INTERACTION).first
@@ -47,7 +47,6 @@ class VotersController < ApplicationController
 	end
 
 	def cancel_request
-		@voter = Voter.find_by_hashed_id params[:hashed_id]
 		@voter.update(:active => false)
 		@voter.matches.active.each do |match|
 			match.voter_decline!
@@ -58,7 +57,6 @@ class VotersController < ApplicationController
 	end
 
 	def activate_request
-		@voter = Voter.find_by_hashed_id params[:hashed_id]
 		@voter.update(:active => true)
 
 		redirect_to @voter.home_url
