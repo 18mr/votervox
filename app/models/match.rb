@@ -13,7 +13,7 @@ class Match < ActiveRecord::Base
 
 	# Accessor functions
 	def voter_url method
-		['/matches/', self.id, '/', method, '/', self.voter.hashed_id].join('')
+		['/matches/', self.id, '/', method].join('')
 	end
 	def voter_accept_url
 		voter_url 'accept'

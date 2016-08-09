@@ -53,7 +53,6 @@ class ApplicationController < ActionController::Base
 	def authenticate_voter!
 		identify_voter!
 		if @voter.nil?
-			puts "What up"
 			redirect_to :new_voter
 		end
 	end

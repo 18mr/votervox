@@ -1,5 +1,6 @@
 class MatchesController < ApplicationController
 	before_action :authenticate_volunteer!, only: [:index, :create, :message, :decline, :complete, :show]
+	before_action :authenticate_voter!, only: [:accept, :reject, :request_time]
 	layout "volunteer"
 
 	### VOLUNTEER ROUTES
@@ -26,20 +27,20 @@ class MatchesController < ApplicationController
 
 	def message
 		@match = Match.find params[:id]
-		authenticate_volunteer_match!
+		redirect_to :voluneers_home if !check_volunteer_match
 
 		if @match.voter.sms_contact?
 			# TODO: Send Twilio message to voter with params[:message]
 		else
 			# TODO: Send email message to voter with params[:message]
 		end
-		Interaction.create(:match_id => @match.id, :contact_type => MatchesHelper::PROPOSAL_INTERACTION, :message => params[:message])
+		Interaction.create_proposal(:match_id => @match.id, :message => params[:message])
 		redirect_to @match
 	end
 
 	def decline
 		@match = Match.find params[:id]
-		authenticate_volunteer_match!
+		redirect_to :voluneers_home if !check_volunteer_match
 
 		@match.volunteer_decline!
 		@match.save
@@ -48,9 +49,9 @@ class MatchesController < ApplicationController
 
 	def complete
 		@match = Match.find params[:id]
-		authenticate_volunteer_match!
+		redirect_to :voluneers_home if !check_volunteer_match
 
-		Interaction.create(match_completion_params)
+		Interaction.create_assistance(match_completion_params)
 		@match.voter.update(:active => false)
 		@match.complete!
 		@match.save
@@ -59,42 +60,39 @@ class MatchesController < ApplicationController
 
 	def show
 		@match = Match.find params[:id]
-		authenticate_volunteer_match!
+		redirect_to :voluneers_home if !check_volunteer_match
 
-		@proposal = Interaction.where(:match_id => @match.id, :contact_type => MatchesHelper::PROPOSAL_INTERACTION).first
-		@reschedule = Interaction.where(:match_id => @match.id, :contact_type => MatchesHelper::RESCHEDULE_INTERACTION).first
+		@proposal = @match.interactions.proposals.first
+		@reschedule = @match.interactions.reschedules.first
 		@voter = @match.voter
 	end
 
 
 	### VOTER ROUTES
-	def accept
+	def voter_accept
 		@match = Match.find params[:id]
-		@voter = Voter.find_by_hashed_id params[:hashed_id]
-		authenticate_voter_match!
+		redirect_to :new_voter if !check_voter_match
 
 		@match.accept!
 		@match.save
 		redirect_to @match.voter_show_url
 	end
 
-	def reject
+	def voter_reject
 		@match = Match.find params[:id]
-		@voter = Voter.find_by_hashed_id params[:hashed_id]
-		authenticate_voter_match!
+		redirect_to :new_voter if !check_voter_match
 
 		@match.voter_decline!
 		@match.save
 		redirect_to @voter.home_url
 	end
 
-	def request_time
+	def voter_request_time
 		@match = Match.find params[:id]
-		@voter = Voter.find_by_hashed_id params[:hashed_id]
-		authenticate_voter_match!
+		redirect_to :new_voter if !check_voter_match
 
 		# TODO: Send Twilio message to volunteer with params[:message]
-		Interaction.create(:match_id => @match.id, :contact_type => MatchesHelper::RESCHEDULE_INTERACTION, :message => params[:message])
+		Interaction.create_reschedule(:match_id => @match.id, :message => params[:message])
 		@match.accept!
 		@match.save
 		redirect_to @match.voter_show_url
@@ -112,7 +110,6 @@ class MatchesController < ApplicationController
 		{
 			:match_id => params[:id],
 			:duration => duration,
-			:contact_type => ASSISTANCE_INTERACTION,
 			:message => params[:message]
 		}
 	end
@@ -120,16 +117,12 @@ class MatchesController < ApplicationController
 
 	protected
 
-	def authenticate_volunteer_match!
-		unless @match.matches_volunteer? current_volunteer.id
-			redirect_to root_path
-		end
+	def check_volunteer_match
+		@match.matches_volunteer? current_volunteer.id
 	end
 
-	def authenticate_voter_match!
-		unless @match.matches_voter? @voter.id
-			redirect_to root_path
-		end
+	def check_voter_match
+		@match.matches_voter? @voter.id
 	end
 
 end

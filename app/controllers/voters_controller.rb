@@ -33,8 +33,8 @@ class VotersController < ApplicationController
 		@completed = @voter.completed_match
 
 		if @match.present?
-			@proposal = Interaction.where(:match_id => @match.id, :contact_type => MatchesHelper::PROPOSAL_INTERACTION).first
-			@reschedule = Interaction.where(:match_id => @match.id, :contact_type => MatchesHelper::RESCHEDULE_INTERACTION).first
+			@proposal = @match.interactions.proposals.first
+			@reschedule = @match.interactions.reschedules.first
 			@volunteer = @match.volunteer
 			render 'voter_match'
 		elsif @voter.active?
