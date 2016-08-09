@@ -1506,6 +1506,11 @@ section.organizations {
 			margin: 0 auto;
 		}
 	}
+	main.page {
+		.wrapper {
+			width: 600px;
+		}
+	}
 
 	main.dashboard section {
 		> .wrapper {

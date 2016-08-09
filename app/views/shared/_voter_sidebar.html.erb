@@ -3,8 +3,9 @@
 	<div class="voter-dashboard">
 		<h1>Voter Dashboard</h1>
 	</div><!--.voter-dashboard-->
-	<!--TODO: Add Voter Match Match.where(:voter_id => 1).first.voter_show_url-->
-	<a href="/" class="button <%= at_voter_home? ? "selected" : "pink" %>" >Your Translator</button>
+	<!--TODO: Add Voter Match Match.where(:voter_id => 1).first.voter_show_url and use conditional for displaying Your Translator if cookie  has been set, otherwise should "Find Your Translator buton-->
+	<a href="/" class="button <%= at_voter_home? ? "selected" : "pink" %>" >Your Translator</a>
+	<a href="/voters/new" class="button pink" >Find a Translator</a>
 	<a href="/documents" class="button <%= at_documents? ? "selected" : "pink" %>">Voter Resources</a>
 	<a class="button <%= at_feedback? ? "selected" : "pink" %>"  href="/feedback">
 		Give Feedback
@@ -22,9 +23,9 @@
 	<div class="terms">
 		<ul>
 			<li><a href="/about">About VoterVOX</a></li>
-			<li><a href="">&copy; VoterVOX</a></li>
-			<li><a href="">Privacy Policy</a></li>
-			<li><a href="">Terms</a></li>
+			<li><a href="/">&copy; VoterVOX</a></li>
+			<li><a href="/privacy">Privacy Policy</a></li>
+			<li><a href="/terms">Terms</a></li>
 		</ul>
 		<div class="clear-fix"></div>
 	</div>
