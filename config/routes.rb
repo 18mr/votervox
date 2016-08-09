@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get 'make_admin'
     end
   end
+  get '/volunteers/home', to: 'volunteers#home', as: 'voluneers_home'
 
   # Organization routes
   resources :organizations, only: [:index, :new, :create, :destroy]

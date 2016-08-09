@@ -1,7 +1,10 @@
 class VolunteersController < ApplicationController
-	before_filter :authenticate_admin!
+	before_filter :authenticate_admin!, except: [:home]
+	before_filter :authenticate_volunteer!, only: [:home]
 	layout "volunteer", :except => :new
 
+
+	### ADMIN ROUTES
 	def index
 		@languages = params[:languages] || []
 		@location = params[:location] || ''
@@ -50,6 +53,11 @@ class VolunteersController < ApplicationController
 		end
 		
         redirect_to volunteers_path
+	end
+
+
+	### VOLUNTEER ROUTES
+	def home
 	end
 
 	protected
