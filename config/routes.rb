@@ -20,20 +20,19 @@ Rails.application.routes.draw do
   get '/voters/:hashed_id/cancel', to: 'voters#cancel_request', as: 'voter_cancel_request'
   get '/voters/:hashed_id/activate', to: 'voters#activate_request', as: 'voter_activate_request'
 
-  # Volunteer match routes
+  # Match routes
   resources :matches, only: [:index, :create, :show] do
     member do
+      # Volunteer match routes
       post 'message'
       get 'decline'
       post 'complete'
+      # Voter match routes
+      get 'voter_accept'
+      get 'voter_reject'
+      post 'voter_request_time'
     end
   end
-
-  # Voter match routes
-  get 'matches/:id/show/:hashed_id', to: 'matches#voter_match', as: 'voter_match'
-  get 'matches/:id/accept/:hashed_id', to: 'matches#accept', as: 'accept_match'
-  get 'matches/:id/reject/:hashed_id', to: 'matches#reject', as: 'reject_match'
-  post 'matches/:id/request_time/:hashed_id', to: 'matches#request_time', as: 'request_match_time'
 
   # Document routes
   resources :documents, :path => 'voter-resources', only: [:index, :show, :new, :create, :update, :destroy]
