@@ -23,7 +23,7 @@
 		<a href="/matches" class="button <%= at_matches? ? "selected" : "pink" %>">Your Matches</a>
 	<% end %>
 
-	<a href="/documents" class="button <%= at_documents? ? "selected" : "pink" %>" >Voter Resources</a>
+	<a href="/voter-resources" class="button <%= at_documents? ? "selected" : "pink" %>" >Voter Resources</a>
 	<% if !admin_signed_in? %>
 		<a class="button <%= at_feedback? ? "selected" : "pink" %>"  href="/feedback">
 			Give Feedback

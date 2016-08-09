@@ -22,15 +22,21 @@
 			<div class="clear-fix mobile-only"></div>
 			<nav class="close">
 				<ul>
-					<li><a href="/about">About VoterVOX</a></li>
 					<% if volunteer_signed_in? %>
-					<li><a href="/volunteers/">Getting Started</a></li>
-					<li><a href="/matches">Your Matches</a></li>
-					<li><%= link_to('Logout', destroy_volunteer_session_path, :method => :delete) %></li>
+						<li><a href="/volunteers/">Getting Started</a></li>
+						<li><a href="/matches">Your Matches</a></li>
+						<li><a href="/about">About VoterVOX</a></li>
+						<li><%= link_to('Logout', destroy_volunteer_session_path, :method => :delete) %></li>
 					<% else %>
-					<li><a href="/" class="active">Find a Translator</a></li>
-					<li><a href="/volunteer/new">Be a Translator</a></li>
-					<li><a href="/volunteer/sign_in">Translator Login</a></li>
+						<% if cookies[:_vv_hashed_id].present? %>
+							<li><a href="<%= '/voters/'+ cookies[:_vv_hashed_id] %>">Your Translator</a></li>
+						<% else %>
+							<li><a href="/voters/new">Find a Translator</a></li>
+							<li><a href="/volunteer/sign_in">Translator Login</a></li>
+						<% end %>
+						<li><a href="/volunteers/sign_up">Be a Translator</a></li>
+						<li><a href="/voter-resources">Voter Resources</a></li>
+						<li><a href="/about">About VoterVOX</a></li>
 					<% end %>
 					<div class="clear-fix"></div>	
 				</ul>
