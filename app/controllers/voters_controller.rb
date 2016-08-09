@@ -1,6 +1,6 @@
 class VotersController < ApplicationController
 	before_action :authenticate_admin!, only: [:index]
-	before_action :authenticate_voter!, only: [:voter_home, :cancel_request, :activate_request]
+	before_action :authenticate_voter!, only: [:voter_home, :cancel, :activate]
 	layout :determine_layout
 
 	def index
