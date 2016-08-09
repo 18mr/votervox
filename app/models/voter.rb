@@ -64,4 +64,7 @@ class Voter < ActiveRecord::Base
 	def self.unmatched
 		Voter.includes(:matches).active.select{ |v| v.matches.active.empty? }
 	end
+	def self.completed
+		Voter.includes(:matches).inactive.select{ |v| v.matches.completed.present? }
+	end
 end

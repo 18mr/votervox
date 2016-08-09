@@ -4,6 +4,9 @@ class VotersController < ApplicationController
 
 	def index
 		@voters = Voter.all
+		@unmatched = Voter.unmatched
+		@matched = Voter.matched
+		@completed = Voter.completed
 	end
 
 	def new
