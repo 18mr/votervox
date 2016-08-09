@@ -18,6 +18,12 @@ class ApplicationController < ActionController::Base
 		authenticate_render 'submit_feedback'
 	end
 
+	def privacy_policy
+	end
+
+	def terms_of_service
+	end
+
 	protected
 
 	def authenticate_admin!

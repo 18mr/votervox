@@ -27,6 +27,7 @@ class VotersController < ApplicationController
 
 	def voter_home
 		@voter = Voter.find_by_hashed_id params[:hashed_id]
+		@match = @voter.matches.active.first
 	end
 
 	def cancel_request
