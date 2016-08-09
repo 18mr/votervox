@@ -15,10 +15,13 @@ Rails.application.routes.draw do
   resources :organizations, only: [:index, :new, :create, :destroy]
 
   # Voter routes
-  resources :voters, only: [:index, :new, :create]
+  resources :voters, only: [:index, :new, :create] do
+    member do
+      get 'cancel_request'
+      get 'activate_request'
+    end
+  end
   get '/voters/:hashed_id', to: 'voters#voter_home', as: 'voter_home'
-  get '/voters/:hashed_id/cancel', to: 'voters#cancel_request', as: 'voter_cancel_request'
-  get '/voters/:hashed_id/activate', to: 'voters#activate_request', as: 'voter_activate_request'
 
   # Match routes
   resources :matches, only: [:index, :create, :show] do
