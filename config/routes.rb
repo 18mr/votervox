@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   post 'matches/:id/request_time/:hashed_id', to: 'matches#request_time', as: 'request_match_time'
 
   # Document routes
-  resources :documents, only: [:index, :show, :new, :create, :update, :destroy]
+  resources :documents, :path => 'voter-resources', only: [:index, :show, :new, :create, :update, :destroy]
 
   # Metrics routes
   resources :metrics, only: [:index]
