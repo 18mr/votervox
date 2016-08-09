@@ -29,22 +29,20 @@
 				<div class="wrapper">
 					<h2><%= @volunteer.firstname %>'s available times:</h2>
 					<textarea readonly><%= @proposal.message %></textarea>
+					
 					<% if @match.proposed? %>
 
 						<%= link_to 'Accept', @match.voter_accept_url, class: "button accept" %>
 						<%= link_to 'Decline', @match.voter_reject_url, class: "button decline" %>
+						<div class="clear-fix"></div>
+						<button class="request" data-lighbox="request_time">Request a Different Time</button>
 
-						<%= form_for :match, url: @match.voter_request_time_url, method: 'POST' do |f| %>
-							<h2>Request new time</h2>
-							<textarea name="message" placeholder="Write your date and time preference here."></textarea>
-							<%= f.submit 'Request a Different Time', class: "button request" %>
-						<% end %>
+						<!--TODO: use JS to reveal the Request a Different Time lightbox, something general for opening up a lightbox-->
 
 					<% end %>
 					<button class="accept">Accept</button>
 					<button class="decline">Decline</button>
-					<div class="clear-fix"></div>
-					<button class="request">Request a Different Time</button>
+					
 				</div><!--.wrapper-->
 			</section><!--.available-times-->
 
@@ -119,10 +117,11 @@
 	<h2>Request a different time with Samart</h2>
 	<div class="pink-hr"></div>
 	<div>
-		<form>
-			<textarea>Write your date and time preferences here.</textarea>
-			<input class="button" type="submit" value="Contact">
-		</form>
+		<%= form_for :match, url: @match.voter_request_time_url, method: 'POST' do |f| %>
+			<h2>Request new time</h2>
+			<textarea name="message" placeholder="Write your date and time preference here."></textarea>
+			<%= f.submit 'Request a Different Time', class: "button request" %>
+		<% end %>
 		
 	</div>
 
