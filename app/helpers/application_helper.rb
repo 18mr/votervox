@@ -32,5 +32,10 @@ module ApplicationHelper
 	def at_documents? 
 		controller_name == 'documents' && action_name == 'index' || action_name == 'new' || action_name == 'show'
 	end
-	
+	def at_voter_home? 
+		controller_name == 'voters' && action_name == 'voter_home'
+	end
+	def at_feedback?
+		controller_name == 'application' && action_name == 'feedback' || action_name == 'submit_feedback'
+	end
 end
