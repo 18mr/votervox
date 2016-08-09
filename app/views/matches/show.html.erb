@@ -21,6 +21,10 @@
 							</div><!--.voter-info-->
 							<div class="actions desktop">
 								<button class="decline btn-outline">Decline</button>
+								<% if @match.accepted? %>
+									<%= link_to "Match Completed", "#", class: "button accept" %> test
+									<!--TODO: Add JS to toggle the lightbox for feedback to show up -->
+								<% end %>
 							</div>
 							<div class="clear-fix"></div>
 						</div>
@@ -75,16 +79,17 @@
 	</div><!--.wrapper-->
 </main>
 
+<!--TODO: Add JS to toggle the lightbox for feedback to show up with .show class once they click on Match Completd -->
 <% if @match.accepted? %>
-	<div id="light" class="white_content">
+	<div id="light" class="hide">
 		<div class="close-icon"></div>
-		<h2>Thank you for helping out Buakaw!</h2>
+		<h2>Thank you for helping out <%= @voter.firstname %>!</h2>
 		
 		<p>Please take a few seconds to answer some questions.</p>
 		<div class="pink-hr"></div>
 		
 		<%= form_for :match, url: complete_match_path(@match), method: 'POST' do |f| %>
-			<label for="time_spent">How much time did you spend helping Buakaw?</label>
+			<label for="time_spent">How much time did you spend helping <%= @voter.firstname %>?</label>
 			<input id="time_spent" type="text" name="duration" placeholder="HH:MM" value="" />
 			<label for="feedback">What was your experience like? Do you have feedback or suggestions?</label>
 			<textarea id="feedback" name="message" placeholder="Feedback on experience"></textarea>
