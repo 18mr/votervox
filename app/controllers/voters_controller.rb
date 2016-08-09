@@ -46,7 +46,7 @@ class VotersController < ApplicationController
 		end
 	end
 
-	def cancel_request
+	def cancel
 		@voter.update(:active => false)
 		@voter.matches.active.each do |match|
 			match.voter_decline!
@@ -56,7 +56,7 @@ class VotersController < ApplicationController
 		redirect_to @voter.home_url
 	end
 
-	def activate_request
+	def activate
 		@voter.update(:active => true)
 
 		redirect_to @voter.home_url
