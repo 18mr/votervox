@@ -5,8 +5,6 @@
 				<h1>You've been matched!</h1>
 
 				<p>Here's your translator.</p>
-				<h2></h2>
-				<p>Languages: <%= @volunteer.languages.join(', ') %></p>
 
 			</div><!--.wrapper-->
 		</section><!--.message-->
@@ -16,6 +14,7 @@
 				<img src="<% asset_path('smart-payakaroon.jpg') %>">
 				<div class="details">
 					<h2><%= @volunteer.firstname %> <%= @volunteer.lastname %></h2>
+					<p><%= @volunteer.email %> <%= @volunteer.phone %></p>
 					<hr />
 					<ul>
 						<li><strong>City:</strong> <%= @volunteer.city %></li>
@@ -27,79 +26,78 @@
 			</section><!--.translator-->
 		<% if @proposal.present? %>
 			<section class="available-times">
-					<div class="wrapper">
-						<h2><%= @volunteer.firstname %>'s available times:</h2>
-						<textarea readonly><%= @proposal.message %></textarea>
-						<% if @match.proposed? %>
+				<div class="wrapper">
+					<h2><%= @volunteer.firstname %>'s available times:</h2>
+					<textarea readonly><%= @proposal.message %></textarea>
+					<% if @match.proposed? %>
 
-							<%= link_to 'Accept', @match.voter_accept_url, class: "button accept" %>
-							<%= link_to 'Decline', @match.voter_reject_url, class: "button decline" %>
+						<%= link_to 'Accept', @match.voter_accept_url, class: "button accept" %>
+						<%= link_to 'Decline', @match.voter_reject_url, class: "button decline" %>
 
-							<%= form_for :match, url: @match.voter_request_time_url, method: 'POST' do |f| %>
-								<h2>Request new time</h2>
-								<textarea name="message" placeholder="Write your date and time preference here."></textarea>
-								<%= f.submit 'Request a Different Time', class: "button request" %>
-							<% end %>
-
+						<%= form_for :match, url: @match.voter_request_time_url, method: 'POST' do |f| %>
+							<h2>Request new time</h2>
+							<textarea name="message" placeholder="Write your date and time preference here."></textarea>
+							<%= f.submit 'Request a Different Time', class: "button request" %>
 						<% end %>
-						<button class="accept">Accept</button>
-						<button class="decline">Decline</button>
-						<div class="clear-fix"></div>
-						<button class="request">Request a Different Time</button>
-					</div><!--.wrapper-->
+
+					<% end %>
+					<button class="accept">Accept</button>
+					<button class="decline">Decline</button>
+					<div class="clear-fix"></div>
+					<button class="request">Request a Different Time</button>
+				</div><!--.wrapper-->
 			</section><!--.available-times-->
 
 		<% end %>
 		</div><!--.wrapper-->
 	</main>
 
-	<div id="fade" class="green-overlay show"></div><!--.green_overlay-->
-	<div id="light" class="white_content show">
+	<div id="fade" class="green-overlay hide"></div><!--.green_overlay-->
+
+	
+<% if @match.status == MatchesHelper::STATUS_ACCEPTED %>
+	<div id="accepted_message" class="light hide">
 		<div class="close-icon"></div>
-		<h2 class="next-steps hide">You've accepted Samart as your translator.</h2>
-		<h2 class="hide decline">We're sorry this match won't work for you.</h2>
-		<h2 class="request hide">Request a different time with Samart</h2>
-		<h2 class="not-available show">Unfortunately your volunteer can no longer meet with you.</h2>
+		<h2>You've accepted Samart as your translator.</h2>
 		<div class="pink-hr"></div>
-		<div class="next-step hide">
+		<div>
 			<p>The next step:</p>
 			<p>Samart will contact you to confirm a time and location</p>
 		</div><!--.next-step-->
-		<div class="next-step contact-info hide">
+		<div class="contact-info pink-box">
 			<p>Samart's Contact Information:</p>
 			<div class="phone-number"><%= @volunteer.phone %></div>
 		</div><!--.contact-info-->
-		<div class="decline not-available show">
-			<p>But we're looking for a new match now. We'll contact you when we find one.</p>
-		</div><!--.decline.not-available-->
-		<div class="request hide">
-			<form>
-				<textarea>Write your date and time preferences here.</textarea>
-				<input class="button" type="submit" value="Contact">
-			</form>
-			
-		</div><!--.request-->
 
-	</div><!--.white_content-->
-
-
-
-
-<% if @match.status == MatchesHelper::STATUS_ACCEPTED %>
-	<h2>Lightbox with accepted match info</h2>
-	<p>Contact info: <%= @volunteer.phone %></p>
+	</div><!--.light#accepted_message-->
 <% end %>
 
 <% if @match.status == MatchesHelper::STATUS_VOTER_DECLINED %>
-	<h2>Lightbox with declined match info</h2>
-	<p>We're sorry this match won't work out for you.</p>
+	<div id="decline_message" class="light hide">
+		<div class="close-icon"></div>
+		<h2>We're sorry this match won't work for you.</h2>
+		<div class="pink-hr"></div>
+		<div>
+			<p>But we're looking for a new match now. We'll contact you when we find one.</p>
+		</div>
+
+	</div><!--.light#decline_message-->
 <% end %>
 
 <% if @match.status == MatchesHelper::STATUS_VOLUNTEER_DECLINED %>
-	<h2>Lightbox with volunteer declined match info</h2>
-	<p>Unfortunately, your volunteer can no longer meet.</p>
+	<div id="not_available_message" class="light hide">
+		<div class="close-icon"></div>
+		<h2>Unfortunately your volunteer can no longer meet with you.</h2>
+		<div class="pink-hr"></div>
+		
+		<div>
+			<p>But we're looking for a new match now. We'll contact you when we find one.</p>
+		</div>
+
+	</div><!--#light.not-available-->
 <% end %>
 
+<!--TODO: Match completed should take the voter to a completely new page to fill out their feedback form. Right now it's showing up as a lightbox option. We need another form for requesting a new time instead in the lightbox-->
 <% if @match.status == MatchesHelper::STATUS_COMPLETED %>
 	<h2>Lightbox with match completion information</h2>
 	<%= link_to 'Submit a Match Request', voter_activate_request_path(:hashed_id => @match.voter.hashed_id) %>
@@ -115,3 +113,17 @@
 	<% end %>
 <% end %>
 
+
+<div id="request_time" class="light hide">
+	<div class="close-icon"></div>
+	<h2>Request a different time with Samart</h2>
+	<div class="pink-hr"></div>
+	<div>
+		<form>
+			<textarea>Write your date and time preferences here.</textarea>
+			<input class="button" type="submit" value="Contact">
+		</form>
+		
+	</div>
+
+</div><!--.light#request_time-->
