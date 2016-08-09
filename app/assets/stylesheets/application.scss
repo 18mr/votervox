@@ -707,6 +707,15 @@ main.dashboard {
 				margin-left: 15px;
 				margin-bottom: 30px;
 			}
+			a.button.small {
+				display: inline-block;
+				font-size: 15px;
+				height: auto;
+				width: auto;
+				min-height: 0;
+				padding: 5px;
+				line-height: 1em;
+			}
 		}
 		.voter-box, .volunteer-box {
 			border: 1px solid #000;
