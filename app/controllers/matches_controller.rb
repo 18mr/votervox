@@ -1,10 +1,6 @@
 class MatchesController < ApplicationController
 	before_filter :authenticate_volunteer!, only: [:index, :create, :message, :decline, :complete, :show]
 	layout "volunteer"
-	PROPOSAL_INTERACTION = 0
-	RESCHEDULE_INTERACTION = 1
-	ASSISTANCE_INTERACTION = 2
-
 
 	### VOLUNTEER ROUTES
 	def index
@@ -37,7 +33,7 @@ class MatchesController < ApplicationController
 		else
 			# TODO: Send email message to voter with params[:message]
 		end
-		Interaction.create(:match_id => @match.id, :contact_type => PROPOSAL_INTERACTION, :message => params[:message])
+		Interaction.create(:match_id => @match.id, :contact_type => MatchesHelper::PROPOSAL_INTERACTION, :message => params[:message])
 		redirect_to @match
 	end
 
@@ -65,23 +61,13 @@ class MatchesController < ApplicationController
 		@match = Match.find params[:id]
 		authenticate_volunteer_match!
 
-		@proposal = Interaction.where(:match_id => @match.id, :contact_type => PROPOSAL_INTERACTION).first
-		@reschedule = Interaction.where(:match_id => @match.id, :contact_type => RESCHEDULE_INTERACTION).first
+		@proposal = Interaction.where(:match_id => @match.id, :contact_type => MatchesHelper::PROPOSAL_INTERACTION).first
+		@reschedule = Interaction.where(:match_id => @match.id, :contact_type => MatchesHelper::RESCHEDULE_INTERACTION).first
 		@voter = @match.voter
 	end
 
 
 	### VOTER ROUTES
-	def voter_match
-		@match = Match.find params[:id]
-		@voter = Voter.find_by_hashed_id params[:hashed_id]
-		authenticate_voter_match!
-
-		@proposal = Interaction.where(:match_id => @match.id, :contact_type => PROPOSAL_INTERACTION).first
-		@reschedule = Interaction.where(:match_id => @match.id, :contact_type => RESCHEDULE_INTERACTION).first
-		@volunteer = @match.volunteer
-	end
-
 	def accept
 		@match = Match.find params[:id]
 		@voter = Voter.find_by_hashed_id params[:hashed_id]
@@ -108,7 +94,7 @@ class MatchesController < ApplicationController
 		authenticate_voter_match!
 
 		# TODO: Send Twilio message to volunteer with params[:message]
-		Interaction.create(:match_id => @match.id, :contact_type => RESCHEDULE_INTERACTION, :message => params[:message])
+		Interaction.create(:match_id => @match.id, :contact_type => MatchesHelper::RESCHEDULE_INTERACTION, :message => params[:message])
 		@match.accept!
 		@match.save
 		redirect_to @match.voter_show_url

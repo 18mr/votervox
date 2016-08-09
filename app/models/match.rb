@@ -15,9 +15,6 @@ class Match < ActiveRecord::Base
 	def voter_url method
 		['/matches/', self.id, '/', method, '/', self.voter.hashed_id].join('')
 	end
-	def voter_show_url
-		voter_url 'show'
-	end
 	def voter_accept_url
 		voter_url 'accept'
 	end
