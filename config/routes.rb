@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   # Voter routes
   resources :voters, only: [:index, :new, :create] do
     member do
-      get 'cancel_request'
-      get 'activate_request'
+      get 'cancel'
+      get 'activate'
     end
   end
   get '/voters/:hashed_id', to: 'voters#voter_home', as: 'voter_home'
