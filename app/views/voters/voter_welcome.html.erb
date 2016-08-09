@@ -24,14 +24,15 @@
 			<div class="wrapper">
 
 				<p>To view your profile, save and use this link:</p>
-				<input type="text" value="www.votervox.org/profile=?buakaw">
+				<input type="text" value="http://votervox.org<%= @voter.home_url%>">
 				<p>(You will also find this link in your confirmation email).</p>
 			</div><!--.wrapper-->
 
 		</section><!--.more-info-->
 		<section class="cancel-request">
 			<div class="wrapper">
-				<button class="button btn-outline">Cancel Your Request</button>
+				<%= link_to 'Cancel Your Request', cancel_voter_path(@voter), class: "btn-outline" %>
+
 				<div class="clear-fix"></div>
 			</div>
 			
@@ -40,7 +41,7 @@
 		<section class="voter-resources">
 			<div class="wrapper">
 				<h2>Feel free to check out our Voter Resources in the mean time.</h2>
-				<a href="/documents" class="button">Voter Resources</a>
+				<a href="/voter-resources" class="button">Voter Resources</a>
 			</div>
 			
 		</section>
