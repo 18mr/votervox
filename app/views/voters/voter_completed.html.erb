@@ -20,9 +20,8 @@
 			<%= submit_tag 'Submit', class: "button" %>
 
 		<% end %>
-		<a href="/voters/sign_up" class="button btn-outline">Submit a Match Request</a>
+		<%= link_to 'Submit a Match Request', activate_voter_path(@voter), class: "btn-outline" %>
 		
-
 	</section><!--.next-steps-->
 
 </main>
