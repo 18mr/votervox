@@ -1,6 +1,6 @@
 class MatchesController < ApplicationController
 	before_action :authenticate_volunteer!, only: [:index, :create, :message, :decline, :complete, :show]
-	before_action :authenticate_voter!, only: [:accept, :reject, :request_time]
+	before_action :authenticate_voter!, only: [:voter_accept, :voter_reject, :voter_request_time]
 	layout "volunteer"
 
 	### VOLUNTEER ROUTES
