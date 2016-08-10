@@ -55,7 +55,7 @@
         <% end %>
       
           <div class="clear-fix"></div>
-        </div><!--#other_fields-->
+        
       <% end %>
 
       <div class="fileinputs">
@@ -79,6 +79,7 @@
           <%= f.label :password_confirmation %><br />
           <%= f.password_field :password_confirmation, autocomplete: "off" %>
         </div>
+        <div class="clear-fix"></div>
       </div>
       <%= f.submit "Sign up", class: "button" %>
     <% end %>
