@@ -783,6 +783,14 @@ main.dashboard {
 		}
 
 	}
+	section.cancel-request, section.translator-selection {
+		a.btn-outline, a.button {
+			display: block;
+			font-size: 22px;
+			text-align: center;
+			padding: 5px;
+		}
+	}
 	section.voter-resources {
 		background-color: $lightgrey;
 		h2 {
@@ -1838,7 +1846,7 @@ section.organizations {
 		}
 		section.cancel-request {
 			border-bottom: none;
-			button {
+			a.btn-outline, a.button {
 				float: right;
 			}
 		}

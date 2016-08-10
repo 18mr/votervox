@@ -3,10 +3,14 @@
 	<div class="voter-dashboard">
 		<h1>Voter Dashboard</h1>
 	</div><!--.voter-dashboard-->
-	<!--TODO: Add Voter Match Match.where(:voter_id => 1).first.voter_show_url and use conditional for displaying Your Translator if cookie  has been set, otherwise should "Find Your Translator buton-->
-	<a href="/" class="button <%= at_voter_home? ? "selected" : "pink" %>" >Your Translator</a>
+	
+	<!--TODO: Issue with Hide "Your Translator" on feedback form-->
+	<% if @voter.present? && @voter.active? %>
+	<a href="<%= @voter.home_url%>" class="button <%= at_voter_home? ? "selected" : "pink" %>" >Your Translator</a>
+	<% else %>
 	<a href="/voters/new" class="button pink" >Find a Translator</a>
-	<a href="/documents" class="button <%= at_documents? ? "selected" : "pink" %>">Voter Resources</a>
+	<% end %>
+	<a href="/voter-resources" class="button <%= at_documents? ? "selected" : "pink" %>">Voter Resources</a>
 	<a class="button <%= at_feedback? ? "selected" : "pink" %>"  href="/feedback">
 		Give Feedback
 	</a><!--.mobile-only-->
