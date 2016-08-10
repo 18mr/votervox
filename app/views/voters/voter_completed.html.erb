@@ -1,0 +1,28 @@
+<main class="dashboard">
+	<section class="message">
+		<h1>Your translation time with <%= @volunteer.firstname %> is complete!</h1>
+		<p>If you'd like more help now or in the future, feel free to resbumit a translator match request.</p>
+		<%= link_to 'Submit a Match Request', activate_voter_path(@voter), class: "btn-outline" %>
+
+	</section><!--.message-->
+	<section class="feedback">
+		<p>We'd love your feedback on your experience with Samart, VoterVOX and ways we can improve.</p>
+		<%= form_tag submit_feedback_path, method: 'POST' do %>
+			<%= hidden_field_tag 'subject', 'Feedback from ' + @user_type.upcase %>
+			<%= hidden_field_tag 'firstname', @voter.firstname %>
+			<%= hidden_field_tag 'lastname', @voter.lastname %>
+			<%= hidden_field_tag 'email', @voter.email %>
+
+			<%= field_set_tag 'Your feedback to VoterVOX *' do %>
+				<%= text_area_tag 'message', '', { :placeholder => 'Your feedback to VoterVOX' } %>
+			<% end %>
+
+			<%= submit_tag 'Submit', class: "button" %>
+
+		<% end %>
+		<a href="/voters/sign_up" class="button btn-outline">Submit a Match Request</a>
+		
+
+	</section><!--.next-steps-->
+
+</main>
