@@ -35,13 +35,11 @@
 						<%= link_to 'Accept', @match.voter_accept_url, class: "button accept" %>
 						<%= link_to 'Decline', @match.voter_reject_url, class: "button decline" %>
 						<div class="clear-fix"></div>
-						<button class="request" data-lighbox="request_time">Request a Different Time</button>
+						<a class="request button" data-lightbox="request_time">Request a Different Time</a>
 
 						<!--TODO: use JS to reveal the Request a Different Time lightbox, something general for opening up a lightbox-->
 
 					<% end %>
-					<button class="accept">Accept</button>
-					<button class="decline">Decline</button>
 					
 				</div><!--.wrapper-->
 			</section><!--.available-times-->

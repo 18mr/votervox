@@ -16,10 +16,10 @@ class Match < ActiveRecord::Base
 		['/matches/', self.id, '/', method].join('')
 	end
 	def voter_accept_url
-		voter_url 'accept'
+		voter_url 'voter_accept'
 	end
 	def voter_reject_url
-		voter_url 'reject'
+		voter_url 'voter_reject'
 	end
 	def voter_request_time_url
 		voter_url 'request_time'
