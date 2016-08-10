@@ -7,7 +7,7 @@
 
     <%= render "devise/shared/links" %>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), multipart: true) do |f| %>
       <%= devise_error_messages! %>
 
       <div class="float-left first-name">
@@ -59,7 +59,8 @@
       <% end %>
 
       <div class="fileinputs">
-        <input class="file" type="file" name="photo" value="Select an image" size="300">
+        <!-- <input class="file" type="file" name="photo" value="Select an image" size="300"> -->
+        <%= f.file_field :profile_image, { :class => "file" } %>
         <div class="fakefile">
           <input placeholder="Photo Upload"/>
           <button class="btn-outline">Select an image</button>

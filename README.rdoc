@@ -2,7 +2,12 @@
 
 This repo contains the code for the VoterVOX application.
 
-Local installation process:
+### Pre-Reqs:
+* Ruby version 2.2.1
+* Postgres ~9.3.2
+* ImageMagick ~6.9.5
+
+### Local installation process:
 
 * Run a local PostgreSQL server, add user 'postgres', and set password to blank.
 
@@ -15,6 +20,14 @@ Local installation process:
 * Set up your local <tt>.env</tt> file for use with Foreman, including the following config variables:
 
   * <tt>PORT</tt> - The port that the server should run on locally
+
+  * <tt>S3_BUCKET_NAME</tt> - The name of the AWS S3 bucket used for resource storage
+
+  * <tt>AWS_ACCESS_KEY_ID</tt> - Your AWS access key
+
+  * <tt>AWS_SECRET_ACCESS_KEY</tt> - Your AWS secret access key
+
+  * <tt>AWS_REGION</tt> - Your AWS region
 
 * Run <tt>foreman s</tt> to start the local server.
 

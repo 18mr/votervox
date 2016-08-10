@@ -12,12 +12,21 @@ class Volunteer < ActiveRecord::Base
 	devise :database_authenticatable, :registerable,
 	    :recoverable, :rememberable, :trackable, :validatable
 
+	has_attached_file :profile_image, styles: {
+		thumb: '100x100>',
+		square: '200x200#',
+		medium: '300x300>'
+	}
+
 	validates :firstname, length: { in: 1..128 }
 	validates :lastname, length: { in: 1..128 }
 	validates :phone, format: { with: /\A\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}\z/,
 		message: "must be a valid phone number" }
 	validates :address, length: { in: 5..255 }
 	validates :languages, presence: true
+	validates_attachment_content_type :profile_image,
+		:content_type => /\Aimage\/.*\Z/,
+		size: { in: 0..2.megabytes }
 
 	# Voter match functions
 	def language_match voter

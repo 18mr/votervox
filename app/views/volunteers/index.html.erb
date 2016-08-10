@@ -50,7 +50,9 @@
 				<% @approved_volunteers.each do |volunteer| %>
 	
 				<div class="volunteer-box">
-					<div class="image"><img src="<%= asset_path('volunteer.jpg') %>"></div><!--.image-->
+					<div class="image">
+						<img src="<%= volunteer.profile_image.present? ? volunteer.profile_image.url(:square) : asset_path('volunteer.jpg') %>">
+					</div><!--.image-->
 					<div class="volunteer-info">
 						<span class="mobile-only accepted-tag">Accepted</span>
 						<h2><%= volunteer.firstname %> <%= volunteer.lastname %>, <%= organization_name volunteer %><span class="desktop accepted-tag">Accepted</span></h2> 
@@ -85,7 +87,9 @@
 				<% @pending_volunteers.each do |volunteer| %>
 				
 				<div class="volunteer-box pending">
-					<div class="image"><img src="<%= asset_path('volunteer.jpg') %>"></div><!--.image-->
+					<div class="image">
+						<img src="<%= volunteer.profile_image.present? ? volunteer.profile_image.url(:square) : asset_path('volunteer.jpg') %>">
+					</div><!--.image-->
 					<div class="volunteer-info">
 						<span class="mobile-only accepted-tag">Accepted</span>
 						<h2><%= volunteer.firstname %> <%= volunteer.lastname %>, <%= organization_name volunteer %></h2> 

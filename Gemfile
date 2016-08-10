@@ -13,6 +13,10 @@ gem 'devise'
 # Visit tracking
 gem 'ahoy_matey'
 
+# File uploads
+gem 'paperclip'
+gem 'aws-sdk', '~> 2.3'
+
 # Make requests to external APIs
 gem 'rest-client'
 gem 'nokogiri'
