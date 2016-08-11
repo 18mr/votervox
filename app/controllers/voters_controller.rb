@@ -14,6 +14,7 @@ class VotersController < ApplicationController
 		@voter = Voter.new
 		@communication_options = Voter.communication_options
 		@comfort_options = Voter.comfort_options
+		@client = GooglePlaces::Client.new('AIzaSyAB2Ap-u99P3gRwZFqz3HuonM5_v4v18do')
 	end
 
 	def create
