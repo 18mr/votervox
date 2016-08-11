@@ -10,9 +10,12 @@
   	  <!--[if lt IE 9]>
   	  <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv-printshiv.js"></script>
   	  <![endif]-->
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyCxl8q98TAB-oDt7b5PlaTAkQsK4XP0vP0&libraries=places&callback=initAutocomplete", :async => true, :defer => true %>
+
 </head>
 <body>
 	<header>
