@@ -756,6 +756,13 @@ main.dashboard {
 				border-top: 1px solid $darkgrey;
 				padding: 20px 25px;
 				background-color: $lightgrey;
+				a.btn-outline {
+					display: block;
+					width: 100%;
+					padding: 10px;
+					margin-bottom: 16px;
+					height: auto;
+				}
 			}
 			.accept, a.button.accept {
 				height: 30px;
