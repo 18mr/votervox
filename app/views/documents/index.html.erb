@@ -60,7 +60,7 @@
 				</div><!--.filter-boxes-->
 
 				<% @documents.each do |document| %>
-				<a class="document-box" href="<% document_path(document) %>">
+				<a class="document-box" href="<%= document_path(document) %>">
 					<header><%= document.name %></header>
 					<div class="language">Translated Language:<strong><%= document.translated_language %></strong></div>
 					<div class="details">

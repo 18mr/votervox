@@ -16,9 +16,13 @@
 		<section class="contents">
 			<div class="wrapper">
 				<!--.pdf or word or other document rendering-->
-				<p>Document embed coming soon!</p>
 
-				<img src="<%= asset_path('sample-resource.jpg') %>">
+				<% if @document.file.present? %>
+				<iframe src="http://docs.google.com/gview?url=<%= @document.file.url %>&embedded=true" style="width: 100%; height:600px" frameborder="0"></iframe>
+				<% else %>
+				<p>Sorry, this document appears to be missing!</p>
+				<% end %>
+
 			</div>
 
 		</section><!--.contents-->

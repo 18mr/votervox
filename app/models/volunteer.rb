@@ -24,8 +24,8 @@ class Volunteer < ActiveRecord::Base
 		message: "must be a valid phone number" }
 	validates :address, length: { in: 5..255 }
 	validates :languages, presence: true
-	validates_attachment_content_type :profile_image,
-		:content_type => /\Aimage\/.*\Z/,
+	validates_attachment :profile_image,
+		content_type: { content_type: /\Aimage\/.*\Z/ },
 		size: { in: 0..2.megabytes }
 
 	# Voter match functions

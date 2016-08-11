@@ -57,7 +57,7 @@ class DocumentsController < ApplicationController
 
 	def document_params
 		params.require(:document).permit(:name, :language, :translated_language, :resource_type,
-			:location, :location_type).merge(:submitter_id => current_volunteer.id)
+			:location, :location_type, :file).merge(:submitter_id => current_volunteer.id)
 	end
 	def document_status_params
 		params.require(:document).permit(:status)

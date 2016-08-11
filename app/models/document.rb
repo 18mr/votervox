@@ -4,11 +4,17 @@ class Document < ActiveRecord::Base
 
 	belongs_to :submitter, class_name: "Volunteer"
 
+	has_attached_file :file
+
 	validates :name, length: { in: 1..128 }
 	validates :language, presence: true
 	validates :translated_language, presence: true
 	validates :resource_type, presence: true
 	validates :location, presence: true
+	validates_attachment :file,
+		presence: true,
+		content_type: { content_type: %w(application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document) },
+		size: { in: 0..5.megabytes }
 
 	# Filter functions
 	def language_match filter_languages

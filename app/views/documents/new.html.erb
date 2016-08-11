@@ -51,6 +51,11 @@
 						{ include_blank: 'Type of Location' } %>
 				</div>
 
+				<div>
+					<%= f.label "Select Your File Upload", {:for => "document_file"} %>
+					<%= f.file_field :file %>
+				</div>
+
 				<%= f.submit 'Submit', class: "button" %>
 
 			<% end %>
