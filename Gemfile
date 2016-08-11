@@ -43,4 +43,6 @@ gem 'sass-rails'
 gem 'compass-rails'
 gem 'font-awesome-rails'
 
+# For Google Places AutoComplete
+gem 'google_places'
 
