@@ -37,20 +37,18 @@
 				<% @requests.each do |voter| %>
 
 				<div class="voter-box requests">
-					<div class="image"><img src="./asset/imgs/smart-payakaroon.jpg"></div><!--.image-->
+					<div class="image"><img src="<%= asset_path('smart-payakaroon.jpg') %>"></div><!--.image-->
 					<div class="voter-info">
 						<h2><%= voter.firstname %> <%= voter.lastname %>, <%= voter.contact %></h2>
 						<hr/>
 						<ul>
 							<li><strong>City:</strong> <%= voter.city %></li>
 							<li><strong>Proximity to You:</strong> 19 miles</li>
-							<li><strong>Requested Language:</strong> <%= @voter.languages.join(', ') %></li>
+							<li><strong>Requested Language(s):</strong> <%= voter.languages.join(', ') %></li>
 							<li><strong>English Proficiency:</strong> <%= voter.english_comfort %></li>
 						</ul>
 					</div><!--.voter-info-->
 					<div class="actions">
-						<button class="accept">Accept</button>
-						<button class="decline  btn-outline">Decline</button>
 						<%= form_for :match, url: matches_path, method: 'POST' do |f| %>
 							<%= f.hidden_field :voter_id, :value => voter.id %>
 							<%= f.submit 'Accept', class: "button accept" %>
@@ -59,7 +57,7 @@
 						<%= form_for :match, url: matches_path, method: 'POST' do |f| %>
 							<%= f.hidden_field :voter_id, :value => voter.id %>
 							<%= f.hidden_field :status, :value => MatchesHelper::STATUS_VOLUNTEER_DECLINED %>
-							<%= f.submit 'Decline', class: "button decline" %>
+							<%= f.submit 'Decline', class: "btn-outline decline" %>
 						<% end %>
 					</div><!--.actions-->
 				</div><!--.voter-box-->
