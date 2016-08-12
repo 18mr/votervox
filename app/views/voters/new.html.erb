@@ -2,8 +2,7 @@
 <main class="sign-up">
 	<div class="wrapper">
 
-		<h1>Find a Translator</h1>
-		<%= @client %>
+		<h1><%= t('voter_registration.title') %></h1>
 		<div class="pink-line"></div>
 		<%= form_for :voter, url: voters_path, method: 'POST' do |f| %>
 
@@ -31,15 +30,17 @@
 			<%= f.label :"Your contact information*", {:for => "voter_contact"} %>
 			<%= f.text_field :contact, { :placeholder => 'Contact Information (phone number or email address)' } %>
 
-			<%= f.label :"Your Home Address*", {:for => "voter_address"} %>
+			<%= f.label :"Your Home Address*", {:for => "address"} %>
 			<%= f.text_field :address, { :placeholder => 'Enter your address', :required => true, :id => "autocomplete",
              :onFocus => "geolocate()" } %>
-
-             <input class="field" id="street_number" disabled="true"></input>
-             <input class="field" id="locality" disabled="true"></input>
-             <input class="field" id="administrative_area_level_1" disabled="true"></input>
-             <td class="wideField"><input class="field" id="postal_code" disabled="true"></input>
-             <input class="field" id="country" disabled="true"></input>
+             <input class="field" id="latitude" name="latitude" disabled="true" placeholder="latitude" type="hidden"></input>
+             <input class="field" id="longitude" name="longitude" disabled="true" placeholder="longitude" type="hidden"></input>
+             <input class="field" id="street_number" disabled="true" type="hidden"></input>
+             <input class="field" id="route" disabled="true" type="hidden"></input>
+             <input class="field" id="locality" name="city" disabled="true" type="hidden"></input>
+             <input class="field" id="administrative_area_level_1" name="state" disabled type="hidden"></input>
+             <input class="field" id="postal_code" name="zipcode" disabled type="hidden"></input>
+             <input class="field" id="country" name="country" disabled="true" type="hidden"></input>
 
 
 			<%= field_set_tag 'Which language(s) would you like translation help with?*:', class: 'languages' do %>

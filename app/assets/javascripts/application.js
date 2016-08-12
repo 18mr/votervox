@@ -79,6 +79,23 @@
           radius: position.coords.accuracy
         });
         autocomplete.setBounds(circle.getBounds());
+        document.getElementById('latitude').value = position.coords.latitude;
+        document.getElementById('longitude').value = position.coords.longitude;
       });
     }
   }
+  //get latitude and longitude from Google Places
+
+  function getLatLong() {
+    var geocoder = new google.maps.Geocoder();
+    var address = document.getElementById('address').value;
+
+    geocoder.geocode({ 'address': address }, function (results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+          var latitude = results[0].geometry.location.lat();
+          var longitude = results[0].geometry.location.lng();
+
+      }
+    });
+    console.log(" latitude:" + latitude + " longitude:" + longitude);
+  };
