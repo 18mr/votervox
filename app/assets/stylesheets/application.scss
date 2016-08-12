@@ -242,6 +242,12 @@ div.alert {
 	background-color: #fff;
 	font-size: 15px;
 	line-height: 1.4em;
+	z-index: 1000;
+	background: $white;
+	&.hide {
+		visibility: hidden;
+		display: block;
+	}
 }
 .tooltip-hover {
 	position: relative;

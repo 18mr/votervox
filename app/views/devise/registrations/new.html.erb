@@ -49,10 +49,9 @@
       <%= f.collection_select :organization_id, Organization.all, :id, :name,
         { include_blank: 'No Organization' } %>
 
-      <%= field_set_tag 'Language(s you speak proficiently*: ', class: 'languages' do %>
-
-          <a class="tooltip-hover" href="">?</a>
-          <div class="tooltip hidden">
+      <fieldset class="languages">
+        <legend>Language(s you speak proficiently*:<a class="tooltip-hover" href="">?</a></legend>
+          <div class="tooltip hide">
             By proficient we mean any languages you feel comfortable speaking casually about voting and various issues
           </div>
           <% language_list.each do |language| %>
@@ -62,10 +61,8 @@
           <% end %>
 
         <% end %>
-      
           <div class="clear-fix"></div>
-        
-      <% end %>
+      </fieldset>
 
       <div class="fileinputs">
         <!-- <input class="file" type="file" name="photo" value="Select an image" size="300"> -->

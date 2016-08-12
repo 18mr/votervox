@@ -45,19 +45,21 @@
       <%= f.collection_select :organization_id, Organization.all, :id, :name,
         { include_blank: 'No Organization' } %>
 
-      <%= field_set_tag 'Language(s you speak proficiently*: ', class: 'languages' do %><a class="tooltip-hover" href="">?</a>
-            
-            <div class="tooltip hide">
-              By proficient we mean any languages you feel comfortable speaking casually about voting and various issues
-            </div>
-        <% language_list.each do |language| %>
-            <%= label_tag 'language_'+slugify(language), language do %> 
-              <%= check_box_tag 'volunteer[languages][]', language, chosen_language(resource, language), id: 'language_'+slugify(language) %>
-              <%=language%>
-            <% end %>
-        <% end %>
-          <div class="clear-fix"></div>
+      <fieldset class="languages">
+        <legend>Language(s you speak proficiently*:<a class="tooltip-hover" href="">?</a></legend>
+        <div class="tooltip hide">
+          By proficient we mean any languages you feel comfortable speaking casually about voting and various issues
+        </div>
+      <% language_list.each do |language| %>
+          <%= label_tag 'language_'+slugify(language), language do %> 
+            <%= check_box_tag 'volunteer[languages][]', language, chosen_language(resource, language), id: 'language_'+slugify(language) %>
+            <%=language%>
+          <% end %>
+
       <% end %>
+      <div class="clear-fix"></div>
+      </fieldset>
+        
       <div class="passwords">
         <div class="float-left password">
           <%= f.label :password %><i>Enter in your password to update your profile.</i><br />
