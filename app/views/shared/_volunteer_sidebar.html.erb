@@ -24,6 +24,7 @@
 	<% end %>
 
 	<a href="/voter-resources" class="button <%= at_documents? ? "selected" : "pink" %>" >Voter Resources</a>
+	<a href="/voter-resources/new" class="button <%= at_documents? ? "selected" : "pink" %>">Add a Translated Resource</a>
 	<% if !admin_signed_in? %>
 		<a class="button <%= at_feedback? ? "selected" : "pink" %>"  href="/feedback">
 			Give Feedback

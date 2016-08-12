@@ -264,22 +264,28 @@ div.alert {
 }
 /* ICONS */
 
-.close-icon {
+.menu-icon {
+	color: #e92484;
 	border-radius: 10px;
 	border: 3px solid #e92484;
 	float: right;
 	height: 40px;
 	width: 40px;
 	margin: 0px 10px 10px 0px;
-	color: #e92484;
-	
+	&:after {
+		display: inline-block;
+		content: "\2261";
+		font-size: 33px;
+		padding-left: 9px;
+	}
+	&.opened {
+		&:after{
+			content: "\00d7"; /* This will render the 'X' */
+			padding-left: 7px;
+		}
+	}
 }
-.close-icon:after{
-	display: inline-block;
-	content: "\00d7"; /* This will render the 'X' */
-	font-size: 33px;
-	padding-left: 7px;
-}
+
 /************************ 
 MOBILE STYLES 
 ************************/
@@ -358,11 +364,8 @@ header{
 			color: $pink;
 		}
 	}
-	nav.close {
+	nav {
 		display: none;
-	}
-	nav.open {
-		display: block;
 	}
 	li {
 		height: 53px;

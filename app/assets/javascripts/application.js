@@ -106,6 +106,37 @@ function tooltip(){
   })
 }
 
+//Mobile Nav Menu
+
+function mobileNav() {
+  $('.menu-icon').click( function(){
+    $(this).toggleClass('opened');
+
+    if ( $(this).hasClass('opened') ) {
+      $('header nav').slideDown(1000, function(){
+        $('header nav').toggleClass('hide');
+      });
+    } else {
+      $('header nav').slideUp(1000, function(){
+        $('header nav').toggleClass('hide');
+      });
+    }
+    
+  })
+}
+
 $(document).ready(function(){
   tooltip();
+  mobileNav();
+
+});
+
+//display navigation links if nav is hidden when browser size is larger than tablet
+
+$( window ).resize(function() {
+  var windowWidth = $(window).width();
+  var hiddenNav = $('header nav').hasClass('hide');
+  if ( windowWidth >= 640 && hiddenNav ) {
+    $('header nav').removeClass('hide');
+  }
 });

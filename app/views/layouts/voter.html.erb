@@ -18,10 +18,10 @@
 	<header class="mobile-only">
 		<div class="wrapper">
 			<a class="brand">VoterVox Branding</a>
-			<div class="close-icon mobile-only"></div>
-			<div class="clear-fix mobile-only"></div>
+			<div class="menu-icon"></div>
+			<div class="clear-fix"></div>
 			<div class="green">Voter Dashboard</div>
-			<nav class="main close">
+			<nav class="hide main">
 				<ul>
 					<% if @voter.present? %>
 					<li><a href="<%= @voter.home_url%>">Your Translator</a></li>

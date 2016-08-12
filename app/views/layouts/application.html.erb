@@ -21,9 +21,10 @@
 	<header>
 		<div class="wrapper">
 			<a class="brand">VoterVox Branding</a>
-			<div class="close-icon mobile-only"></div>
+			<div class="menu-icon mobile-only">
+			</div>
 			<div class="clear-fix mobile-only"></div>
-			<nav class="close">
+			<nav class="tablet desktop main close">
 				<ul>
 					<% if volunteer_signed_in? %>
 						<li><a href="/volunteers/">Getting Started</a></li>
@@ -37,8 +38,9 @@
 							<li><a href="/voters/new">Find a Translator</a></li>
 							<li><a href="/volunteer/sign_in">Translator Login</a></li>
 						<% end %>
-						<li><a href="/volunteers/sign_up">Be a Translator</a></li>
+						<li><a href="/volunteer/sign_up">Be a Translator</a></li>
 						<li><a href="/voter-resources">Voter Resources</a></li>
+						<li><a href="/voter-resources/new">Add a Translated Resource</a></li>
 						<li><a href="/about">About VoterVOX</a></li>
 					<% end %>
 					<div class="clear-fix"></div>	
