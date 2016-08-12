@@ -45,9 +45,9 @@
       <%= f.collection_select :organization_id, Organization.all, :id, :name,
         { include_blank: 'No Organization' } %>
 
-      <%= field_set_tag 'Language(s you speak proficiently*: ', class: 'languages' do %>
-            <a class="tooltip-hover" href="">?</a>
-            <div class="tooltip hidden">
+      <%= field_set_tag 'Language(s you speak proficiently*: ', class: 'languages' do %><a class="tooltip-hover" href="">?</a>
+            
+            <div class="tooltip hide">
               By proficient we mean any languages you feel comfortable speaking casually about voting and various issues
             </div>
         <% language_list.each do |language| %>
@@ -56,14 +56,11 @@
               <%=language%>
             <% end %>
         <% end %>
-        
           <div class="clear-fix"></div>
-        </div><!--#other_fields-->
-           <div class="clear-fix"></div>
       <% end %>
       <div class="passwords">
         <div class="float-left password">
-          <%= f.label :password %><i>(leave blank if you don't want to change it)</i><br />
+          <%= f.label :password %><i>Enter in your password to update your profile.</i><br />
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
@@ -88,6 +85,6 @@
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn-outline" %></p>
 
-<%= link_to "Back", :back %>
+<%= link_to "Back to Sign In", :back, class: "button" %>
   </div>
 </section>
