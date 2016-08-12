@@ -36,6 +36,16 @@ class ApplicationController < ActionController::Base
 		I18n.locale = params[:locale] || I18n.default_locale
 	end
 
+	# Volunteer sign in/out paths
+	def after_sign_in_path_for resource 
+		volunteers_home_path
+	end
+
+	def after_sign_out_path_for resource 
+		new_volunteer_session_path
+	end
+
+	# Volunteer/admin authentication
 	def authenticate_admin!
 		unless volunteer_signed_in? && current_volunteer.admin?
 			redirect_to :new_volunteer_session
@@ -50,6 +60,7 @@ class ApplicationController < ActionController::Base
 		volunteer_signed_in? && current_record.organization
 	end
 
+	# Voter authentication
 	def identify_voter!
 		if params[:hashed_id].present?
 			cookies[:_vv_hashed_id] = { value: params[:hashed_id], expires: 10.minutes.from_now }
@@ -74,6 +85,7 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+	# Other helper methods
 	def feedback_message
 		if params[:firstname].present? && params[:lastname].present?
 			message = "Name: params[:firstname] params[:lastname]\n"
