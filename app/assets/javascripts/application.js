@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require ahoy
 //= require_tree .
 
@@ -128,7 +129,7 @@ function mobileNav() {
 $(document).ready(function(){
   tooltip();
   mobileNav();
-
+  $( ".datepicker" ).datepicker();
 });
 
 //display navigation links if nav is hidden when browser size is larger than tablet

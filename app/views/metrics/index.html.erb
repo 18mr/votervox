@@ -5,56 +5,59 @@
 
 					<h1>VoterVOX Metrics</h1>
 
-					<ul class="status">
-						<li><a href="" class="current this-week">This Week</a></li>
-						<li><a href="" class="this-month">This Month</a></li>
-						<li><a href="" class="all-time">All-Time</a></li>
+					<div class="timeframe-selection">
+						<%= form_tag metrics_path, method: 'GET' do %>
+							<%= hidden_field_tag 'start_date', 1.week.ago %>
+							<%= hidden_field_tag 'end_date', 1.second.ago %>
+							<%= hidden_field_tag 'timeframe', 'week' %>
+							<%= submit_tag 'Last Week' %>
+						<% end %>
+
+						<%= form_tag metrics_path, method: 'GET' do %>
+							<%= hidden_field_tag 'start_date', 1.month.ago %>
+							<%= hidden_field_tag 'end_date', 1.second.ago %>
+							<%= hidden_field_tag 'timeframe', 'month' %>
+							<%= submit_tag 'Last Month' %>
+						<% end %>
+
+						<%= form_tag metrics_path, method: 'GET' do %>
+							<%= hidden_field_tag 'start_date', 10.years.ago %>
+							<%= hidden_field_tag 'end_date', 1.second.ago %>
+							<%= hidden_field_tag 'timeframe', 'all_time' %>
+							<%= submit_tag 'All Time' %>
+						<% end %>
 						<div class="clear-fix"></div>
-					</ul>
+					</div><!--.timeframe-selection-->
 					<div class="search">
-						<input type="search" name="" placeholder="Search by Month or Week">
-						<button class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></button>
+						<%= form_tag metrics_path, method: 'GET' do %>
+							<%= hidden_field_tag 'timeframe', 'custom' %>
+
+							<%= field_set_tag 'Start Date:' do %>
+								<%= text_field_tag 'start_date', @timeframe == 'custom' ? iso_format(@start_dt) : '', { :placeholder => 'YYYY-MM-DD', :class => 'datepicker' } %>
+							<% end %>
+
+							<%= field_set_tag 'End Date:' do %>
+								<%= text_field_tag 'end_date', @timeframe == 'custom' ? iso_format(@end_dt) : '', { :placeholder => 'YYYY-MM-DD', :class => 'datepicker' } %>
+							<% end %>
+
+							<button class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></button>
+							<div class="clear-fix"></div>
+						<% end %>
+						<div class="clear-fix"></div>
 					</div><!--.search-->
 					<div class="clear-fix"></div>
 				</div>
 
 			</section>
 
-<%= form_tag metrics_path, method: 'GET' do %>
-	<%= hidden_field_tag 'start_date', 1.week.ago %>
-	<%= hidden_field_tag 'end_date', 1.second.ago %>
-	<%= hidden_field_tag 'timeframe', 'week' %>
-	<%= submit_tag 'Last Week' %>
-<% end %>
-
-<%= form_tag metrics_path, method: 'GET' do %>
-	<%= hidden_field_tag 'start_date', 1.month.ago %>
-	<%= hidden_field_tag 'end_date', 1.second.ago %>
-	<%= hidden_field_tag 'timeframe', 'month' %>
-	<%= submit_tag 'Last Month' %>
-<% end %>
-
-<%= form_tag metrics_path, method: 'GET' do %>
-	<%= hidden_field_tag 'start_date', 10.years.ago %>
-	<%= hidden_field_tag 'end_date', 1.second.ago %>
-	<%= hidden_field_tag 'timeframe', 'all_time' %>
-	<%= submit_tag 'All Time' %>
-<% end %>
 
 
-<%= form_tag metrics_path, method: 'GET' do %>
-	<%= hidden_field_tag 'timeframe', 'custom' %>
 
-	<%= field_set_tag 'Start Date:' do %>
-		<%= text_field_tag 'start_date', @timeframe == 'custom' ? iso_format(@start_dt) : '', { :placeholder => 'YYYY-MM-DD' } %>
-	<% end %>
 
-	<%= field_set_tag 'End Date:' do %>
-		<%= text_field_tag 'end_date', @timeframe == 'custom' ? iso_format(@end_dt) : '', { :placeholder => 'YYYY-MM-DD' } %>
-	<% end %>
 
-	<button class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></button>
-<% end %>
+
+
+
 
 		<section class="overall-metrics">
 			<header>
