@@ -259,8 +259,8 @@ DEPENDENCIES
   devise
   font-awesome-rails
   foreman
-  i18n-active_record
   google_places
+  i18n-active_record
   jquery-rails
   jquery-ui-rails
   nokogiri
