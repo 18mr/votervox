@@ -10,7 +10,7 @@ module ApplicationHelper
 		I18n.available_locales.map{ |lang| [t('locale_name', locale: lang), lang.to_s] }.sort_by(&:first)
 	end
 	def language_options
-		language_options_english.except("en")
+		language_options_english.reject{ |l| l.last == 'en' }
 	end
 	def language_list
 		language_options.map(&:first)
