@@ -17,6 +17,9 @@ gem 'ahoy_matey'
 gem 'paperclip'
 gem 'aws-sdk', '~> 2.3'
 
+# Content translation
+gem 'i18n-active_record', :require => 'i18n/active_record'
+
 # Make requests to external APIs
 gem 'rest-client'
 gem 'nokogiri'

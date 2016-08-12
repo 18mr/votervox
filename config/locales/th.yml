@@ -19,8 +19,8 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
-  locale_name: "English"
+th:
+  locale_name: "Thai"
   homepage:
     tagline: "Democracy in Every Language"
     intro_text: "VoterVOX connects volunteers and individuals who need help voting in their language."

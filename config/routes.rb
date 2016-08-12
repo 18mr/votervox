@@ -43,6 +43,11 @@ Rails.application.routes.draw do
   # Metrics routes
   resources :metrics, only: [:index]
 
+  # Translation routes
+  resources :locales do
+    resources :translations, constraints: { :id => /[^\/]+/ }
+  end
+  
   # Application routes
   get '/', to: 'application#index', as: 'homepage'
   get '/feedback', to: 'application#feedback', as: 'feedback'

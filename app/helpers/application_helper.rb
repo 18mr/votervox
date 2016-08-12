@@ -6,8 +6,14 @@ module ApplicationHelper
 		admin_signed_in? && Volunteer.find(current_volunteer.id).organization.nil?
 	end
 	
+	def language_options_english
+		I18n.available_locales.map{ |lang| [t('locale_name', locale: lang), lang.to_s] }.sort_by(&:first)
+	end
+	def language_options
+		language_options_english.except("en")
+	end
 	def language_list
-		['Thai','Vietnamese','Cantonese','Mandarin','Khmer']
+		language_options.map(&:first)
 	end
 	def chosen_language(user,language)
 	  user.languages.nil? ? false : user.languages.include?(language)

@@ -1,26 +1,20 @@
 <section class="hero">
 
 	<div class="content">
-		<h1>Democracy in Every Language</h1>
-		<div class="tagline">
-			VoterVOX connects volunteers and individuals who need help voting in their language.
-		</div>
+		<h1><%= t('homepage.tagline') %></h1>
+		<div class="tagline"><%= t('homepage.intro_text') %></div>
 	</div><!--.content-->
 	
 </section><!--.hero-->
 
 <section class="getting-started">
 	<div class="wrapper">
-		<h2>Get Started</h2>
-		<form>
-			<label for="language">Select your language</label>
-			<select name="language" id="language">
-				<option value="english" default>English</option>
-				<option value="spanish">Spanish</option>
-				<i class="fa fa-caret-down"></i>
-			</select>
-			<a class="button find-a-translator" href="/voters/new">Find a Translator</a>
-			<a class="be-a-translator button" href="/volunteer/sign_up">Be a Translator</a>
+		<h2><%= t('homepage.title') %></h2>
+		<form action="/" method="GET">
+			<label for="language"><%= t('homepage.prompt') %></label>
+			<%= select_tag :locale, options_for_select(language_options_english, params[:locale] || "en") %>
+			<a class="button find-a-translator" href="/voters/new"><%= t('homepage.voter_button') %></a>
+			<a class="be-a-translator button" href="/volunteer/sign_up"><%= t('homepage.volunteer_button') %></a>
 		</form>
 		
 
@@ -30,11 +24,11 @@
 
 <section class="how-it-works">
 	<div class="wrapper">
-		<h2>How It Works</h2>
+		<h2><%= t('homepage.title') %></h2>
 		<div class="step">			
 			<div class="description">
 				<div class="number">1</div><!--.number-->
-				VoterVOX pairs a volunteer translator with a voter who needs help.
+				<%= t('homepage.step1') %>
 			</div><!--.description-->
 			<img src="<% asset_path('persons.jpg')%>">
 			<div class="clear-fix"></div>
@@ -43,7 +37,7 @@
 			<img src="<% asset_path('forms.jpg')%>" >
 			<div class="description">
 				<div class="number">2</div><!--.number-->
-				A local VoterVOX volunteer translator meets with a voter to help them understand their ballot.
+				<%= t('homepage.step2') %>
 			</div><!--.description-->
 			<div class="clear-fix"></div>
 		</div><!--.step-->
@@ -51,7 +45,7 @@
 			
 			<div class="description">
 				<div class="number">3</div><!--.number-->
-				The volunteer uploads the translations for others to use and build on.
+				<%= t('homepage.step3') %>
 			</div><!--.description-->
 			<img src="<% asset_path('persons.jpg')%>" class="float-right">
 			<div class="clear-fix"></div>

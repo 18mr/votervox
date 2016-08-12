@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 	# For APIs, you may want to use :null_session instead.
 	protect_from_forgery with: :exception
 
+	before_action :set_locale
 	before_action :identify_voter!, only: [:feedback, :submit_feedback]
 
 	def index
@@ -30,6 +31,10 @@ class ApplicationController < ActionController::Base
 	end
 
 	protected
+
+	def set_locale
+		I18n.locale = params[:locale] || I18n.default_locale
+	end
 
 	def authenticate_admin!
 		unless volunteer_signed_in? && current_volunteer.admin?
