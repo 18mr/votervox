@@ -6,6 +6,7 @@ class Volunteer < ActiveRecord::Base
 	belongs_to :organization
 	has_many :matches
 	has_many :interactions, through: :matches
+	has_many :documents, :foreign_key => "submitter_id"
 
 	# Include default devise modules. Others available are:
 	# :confirmable, :lockable, :timeoutable and :omniauthable
@@ -31,6 +32,9 @@ class Volunteer < ActiveRecord::Base
 	# Voter match functions
 	def language_match voter
 		(languages & voter.languages).present?
+	end
+	def voter_distance voter
+		Geocoder::Calculations.distance_between [self.latitude, self.longitude], [voter.latitude, voter.longitude] rescue nil
 	end
 	def match_quality voter
 		return 2 if city == voter.city && state = voter.state

@@ -259,6 +259,7 @@ DEPENDENCIES
   devise
   font-awesome-rails
   foreman
+  geocoder
   google_places
   i18n-active_record
   jquery-rails
@@ -272,9 +273,6 @@ DEPENDENCIES
   rspec-rails
   sass-rails
   shoulda-matchers
-
-RUBY VERSION
-   ruby 2.2.1p85
 
 BUNDLED WITH
    1.12.5

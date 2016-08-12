@@ -20,6 +20,9 @@ gem 'aws-sdk', '~> 2.3'
 # Content translation
 gem 'i18n-active_record', :require => 'i18n/active_record'
 
+# Distance calculations
+gem 'geocoder'
+
 # Make requests to external APIs
 gem 'rest-client'
 gem 'nokogiri'

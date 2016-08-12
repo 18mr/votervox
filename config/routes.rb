@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       get 'make_admin'
     end
   end
-  get '/volunteers/home', to: 'volunteers#home', as: 'voluneers_home'
+  get '/volunteers/home', to: 'volunteers#home', as: 'volunteers_home'
 
   # Organization routes
   resources :organizations, only: [:index, :new, :create, :destroy]
@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   resources :locales do
     resources :translations, constraints: { :id => /[^\/]+/ }
   end
-  
+
   # Application routes
   get '/', to: 'application#index', as: 'homepage'
   get '/feedback', to: 'application#feedback', as: 'feedback'
