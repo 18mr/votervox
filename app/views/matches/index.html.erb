@@ -12,7 +12,7 @@
 				<div class="clear-fix"></div>
 			</div><!--.stat-info-->
 			<div class="stat-info">
-				<div class="number">TBD</div>
+				<div class="number"><%= @volunteer.documents.count %></div>
 				<div class="metric">documents translated</div>
 				<div class="clear-fix"></div>
 			</div><!--.stat-info-->
@@ -43,7 +43,10 @@
 						<hr/>
 						<ul>
 							<li><strong>City:</strong> <%= voter.city %></li>
-							<li><strong>Proximity to You:</strong> 19 miles</li>
+							<% distance = @volunteer.voter_distance(voter) %>
+							<% unless distance.nan? %>
+							<li><strong>Proximity to You:</strong> <%= distance %></li>
+							<% end %>
 							<li><strong>Requested Language(s):</strong> <%= voter.languages.join(', ') %></li>
 							<li><strong>English Proficiency:</strong> <%= voter.english_comfort %></li>
 						</ul>
@@ -74,7 +77,10 @@
 						<hr/> 
 						<ul>
 							<li><strong>City:</strong> <%= match.voter.city %></li>
-							<li><strong>Proximity to You:</strong> 19 miles</li>
+							<% distance = @volunteer.voter_distance(match.voter) %>
+							<% unless distance.nan? %>
+							<li><strong>Proximity to You:</strong> <%= distance %></li>
+							<% end %>
 							<li><strong>Requested Language:</strong> <%= match.voter.languages.join(', ') %></li>
 							<li><strong>English Proficiency:</strong> <%= match.voter.english_comfort %></li>
 						</ul>
@@ -95,7 +101,10 @@
 						<hr/>
 						<ul>
 							<li><strong>City:</strong> <%= match.voter.city %></li>
-							<li><strong>Proximity to You:</strong> 19 miles</li>
+							<% distance = @volunteer.voter_distance(match.voter) %>
+							<% unless distance.nan? %>
+							<li><strong>Proximity to You:</strong> <%= distance %></li>
+							<% end %>
 							<li><strong>Requested Language:</strong> <%= match.voter.languages.join(', ') %></li>
 							<li><strong>English Proficiency:</strong> <%= match.voter.english_comfort %></li>
 						</ul>

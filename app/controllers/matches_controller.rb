@@ -5,6 +5,7 @@ class MatchesController < ApplicationController
 
 	### VOLUNTEER ROUTES
 	def index
+		@volunteer = current_record
 		@requests = current_record.match_requests
 		@accepted = current_record.matches.active
 		@completed = current_record.matches.completed
