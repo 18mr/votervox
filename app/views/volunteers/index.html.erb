@@ -5,8 +5,8 @@
 
 				<h1>VoterVOX Volunteers</h1>
 				<ul class="status">
-						<li><a href="">Pending</a></li>
-						<li><a href="" class="current">Approved</a></li>
+						<li><a href="#" class="pending-volunteers">Pending</a></li>
+						<li><a href="#" class="approved-volunteers">Approved</a></li>
 					</ul>
 					<div class='clear-fix'></div>
 				</div>
@@ -49,7 +49,7 @@
 
 				<% @approved_volunteers.each do |volunteer| %>
 	
-				<div class="volunteer-box">
+				<div class="volunteer-box approved">
 					<div class="image">
 						<img src="<%= volunteer.profile_image.present? ? volunteer.profile_image.url(:square) : asset_path('volunteer.jpg') %>">
 					</div><!--.image-->
@@ -91,7 +91,7 @@
 						<img src="<%= volunteer.profile_image.present? ? volunteer.profile_image.url(:square) : asset_path('volunteer.jpg') %>">
 					</div><!--.image-->
 					<div class="volunteer-info">
-						<span class="mobile-only accepted-tag">Accepted</span>
+						<span class="mobile-only accepted-tag">Pending</span>
 						<h2><%= volunteer.firstname %> <%= volunteer.lastname %>, <%= organization_name volunteer %></h2> 
 						<hr/>
 						<ul>
