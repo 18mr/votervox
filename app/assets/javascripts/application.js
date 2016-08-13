@@ -125,7 +125,22 @@ function mobileNav() {
     
   })
 }
+// Match, UnMatched, Completed Filters
 
+function showVoters(){
+  $('.unmatched-voters').click( function(e){
+    e.preventDefault();
+    $('div.unmatched.voter-box').toggleClass('hide');
+  });
+  $('.matched-voters').click( function(e){
+    e.preventDefault();
+    $('div.matched.voter-box').toggleClass('hide');
+  });
+  $('.completed-matches').click( function(e){
+    e.preventDefault();
+    $('div.completed.voter-box').toggleClass('hide');
+  });
+}
 /* FILE UPLOAD - get filename that will be uploaded and display in fake placeholder field*/
 function getFilePath(){
      $('input[type=file]').change(function () {
@@ -139,6 +154,7 @@ $(document).ready(function(){
   mobileNav();
   $( ".datepicker" ).datepicker();
   getFilePath();
+  showVoters();
 });
 
 //display navigation links if nav is hidden when browser size is larger than tablet
