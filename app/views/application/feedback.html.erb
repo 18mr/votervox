@@ -2,9 +2,8 @@
 	<div class="wrapper">
 		<section class="message">
 
-			<h1>VoterVOX Feedback</h1>
-			<p>We built VoterVOX for you.</p>
-			<p>That's why we'd love any feedback you have on how we can improve this application, what else you'd like, or what you enjoyed.</p>
+			<h1><%= t('feedback.title')%></h1>
+			<p><%= t('feedback.prompt')%></p>
 		</section><!--.message-->
 
 		<section class="feedback">
@@ -12,19 +11,19 @@
 			<%= form_tag submit_feedback_path, method: 'POST' do %>
 				<%= hidden_field_tag 'subject', 'Feedback from ' + @user_type.upcase %>
 
-				<%= field_set_tag 'First Name *' do %>
+				<%= field_set_tag "#{t('feedback.form.firstname')} *" do %>
 					<%= text_field_tag 'firstname', '', { :placeholder => 'First Name' } %>
 				<% end %>
 
-				<%= field_set_tag 'Last Name *' do %>
+				<%= field_set_tag "#{t('feedback.form.lastname')} *" do %>
 					<%= text_field_tag 'lastname', '', { :placeholder => 'Last Name' } %>
 				<% end %>
 
-				<%= field_set_tag 'Email Address *' do %>
+				<%= field_set_tag "#{t('feedback.form.email')} *" do %>
 					<%= text_field_tag 'email', '', { :placeholder => 'Email Address' } %>
 				<% end %>
 
-				<%= field_set_tag 'Your feedback to VoterVOX *' do %>
+				<%= field_set_tag "#{t('feedback.form.feedback')} *" do %>
 					<%= text_area_tag 'message', '', { :placeholder => 'Your feedback to VoterVOX' } %>
 				<% end %>
 
