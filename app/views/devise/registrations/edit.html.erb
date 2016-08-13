@@ -59,6 +59,15 @@
       <% end %>
       <div class="clear-fix"></div>
       </fieldset>
+
+      <div class="fileinputs select-image">
+        <!-- <input class="file" type="file" name="photo" value="Select an image" size="300"> -->
+        <%= f.file_field :profile_image, { :class => "file", :id => "file_upload"} %>
+        <div class="fakefile">
+          <input placeholder="Photo Upload" id="file_name"/>
+          <button class="btn-outline">Select an image</button>
+        </div><!--.fakefile-->
+      </div><!--.file-inputs-->
         
       <div class="passwords">
         <div class="float-left password">
@@ -66,7 +75,7 @@
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
-          <%= f.password_field :password, autocomplete: "off" %>
+          <%= f.password_field :password %>
         </div>
 
         <div class="float-left confirm-password">

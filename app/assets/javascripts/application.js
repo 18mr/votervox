@@ -126,10 +126,19 @@ function mobileNav() {
   })
 }
 
+/* FILE UPLOAD - get filename that will be uploaded and display in fake placeholder field*/
+function getFilePath(){
+     $('input[type=file]').change(function () {
+         var filename=$('#file_upload')[0].files[0].name;
+         $('#file_name').prop('placeholder',filename);
+     });
+}
+
 $(document).ready(function(){
   tooltip();
   mobileNav();
   $( ".datepicker" ).datepicker();
+  getFilePath();
 });
 
 //display navigation links if nav is hidden when browser size is larger than tablet
@@ -141,3 +150,4 @@ $( window ).resize(function() {
     $('header nav').removeClass('hide');
   }
 });
+
