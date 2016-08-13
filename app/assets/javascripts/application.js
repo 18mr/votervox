@@ -149,7 +149,15 @@ function showMatches(){
     $('div.requested.voter-box, div.accepted.voter-box').addClass('hide');
   });
 }
-
+//lightbox display with data attribute lightbox
+function showLightBox() {
+  $('.lightbox-button').click( function(){
+    var lightboxID = $(this).attr('data-lightbox');
+    console.log(lightboxID);
+    $('#'+lightboxID).removeClass('hide');
+    $('.green-overlay').removeClass('hide');
+  });
+}
 
 /* FILE UPLOAD - get filename that will be uploaded and display in fake placeholder field*/
 function getFilePath(){
@@ -165,7 +173,10 @@ $(document).ready(function(){
   $( ".datepicker" ).datepicker();
   getFilePath();
   showMatches();
+  showLightBox() 
 });
+
+
 
 //display navigation links if nav is hidden when browser size is larger than tablet
 

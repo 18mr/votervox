@@ -35,9 +35,7 @@
 						<%= link_to t('voter_dashboard.matched.accept_button'), @match.voter_accept_url, class: "button accept" %>
 						<%= link_to t('voter_dashboard.matched.decline_button'), @match.voter_reject_url, class: "button decline" %>
 						<div class="clear-fix"></div>
-						<a class="request button" data-lightbox="request_time"><%= t('voter_dashboard.matched.reschedule_button')%></a>
-
-						<!--TODO: use JS to reveal the Request a Different Time lightbox, something general for opening up a lightbox-->
+						<a class="request button lightbox-button" data-lightbox="request_time"><%= t('voter_dashboard.matched.reschedule_button')%></a>
 
 					<% end %>
 					
@@ -48,9 +46,6 @@
 		</div><!--.wrapper-->
 	</main>
 
-	
-
-	
 <% if @match.status == MatchesHelper::STATUS_ACCEPTED %>
 	<div id="fade" class="green-overlay"></div><!--.green_overlay-->
 	<div id="accepted_message" class="light">
@@ -93,11 +88,11 @@
 			<p><%= t('voter_dashboard.canceled.prompt')%></p>
 		</div>
 
-	</div><!--#light.not-available-->
+	</div><!--#not-available.light-->
 <% end %>
 
 <div id="fade" class="hide green-overlay"></div><!--.green_overlay-->
-<div id="request_time" class="light hide">
+<div id="request_time" class="light lightbox hide">
 	<div class="close-icon"></div>
 	<h2><%= t('voter_dashboard.reschedule.title')%> </h2>
 	<div class="pink-hr"></div>
