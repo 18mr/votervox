@@ -1,8 +1,10 @@
 <main class="dashboard">
 	<section class="message">
+
 		<h1><%= t('voter_dashboard.cancel_lightbox.title')%></h1>
 
 	</section><!--.message-->
+	
 	<section class="translator-selection">
 		<h2><%= t('voter_dashboard.cancel_lightbox.activate_title')%></h2>
 		<%= link_to t('voter_dashboard.cancel_lightbox.button'), activate_voter_path(@voter), class: "btn-outline" %>
