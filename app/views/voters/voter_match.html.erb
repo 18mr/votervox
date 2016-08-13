@@ -49,7 +49,7 @@
 
 <% if @match.status == MatchesHelper::STATUS_ACCEPTED %>
 	<div id="fade" class="green-overlay"></div><!--.green_overlay-->
-	<div id="accepted_message" class="light">
+	<div id="accepted_message" class="light lightbox">
 		<div class="close-icon"></div>
 		<h2><%= t('voter_dashboard.accepted.title1') %> <%= @volunteer.firstname%> <%= t('voter_dashboard.accepted.title2') %>.</h2>
 		<div class="pink-hr"></div>
@@ -67,7 +67,7 @@
 
 <% if @match.status == MatchesHelper::STATUS_VOTER_DECLINED %>
 	<div id="fade" class="green-overlay"></div><!--.green_overlay-->
-	<div id="decline_message" class="light">
+	<div id="decline_message" class="light lightbox">
 		<div class="close-icon"></div>
 		<h2><%= t('voter_dashboard.declined.title')%></h2>
 		<div class="pink-hr"></div>
@@ -80,7 +80,7 @@
 
 <% if @match.status == MatchesHelper::STATUS_VOLUNTEER_DECLINED %>
 	<div id="fade" class="green-overlay"></div><!--.green_overlay-->
-	<div id="not_available_message" class="light">
+	<div id="not_available_message" class="light lightbox">
 		<div class="close-icon"></div>
 		<h2><%= t('voter_dashboard.canceled.title')%></h2>
 		<div class="pink-hr"></div>

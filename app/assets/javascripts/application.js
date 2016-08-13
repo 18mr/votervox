@@ -157,7 +157,6 @@ function showLightBox() {
     if ($('#'+lightboxID).length) {
       $('#'+lightboxID).removeClass('hide');
       $('.green-overlay').removeClass('hide');
-      closeLightBox();
     }
   });
 }
@@ -183,6 +182,7 @@ $(document).ready(function(){
   getFilePath();
   showMatches();
   showLightBox();
+  closeLightBox();
 });
 
 
