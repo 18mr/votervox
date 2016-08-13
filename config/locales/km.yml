@@ -39,6 +39,8 @@ km:
       firstname: "First Name"
       lastname: "Last Name"
       communication_type: "What is your preferred form of communication?"
+      contact: "Your contact information"
+      contact_placeholder: "Contact Information (phone number or email address)"
       phone: "Phone Number"
       email: "Email Address"
       address: "Your Home Address"
@@ -179,6 +181,8 @@ km:
       lastname: "Last Name"
       email: "Email Address"
       feedback: "Your Feedback to VoterVOX"
-    thank_you: "Thank you for your feedback! It's so important in our work to make VoterVOX work for you"
+    thanks_title: "Thank you for your feedback!"
+    thanks_prompt: "It's so important in our work to make VoterVOX work for you"
+    share: "Please share VoterVOX with your community."
 
 

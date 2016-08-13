@@ -76,7 +76,7 @@ class MatchesController < ApplicationController
 
 		@match.accept!
 		@match.save
-		redirect_to @match.voter_show_url
+		redirect_to @voter.home_url
 	end
 
 	def voter_reject
@@ -96,7 +96,7 @@ class MatchesController < ApplicationController
 		Interaction.create_reschedule(:match_id => @match.id, :message => params[:message])
 		@match.accept!
 		@match.save
-		redirect_to @match.voter_show_url
+		redirect_to @voter.home_url
 	end
 
 
