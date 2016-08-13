@@ -125,6 +125,31 @@ function mobileNav() {
     
   })
 }
+//filter Matches
+function showMatches(){
+  $('a.requested-voters').click( function(e){
+    e.preventDefault();
+    $(this).addClass('current');
+    $('a.accepted-voters, a.completed-matches').removeClass('current');
+    $('div.requested.voter-box').removeClass('hide');
+    $('div.accepted.voter-box, div.completed.voter-box').addClass('hide');
+  });
+  $('a.accepted-voters').click( function(e){
+    e.preventDefault();
+    $(this).addClass('current');
+    $('a.requested-voters, a.completed-matches').removeClass('current');
+    $('div.accepted.voter-box').removeClass('hide');
+    $('div.requested.voter-box, div.completed.voter-box').addClass('hide');
+  });
+  $('a.completed-matches').click( function(e){
+    e.preventDefault();
+    $(this).addClass('current');
+    $('a.accepted-voters, a.requested-voters').removeClass('current');
+    $('div.completed.voter-box').removeClass('hide');
+    $('div.requested.voter-box, div.accepted.voter-box').addClass('hide');
+  });
+}
+
 
 /* FILE UPLOAD - get filename that will be uploaded and display in fake placeholder field*/
 function getFilePath(){
@@ -139,6 +164,7 @@ $(document).ready(function(){
   mobileNav();
   $( ".datepicker" ).datepicker();
   getFilePath();
+  showMatches();
 });
 
 //display navigation links if nav is hidden when browser size is larger than tablet
