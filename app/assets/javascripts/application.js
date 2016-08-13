@@ -151,14 +151,23 @@ function showMatches(){
 }
 //lightbox display with data attribute lightbox
 function showLightBox() {
-  $('.lightbox-button').click( function(){
+  $('.lightbox-button').click( function(e){
+    e.preventDefault();
     var lightboxID = $(this).attr('data-lightbox');
-    console.log(lightboxID);
-    $('#'+lightboxID).removeClass('hide');
-    $('.green-overlay').removeClass('hide');
+    if ($('#'+lightboxID).length) {
+      $('#'+lightboxID).removeClass('hide');
+      $('.green-overlay').removeClass('hide');
+      closeLightBox();
+    }
   });
 }
 
+function closeLightBox() {
+  $('.lightbox .close-icon').click(function(){
+    $(this).parent().addClass('hide');
+    $('.green-overlay').addClass('hide');
+  })
+}
 /* FILE UPLOAD - get filename that will be uploaded and display in fake placeholder field*/
 function getFilePath(){
      $('input[type=file]').change(function () {
@@ -173,7 +182,8 @@ $(document).ready(function(){
   $( ".datepicker" ).datepicker();
   getFilePath();
   showMatches();
-  showLightBox() 
+  showLightBox();
+
 });
 
 

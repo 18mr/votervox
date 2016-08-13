@@ -1,63 +1,54 @@
 <main class="dashboard metrics">
-		<div class="wrapper">
-			<section>
-				<div class="wrapper">
+	<div class="wrapper">
+		<section>
+			<div class="wrapper">
 
-					<h1>VoterVOX Metrics</h1>
+				<h1>VoterVOX Metrics</h1>
 
-					<div class="timeframe-selection">
-						<%= form_tag metrics_path, method: 'GET' do %>
-							<%= hidden_field_tag 'start_date', 1.week.ago %>
-							<%= hidden_field_tag 'end_date', 1.second.ago %>
-							<%= hidden_field_tag 'timeframe', 'week' %>
-							<%= submit_tag 'Last Week' %>
-						<% end %>
+				<div class="timeframe-selection">
+					<%= form_tag metrics_path, method: 'GET' do %>
+						<%= hidden_field_tag 'start_date', 1.week.ago %>
+						<%= hidden_field_tag 'end_date', 1.second.ago %>
+						<%= hidden_field_tag 'timeframe', 'week' %>
+						<%= submit_tag 'Last Week' %>
+					<% end %>
 
-						<%= form_tag metrics_path, method: 'GET' do %>
-							<%= hidden_field_tag 'start_date', 1.month.ago %>
-							<%= hidden_field_tag 'end_date', 1.second.ago %>
-							<%= hidden_field_tag 'timeframe', 'month' %>
-							<%= submit_tag 'Last Month' %>
-						<% end %>
+					<%= form_tag metrics_path, method: 'GET' do %>
+						<%= hidden_field_tag 'start_date', 1.month.ago %>
+						<%= hidden_field_tag 'end_date', 1.second.ago %>
+						<%= hidden_field_tag 'timeframe', 'month' %>
+						<%= submit_tag 'Last Month' %>
+					<% end %>
 
-						<%= form_tag metrics_path, method: 'GET' do %>
-							<%= hidden_field_tag 'start_date', 10.years.ago %>
-							<%= hidden_field_tag 'end_date', 1.second.ago %>
-							<%= hidden_field_tag 'timeframe', 'all_time' %>
-							<%= submit_tag 'All Time' %>
-						<% end %>
-						<div class="clear-fix"></div>
-					</div><!--.timeframe-selection-->
-					<div class="search">
-						<%= form_tag metrics_path, method: 'GET' do %>
-							<%= hidden_field_tag 'timeframe', 'custom' %>
-
-							<%= field_set_tag 'Start Date:' do %>
-								<%= text_field_tag 'start_date', @timeframe == 'custom' ? iso_format(@start_dt) : '', { :placeholder => 'YYYY-MM-DD', :class => 'datepicker' } %>
-							<% end %>
-
-							<%= field_set_tag 'End Date:' do %>
-								<%= text_field_tag 'end_date', @timeframe == 'custom' ? iso_format(@end_dt) : '', { :placeholder => 'YYYY-MM-DD', :class => 'datepicker' } %>
-							<% end %>
-
-							<button class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></button>
-							<div class="clear-fix"></div>
-						<% end %>
-						<div class="clear-fix"></div>
-					</div><!--.search-->
+					<%= form_tag metrics_path, method: 'GET' do %>
+						<%= hidden_field_tag 'start_date', 10.years.ago %>
+						<%= hidden_field_tag 'end_date', 1.second.ago %>
+						<%= hidden_field_tag 'timeframe', 'all_time' %>
+						<%= submit_tag 'All Time' %>
+					<% end %>
 					<div class="clear-fix"></div>
-				</div>
+				</div><!--.timeframe-selection-->
+				<div class="search">
+					<%= form_tag metrics_path, method: 'GET' do %>
+						<%= hidden_field_tag 'timeframe', 'custom' %>
 
-			</section>
+						<%= field_set_tag 'Start Date:' do %>
+							<%= text_field_tag 'start_date', @timeframe == 'custom' ? iso_format(@start_dt) : '', { :placeholder => 'YYYY-MM-DD', :class => 'datepicker' } %>
+						<% end %>
 
+						<%= field_set_tag 'End Date:' do %>
+							<%= text_field_tag 'end_date', @timeframe == 'custom' ? iso_format(@end_dt) : '', { :placeholder => 'YYYY-MM-DD', :class => 'datepicker' } %>
+						<% end %>
 
+						<button class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></button>
+						<div class="clear-fix"></div>
+					<% end %>
+					<div class="clear-fix"></div>
+				</div><!--.search-->
+				<div class="clear-fix"></div>
+			</div>
 
-
-
-
-
-
-
+		</section>
 
 		<section class="overall-metrics">
 			<header>
@@ -71,14 +62,13 @@
 						<div class="details">Total # Languages Supported</div>
 						<div class="clear-fix"></div><!--.clear-fix-->
 					</div><!--.metric-box-->
-					<button class="btn-outline">Breakdown by Language</button>
+					<button class="btn-outline lightbox-button" data-lightbox="number_of_languages" >Breakdown by Language</button>
 
 				</div><!--.metric-->
 				<div class="metric">
 					<div class="metric-box">
 						<div class="number"><%= @metrics[:site_visitors] %></div>
 						<div class="details">Total # Site Visitors</div>
-						
 					</div><!--.metric-box-->
 				</div><!--.metric-->
 
@@ -87,23 +77,20 @@
 						<div class="number"><%= @metrics[:registrations] %></div>
 						<div class="details">Total # of VoterVOX Registrations</div>
 					</div><!--.metric-box-->
-					<button class="btn-outline">Breakdown by Language</button>
+					<button class="btn-outline lightbox-button" data-lightbox="number_of_registrations">Breakdown by Language</button>
 				</div><!--.metric-->
 				<div class="metric">
 					<div class="metric-box">
 						<div class="number"><%= @metrics[:views_per_language] %></div>
 						<div class="details">Total # Views per Language</div>
-						
 					</div><!--.metric-box-->
-					<button class="btn-outline">Breakdown by Language</button>
+					<button class="btn-outline lightbox-button" data-lightbox="number_of_views">Breakdown by Language</button>
 				</div><!--.metric-->
 				<div class="metric">
 					<div class="metric-box">
 						<div class="number">12</div>
 						<div class="details">Total # Languages Supported</div>
-						
 					</div><!--.metric-box-->
-					<button class="btn-outline">Breakdown by Language</button>
 				</div><!--.metric-->
 			</div>
 
@@ -122,38 +109,36 @@
 						<div class="number"><%= @metrics[:volunteer_count] %></div>
 						<div class="details">Total # of Volunteers</div>
 					</div><!--.metric-box-->
-					<button class="btn-outline">Breakdown by Language</button>
+					<button class="btn-outline lightbox-button" data-lightbox="number_of_volunteers">Breakdown by Language</button>
 				</div><!--.metric-->
 				<div class="metric">
 					<div class="metric-box">
 						<div class="number"><%= @metrics[:active_volunteer_count] %></div>
 						<div class="details">Total # Active Volunteers</div>
 					</div><!--.metric-box-->
-					<button class="btn-outline">Breakdown by Language</button>
+					<button class="btn-outline lightbox-button" data-lightbox="active_volunteers">Breakdown by Language</button>
 				</div><!--.metric-->
 
 				<div class="metric">
 					<div class="metric-box">
 						<div class="number"><%= @metrics[:new_volunteer_count] %></div>
 						<div class="details">Total # of New Volunteers</div>
-						
 					</div><!--.metric-box-->
-					<button class="btn-outline">Breakdown by Language</button>
+					<button class="btn-outline lightbox-button" data-lightbox="new_volunteers">Breakdown by Language</button>
 				</div><!--.metric-->
 				<div class="metric">
 					<div class="metric-box">
 						<div class="number"><%= @metrics[:average_duration] %></div>
 						<div class="details">Avg Total Time Spent with a Voter</div>
-						
 					</div><!--.metric-box-->
-					<button class="btn-outline">Breakdown by Language</button>
+					<button class="btn-outline lightbox-button" data-lightbox="avg_time_spent">Breakdown by Language</button>
 				</div><!--.metric-->
 				<div class="metric">
 					<div class="metric-box">
 						<div class="number"><%= @metrics[:min_duration] %></div>
 						<div class="details">Min. Total Time Spent with a Voter</div>
 					</div><!--.metric-box-->
-					<button class="btn-outline">Breakdown by Language</button>
+					<button class="btn-outline lightbox-button" data-lightbox="min_time_spent">Breakdown by Language</button>
 				</div><!--.metric-->
 
 				<div class="metric">
@@ -161,7 +146,7 @@
 						<div class="number"><%= @metrics[:max_duration] %></div>
 						<div class="details">Max. Total Time Spent with a Voter</div>
 					</div><!--.metric-box-->
-					<button class="btn-outline">Breakdown by Language</button>
+					<button class="btn-outline lightbox-button" data-lightbox="max_time_spent">Breakdown by Language</button>
 				</div><!--.metric-->
 				<div class="clear-fix"></div><!--.clear-fix-->
 			</div>
@@ -181,13 +166,12 @@
 						<div class="details">Total # of Voters</div>
 						
 					</div><!--.metric-box-->
-					<button class="btn-outline">Breakdown by Language</button>
+					<button class="btn-outline lightbox-button" data-lightbox="number_of_voters">Breakdown by Language</button>
 				</div><!--.metric-->
 				<div class="metric">
 					<div class="metric-box">
 						<div class="number"><%= @metrics[:active_match_count] %></div>
 						<div class="details">Total # Active Matches</div>
-						
 					</div><!--.metric-box-->
 				</div><!--.metric-->
 
@@ -195,26 +179,23 @@
 					<div class="metric-box">
 						<div class="number"><%= @metrics[:new_voter_count] %></div>
 						<div class="details">Total # New Voters</div>
-						
 					</div><!--.metric-box-->
-					<button class="btn-outline">Breakdown by Language</button>
+					<button class="btn-outline lightbox-button" data-lightbox="new_voters">Breakdown by Language</button>
 				</div><!--.metric-->
 				<div class="metric">
 					<div class="metric-box">
 						<div class="number"><%= @metrics[:completed_match_count] %></div>
 						<div class="details">Total # of Completed Matches</div>
-						
 					</div><!--.metric-box-->
-					<button class="btn-outline">Breakdown by Language</button>
+					<button class="btn-outline lightbox-button" data-lightbox="completed_matches">Breakdown by Language</button>
 				</div><!--.metric-->
 
 				<div class="metric">
 					<div class="metric-box">
 						<div class="number"><%= @metrics[:unmatched_voter_count] %></div>
 						<div class="details">Total # of Voters Without Matches</div>
-						
 					</div><!--.metric-box-->
-					<button class="btn-outline">Breakdown by Language</button>
+					<button class="btn-outline lightbox-button" data-lightbox="unmatched_voters">Breakdown by Language</button>
 				</div><!--.metric-->
 
 				<div class="clear-fix"></div><!--.clear-fix-->
@@ -234,7 +215,7 @@
 	</div><!--.wrapper-->
 </main>
 
-<div id="light" class="hide white_content breakdown-language">
+<div id="number_of_volunteers" class="lightbox hide breakdown-language">
 	<div class="close-icon"></div>
 	<header>
 		<!--TODO: JS to populate title and use JS object to populate rest of lightbox data-->
@@ -293,16 +274,8 @@
 		
 	</div><!--.metric-box-->
 	<div class="clear-fix"></div>
-	<section class="download">
-		<div class="download-report">
-			<span>Download this data report</span>
-			<button>Contact</button>
-			<div class="clear-fix"></div>
-		</div><!--.download-report-->
 
-	</section>
-
-</div><!--.white_content.breakdown-language-->
+</div><!--.lightbox.breakdown-language-->
 
 <div id="fade" class="hide green-overlay"></div><!--.green_overlay-->
 

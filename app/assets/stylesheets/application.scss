@@ -286,6 +286,17 @@ div.alert {
 		}
 	}
 }
+.close-icon {
+	height: 40px;
+	width: 40px;
+	margin: 0px 10px 10px 0px;
+    font-size: 31px;
+    float: right;
+	&:after{
+		content: "\00d7"; /* This will render the 'X' */
+		padding-left: 7px;
+	}
+}
 
 /************************ 
 MOBILE STYLES 
@@ -1277,8 +1288,9 @@ div.green-overlay {
 	top: 0;
 	height: 100%;
 	width: 100%;
+	pointer-events: none;
 }
-div.light, div#light {
+div.light, div.lightbox {
 	width: auto;
 	margin: 15%;
 	background-color: #fff;
@@ -1302,10 +1314,11 @@ div.light, div#light {
 	div.close-icon {
 		position: relative;
 		top: -31px;
-		left: 17px;
+		left: 40px;
 		border: none;
 		color: $darkgrey;
 		margin: 0;
+		cursor: pointer;
 		&:after {
 			padding: 0;
 		}
@@ -1436,7 +1449,7 @@ main.metrics {
 	}
 }
 
-#light.breakdown-language {
+.lightbox.breakdown-language {
 	margin: 0;
 	top: 68px;
 	left: 75px;
@@ -2167,7 +2180,7 @@ section.organizations {
 		}
 
 	}
-	#light.breakdown-language {
+	.lightbox.breakdown-language {
 		width: 630px;
 		top: 5px;
 		left: 5px;
@@ -2413,7 +2426,7 @@ section.organizations {
 	}
 	/* Metrics Dashboard Desktop */
 
-	#light.breakdown-language {
+	.lightbox.breakdown-language {
 		width: 700px;
 		top: 2%;
 		left: 22%;
