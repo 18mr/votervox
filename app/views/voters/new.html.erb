@@ -13,24 +13,24 @@
 			<% end %>
 
 			<div class="float-left first-name">
-				<%= f.label :"First Name*", {:for => "voter_firstname"} %>
-				<%= f.text_field :firstname, { :placeholder => 'First Name', :class => 'first-name' } %>
+				<%= f.label :"#{t('voter_registration.form.firstname')}*", {:for => "voter_firstname"} %>
+				<%= f.text_field :firstname, { :placeholder => "#{t('voter_registration.form.firstname')}", :class => 'first-name' } %>
 			</div>
 
 			<div class="float-left">
-				<%= f.label :"Last Name*", {:for => "voter_lastname"} %>
-				<%= f.text_field :lastname, { :placeholder => 'Last Name', :class => 'last-name' } %>
+				<%= f.label :"#{t('voter_registration.form.lastname')}*", {:for => "voter_lastname"} %>
+				<%= f.text_field :lastname, { :placeholder => "#{t('voter_registration.form.lastname')}", :class => 'last-name' } %>
 			</div>
 
-			<%= f.label :"What is your preferred form of communication?*", {:for => "voter_communication_mode"} %>
+			<%= f.label :"#{t('voter_registration.form.communication_type')}*", {:for => "voter_communication_mode"} %>
 			<%= f.select :communication_mode,
 				options_for_select(@communication_options, @voter.communication_mode || false),
-				{ include_blank: 'Preferred communication' } %>
+				{ include_blank: "#{t('voter_registration.form.communication_type')}" } %>
 
 			<%= f.label :"Your contact information*", {:for => "voter_contact"} %>
 			<%= f.text_field :contact, { :placeholder => 'Contact Information (phone number or email address)' } %>
 
-			<%= f.label :"Your Home Address*", {:for => "address"} %>
+			<%= f.label :"#{t('voter_registration.form.address')}*", {:for => "address"} %>
 			<%= f.text_field :address, { :placeholder => 'Enter your address', :required => true, :id => "autocomplete",
              :onFocus => "geolocate()" } %>
              <input class="field" id="latitude" name="latitude" disabled="true" placeholder="latitude" type="hidden"></input>
@@ -43,7 +43,7 @@
              <input class="field" id="country" name="country" disabled="true" type="hidden"></input>
 
 
-			<%= field_set_tag 'Which language(s) would you like translation help with?*:', class: 'languages' do %>
+			<%= field_set_tag "#{t('voter_registration.form.languages')}*", class: 'languages' do %>
 			<% language_list.each do |language| %>
 				<%= label_tag 'language_'+slugify(language), language do %> 
 				  <%= check_box_tag 'voter[languages][]', language, chosen_language(@voter, language), id: 'language_'+slugify(language) %>
@@ -55,17 +55,17 @@
 			<% end %>
 
 
-			<%= f.label :"How comfortable are you with English?*", {:for => "english_comfort"}  %>
+			<%= f.label :"#{t('voter_registration.form.english_comfort')}*", {:for => "english_comfort"}  %>
 			<%= f.select :english_comfort,
 				options_for_select(@comfort_options, @voter.english_comfort || false),
 				{ include_blank: 'Select One' } %>
 
-			<%= f.label :"Are you a first time voter?", {:for => "first_time_voter" } do %>
-				<%= f.check_box :first_time_voter, { :placeholder => 'Are you a first-time voter?' } %>Are you a first-time voter?
+			<%= f.label :"#{t('voter_registration.form.first_time_voter')}*", {:for => "english_comfort"}, {:for => "first_time_voter" } do %>
+				<%= f.check_box :first_time_voter %><%= t('voter_registration.form.first_time_voter') %>
 			<% end %>
-			<%= f.submit 'Sign Up', :class => 'big-button button' %>
+			<%= f.submit "#{t('voter_registration.button')}", :class => 'big-button button' %>
 			<div class="opt-in-language">
-				By signing up, you are opting to join <a href="">18 Million Rising</a>
+				<%= t('voter_registration.disclaimer') %>
 			</div><!--.opt-in-language-->
 
 		<% end %>
