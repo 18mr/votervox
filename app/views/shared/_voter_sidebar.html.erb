@@ -1,21 +1,21 @@
 <aside class="tablet desktop">
 	<a class="brand" href="/">VoterVox</a>
 	<div class="voter-dashboard">
-		<h1>Voter Dashboard</h1>
+		<h1><%= t( 'voter_dashboard.menu.dashboard') %></h1>
 	</div><!--.voter-dashboard-->
 	
 	<!--TODO: Issue with Hide "Your Translator" on feedback form-->
 	<% if @voter.present? && @voter.active? %>
-	<a href="<%= @voter.home_url%>" class="button <%= at_voter_home? ? "selected" : "pink" %>" >Your Translator</a>
+	<a href="<%= @voter.home_url%>" class="button <%= at_voter_home? ? "selected" : "pink" %>" ><%= t('voter_dashboard.menu.translator') %></a>
 	<% else %>
-	<a href="/voters/new" class="button pink" >Find a Translator</a>
+	<a href="/voters/new" class="button pink" ><%= t('voter_registration.title') %></a>
 	<% end %>
-	<a href="/voter-resources" class="button <%= at_documents? ? "selected" : "pink" %>">Voter Resources</a>
+	<a href="/voter-resources" class="button <%= at_documents? ? "selected" : "pink" %>"><%= t('voter_dashboard.menu.resources')%></a>
 	<a class="button <%= at_feedback? ? "selected" : "pink" %>"  href="/feedback">
-		Give Feedback
+		<%= t('voter_dashboard.menu.feedback')%>
 	</a><!--.mobile-only-->
 	<div class="share-with-community">
-		<div>Share with Your Community</div>
+		<div><%= t('voter_dashboard.menu.share')%></div>
 		<div class="buttons">
 			<a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
 			<a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
