@@ -4,7 +4,6 @@
 		<h1><%= t( 'voter_dashboard.menu.dashboard') %></h1>
 	</div><!--.voter-dashboard-->
 	
-	<!--TODO: Issue with Hide "Your Translator" on feedback form-->
 	<% if @voter.present? && @voter.active? %>
 	<a href="<%= @voter.home_url%>" class="button <%= at_voter_home? ? "selected" : "pink" %>" ><%= t('voter_dashboard.menu.translator') %></a>
 	<% else %>
