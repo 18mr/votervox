@@ -21,10 +21,8 @@
 								</ul>
 							</div><!--.voter-info-->
 							<div class="actions desktop">
-								<button class="decline btn-outline">Decline</button>
 								<% if @match.accepted? %>
-									<%= link_to "Match Completed", "#", class: "button accept" %> test
-									<!--TODO: Add JS to toggle the lightbox for feedback to show up -->
+									<%= link_to "Match Completed", "#", { :class => "lightbox-button button accept", :"data-lightbox" => "accepted"} %>
 								<% end %>
 							</div>
 							<div class="clear-fix"></div>
@@ -51,9 +49,9 @@
 							<% end %>
 						</div><!--.wrapper-->
 					</div><!--.contact-box-->
-					<div class="actions tablet mobile-only">
+					<div class="actions mobile-only tablet">
 						<% if @match.accepted? %>
-							<%= link_to "Match Completed", "#", class: "button accept" %>
+							<%= link_to "Match Completed", "#", { :class => "lightbox-button button accept", :"data-lightbox" => "accepted"} %>
 						<% end %>
 
 						<%= link_to 'Decline', decline_match_path(@match), method: :get, data: { confirm: 'Are you sure you want to decline this match?' }, class: "btn-outline decline" %>
@@ -80,9 +78,9 @@
 	</div><!--.wrapper-->
 </main>
 
-<!--TODO: Add JS to toggle the lightbox for feedback to show up with .show class once they click on Match Completd -->
+
 <% if @match.accepted? %>
-	<div id="light" class="hide">
+	<div id="accepted" class="lightbox light hide">
 		<div class="close-icon"></div>
 		<h2>Thank you for helping out <%= @voter.firstname %>!</h2>
 		
@@ -100,7 +98,7 @@
 		</div><!--.request-->
 
 	</div><!--.white_content-->
-	<div id="fade" class="green-overlay"></div><!--.green_overlay-->
+	<div id="fade" class="green-overlay hide"></div><!--.green_overlay-->
 
 <% end %>
 

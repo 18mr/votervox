@@ -183,7 +183,6 @@ $(document).ready(function(){
   getFilePath();
   showMatches();
   showLightBox();
-
 });
 
 
