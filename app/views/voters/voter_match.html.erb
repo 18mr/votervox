@@ -2,9 +2,9 @@
 		<section class="message">
 			<div class="wrapper">
 
-				<h1>You've been matched!</h1>
+				<h1><%= t('voter_dashboard.matched.title')%></h1>
 
-				<p>Here's your translator.</p>
+				<p><%= t('voter_dashboard.matched.subtitle')%></p>
 
 			</div><!--.wrapper-->
 		</section><!--.message-->
@@ -13,13 +13,13 @@
 			<section class="translator">
 				<img src="<% asset_path('smart-payakaroon.jpg') %>">
 				<div class="details">
-					<h2><%= @volunteer.firstname %> <%= @volunteer.lastname %></h2>
+					<h2><%= t('voter_dashboard.matched.volunteer.name')%>: <%= @volunteer.firstname %> <%= @volunteer.lastname %></h2>
 					<p><%= @volunteer.email %> <%= @volunteer.phone %></p>
 					<hr />
 					<ul>
-						<li><strong>City:</strong> <%= @volunteer.city %></li>
-						<li><strong>Proximity to You:</strong> 19 miles</li>
-						<li><strong>Language(s) Spoken:</strong> <%= @volunteer.languages.join(', ') %></li>
+						<li><strong><%= t('voter_dashboard.matched.volunteer.city')%>:</strong> <%= @volunteer.city %></li>
+						<li><strong><%= t('voter_dashboard.matched.volunteer.proximity')%>:</strong> 19</li>
+						<li><strong><%= t('voter_dashboard.matched.volunteer.languages')%>:</strong> <%= @volunteer.languages.join(', ') %></li>
 					</ul>
 				</div><!--.details-->
 				<div class="clear-fix"></div>
@@ -27,15 +27,15 @@
 		<% if @proposal.present? %>
 			<section class="available-times">
 				<div class="wrapper">
-					<h2><%= @volunteer.firstname %>'s available times:</h2>
+					<h2><%= @volunteer.firstname %>'s <%= t('voter_dashboard.matched.contact')%>:</h2>
 					<textarea readonly><%= @proposal.message %></textarea>
 					
 					<% if @match.proposed? %>
 
-						<%= link_to 'Accept', @match.voter_accept_url, class: "button accept" %>
-						<%= link_to 'Decline', @match.voter_reject_url, class: "button decline" %>
+						<%= link_to t('voter_dashboard.matched.accept_button'), @match.voter_accept_url, class: "button accept" %>
+						<%= link_to t('voter_dashboard.matched.decline_button'), @match.voter_reject_url, class: "button decline" %>
 						<div class="clear-fix"></div>
-						<a class="request button" data-lightbox="request_time">Request a Different Time</a>
+						<a class="request button" data-lightbox="request_time"><%= t('voter_dashboard.matched.reschedule_button')%></a>
 
 						<!--TODO: use JS to reveal the Request a Different Time lightbox, something general for opening up a lightbox-->
 
@@ -48,20 +48,21 @@
 		</div><!--.wrapper-->
 	</main>
 
-	<div id="fade" class="green-overlay hide"></div><!--.green_overlay-->
+	
 
 	
 <% if @match.status == MatchesHelper::STATUS_ACCEPTED %>
-	<div id="accepted_message" class="light hide">
+	<div id="fade" class="green-overlay"></div><!--.green_overlay-->
+	<div id="accepted_message" class="light">
 		<div class="close-icon"></div>
-		<h2>You've accepted Samart as your translator.</h2>
+		<h2><%= t('voter_dashboard.accepted.title1') %> <%= @volunteer.firstname%> <%= t('voter_dashboard.accepted.title2') %>.</h2>
 		<div class="pink-hr"></div>
 		<div>
-			<p>The next step:</p>
-			<p>Samart will contact you to confirm a time and location</p>
+			<p><%= t('voter_dashboard.accepted.prompt1') %></p>
+			<p><%= @volunteer.firstname%> <%= t('voter_dashboard.accepted.prompt2') %>.</p>
 		</div><!--.next-step-->
 		<div class="contact-info pink-box">
-			<p>Samart's Contact Information:</p>
+			<p><%= @volunteer.firstname%>'s <%= t('voter_dashboard.accepted.contact')%>:</p>
 			<div class="phone-number"><%= @volunteer.phone %></div>
 		</div><!--.contact-info-->
 
@@ -69,56 +70,42 @@
 <% end %>
 
 <% if @match.status == MatchesHelper::STATUS_VOTER_DECLINED %>
-	<div id="decline_message" class="light hide">
+	<div id="fade" class="green-overlay"></div><!--.green_overlay-->
+	<div id="decline_message" class="light">
 		<div class="close-icon"></div>
-		<h2>We're sorry this match won't work for you.</h2>
+		<h2><%= t('voter_dashboard.declined.title')%></h2>
 		<div class="pink-hr"></div>
 		<div>
-			<p>But we're looking for a new match now. We'll contact you when we find one.</p>
+			<p><%= t('voter_dashboard.declined.prompt')%></p>
 		</div>
 
 	</div><!--.light#decline_message-->
 <% end %>
 
 <% if @match.status == MatchesHelper::STATUS_VOLUNTEER_DECLINED %>
-	<div id="not_available_message" class="light hide">
+	<div id="fade" class="green-overlay"></div><!--.green_overlay-->
+	<div id="not_available_message" class="light">
 		<div class="close-icon"></div>
-		<h2>Unfortunately your volunteer can no longer meet with you.</h2>
+		<h2><%= t('voter_dashboard.canceled.title')%></h2>
 		<div class="pink-hr"></div>
 		
 		<div>
-			<p>But we're looking for a new match now. We'll contact you when we find one.</p>
+			<p><%= t('voter_dashboard.canceled.prompt')%></p>
 		</div>
 
 	</div><!--#light.not-available-->
 <% end %>
 
-<!--TODO: Match completed should take the voter to a completely new page to fill out their feedback form. Right now it's showing up as a lightbox option. We need another form for requesting a new time instead in the lightbox-->
-<% if @match.status == MatchesHelper::STATUS_COMPLETED %>
-	<h2>Lightbox with match completion information</h2>
-	<%= link_to 'Submit a Match Request', voter_activate_request_path(:hashed_id => @match.voter.hashed_id) %>
-
-	<h3>Submit some feedback!</h3>
-	<%= form_tag submit_feedback_path, method: 'POST' do %>
-		<%= hidden_field_tag 'subject', 'Match completion feedback' %>
-		<%= hidden_field_tag 'voter_id', @match.voter.id %>
-
-		<%= text_area_tag 'message', '', { :placeholder => 'Your feedback to VoterVOX' } %>
-
-		<%= submit_tag 'Submit' %>
-	<% end %>
-<% end %>
-
-
+<div id="fade" class="hide green-overlay"></div><!--.green_overlay-->
 <div id="request_time" class="light hide">
 	<div class="close-icon"></div>
-	<h2>Request a different time with Samart</h2>
+	<h2><%= t('voter_dashboard.reschedule.title')%> </h2>
 	<div class="pink-hr"></div>
 	<div>
 		<%= form_for :match, url: @match.voter_request_time_url, method: 'POST' do |f| %>
-			<h2>Request new time</h2>
-			<textarea name="message" placeholder="Write your date and time preference here."></textarea>
-			<%= f.submit 'Request a Different Time', class: "button request" %>
+			<h2><%=t('voter_dashboard.matched.reschedule_button')%></h2>
+			<textarea name="message" placeholder="<%= t('voter_dashboard.reschedule.prompt')%>"></textarea>
+			<%= f.submit t('voter_dashboard.reschedule.button'), class: "button request" %>
 		<% end %>
 		
 	</div>
