@@ -12,22 +12,22 @@
 				<%= hidden_field_tag 'subject', 'Feedback from ' + @user_type.upcase %>
 
 				<%= field_set_tag "#{t('feedback.form.firstname')} *" do %>
-					<%= text_field_tag 'firstname', '', { :placeholder => 'First Name' } %>
+					<%= text_field_tag 'firstname', '', { :placeholder => "#{t('feedback.form.firstname')}" } %>
 				<% end %>
 
 				<%= field_set_tag "#{t('feedback.form.lastname')} *" do %>
-					<%= text_field_tag 'lastname', '', { :placeholder => 'Last Name' } %>
+					<%= text_field_tag 'lastname', '', { :placeholder => "#{t('feedback.form.lastname')}" } %>
 				<% end %>
 
 				<%= field_set_tag "#{t('feedback.form.email')} *" do %>
-					<%= text_field_tag 'email', '', { :placeholder => 'Email Address' } %>
+					<%= text_field_tag 'email', '', { :placeholder => "#{t('feedback.form.email')}" } %>
 				<% end %>
 
 				<%= field_set_tag "#{t('feedback.form.feedback')} *" do %>
-					<%= text_area_tag 'message', '', { :placeholder => 'Your feedback to VoterVOX' } %>
+					<%= text_area_tag 'message', '', { :placeholder => "#{t('feedback.form.feedback')}" } %>
 				<% end %>
 
-				<%= submit_tag 'Submit', class: "button" %>
+				<%= submit_tag t('voter_dashboard.completed.feedback_button'), class: "button" %>
 
 			<% end %>
 		</section><!--.feedback-->
