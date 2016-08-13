@@ -6,7 +6,7 @@
 
 	</section><!--.message-->
 	<section class="feedback">
-		<p>We'd love your feedback on your experience with Samart, VoterVOX and ways we can improve.</p>
+		<p><%= t('voter_dashboard.completed.feedback_prompt')%></p>
 		<%= form_tag submit_feedback_path, method: 'POST' do %>
 			<%= hidden_field_tag 'subject', 'Feedback from ' + @user_type.upcase %>
 			<%= hidden_field_tag 'firstname', @voter.firstname %>
@@ -17,7 +17,7 @@
 				<%= text_area_tag 'message', '', { :placeholder => 'Your feedback to VoterVOX' } %>
 			<% end %>
 
-			<%= submit_tag 'Submit', class: "button" %>
+			<%= submit_tag t('voter_dashboard.completed.feedback_button'), class: "button" %>
 
 		<% end %>
 		<%= link_to 'Submit a Match Request', activate_voter_path(@voter), class: "btn-outline" %>

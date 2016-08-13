@@ -1,11 +1,11 @@
 <main class="dashboard">
 	<section class="message">
-		<h1>We're sorry to see you go.</h1>
+		<h1><%= t('voter_dashboard.cancel_lightbox.title')%></h1>
 
 	</section><!--.message-->
 	<section class="translator-selection">
-		<h2>Nevermind, I'd like a translator match</h2>
-		<%= link_to 'Submit a Match Request', activate_voter_path(@voter), class: "btn-outline" %>
+		<h2><%= t('voter_dashboard.cancel_lightbox.activate_title')%></h2>
+		<%= link_to t('voter_dashboard.cancel_lightbox.button'), activate_voter_path(@voter), class: "btn-outline" %>
 
 	</section><!--.next-steps-->
 
