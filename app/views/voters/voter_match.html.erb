@@ -11,14 +11,15 @@
 
 		<div class="wrapper">
 			<section class="translator">
-				<img src="<% asset_path('smart-payakaroon.jpg') %>">
+				<img src="<%= @volunteer.profile_image.present? ? @volunteer.profile_image.url(:square) : asset_path('volunteer.jpg') %>">
 				<div class="details">
 					<h2><%= t('voter_dashboard.matched.volunteer.name')%>: <%= @volunteer.firstname %> <%= @volunteer.lastname %></h2>
 					<p><%= @volunteer.email %> <%= @volunteer.phone %></p>
 					<hr />
 					<ul>
+					<% distance = @voter.volunteer_distance(@volunteer) %>
 						<li><strong><%= t('voter_dashboard.matched.volunteer.city')%>:</strong> <%= @volunteer.city %></li>
-						<li><strong><%= t('voter_dashboard.matched.volunteer.proximity')%>:</strong> 19</li>
+						<li><strong><%= t('voter_dashboard.matched.volunteer.proximity')%>:</strong> <%= distance %></li>
 						<li><strong><%= t('voter_dashboard.matched.volunteer.languages')%>:</strong> <%= @volunteer.languages.join(', ') %></li>
 					</ul>
 				</div><!--.details-->

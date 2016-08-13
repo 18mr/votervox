@@ -14,7 +14,8 @@
 								<hr/>
 								<ul>
 									<li><strong>City:</strong> <%= @voter.city %></li>
-									<li><strong>Proximity to You:</strong> 19 miles</li>
+									<% distance = @voter.volunteer_distance(@volunteer) %>
+									<li><strong>Proximity to You:</strong> <%= distance %></li>
 									<li><strong>Requested Language:</strong> <%= @voter.languages.join(', ') %></li>
 									<li><strong>English Proficiency:</strong> <%= @voter.english_comfort %></li>
 								</ul>

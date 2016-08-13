@@ -44,6 +44,11 @@ class Voter < ActiveRecord::Base
 		self.matches.completed.last
 	end
 
+	# Volunteer Match Functions
+	def volunteer_distance volunteer
+		Geocoder::Calculations.distance_between [self.latitude, self.longitude], [voter.latitude, voter.longitude] rescue nil
+	end
+
 	# Helper functions
 	def active?
 		active
