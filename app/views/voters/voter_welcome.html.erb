@@ -5,17 +5,17 @@
 
 		<section class="message">
 			<div class="wrapper">
-				<h1><%= @voter.firstname %>, your translator request has been submitted</h1>
+				<h1><%= t('voter_dashboard.request.title')%></h1>
 			</div>
 		</section><!--.message-->
 		<section class="next-steps">
 			<div class="wrapper">
-				<h2>Your Next Steps</h2>
+				<h2><%= t('voter_dashboard.request.steps_title')%></h2>
 				<ul>
-					<li><strong>Step 1:</strong> You will be contacted once a translator matches up.</li>
-					<li><strong>Step 2:</strong> Set a date, time and location with your translator.</li>
-					<li><strong>Step 3:</strong> Meet in person and get your voting questions answered.</li>
-					<li><strong>Step 4:</strong> Vote!</li>
+					<li><%= t('voter_dashboard.request.step1')%></li>
+					<li><%= t('voter_dashboard.request.step2')%></li>
+					<li><%= t('voter_dashboard.request.step3')%></li>
+					<li><%= t('voter_dashboard.request.step4')%></li>
 				</ul>
 			</div>
 		</section><!--.next-steps-->
@@ -23,7 +23,7 @@
 		<section class="more-info">
 			<div class="wrapper">
 
-				<p>To view your profile, save and use this link:</p>
+				<p><%= t('voter_dashboard.request.profile_link')%></p>
 				<input type="text" value="http://votervox.org<%= @voter.home_url%>">
 				<p>(You will also find this link in your confirmation email).</p>
 			</div><!--.wrapper-->
@@ -31,7 +31,7 @@
 		</section><!--.more-info-->
 		<section class="cancel-request">
 			<div class="wrapper">
-				<%= link_to 'Cancel Your Request', cancel_voter_path(@voter), class: "btn-outline" %>
+				<%= link_to t('voter_dashboard.request.cancel'), cancel_voter_path(@voter), class: "btn-outline" %>
 
 				<div class="clear-fix"></div>
 			</div>
@@ -40,8 +40,8 @@
 
 		<section class="voter-resources">
 			<div class="wrapper">
-				<h2>Feel free to check out our Voter Resources in the mean time.</h2>
-				<a href="/voter-resources" class="button">Voter Resources</a>
+				<h2><%= t('voter_dashboard.request.resource_title') %></h2>
+				<a href="/voter-resources" class="button"><%= t('voter_dashboard.request.button')%></a>
 			</div>
 			
 		</section>
