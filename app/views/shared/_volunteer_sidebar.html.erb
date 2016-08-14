@@ -28,9 +28,9 @@
 		<a href="<%= matches_path %>" class="button <%= at_matches? ? "selected" : "pink" %>">Your Matches</a>
 	<% end %>
 
-	<a href="<%= documents_path %>" class="button <%= at_documents? ? "selected" : "pink" %>" >Voter Resources</a>
+	<a href="<%= documents_path %>" class="button <%= at_documents_index? ? "selected" : "pink" %>" >Voter Resources</a>
 
-	<a href="<%= new_document_path %>" class="button <%= at_documents? ? "selected" : "pink" %>">Add a Translated Resource</a>
+	<a href="<%= new_document_path %>" class="button <%= at_documents_new? ? "selected" : "pink" %>">Add a Translated Resource</a>
 
 	<% if !admin_signed_in? %>
 

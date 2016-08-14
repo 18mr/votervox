@@ -35,9 +35,13 @@ module ApplicationHelper
 	def at_matches? 
 		controller_name == 'matches'
 	end
-	def at_documents? 
-		controller_name == 'documents' && action_name == 'index' || action_name == 'new' || action_name == 'show'
+	def at_documents_index? 
+		controller_name == 'documents' && action_name == 'index'
 	end
+	def at_documents_new? 
+		controller_name == 'documents' && action_name == 'new'
+	end
+
 	def at_voter_home? 
 		controller_name == 'voters' && action_name == 'voter_home'
 	end

@@ -16,7 +16,7 @@
 
 	<% end %>
 
-	<a href="<%= documents_path %>" class="button <%= at_documents? ? "selected" : "pink" %>"><%= t('voter_dashboard.menu.resources')%></a>
+	<a href="<%= documents_path %>" class="button <%= at_documents_index? ? "selected" : "pink" %>"><%= t('voter_dashboard.menu.resources')%></a>
 
 	<a class="button <%= at_feedback? ? "selected" : "pink" %>"  href="<%= feedback_path %>">
 		<%= t('voter_dashboard.menu.feedback')%>
