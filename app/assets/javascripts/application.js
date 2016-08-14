@@ -110,16 +110,19 @@ function tooltip(){
 //Mobile Nav Menu
 
 function mobileNav() {
-  $('.menu-icon').click( function(){
-    $(this).toggleClass('opened');
-
-    if ( $(this).hasClass('opened') ) {
+  $('.menu-icon').click( function(e){
+    e.preventDefault();
+    var menu = $(this);
+    var opened = $(this).hasClass('opened');
+    console.log(opened);
+    if ( !opened ) {
       $('header nav').slideDown(1000, function(){
-        $('header nav').toggleClass('hide');
+        menu.addClass('opened');
+
       });
     } else {
       $('header nav').slideUp(1000, function(){
-        $('header nav').toggleClass('hide');
+        menu.removeClass('opened');
       });
     }
     
