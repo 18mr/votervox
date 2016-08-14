@@ -107,9 +107,9 @@
 							<li><strong>Languages Spoken:</strong> <%= volunteer.languages.join(', ') %></li>
 							<li><strong>Phone Number:</strong> <%= volunteer.phone %></li>
 							<li><strong>Email Address:</strong> <%= volunteer.email %></li>
-							<li><strong>Number of Active Matches:</strong> 5</li>
-							<li><strong>Number of Completed Matches:</strong> 7</li>
-							<li><strong>Total # of Volunteer Hours:</strong> 39</li>
+							<li><strong>Number of Active Matches:</strong> <%= volunteer.matches.active.count %></li>
+							<li><strong>Number of Completed Matches:</strong> <%= volunteer.matches.completed.count %></li>
+							<li><strong>Total # of Volunteer Hours:</strong> <%= (volunteer.total_duration / 60.0).round(1) %></li>
 						</ul>
 					</div><!--.voter-info-->
 					<div class="actions">
