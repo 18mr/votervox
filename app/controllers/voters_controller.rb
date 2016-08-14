@@ -21,6 +21,7 @@ class VotersController < ApplicationController
 		@voter = Voter.new(voter_params)
 
 		if @voter.save
+			# TODO: Send signup confirmation message to voter
 			redirect_to @voter.home_url
 		else
 			@communication_options = Voter.communication_options
@@ -41,6 +42,7 @@ class VotersController < ApplicationController
 		elsif @voter.active?
 			render 'voter_welcome'
 		elsif @completed.present?
+			@user_type = 'Voter'
 			render 'voter_completed'
 		else
 			render 'voter_cancelled'
@@ -50,6 +52,7 @@ class VotersController < ApplicationController
 	def cancel
 		@voter.update(:active => false)
 		@voter.matches.active.each do |match|
+			# TODO: Send email to volunteer about cancelation
 			match.voter_decline!
 			match.save
 		end
