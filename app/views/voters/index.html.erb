@@ -29,6 +29,14 @@
 
 				<% end %>
 
+				<% if @unmatched.length == 0 %>
+
+				<div class="voter-box unmatched">
+					<h2>No Unmatched Voters</h2>
+				</div>
+
+				<% end %>
+
 				<% @matched.each do |voter| %>
 
 				<div class="voter-box matched">
@@ -48,6 +56,14 @@
 
 				<% end %>
 
+				<% if @matched.length == 0 %>
+
+				<div class="voter-box matched">
+					<h2>No Matched Voters</h2>
+				</div>
+
+				<% end %>
+
 				<% @completed.each do |voter| %>
 
 				<div class="voter-box completed">
@@ -64,6 +80,14 @@
 					</div><!--.voter-info-->
 					
 				</div><!--.voter-box-->
+
+				<% end %>
+
+				<% if @completed.length == 0 %>
+
+				<div class="voter-box unmatched">
+					<h2>No Completed Matches</h2>
+				</div>
 
 				<% end %>
 
