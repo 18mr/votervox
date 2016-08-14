@@ -4,7 +4,7 @@
 // Match, UnMatched, Completed Filters
 
 function showVoters(){
-  $('.requested-voters').click( function(e){
+  $('.unmatched-voters').click( function(e){
     e.preventDefault();
     $(this).toggleClass('current');
     $('.matched-voters, .completed-matches').removeClass('current');
