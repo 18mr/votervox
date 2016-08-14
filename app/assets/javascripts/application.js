@@ -128,6 +128,14 @@ function mobileNav() {
     
   })
 }
+
+//open and close filters for /voter-resources & /matches
+function filterShow() {
+  $('a.filters').click( function(){
+    $('section.filters div.filters').toggleClass('hide');
+    $('i.fa').toggleClass('fa-caret-up').toggleClass('fa-caret-down');
+  })
+}
 //filter Matches
 function showMatches(){
   $('a.requested-voters').click( function(e){
@@ -186,6 +194,7 @@ $(document).ready(function(){
   showMatches();
   showLightBox();
   closeLightBox();
+  filterShow();
 });
 
 
