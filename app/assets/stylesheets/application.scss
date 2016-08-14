@@ -197,10 +197,10 @@ hr {
 	font-style: italic;
 }
 .show {
-	display: block;
+	display: block !important;
 }
 .hide {
-	display: none;
+	display: none !important;
 }
 .small {
 	font-size: 10px;

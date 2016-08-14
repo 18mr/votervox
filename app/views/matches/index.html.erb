@@ -63,11 +63,15 @@
 						<% end %>
 					</div><!--.actions-->
 				</div><!--.voter-box-->
-
+				<% end %>
+				<% if @requests.length == 0 %>
+				<div class="voter-box requested">
+								<h2>No Requested Matches</h2>
+				</div>
 				<% end %>
 
 				<% @accepted.each do |match| %>
-				<div class="voter-box accepted">
+				<div class="voter-box accepted hide">
 					<div class="voter-info">
 						<h2><%= match.voter.firstname %> <%= match.voter.lastname %> <span class="accepted-tag desktop">Accepted</span></h2> 
 						<span class="accepted-tag mobile-only">Accepted</span>
@@ -88,9 +92,14 @@
 					</div><!--.actions-->
 				</div><!--.voter-box-->
 				<% end %>
+				<% if @accepted.length == 0 %>
+				<div class="voter-box accepted hide">
+								<h2>No Accepted Matches</h2>
+				</div>
+				<% end %>
 
 				<% @completed.each do |match| %>
-				<div class="voter-box completed">
+				<div class="voter-box completed hide">
 					<div class="voter-info">
 						<h2><%= match.voter.firstname %> <%= match.voter.lastname %> <span class="completed-tag desktop">Completed</span></h2>
 						<span class="completed-tag mobile-only">Completed</span> 
@@ -107,6 +116,11 @@
 					</div><!--.voter-info-->
 					
 				</div><!--.voter-box-->
+				<% end %>
+				<% if @completed.length == 0 %>
+				<div class="voter-box completed hide">
+								<h2>No Completed Matches</h2>
+				</div>
 				<% end %>
 
 			</div><!--.wrapper-->
