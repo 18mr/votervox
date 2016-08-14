@@ -195,6 +195,11 @@ $(document).ready(function(){
   showLightBox();
   closeLightBox();
   filterShow();
+
+  //on homepage language select, submit form
+  $('#locale').change(function() {
+         this.form.submit();
+  });
 });
 
 
