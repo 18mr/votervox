@@ -61,7 +61,7 @@ class MatchesController < ApplicationController
 
 	def show
 		@match = Match.find params[:id]
-		redirect_to :voluneers_home if !check_volunteer_match
+		redirect_to :volunteers_home if !check_volunteer_match
 
 		@proposal = @match.interactions.proposals.first
 		@reschedule = @match.interactions.reschedules.first
