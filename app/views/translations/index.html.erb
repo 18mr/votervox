@@ -1,30 +1,34 @@
-<h1>Translations for <%= t('locale_name', locale: @locale) %></h1>
+<main class="table">
+  <div class="wrapper">
+    <h1>Translations for <%= t('locale_name', locale: @locale) %></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Translation Key</th>
-      <th>English Version</th>
-      <th><%= t('locale_name', locale: @locale) %> Translation</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% translation_keys.each do |key| %>
-      <% translation = translation_for_key(@translations, key) %>
-      <tr id="<%= key %>">
-        <td><%= key %></td>
-        <td><%= t(key, locale: 'en') %></td>
-        <td><%= translation.nil? ? I18n.t(key, locale: @locale) : translation.value %></td>
-        <td>
-          <% if translation.nil? %>
-            <%= link_to "Edit", new_locale_translation_url(@locale, key: key) %>
-          <% else %>
-            <%= link_to "Edit", edit_locale_translation_url(@locale, translation) %>
-            <%= link_to "Reset", locale_translation_url(@locale, translation), method: :delete, data: { confirm: "Are you sure?" } %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <table>
+      <thead>
+        <tr>
+          <th>Translation Key</th>
+          <th>English Version</th>
+          <th><%= t('locale_name', locale: @locale) %> Translation</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% translation_keys.each do |key| %>
+          <% translation = translation_for_key(@translations, key) %>
+          <tr id="<%= key %>">
+            <td><%= key %></td>
+            <td><%= t(key, locale: 'en') %></td>
+            <td><%= translation.nil? ? I18n.t(key, locale: @locale) : translation.value %></td>
+            <td>
+              <% if translation.nil? %>
+                <%= link_to "Edit", new_locale_translation_url(@locale, key: key), class: "button" %>
+              <% else %>
+                <%= link_to "Edit", edit_locale_translation_url(@locale, translation), class: "button" %>
+                <%= link_to "Reset", locale_translation_url(@locale, translation), method: :delete, class: "button btn-outline", data: { confirm: "Are you sure?" } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div><!--.wrapper-->
+</main>

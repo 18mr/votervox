@@ -1557,7 +1557,31 @@ section.organizations {
 		min-height: 0;
 	}
 }
-
+//Translations Table Styling 
+main.table {
+	.wrapper {
+		width: 100%;
+	}
+	table {
+		border: 2px solid $darkgrey;
+		th, td {
+			padding: 10px;
+		}
+		tr {
+			border-bottom: 1px solid $darkgrey;
+			td, th {
+				border-right: 1px solid $darkgrey;
+			}
+		}
+		th {
+			background-color: $pink;
+			opacity: 0.8;
+			color: $white;
+			font-weight: 700;
+			font-size: 20px;
+		}
+	}
+}
 /********************
  TABLET 
 *********************/
@@ -2218,7 +2242,13 @@ section.organizations {
 
 			}
 		}
-
+	}
+	/* Translations Tablet*/
+	main.table {
+		.wrapper {
+			width: 640px;
+			margin: 0 auto;
+		}
 	}
 }
 
@@ -2479,6 +2509,11 @@ section.organizations {
 			span {
 				margin: 0 28px 0 0;
 			}
+		}
+	}
+	main.table {
+		.wrapper {
+			width: 980px;
 		}
 	}
 }
