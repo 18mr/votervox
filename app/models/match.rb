@@ -22,7 +22,7 @@ class Match < ActiveRecord::Base
 		voter_url 'voter_reject'
 	end
 	def voter_request_time_url
-		voter_url 'request_time'
+		voter_url 'voter_request_time'
 	end
 
 	# Helper functions
