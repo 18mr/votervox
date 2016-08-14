@@ -75,20 +75,10 @@
         
       <div class="passwords">
 
-        <div class="float-left password">
-          <%= f.label :password %><i>Enter in your password to update your profile.</i><br />
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
-          <%= f.password_field :password %>
-        </div>
-
-        <div class="float-left confirm-password">
-          <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "off" %>
-        </div>
-        <div class="clear-fix"></div>
-      </div>
+         <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+         <%= f.password_field :current_password, autocomplete: "off" %>
+         
+      </div><!--.passwords-->
 
       <%= f.submit "Update", class: "button" %>
     <% end %>
