@@ -82,12 +82,16 @@ body {
  	margin-bottom: 20px;
  }
 
- a {
+ a, input[type="submit"] {
  	text-decoration: none;
  	color: $darkgrey;
  	:hover {
  		cursor: pointer;
  		pointer-events: default;
+ 	}
+ 	&.current {
+ 		color: $darkgrey;
+ 		font-weight: 700;
  	}
  	&.current:hover {
  		pointer-events: none;
@@ -1073,10 +1077,6 @@ ul.status li {
 	padding-bottom: 10px;
 	a {
 		color: $pink;
-		&.current {
-			color: $darkgrey;
-			font-weight: 700;
-		}
 	}
 	&:after {
 		content: "|";
@@ -1383,6 +1383,7 @@ main.metrics {
 			font-size: 14px;
 			margin-bottom: 0;
 			padding: 0 20px;
+			color: $pink;
 		}
 		form {
 			float: left;
@@ -2502,6 +2503,11 @@ main.table {
 				margin-top: 30px;
 				input[type="submit"] {
 					padding: 0 10px;
+					font-size: 17px;
+					line-height: 17px;
+					&.current {
+						color: $darkgrey;
+					}
 				}
 				form:first-of-type {
 					input[type="submit"] {
@@ -2512,6 +2518,8 @@ main.table {
 			div.search {
 				float: right;
 				width: 52%;
+				max-width: 326px;
+
 			}
 
 		}

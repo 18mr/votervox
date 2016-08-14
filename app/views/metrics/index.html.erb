@@ -13,21 +13,21 @@
 						<%= hidden_field_tag 'start_date', 1.week.ago %>
 						<%= hidden_field_tag 'end_date', 1.second.ago %>
 						<%= hidden_field_tag 'timeframe', 'week' %>
-						<%= submit_tag 'Last Week' %>
+						<%= submit_tag 'Last Week', class: "week" %>
 					<% end %>
 
 					<%= form_tag metrics_path, method: 'GET' do %>
 						<%= hidden_field_tag 'start_date', 1.month.ago %>
 						<%= hidden_field_tag 'end_date', 1.second.ago %>
 						<%= hidden_field_tag 'timeframe', 'month' %>
-						<%= submit_tag 'Last Month' %>
+						<%= submit_tag 'Last Month', class: "month" %>
 					<% end %>
 
 					<%= form_tag metrics_path, method: 'GET' do %>
 						<%= hidden_field_tag 'start_date', 10.years.ago %>
 						<%= hidden_field_tag 'end_date', 1.second.ago %>
 						<%= hidden_field_tag 'timeframe', 'all_time' %>
-						<%= submit_tag 'All Time' %>
+						<%= submit_tag 'All Time', class: "all_time" %>
 					<% end %>
 					<div class="clear-fix"></div>
 				</div><!--.timeframe-selection-->
