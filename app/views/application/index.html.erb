@@ -14,8 +14,8 @@
 		<form action="/" method="GET">
 			<label for="language"><%= t('homepage.prompt') %></label>
 			<%= select_tag :locale, options_for_select(language_options_english, params[:locale] || "en") %>
-			<a class="button find-a-translator" href="/voters/new"><%= t('homepage.voter_button') %></a>
-			<a class="be-a-translator button" href="/volunteer/sign_up"><%= t('homepage.volunteer_button') %></a>
+			<a class="button find-a-translator" href="<%= new_voter_path %>"><%= t('homepage.voter_button') %></a>
+			<a class="be-a-translator button" href="<%= new_volunteer_registration_path %>"><%= t('homepage.volunteer_button') %></a>
 		</form>
 
 	</div><!--.wrapper-->

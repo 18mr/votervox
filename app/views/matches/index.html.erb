@@ -43,7 +43,7 @@
 						<ul>
 							<li><strong>City:</strong> <%= voter.city %></li>
 							<% distance = @volunteer.voter_distance(voter) %>
-							<% unless distance.nan? %>
+							<% unless distance.nil? || distance.nan? %>
 							<li><strong>Proximity to You:</strong> <%= distance %></li>
 							<% end %>
 							<li><strong>Requested Language(s):</strong> <%= voter.languages.join(', ') %></li>
@@ -79,7 +79,7 @@
 						<ul>
 							<li><strong>City:</strong> <%= match.voter.city %></li>
 							<% distance = @volunteer.voter_distance(match.voter) %>
-							<% unless distance.nan? %>
+							<% unless distance.nil? || distance.nan? %>
 							<li><strong>Proximity to You:</strong> <%= distance %></li>
 							<% end %>
 							<li><strong>Requested Language:</strong> <%= match.voter.languages.join(', ') %></li>
@@ -107,7 +107,7 @@
 						<ul>
 							<li><strong>City:</strong> <%= match.voter.city %></li>
 							<% distance = @volunteer.voter_distance(match.voter) %>
-							<% unless distance.nan? %>
+							<% unless distance.nil? || distance.nan? %>
 							<li><strong>Proximity to You:</strong> <%= distance %></li>
 							<% end %>
 							<li><strong>Requested Language:</strong> <%= match.voter.languages.join(', ') %></li>
