@@ -84,6 +84,14 @@
 				</div><!--.volunteer-box-->
 				<% end %>
 
+				<% if @approved_volunteers.length == 0 %>
+
+				<div class="volunteer-box approved">
+					<h2>No Approved Volunteers</h2>
+				</div>
+
+				<% end %>
+
 				<% @pending_volunteers.each do |volunteer| %>
 				
 				<div class="volunteer-box pending">
@@ -119,6 +127,14 @@
 					</div><!--.actions-->
 					
 				</div><!--.volunteer-box-->
+				<% end %>
+
+				<% if @pending_volunteers.length == 0 %>
+
+				<div class="volunteer-box pending hide">
+					<h2>No Pending Volunteers</h2>
+				</div>
+
 				<% end %>
 				</div><!--.wrapper-->
 	
