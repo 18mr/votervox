@@ -57,11 +57,13 @@
 
 				<div class="filter-boxes">
 					<% @languages.each do |language| %>
-					<div class='filter-box'>Language Tag: <%= language %><i class="fa fa-times"></div>
+						<div class='filter-box'>Language Tag: <%= language %><i class="fa fa-times"></i>
+						</div>
 					<% end %>
 
 					<% @resource_type.each do |resource| %>
-					<div class="filter-box">Resource Tag: <%= resource %><i class="fa fa-times"></div>
+						<div class="filter-box">Resource Tag: <%= resource %><i class="fa fa-times"></i>
+						</div>
 					<% end %>
 					<div class="clear-fix"></div>
 				</div><!--.filter-boxes-->
