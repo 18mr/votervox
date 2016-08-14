@@ -19,7 +19,6 @@
 			<img src="<%= @volunteer.profile_image.present? ? @volunteer.profile_image.url(:square) : asset_path('volunteer.jpg') %>">
 			<div class="details">
 				<h2><%= t('voter_dashboard.matched.volunteer.name')%>: <%= @volunteer.firstname %> <%= @volunteer.lastname %></h2>
-				<p><%= @volunteer.email %> <%= @volunteer.phone %></p>
 				<hr />
 				<ul>
 				<% distance = @voter.volunteer_distance(@volunteer) %>
