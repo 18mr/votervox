@@ -17,17 +17,17 @@
 <body class="dashboard">
 	<header class="mobile-only">
 		<div class="wrapper">
-			<a class="brand">VoterVox Branding</a>
+			<a class="brand" href="<%= homepage_path %>">VoterVox Branding</a>
 			<div class="menu-icon"></div>
 			<div class="clear-fix"></div>
 			<div class="green">Volunteer Dashboard</div>
 			<nav class="hide main">
 				<ul>
 					<% if volunteer_signed_in? %>
-					<li><a href="/volunteers/">Getting Started</a></li>
-					<li><a href="/matches">Your Matches</a></li>
-					<li><a href="/voter-resources">Voter Resources</a></li>
-					<li><a href="/voter-resources/new">Add a Translated Resource</a></li>
+					<li><a href="<% volunteers_path %>">Getting Started</a></li>
+					<li><a href="<% matches_path %>">Your Matches</a></li>
+					<li><a href="<%= documents_path %>">Voter Resources</a></li>
+					<li><a href="<%= new_document_path %>">Add a Translated Resource</a></li>
 					<li><%= link_to('Logout', destroy_volunteer_session_path, :method => :delete) %></li>
 					<% else %>
 

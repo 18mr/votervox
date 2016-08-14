@@ -26,9 +26,9 @@
 					<% if @voter.present? %>
 					<li><a href="<%= @voter.home_url%>">Your Translator</a></li>
 					<% else %>
-					<li><a href="/voters/new">Find a Translator</a></li>
+					<li><a href="<%= new_voter_path %>">Find a Translator</a></li>
 					<% end %>
-					<li><a href="/voter-resources">Voter Resources</a></li>
+					<li><a href="<%= new_document_path %>">Voter Resources</a></li>
 					<div class="clear-fix"></div>
 				</ul>
 			</nav>

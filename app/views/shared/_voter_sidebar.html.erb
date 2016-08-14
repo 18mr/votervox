@@ -1,6 +1,6 @@
 <aside class="tablet desktop">
 
-	<a class="brand" href="/">VoterVox</a>
+	<a class="brand" href="<%= homepage_path %>">VoterVox</a>
 
 	<div class="voter-dashboard">
 		<h1><%= t( 'voter_dashboard.menu.dashboard') %></h1>
@@ -16,9 +16,9 @@
 
 	<% end %>
 
-	<a href="/voter-resources" class="button <%= at_documents? ? "selected" : "pink" %>"><%= t('voter_dashboard.menu.resources')%></a>
+	<a href="<%= documents_path %>" class="button <%= at_documents? ? "selected" : "pink" %>"><%= t('voter_dashboard.menu.resources')%></a>
 
-	<a class="button <%= at_feedback? ? "selected" : "pink" %>"  href="/feedback">
+	<a class="button <%= at_feedback? ? "selected" : "pink" %>"  href="<%= feedback_path %>">
 		<%= t('voter_dashboard.menu.feedback')%>
 	</a>
 

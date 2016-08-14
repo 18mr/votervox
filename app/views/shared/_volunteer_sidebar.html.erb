@@ -1,6 +1,6 @@
 <aside class="tablet desktop">
 
-	<a class="brand" href="/">VoterVox</a>
+	<a class="brand" href="<%= homepage_path %>">VoterVox</a>
 	
 	<div class="volunteer-dashboard">
 
@@ -15,27 +15,26 @@
 	</div><!--.volunteer-dashboard-->
 
 	<% if admin_signed_in? %>
-		<a class="button <%= at_voters_list? ? "selected" : "pink" %>" href="/voters">
+		<a class="button <%= at_voters_list? ? "selected" : "pink" %>" href="<%= voters_path %>">
 			Voters
 		</a>
-		<a class="button <%= at_volunteer_list? ? "selected" : "pink" %>" href="/volunteers">Volunteers</a>
-		<a href="/organizations" class="button <%= at_organization_home? ? "selected" : "pink" %>">Organizations</a>
-		<a href="/metrics" class="button <%= at_metrics? ? "selected" : "pink" %>">Metrics</a>
+		<a class="button <%= at_volunteer_list? ? "selected" : "pink" %>" href="<%= volunteers_path %>">Volunteers</a>
+		<a href="<%= organizations_path %>" class="button <%= at_organization_home? ? "selected" : "pink" %>">Organizations</a>
+		<a href="<%= metrics_path %>" class="button <%= at_metrics? ? "selected" : "pink" %>">Metrics</a>
 
 	<% else %>
 
-		<a href="/volunteers/home" class="button <%= at_volunteer_home? ? "selected" : "pink" %>">Getting Started</a>
-		<a href="/matches" class="button <%= at_matches? ? "selected" : "pink" %>">Your Matches</a>
-
+		<a href="<%= volunteers_home_path %>" class="button <%= at_volunteer_home? ? "selected" : "pink" %>">Getting Started</a>		
+		<a href="<%= matches_path %>" class="button <%= at_matches? ? "selected" : "pink" %>">Your Matches</a>
 	<% end %>
 
-	<a href="/voter-resources" class="button <%= at_documents? ? "selected" : "pink" %>" >Voter Resources</a>
+	<a href="<%= documents_path %>" class="button <%= at_documents? ? "selected" : "pink" %>" >Voter Resources</a>
 
-	<a href="/voter-resources/new" class="button <%= at_documents? ? "selected" : "pink" %>">Add a Translated Resource</a>
+	<a href="<%= new_document_path %>" class="button <%= at_documents? ? "selected" : "pink" %>">Add a Translated Resource</a>
 
 	<% if !admin_signed_in? %>
 
-		<a class="button <%= at_feedback? ? "selected" : "pink" %>"  href="/feedback">
+		<a class="button <%= at_feedback? ? "selected" : "pink" %>"  href="<%= feedback_path %>">
 			Give Feedback
 		</a>
 
