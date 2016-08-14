@@ -24,7 +24,11 @@
 				<ul>
 				<% distance = @voter.volunteer_distance(@volunteer) %>
 					<li><strong><%= t('voter_dashboard.matched.volunteer.city')%>:</strong> <%= @volunteer.city %></li>
+
+					<% unless distance.nil? || distance.nan? %>
 					<li><strong><%= t('voter_dashboard.matched.volunteer.proximity')%>:</strong> <%= distance %></li>
+					<% end %>
+					
 					<li><strong><%= t('voter_dashboard.matched.volunteer.languages')%>:</strong> <%= @volunteer.languages.join(', ') %></li>
 				</ul>
 			</div><!--.details-->

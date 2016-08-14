@@ -14,7 +14,11 @@
 								<ul>
 									<li><strong>City:</strong> <%= @voter.city %></li>
 									<% distance = @voter.volunteer_distance(@volunteer) %>
+
+									<% unless distance.nil? || distance.nan? %>
 									<li><strong>Proximity to You:</strong> <%= distance %></li>
+									<% end %>
+
 									<li><strong>Requested Language:</strong> <%= @voter.languages.join(', ') %></li>
 									<li><strong>English Proficiency:</strong> <%= @voter.english_comfort %></li>
 								</ul>
