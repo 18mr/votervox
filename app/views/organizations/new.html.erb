@@ -1,6 +1,9 @@
 <main class="dashboard">
+
 	<div class="wrapper">
+
 		<section>
+
 			<h1>Add an Organization</h1>
 
 			<%= form_for :organization, url: organizations_path, method: 'POST' do |f| %>
@@ -19,7 +22,10 @@
 				<%= f.submit 'Add Organization', :class => 'button big-button' %>
 
 			<% end %>
+			
 		</section>
-	</div>
-</main>
+
+	</div><!--.wrapper-->
+
+</main><!--.dashboard-->
 

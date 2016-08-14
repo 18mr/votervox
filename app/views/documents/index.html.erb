@@ -1,5 +1,7 @@
 <main class="dashboard">
+
 	<div class="wrapper">
+
 		<section class="message">
 			<div class="wrapper">
 				<h1>Resources for You</h1>
@@ -7,6 +9,7 @@
 		</section><!--.message-->
 
 		<section class="filters">
+
 			<a class="filters" href="#">Search Filters<i class="fa fa-caret-up" aria-hidden="true"></i></a>
 			<div class="close filters">
 				<div class="wrapper">
@@ -41,13 +44,17 @@
 					<% end %>
 
 					<div class="clear-fix"></div>
+
 				</div><!--.wrapper-->
 
 			</div><!--.close.filters-->
+
 		</section><!--.filters-->
 
 		<section class="resources">
+
 			<div class="wrapper">
+
 				<div class="filter-boxes">
 					<% @languages.each do |language| %>
 					<div class='filter-box'>Language Tag: <%= language %><i class="fa fa-times"></div>
@@ -74,7 +81,9 @@
 				<div class="clear-fix"></div><!--.clear-fix-->
 			
 			</div><!--.wrapper-->
-		</section><!--.resources-->	
-	</div><!--.wrapper-->
-</main>
 
+		</section><!--.resources-->	
+
+	</div><!--.wrapper-->
+
+</main><!--.dashboard-->

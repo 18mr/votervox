@@ -8,6 +8,7 @@
 </section><!--.hero-->
 
 <section class="getting-started">
+
 	<div class="wrapper">
 		<h2><%= t('homepage.title') %></h2>
 		<form action="/" method="GET">
@@ -16,41 +17,57 @@
 			<a class="button find-a-translator" href="/voters/new"><%= t('homepage.voter_button') %></a>
 			<a class="be-a-translator button" href="/volunteer/sign_up"><%= t('homepage.volunteer_button') %></a>
 		</form>
-		
 
 	</div><!--.wrapper-->
 
 </section> <!--.getting-started-->
 
 <section class="how-it-works">
+
 	<div class="wrapper">
+
 		<h2><%= t('homepage.title') %></h2>
+
 		<div class="step">			
+
 			<div class="description">
 				<div class="number">1</div><!--.number-->
 				<%= t('homepage.step1') %>
 			</div><!--.description-->
+
 			<img src="<% asset_path('persons.jpg')%>">
+
 			<div class="clear-fix"></div>
+
 		</div><!--.step-->
+
 		<div class="step">
 			<img src="<% asset_path('forms.jpg')%>" >
+
 			<div class="description">
 				<div class="number">2</div><!--.number-->
 				<%= t('homepage.step2') %>
 			</div><!--.description-->
+
 			<div class="clear-fix"></div>
+
 		</div><!--.step-->
+
 		<div class="step">
 			
 			<div class="description">
+
 				<div class="number">3</div><!--.number-->
 				<%= t('homepage.step3') %>
+
 			</div><!--.description-->
+
 			<img src="<% asset_path('persons.jpg')%>" class="float-right">
+
 			<div class="clear-fix"></div>
+
 		</div><!--.step-->
 
 	</div><!--.wrapper-->
 
-</section>
+</section><!--.how-it-works-->

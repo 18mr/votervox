@@ -1,4 +1,5 @@
 <main class="page">
+
 	<div class="wrapper">
 		<%= form_for @translation, url: locale_translation_path do |form| %>
 		  <%= form.label :locale %> <%= form.text_field :locale, readonly: true %>
@@ -8,5 +9,6 @@
 		  <%= form.submit 'Save Translation', class: "button" %> <%= link_to "Cancel", locale_translations_url(@locale), class: "btn-outline button" %>
 		<% end %>
 	</div>
+	
 </main>
 

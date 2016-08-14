@@ -1,53 +1,67 @@
 <main class="dashboard">
-		<section class="message">
-			<div class="wrapper">
 
-				<h1><%= t('voter_dashboard.matched.title')%></h1>
-
-				<p><%= t('voter_dashboard.matched.subtitle')%></p>
-
-			</div><!--.wrapper-->
-		</section><!--.message-->
+	<section class="message">
 
 		<div class="wrapper">
-			<section class="translator">
-				<img src="<%= @volunteer.profile_image.present? ? @volunteer.profile_image.url(:square) : asset_path('volunteer.jpg') %>">
-				<div class="details">
-					<h2><%= t('voter_dashboard.matched.volunteer.name')%>: <%= @volunteer.firstname %> <%= @volunteer.lastname %></h2>
-					<p><%= @volunteer.email %> <%= @volunteer.phone %></p>
-					<hr />
-					<ul>
-					<% distance = @voter.volunteer_distance(@volunteer) %>
-						<li><strong><%= t('voter_dashboard.matched.volunteer.city')%>:</strong> <%= @volunteer.city %></li>
-						<li><strong><%= t('voter_dashboard.matched.volunteer.proximity')%>:</strong> <%= distance %></li>
-						<li><strong><%= t('voter_dashboard.matched.volunteer.languages')%>:</strong> <%= @volunteer.languages.join(', ') %></li>
-					</ul>
-				</div><!--.details-->
-				<div class="clear-fix"></div>
-			</section><!--.translator-->
-		<% if @proposal.present? %>
-			<section class="available-times">
-				<div class="wrapper">
-					<h2><%= @volunteer.firstname %>'s <%= t('voter_dashboard.matched.contact')%>:</h2>
-					<textarea readonly><%= @proposal.message %></textarea>
-					
-					<% if @match.proposed? %>
 
-						<%= link_to t('voter_dashboard.matched.accept_button'), @match.voter_accept_url, class: "button accept" %>
-						<%= link_to t('voter_dashboard.matched.decline_button'), @match.voter_reject_url, class: "button decline" %>
-						<div class="clear-fix"></div>
-						<a class="request button lightbox-button" data-lightbox="request_time"><%= t('voter_dashboard.matched.reschedule_button')%></a>
+			<h1><%= t('voter_dashboard.matched.title')%></h1>
 
-					<% end %>
-					
-				</div><!--.wrapper-->
-			</section><!--.available-times-->
+			<p><%= t('voter_dashboard.matched.subtitle')%></p>
 
-		<% end %>
 		</div><!--.wrapper-->
-	</main>
+
+	</section><!--.message-->
+
+	<div class="wrapper">
+
+		<section class="translator">
+
+			<img src="<%= @volunteer.profile_image.present? ? @volunteer.profile_image.url(:square) : asset_path('volunteer.jpg') %>">
+			<div class="details">
+				<h2><%= t('voter_dashboard.matched.volunteer.name')%>: <%= @volunteer.firstname %> <%= @volunteer.lastname %></h2>
+				<p><%= @volunteer.email %> <%= @volunteer.phone %></p>
+				<hr />
+				<ul>
+				<% distance = @voter.volunteer_distance(@volunteer) %>
+					<li><strong><%= t('voter_dashboard.matched.volunteer.city')%>:</strong> <%= @volunteer.city %></li>
+					<li><strong><%= t('voter_dashboard.matched.volunteer.proximity')%>:</strong> <%= distance %></li>
+					<li><strong><%= t('voter_dashboard.matched.volunteer.languages')%>:</strong> <%= @volunteer.languages.join(', ') %></li>
+				</ul>
+			</div><!--.details-->
+
+			<div class="clear-fix"></div>
+
+		</section><!--.translator-->
+
+	<% if @proposal.present? %>
+
+		<section class="available-times">
+
+			<div class="wrapper">
+
+				<h2><%= @volunteer.firstname %>'s <%= t('voter_dashboard.matched.contact')%>:</h2>
+				<textarea readonly><%= @proposal.message %></textarea>
+				
+				<% if @match.proposed? %>
+
+					<%= link_to t('voter_dashboard.matched.accept_button'), @match.voter_accept_url, class: "button accept" %>
+					<%= link_to t('voter_dashboard.matched.decline_button'), @match.voter_reject_url, class: "button decline" %>
+					<div class="clear-fix"></div>
+					<a class="request button lightbox-button" data-lightbox="request_time"><%= t('voter_dashboard.matched.reschedule_button')%></a>
+				<% end %>
+				
+			</div><!--.wrapper-->
+
+		</section><!--.available-times-->
+
+	<% end %>
+
+	</div><!--.wrapper-->
+
+</main>
 
 <% if @match.status == MatchesHelper::STATUS_ACCEPTED %>
+
 	<div id="fade" class="green-overlay"></div><!--.green_overlay-->
 	<div id="accepted_message" class="light lightbox">
 		<div class="close-icon"></div>
@@ -63,9 +77,11 @@
 		</div><!--.contact-info-->
 
 	</div><!--.light#accepted_message-->
+
 <% end %>
 
 <% if @match.status == MatchesHelper::STATUS_VOTER_DECLINED %>
+
 	<div id="fade" class="green-overlay"></div><!--.green_overlay-->
 	<div id="decline_message" class="light lightbox">
 		<div class="close-icon"></div>
@@ -76,9 +92,11 @@
 		</div>
 
 	</div><!--.light#decline_message-->
+
 <% end %>
 
 <% if @match.status == MatchesHelper::STATUS_VOLUNTEER_DECLINED %>
+
 	<div id="fade" class="green-overlay"></div><!--.green_overlay-->
 	<div id="not_available_message" class="light lightbox">
 		<div class="close-icon"></div>
@@ -90,14 +108,18 @@
 		</div>
 
 	</div><!--#not-available.light-->
+
 <% end %>
 
 <div id="fade" class="hide green-overlay"></div><!--.green_overlay-->
+
 <div id="request_time" class="light lightbox hide">
+
 	<div class="close-icon"></div>
 	<h2><%= t('voter_dashboard.reschedule.title')%> </h2>
 	<div class="pink-hr"></div>
 	<div>
+	
 		<%= form_for :match, url: @match.voter_request_time_url, method: 'POST' do |f| %>
 			<h2><%=t('voter_dashboard.matched.reschedule_button')%></h2>
 			<textarea name="message" placeholder="<%= t('voter_dashboard.reschedule.prompt')%>"></textarea>

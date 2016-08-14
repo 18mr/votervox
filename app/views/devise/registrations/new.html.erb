@@ -1,6 +1,9 @@
 <main class="sign-up">
+
   <div class="wrapper">
+
     <h1>Be a Translator</h1>
+
     <div class="pink-line">
       <span><h3>Registration</h3></span>
     </div><!--.pink-line--> 
@@ -67,30 +70,39 @@
       <div class="fileinputs select-image">
         <!-- <input class="file" type="file" name="photo" value="Select an image" size="300"> -->
         <%= f.file_field :profile_image, { :class => "file", :id => "file_upload"} %>
+
         <div class="fakefile">
           <input placeholder="Photo Upload" id="file_name"/>
           <button class="btn-outline">Select an image</button>
         </div><!--.fakefile-->
+
       </div><!--.file-inputs-->
 
       <div class="passwords">
+
         <div class="float-left password">
           <%= f.label :password %>
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
           <%= f.password_field :password %>
-        </div>
+        </div><!--password-->
 
         <div class="float-left confirm-password">
           <%= f.label :password_confirmation %><br />
           <%= f.password_field :password_confirmation, autocomplete: "off" %>
-        </div>
+        </div><!--.confirm-password-->
+
         <div class="clear-fix"></div>
-      </div>
+
+      </div><!--.passwords-->
+
       <%= f.submit "Sign up", class: "button" %>
+
     <% end %>
 
     <%= render "devise/shared/links" %>
+
   </div><!--.wrapper-->
-</main>
+
+</main><!--.sign-up-->

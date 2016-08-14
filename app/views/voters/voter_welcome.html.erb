@@ -1,14 +1,20 @@
 <main class="dashboard">
+
 	<div class="wrapper">
+
 		<div class="notice"><%= notice %></div>
 		<div class="alert"><%= alert %></div>
 
 		<section class="message">
+
 			<div class="wrapper">
 				<h1><%= t('voter_dashboard.request.title')%></h1>
 			</div>
+
 		</section><!--.message-->
+
 		<section class="next-steps">
+
 			<div class="wrapper">
 				<h2><%= t('voter_dashboard.request.steps_title')%></h2>
 				<ul>
@@ -18,32 +24,39 @@
 					<li><%= t('voter_dashboard.request.step4')%></li>
 				</ul>
 			</div>
+
 		</section><!--.next-steps-->
 
 		<section class="more-info">
+
 			<div class="wrapper">
 
 				<p><%= t('voter_dashboard.request.profile_link')%></p>
 				<input type="text" value="http://votervox.org<%= @voter.home_url%>">
 				<p>(You will also find this link in your confirmation email).</p>
+
 			</div><!--.wrapper-->
 
 		</section><!--.more-info-->
+
 		<section class="cancel-request">
+
 			<div class="wrapper">
 				<%= link_to t('voter_dashboard.request.cancel'), cancel_voter_path(@voter), class: "btn-outline" %>
-
 				<div class="clear-fix"></div>
-			</div>
+
+			</div><!--.wrapper-->
 			
-		</section>
+		</section><!--.cancel-request-->
 
 		<section class="voter-resources">
 			<div class="wrapper">
 				<h2><%= t('voter_dashboard.request.resource_title') %></h2>
 				<a href="/voter-resources" class="button"><%= t('voter_dashboard.request.button')%></a>
-			</div>
+			</div><!--.wrapper-->
 			
-		</section>
-	</div>
-</main>
+		</section><!--.voter-resources-->
+
+	</div><!--.wrapper-->
+
+</main><!--.dashboard-->

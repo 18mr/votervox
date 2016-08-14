@@ -1,141 +1,178 @@
-	<main class="dashboard">
-		<div class="wrapper">
-			<section class="message">
+<main class="dashboard">
+
+	<div class="wrapper">
+
+		<section class="message">
+		
+			<div class="wrapper">
+
+			<h1>VoterVOX Volunteers</h1>
+			<ul class="status">
+					<li><a href="#" class="pending-volunteers">Pending</a></li>
+					<li><a href="#" class="approved-volunteers">Approved</a></li>
+				</ul>
+				<div class='clear-fix'></div>
+			</div>
+
+		</section><!--.message-->
+
+		<section class="filters">
+
+			<div class='wrapper'>
+				<a class="filters" href="#">Search Filters<i class="fa fa-caret-up" aria-hidden="true"></i></a>
+			</div>
+
+			<div class="close filters">
 				<div class="wrapper">
-
-				<h1>VoterVOX Volunteers</h1>
-				<ul class="status">
-						<li><a href="#" class="pending-volunteers">Pending</a></li>
-						<li><a href="#" class="approved-volunteers">Approved</a></li>
-					</ul>
-					<div class='clear-fix'></div>
-				</div>
-			</section><!--.message-->
-
-			<section class="filters">
-				<div class='wrapper'>
-					<a class="filters" href="#">Search Filters<i class="fa fa-caret-up" aria-hidden="true"></i></a>
-				</div>
-				<div class="close filters">
-					<div class="wrapper">
-						<%= form_tag documents_path, method: 'GET' do %>
-							<fieldset class="languages">
-							<!--TODO: JS and backend coding to check that one checbox is filled out-->
-								<legend>Language</legend>
-								<% language_list.each do |language| %>
+					<%= form_tag documents_path, method: 'GET' do %>
+						<fieldset class="languages">
+						<!--TODO: JS and backend coding to check that one checbox is filled out-->
+							<legend>Language</legend>
+							<% language_list.each do |language| %>
 								<%= label_tag 'language_'+slugify(language), language do %> 
 								  <%= check_box_tag 'languages[]', language, @languages.include?(language), id: 'language_'+slugify(language) %>
 								  <%=language%>
 								<% end %>
-								<% end %>
-							</fieldset><!--.languages-->
-							
-							<fieldset class="location">
-								<label for="location">Location</label>
-								<%= text_field_tag 'location', @location, placeholder: "City, County, State or National" %>
-								<input class="button" type="button" value="Search">
-							</fieldset>
-							<div class="clear-fix"></div>
-						<% end %>
-					</div><!--.wrapper-->
+							<% end %>
 
-				</div><!--.close.filters-->
-				
-			</section><!--.filters-->
-
-			<section class="match-results accepted">
-				<div class="wrapper">
-
-
-				<% @approved_volunteers.each do |volunteer| %>
-	
-				<div class="volunteer-box approved">
-					<div class="image">
-						<img src="<%= volunteer.profile_image.present? ? volunteer.profile_image.url(:square) : asset_path('volunteer.jpg') %>">
-					</div><!--.image-->
-					<div class="volunteer-info">
-						<span class="mobile-only accepted-tag">Accepted</span>
-						<h2><%= volunteer.firstname %> <%= volunteer.lastname %>, <%= organization_name volunteer %><span class="desktop accepted-tag">Accepted</span></h2> 
-						<hr/>
-						<ul>
-							<li><strong>City:</strong> <%= volunteer.city %></li>
-							<li><strong>Languages Spoken:</strong> <%= volunteer.languages.join(', ') %></li>
-							<li><strong>Phone Number:</strong> <%= volunteer.phone %></li>
-							<li><strong>Email Address:</strong> <%= volunteer.email %></li>
-							<li><strong>Number of Active Matches:</strong> <%= volunteer.matches.active.count %></li>
-							<li><strong>Number of Completed Matches:</strong> <%= volunteer.matches.completed.count %></li>
-							<li><strong>Total # of Volunteer Hours:</strong> <%= (volunteer.total_duration / 60.0).round(1) %></li>
-						</ul>
-					</div><!--.voter-info-->
-					<div class="actions">
+						</fieldset><!--.languages-->
 						
-						<% if volunteer.unapproved? %>
-						<%= link_to 'Approve', approve_volunteer_path(volunteer), class: "button accept" %>
-						<% end %>
+						<fieldset class="location">
 
-						<%= link_to 'Ban', ban_volunteer_path(volunteer), method: :get, class: "deactivate btn-outline", data: { confirm: 'Are you sure you want to ban this volunteer?' } %>
+							<label for="location">Location</label>
+							<%= text_field_tag 'location', @location, placeholder: "City, County, State or National" %>
+							<input class="button" type="button" value="Search">
 
-						<% if !volunteer.admin? %>
-						<%= link_to 'Make Admin', make_admin_volunteer_path(volunteer), class: "btn-outline", method: :get,
-							data: { confirm: 'Are you sure you want to make this volunteer an administrator?' } %>
-						<% end %>
-					</div><!--.actions-->
-					
-				</div><!--.volunteer-box-->
-				<% end %>
+						</fieldset>
 
-				<% if @approved_volunteers.length == 0 %>
+						<div class="clear-fix"></div>
 
-				<div class="volunteer-box approved">
-					<h2>No Approved Volunteers</h2>
-				</div>
+					<% end %>
 
-				<% end %>
-
-				<% @pending_volunteers.each do |volunteer| %>
-				
-				<div class="volunteer-box pending">
-					<div class="image">
-						<img src="<%= volunteer.profile_image.present? ? volunteer.profile_image.url(:square) : asset_path('volunteer.jpg') %>">
-					</div><!--.image-->
-					<div class="volunteer-info">
-						<span class="mobile-only accepted-tag">Pending</span>
-						<h2><%= volunteer.firstname %> <%= volunteer.lastname %>, <%= organization_name volunteer %></h2> 
-						<hr/>
-						<ul>
-							<li><strong>City:</strong> <%= volunteer.city %></li>
-							<li><strong>Languages Spoken:</strong> <%= volunteer.languages.join(', ') %></li>
-							<li><strong>Phone Number:</strong> <%= volunteer.phone %></li>
-							<li><strong>Email Address:</strong> <%= volunteer.email %></li>
-							<li><strong>Number of Active Matches:</strong> <%= volunteer.matches.active.count %></li>
-							<li><strong>Number of Completed Matches:</strong> <%= volunteer.matches.completed.count %></li>
-							<li><strong>Total # of Volunteer Hours:</strong> <%= (volunteer.total_duration / 60.0).round(1) %></li>
-						</ul>
-					</div><!--.voter-info-->
-					<div class="actions">
-						
-						<% if volunteer.unapproved? %>
-						<%= link_to 'Approve', approve_volunteer_path(volunteer), class: "button accept" %>
-						<% end %>
-
-						<%= link_to 'Ban', ban_volunteer_path(volunteer), method: :get, class: "deactivate btn-outline", data: { confirm: 'Are you sure you want to ban this volunteer?' } %>
-
-						<% if !volunteer.admin? %>
-						<%= link_to 'Make Admin', make_admin_volunteer_path(volunteer), class: "btn-outline", method: :get,
-							data: { confirm: 'Are you sure you want to make this volunteer an administrator?' } %>
-						<% end %>
-					</div><!--.actions-->
-					
-				</div><!--.volunteer-box-->
-				<% end %>
-
-				<% if @pending_volunteers.length == 0 %>
-
-				<div class="volunteer-box pending hide">
-					<h2>No Pending Volunteers</h2>
-				</div>
-
-				<% end %>
 				</div><!--.wrapper-->
-	
-			</section><!--.match-results-->
+
+			</div><!--.close.filters-->
+			
+		</section><!--.filters-->
+
+		<section class="match-results accepted">
+
+			<div class="wrapper">
+
+			<% @approved_volunteers.each do |volunteer| %>
+
+			<div class="volunteer-box approved">
+
+				<div class="image">
+					<img src="<%= volunteer.profile_image.present? ? volunteer.profile_image.url(:square) : asset_path('volunteer.jpg') %>">
+				</div><!--.image-->
+
+				<div class="volunteer-info">
+
+					<span class="mobile-only accepted-tag">Accepted</span>
+
+					<h2><%= volunteer.firstname %> <%= volunteer.lastname %>, <%= organization_name volunteer %><span class="desktop accepted-tag">Accepted</span></h2> 
+
+					<hr/>
+
+					<ul>
+						<li><strong>City:</strong> <%= volunteer.city %></li>
+						<li><strong>Languages Spoken:</strong> <%= volunteer.languages.join(', ') %></li>
+						<li><strong>Phone Number:</strong> <%= volunteer.phone %></li>
+						<li><strong>Email Address:</strong> <%= volunteer.email %></li>
+						<li><strong>Number of Active Matches:</strong> <%= volunteer.matches.active.count %></li>
+						<li><strong>Number of Completed Matches:</strong> <%= volunteer.matches.completed.count %></li>
+						<li><strong>Total # of Volunteer Hours:</strong> <%= (volunteer.total_duration / 60.0).round(1) %></li>
+					</ul>
+
+				</div><!--.voter-info-->
+
+				<div class="actions">
+					
+					<% if volunteer.unapproved? %>
+					<%= link_to 'Approve', approve_volunteer_path(volunteer), class: "button accept" %>
+					<% end %>
+
+					<%= link_to 'Ban', ban_volunteer_path(volunteer), method: :get, class: "deactivate btn-outline", data: { confirm: 'Are you sure you want to ban this volunteer?' } %>
+
+					<% if !volunteer.admin? %>
+					<%= link_to 'Make Admin', make_admin_volunteer_path(volunteer), class: "btn-outline", method: :get,
+						data: { confirm: 'Are you sure you want to make this volunteer an administrator?' } %>
+					<% end %>
+				</div><!--.actions-->
+				
+			</div><!--.volunteer-box-->
+
+			<% end %>
+
+			<% if @approved_volunteers.length == 0 %>
+
+			<div class="volunteer-box approved">
+
+				<h2>No Approved Volunteers</h2>
+
+			</div>
+
+			<% end %>
+
+			<% @pending_volunteers.each do |volunteer| %>
+			
+			<div class="volunteer-box pending">
+
+				<div class="image">
+
+					<img src="<%= volunteer.profile_image.present? ? volunteer.profile_image.url(:square) : asset_path('volunteer.jpg') %>">
+
+				</div><!--.image-->
+
+				<div class="volunteer-info">
+
+					<span class="mobile-only accepted-tag">Pending</span>
+					<h2><%= volunteer.firstname %> <%= volunteer.lastname %>, <%= organization_name volunteer %></h2> 
+					<hr/>
+					<ul>
+						<li><strong>City:</strong> <%= volunteer.city %></li>
+						<li><strong>Languages Spoken:</strong> <%= volunteer.languages.join(', ') %></li>
+						<li><strong>Phone Number:</strong> <%= volunteer.phone %></li>
+						<li><strong>Email Address:</strong> <%= volunteer.email %></li>
+						<li><strong>Number of Active Matches:</strong> <%= volunteer.matches.active.count %></li>
+						<li><strong>Number of Completed Matches:</strong> <%= volunteer.matches.completed.count %></li>
+						<li><strong>Total # of Volunteer Hours:</strong> <%= (volunteer.total_duration / 60.0).round(1) %></li>
+					</ul>
+
+				</div><!--.voter-info-->
+
+				<div class="actions">
+					
+					<% if volunteer.unapproved? %>
+					<%= link_to 'Approve', approve_volunteer_path(volunteer), class: "button accept" %>
+					<% end %>
+
+					<%= link_to 'Ban', ban_volunteer_path(volunteer), method: :get, class: "deactivate btn-outline", data: { confirm: 'Are you sure you want to ban this volunteer?' } %>
+
+					<% if !volunteer.admin? %>
+					<%= link_to 'Make Admin', make_admin_volunteer_path(volunteer), class: "btn-outline", method: :get,
+						data: { confirm: 'Are you sure you want to make this volunteer an administrator?' } %>
+					<% end %>
+
+				</div><!--.actions-->
+				
+			</div><!--.volunteer-box-->
+
+			<% end %>
+
+			<% if @pending_volunteers.length == 0 %>
+
+			<div class="volunteer-box pending hide">
+				<h2>No Pending Volunteers</h2>
+			</div>
+
+			<% end %>
+
+			</div><!--.wrapper-->
+
+		</section><!--.match-results-->
+
+	</div><!--.wrapper-->
+
+</main><!--.dashboard-->

@@ -1,5 +1,7 @@
 <main class="sign-up">
+
   <div class="wrapper">
+
   <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -63,13 +65,16 @@
       <div class="fileinputs select-image">
         <!-- <input class="file" type="file" name="photo" value="Select an image" size="300"> -->
         <%= f.file_field :profile_image, { :class => "file", :id => "file_upload"} %>
+
         <div class="fakefile">
           <input placeholder="Photo Upload" id="file_name"/>
           <button class="btn-outline">Select an image</button>
         </div><!--.fakefile-->
+
       </div><!--.file-inputs-->
         
       <div class="passwords">
+
         <div class="float-left password">
           <%= f.label :password %><i>Enter in your password to update your profile.</i><br />
           <% if @minimum_password_length %>
@@ -87,14 +92,18 @@
 
       <%= f.submit "Update", class: "button" %>
     <% end %>
-  </div>
-</main>
+
+  </div><!--.wrapper-->
+</main><!--.sign-up-->
 
 <section>
+
   <div class="wrapper">
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn-outline" %></p>
+    <h3>Cancel my account</h3>
 
-  </div>
+    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn-outline" %></p>
+
+  </div><!--.wrapper-->
+
 </section>

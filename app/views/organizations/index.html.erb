@@ -1,7 +1,11 @@
 <main class="dashboard">
+
 	<div class="wrapper">
+
 		<section class="organizations">
+
 			<h1>List of Organizations</h1>
+
 			<ul>
 				<% @organizations.each do |organization| %>
 				<li>
@@ -9,9 +13,13 @@
 				</li>
 				<% end %>
 			</ul>
+			
 			<div>
 			<%= link_to 'Add Organization', new_organization_path, class: "button add" %>
 			</div>
-		</section>
-	</div>
-</main>
+
+		</section><!--.organizations-->
+
+	</div><!--.wrapper-->
+
+</main><!--.dashboard-->

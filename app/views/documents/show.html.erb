@@ -1,6 +1,9 @@
 <main class="dashboard">
+
 	<div class="wrapper">
+	
 		<section class="message">
+
 			<div class="wrapper">
 
 				<h1><%= @document.name %></h1>
@@ -10,7 +13,9 @@
 					<p>Submitted by: <%= @document.submitter.firstname %> <%= @document.submitter.lastname[0] %>.</p>
 					<p>Submitted on: <%= @document.created_at.strftime("%B %-d, %Y") %></p>
 				</div>
+
 			</div><!--.wrapper-->
+
 		</section><!--.message-->
 
 		<section class="contents">
@@ -26,5 +31,7 @@
 			</div>
 
 		</section><!--.contents-->
+
 	</div><!--.wrapper-->
-</main>
+
+</main><!--.dashboard-->

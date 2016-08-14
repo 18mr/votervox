@@ -1,11 +1,15 @@
 <main class="dashboard">
+
 	<section class="message">
+	
 		<h1><%= t('voter_dashboard.completed.title') %></h1>
 		<p><%= t('voter_dashboard.completed.prompt')%></p>
 		<%= link_to t('voter_dashboard.completed.button'), activate_voter_path(@voter), class: "btn-outline" %>
 
 	</section><!--.message-->
+	
 	<section class="feedback">
+
 		<p><%= t('voter_dashboard.completed.feedback_prompt')%></p>
 		<%= form_tag submit_feedback_path, method: 'POST' do %>
 			<%= hidden_field_tag 'subject', 'Feedback from ' + @user_type.upcase %>
