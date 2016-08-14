@@ -1,6 +1,9 @@
 <aside class="tablet desktop">
+
 	<a class="brand" href="/">VoterVox</a>
+	
 	<div class="volunteer-dashboard">
+
 		<% if admin_signed_in? %>
 			<h1>Admin Dashboard</h1>
 		<% else %>
@@ -8,47 +11,38 @@
 		<h1>Volunteer Dashboard</h1>
 		
 		<% end %>
+
 	</div><!--.volunteer-dashboard-->
+
 	<% if admin_signed_in? %>
 		<a class="button <%= at_voters_list? ? "selected" : "pink" %>" href="/voters">
 			Voters
-		</a><!--.mobile-only-->
-	<% end %>
-	<% if admin_signed_in? %>
+		</a>
 		<a class="button <%= at_volunteer_list? ? "selected" : "pink" %>" href="/volunteers">Volunteers</a>
 		<a href="/organizations" class="button <%= at_organization_home? ? "selected" : "pink" %>">Organizations</a>
 		<a href="/metrics" class="button <%= at_metrics? ? "selected" : "pink" %>">Metrics</a>
+
 	<% else %>
+
 		<a href="/volunteers/home" class="button <%= at_volunteer_home? ? "selected" : "pink" %>">Getting Started</a>
 		<a href="/matches" class="button <%= at_matches? ? "selected" : "pink" %>">Your Matches</a>
+
 	<% end %>
 
 	<a href="/voter-resources" class="button <%= at_documents? ? "selected" : "pink" %>" >Voter Resources</a>
+
 	<a href="/voter-resources/new" class="button <%= at_documents? ? "selected" : "pink" %>">Add a Translated Resource</a>
+
 	<% if !admin_signed_in? %>
+
 		<a class="button <%= at_feedback? ? "selected" : "pink" %>"  href="/feedback">
 			Give Feedback
-		</a><!--.mobile-only-->
+		</a>
+
 	<% end %>
+
 	<%= link_to('Logout', destroy_volunteer_session_path, :method => :delete, class: "button") %>
-	<div class="share-with-community">
-		<div>Share with Your Community</div>
-		<div class="buttons">
-			<a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
-			<a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
-			<a href="" class=""><i class="fa fa-envelope" aria-hidden="true"></i></a>
-			<div class="clear-fix"></div>
-		</div>
 
-	</div><!--.share-with-community-->
-	<div class="terms">
-		<ul>
-			<li><a href="/about">About VoterVOX</a></li>
-			<li><a href="/">&copy; VoterVOX</a></li>
-			<li><a href="/privacy">Privacy Policy</a></li>
-			<li><a href="/terms">Terms</a></li>
-		</ul>
-		<div class="clear-fix"></div>
-	</div>
+	<%= render "/shared/share_with_community" %>
 
-</aside>
+</aside><!--.tablet-desktop-->

@@ -1,36 +1,27 @@
 <aside class="tablet desktop">
+
 	<a class="brand" href="/">VoterVox</a>
+
 	<div class="voter-dashboard">
 		<h1><%= t( 'voter_dashboard.menu.dashboard') %></h1>
 	</div><!--.voter-dashboard-->
 	
 	<% if @voter.present? && @voter.active? %>
+
 	<a href="<%= @voter.home_url%>" class="button <%= at_voter_home? ? "selected" : "pink" %>" ><%= t('voter_dashboard.menu.translator') %></a>
+
 	<% else %>
+
 	<a href="/voters/new" class="button pink" ><%= t('voter_registration.title') %></a>
+
 	<% end %>
+
 	<a href="/voter-resources" class="button <%= at_documents? ? "selected" : "pink" %>"><%= t('voter_dashboard.menu.resources')%></a>
+
 	<a class="button <%= at_feedback? ? "selected" : "pink" %>"  href="/feedback">
 		<%= t('voter_dashboard.menu.feedback')%>
-	</a><!--.mobile-only-->
-	<div class="share-with-community">
-		<div><%= t('voter_dashboard.menu.share')%></div>
-		<div class="buttons">
-			<a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
-			<a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
-			<a href="" class=""><i class="fa fa-envelope" aria-hidden="true"></i></a>
-			<div class="clear-fix"></div>
-		</div>
+	</a>
 
-	</div><!--.share-with-community-->
-	<div class="terms">
-		<ul>
-			<li><a href="/about">About VoterVOX</a></li>
-			<li><a href="/">&copy; VoterVOX</a></li>
-			<li><a href="/privacy">Privacy Policy</a></li>
-			<li><a href="/terms">Terms</a></li>
-		</ul>
-		<div class="clear-fix"></div>
-	</div>
+	<%= render "/shared/share_with_community" %>
 
-</aside>
+</aside><!--.tablet.desktop-->
