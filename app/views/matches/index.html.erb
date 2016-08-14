@@ -36,7 +36,7 @@
 
 				<% @requests.each do |voter| %>
 
-				<div class="voter-box requests">
+				<div class="voter-box requested">
 					<div class="voter-info">
 						<h2><%= voter.firstname %> <%= voter.lastname %>, <%= voter.contact %></h2>
 						<hr/>
@@ -66,7 +66,7 @@
 				<% end %>
 				<% if @requests.length == 0 %>
 				<div class="voter-box requested">
-								<h2>No Requested Matches</h2>
+					<h2>No Requested Matches</h2>
 				</div>
 				<% end %>
 
