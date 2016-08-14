@@ -36,7 +36,7 @@ module ApplicationHelper
 		controller_name == 'matches'
 	end
 	def at_documents_index? 
-		controller_name == 'documents' && action_name == 'index'
+		controller_name == 'documents' && action_name == 'index' || action_name == 'show'
 	end
 	def at_documents_new? 
 		controller_name == 'documents' && action_name == 'new'
