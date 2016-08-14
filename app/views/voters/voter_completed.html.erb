@@ -15,7 +15,7 @@
 			<%= hidden_field_tag 'subject', 'Feedback from ' + @user_type.upcase %>
 			<%= hidden_field_tag 'firstname', @voter.firstname %>
 			<%= hidden_field_tag 'lastname', @voter.lastname %>
-			<%= hidden_field_tag 'email', @voter.email %>
+			<%= hidden_field_tag 'contact', @voter.contact %>
 
 			<%= field_set_tag 'Your feedback to VoterVOX *' do %>
 				<%= text_area_tag 'message', '', { :placeholder => 'Your feedback to VoterVOX' } %>
@@ -24,7 +24,6 @@
 			<%= submit_tag t('voter_dashboard.completed.feedback_button'), class: "button" %>
 
 		<% end %>
-		<%= link_to 'Submit a Match Request', activate_voter_path(@voter), class: "btn-outline" %>
 		
 	</section><!--.next-steps-->
 
