@@ -35,10 +35,10 @@
 						<% if cookies[:_vv_hashed_id].present? %>
 							<li><a href="<%= '/voters/'+ cookies[:_vv_hashed_id] %>">Your Translator</a></li>
 						<% else %>
-							<li><a href="/voters/new">Find a Translator</a></li>
+							<li><a href="<%= new_voter_path %>">Find a Translator</a></li>
 							<li><a href="/volunteer/sign_in">Translator Login</a></li>
 						<% end %>
-						<li><a href="/volunteer/sign_up">Be a Translator</a></li>
+						<li><a href="<%= new_volunteer_path %>">Be a Translator</a></li>
 						<li><a href="/voter-resources">Voter Resources</a></li>
 						<li><a href="/about">About VoterVOX</a></li>
 					<% end %>
