@@ -193,7 +193,7 @@ hr {
 	border-style: solid;
 	margin-bottom: 22px;
 }
-.italics {
+.italics, em {
 	font-style: italic;
 }
 .show {
@@ -1129,6 +1129,8 @@ main.match-contact.dashboard {
 		.contact-info {
 			text-align: center;
 			padding: 25px;
+			margin-bottom: 20px;
+			width: 100%;
 			.phone {
 				font-size: 38px;
 				font-weight: 700;
@@ -1323,21 +1325,21 @@ div.light, div.lightbox {
 			padding: 0;
 		}
 	}
-	.contact-info {
-		padding: 15px;
-		width: 300px;
-		margin: 20px auto 0;
-		text-align: center;
-		color: #000;
-		p {
-			margin-bottom: 10px;
-		}
-		.phone-number {
-			font-size: 38px;
-			font-weight: 700;
-		}
+}
+.contact-info {
+	padding: 15px;
+	width: 300px;
+	margin: 20px auto 0;
+	text-align: center;
+	color: #000;
+	p {
+		margin-bottom: 10px;
 	}
-	
+	.phone-number {
+		font-size: 38px;
+		font-weight: 700;
+		word-wrap: break-word;
+	}
 }
 main.dashboard.thank-you {
 	section .wrapper, .share-with-community {
@@ -2098,6 +2100,17 @@ main.table {
 		} 
 	}
 	/* Match Contact by Volunteer Tablet */
+	main.match-contact.dashboard {
+		>.wrapper {
+			width: 400px;
+		}
+		div.contact-box {
+			div.actions.mobile {
+				display: block;
+			}
+		}
+		
+	}
 	main.dashboard.matches >.wrapper {
 		width: 354px;
 		margin: 0;
@@ -2332,7 +2345,9 @@ main.table {
 				width: 330px;
 				margin: 0 auto;
 			}
-
+		}
+		div.actions.mobile {
+			display: none;
 		}
 	}
 	main.dashboard {

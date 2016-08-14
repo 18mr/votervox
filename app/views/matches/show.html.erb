@@ -9,7 +9,9 @@
 						<div class="top-container">
 							<div class="voter-info">
 								<h2><%= @voter.firstname %> <%= @voter.lastname %> <span class="desktop accepted-tag">Accepted</span></h2>
-								<span class="accepted-tag mobile-only">Accepted</span>
+								<% if @match.accepted? %>
+									<span class="accepted-tag mobile-only">Accepted</span>
+								<% end %>
 								<hr/>
 								<ul>
 									<li><strong>City:</strong> <%= @voter.city %></li>
@@ -26,6 +28,7 @@
 							<div class="actions desktop">
 								<% if @match.accepted? %>
 									<%= link_to "Match Completed", "#", { :class => "lightbox-button button accept", :"data-lightbox" => "accepted"} %>
+									<%= link_to 'Decline', decline_match_path(@match), method: :get, data: { confirm: 'Are you sure you want to decline this match?' }, class: "btn-outline decline" %>
 								<% end %>
 							</div>
 							<div class="clear-fix"></div>
@@ -33,6 +36,24 @@
 					
 					<div class="contact-box">
 						<div class="wrapper">
+							<% if @match.accepted? %>
+
+								<% if @reschedule.present? %>
+									<h2><%= @voter.firstname %> has requested a new time:</h2>
+									<div class="pink-box">
+									<p><em><%= @reschedule.message %></em></p>
+									</div><!--.pink-box-->
+								<% else %>
+									<h2><%= @voter.firstname %> has accepted your suggested time:</h2>
+								<% end %>
+								<hr/>
+								<h2>The next step:</h2>
+								<p>Contact <%= @voter.firstname %> to confirm specific time and location.</p>
+								<div class="black-box contact-info">
+									<p><%= @voter.firstname %>'s Contact Information:</p>
+									<div class="phone-number"><%= @voter.contact %></div>
+								</div>
+							<% end %>
 
 							<% if @proposal.nil? %>
 
@@ -43,35 +64,21 @@
 								<% end %>
 
 							<% else %>
-
+								<hr/>
 								<p>Your original message:</p>
-								<p>
+								<div class="grey-box">
 									<em><%= @proposal.message %></em>
-								</p>
-
+								</div><!--.grey-box-->
 							<% end %>
 						</div><!--.wrapper-->
 					</div><!--.contact-box-->
-					<div class="actions mobile-only tablet">
+					<div class="actions mobile">
 						<% if @match.accepted? %>
 							<%= link_to "Match Completed", "#", { :class => "lightbox-button button accept", :"data-lightbox" => "accepted"} %>
 						<% end %>
 
 						<%= link_to 'Decline', decline_match_path(@match), method: :get, data: { confirm: 'Are you sure you want to decline this match?' }, class: "btn-outline decline" %>
 
-						<% if @match.accepted? %>
-
-							<% if @reschedule.present? %>
-								<h2><%= @voter.firstname %> has requested a new time:</h2>
-								<p><em><%= @reschedule.message %></em></p>
-							<% else %>
-								<h2><%= @voter.firstname %> has accepted your suggested time:</h2>
-							<% end %>
-
-							<p>Contact <%= @voter.firstname %> to confirm specific time and location.</p>
-							<p>Contact info: <%= @voter.contact %></p>
-
-						<% end %>
 					</div><!--.actions-->
 				</div><!--.voter-box-->
 			</div><!--.wrapper-->
