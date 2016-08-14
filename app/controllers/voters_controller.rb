@@ -75,7 +75,7 @@ class VotersController < ApplicationController
 
 	def determine_layout
 		return "volunteer" if action_name == "index"
-		return "application" if action_name == "new"
+		return "application" if action_name == "new" || action_name == "create"
 		return "voter"
 	end
 
