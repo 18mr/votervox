@@ -68,42 +68,12 @@ function fillInAddress() {
       document.getElementById(addressType).value = val;
     }
   }
+
+  // Fill in latitude and longitude
+  document.getElementById('latitude').value = place.geometry.location.lat();
+  document.getElementById('longitude').value = place.geometry.location.lng();
 }
 
-// Bias the autocomplete object to the user's geographical location,
-// as supplied by the browser's 'navigator.geolocation' object.
-function geolocate() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var geolocation = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
-      var circle = new google.maps.Circle({
-        center: geolocation,
-        radius: position.coords.accuracy
-      });
-      autocomplete.setBounds(circle.getBounds());
-      document.getElementById('latitude').value = position.coords.latitude;
-      document.getElementById('longitude').value = position.coords.longitude;
-    });
-  }
-}
-//get latitude and longitude from Google Places
-
-function getLatLong() {
-  var geocoder = new google.maps.Geocoder();
-  var address = document.getElementById('address').value;
-
-  geocoder.geocode({ 'address': address }, function (results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-        var latitude = results[0].geometry.location.lat();
-        var longitude = results[0].geometry.location.lng();
-
-    }
-  });
-  console.log(" latitude:" + latitude + " longitude:" + longitude);
-};
 
 function tooltip(){
   $('a.tooltip-hover').hover(function(){

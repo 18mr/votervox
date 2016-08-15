@@ -31,16 +31,15 @@
 			<%= f.text_field :contact, { :placeholder => "#{t('voter_registration.form.contact_placeholder')}" } %>
 
 			<%= f.label :"#{t('voter_registration.form.address')}*", {:for => "address"} %>
-			<%= f.text_field :address, { :placeholder => 'Enter your address', :required => true, :id => "autocomplete",
-             :onFocus => "geolocate()" } %>
-             <input class="field" id="latitude" name="latitude" disabled="true" placeholder="latitude" type="hidden"></input>
-             <input class="field" id="longitude" name="longitude" disabled="true" placeholder="longitude" type="hidden"></input>
-             <input class="field" id="street_number" disabled="true" type="hidden"></input>
-             <input class="field" id="route" disabled="true" type="hidden"></input>
-             <input class="field" id="locality" name="city" disabled="true" type="hidden"></input>
-             <input class="field" id="administrative_area_level_1" name="state" disabled type="hidden"></input>
-             <input class="field" id="postal_code" name="zipcode" disabled type="hidden"></input>
-             <input class="field" id="country" name="country" disabled="true" type="hidden"></input>
+			<%= f.text_field :address, { :placeholder => 'Enter your address', :required => true, :id => "autocomplete" } %>
+            <%= f.hidden_field :latitude, { :id => "latitude", :class => "field" } %>
+            <%= f.hidden_field :longitude, { :id => "longitude", :class => "field" } %>
+            <%= f.hidden_field :city, { :id => "locality", :class => "field" } %>
+            <%= f.hidden_field :state, { :id => "administrative_area_level_1", :class => "field" } %>
+            <input class="field" id="street_number" disabled="true" type="hidden"></input>
+            <input class="field" id="route" disabled="true" type="hidden"></input>
+            <input class="field" id="postal_code" name="zipcode" disabled type="hidden"></input>
+            <input class="field" id="country" name="country" disabled="true" type="hidden"></input>
 
 
 			<%= field_set_tag "#{t('voter_registration.form.languages')}*", class: 'languages' do %>

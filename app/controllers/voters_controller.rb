@@ -71,7 +71,7 @@ class VotersController < ApplicationController
 
 	def voter_params
 		params.require(:voter).permit(:firstname, :lastname, :communication_mode, :contact,
-			:address, :city, :state, {:languages => []}, :english_comfort, :first_time_voter)
+			:address, :city, :state, :latitude, :longitude, {:languages => []}, :english_comfort, :first_time_voter)
 	end
 
 	def determine_layout
