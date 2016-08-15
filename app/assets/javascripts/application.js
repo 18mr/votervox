@@ -202,7 +202,7 @@ $(document).ready(function(){
 
   //on homepage language select, submit form
   $('#locale').change(function() {
-         this.form.submit();
+      this.form.submit();
   });
 });
 

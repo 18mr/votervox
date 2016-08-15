@@ -4,6 +4,8 @@
 // highlight the currently selected timeframe with class 'current'
 
 $(document).ready(function(){
-	var timeframe = decodeURIComponent($.urlParam('timeframe')); 
-	$('input.'+timeframe).addClass("current");
+	if( $('main.dashboard').hasClass('metrics') ) {
+		var timeframe = decodeURIComponent($.urlParam('timeframe')); 
+		$('input.'+timeframe).addClass("current");
+	}
 })

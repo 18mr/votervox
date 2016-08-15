@@ -1077,6 +1077,9 @@ ul.status li {
 	padding-bottom: 10px;
 	a {
 		color: $pink;
+		&.current {
+			color: $darkgrey;
+		}
 	}
 	&:after {
 		content: "|";
