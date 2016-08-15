@@ -5,6 +5,7 @@
 		<h1><%= t('voter_registration.title') %></h1>
 		<div class="pink-line"></div>
 		<%= form_for :voter, url: voters_path, method: 'POST' do |f| %>
+            <%= f.hidden_field :locale, :value => params[:locale] || 'en' %>
 
 			<% if @voter.errors.any? %>
 		        <% @voter.errors.full_messages.each do |msg| %>

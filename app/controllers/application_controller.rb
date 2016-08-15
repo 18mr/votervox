@@ -68,6 +68,9 @@ class ApplicationController < ActionController::Base
 			cookies[:_vv_hashed_id] = { value: params[:hashed_id], expires: 10.minutes.from_now }
 		end
 		@voter = cookies[:_vv_hashed_id].present? ? Voter.find_by_hashed_id(cookies[:_vv_hashed_id]) : nil
+
+		# Set locale if specified for voter
+		I18n.locale = @voter.locale if @voter.present? && @voter.locale.present?
 	end
 
 	def authenticate_voter!

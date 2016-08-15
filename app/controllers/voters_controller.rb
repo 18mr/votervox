@@ -70,7 +70,7 @@ class VotersController < ApplicationController
 	private
 
 	def voter_params
-		params.require(:voter).permit(:firstname, :lastname, :communication_mode, :contact,
+		params.require(:voter).permit(:firstname, :lastname, :communication_mode, :contact, :locale,
 			:address, :city, :state, :latitude, :longitude, {:languages => []}, :english_comfort, :first_time_voter)
 	end
 

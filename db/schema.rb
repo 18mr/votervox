@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812223252) do
+ActiveRecord::Schema.define(version: 20160815203200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -167,6 +167,7 @@ ActiveRecord::Schema.define(version: 20160812223252) do
     t.boolean  "active",             default: true
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "locale",             default: "en"
   end
 
   add_foreign_key "documents", "volunteers", column: "submitter_id"
