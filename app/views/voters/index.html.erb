@@ -18,14 +18,10 @@
 						<hr/>
 						<ul>
 							<li><strong>Email/Phone:</strong> <%= voter.contact %></li>
-							<li><strong>First Time Voter: </strong><%= voter.first_time_voter %></li>
-							<li><strong>City:</strong> <%= voter.city %></li>
+							<% first_time_voter = voter.first_time_voter %>
+							<li><strong>First Time Voter: </strong><%= first_time_voter ? 'yes' : 'no'%></li><li><strong>City:</strong> <%= voter.city %></li>
 							<li><strong>Languages:</strong> <%= voter.languages.join(', ') %></li>
 							<li><strong>English Proficiency:</strong> <%= voter.english_comfort %> </li>
-							<% first_time_voter = voter.first_time_voter %>
-							<% if first_time_voter %>
-								<li><strong>First Time Voter</strong></li>
-							<% end %>
 						</ul>
 					</div><!--.voter-info-->
 					
@@ -49,14 +45,12 @@
 						<hr/>
 						<ul>
 							<li><strong>Email/Phone:</strong> <%= voter.contact %></li>
-							<li><strong>First Time Voter: </strong><%= voter.first_time_voter %></li>
+							<% first_time_voter = voter.first_time_voter %>
+							<li><strong>First Time Voter: </strong><%= first_time_voter ? 'yes' : 'no'%></li>
 							<li><strong>City:</strong> <%= voter.city %></li>
 							<li><strong>Languages:</strong> <%= voter.languages.join(', ') %></li>
 							<li><strong>English Proficiency:</strong> <%= voter.english_comfort %> </li>
-							<% first_time_voter = voter.first_time_voter %>
-							<% if first_time_voter %>
-								<li><strong>First Time Voter</strong></li>
-							<% end %>
+
 						</ul>
 					</div><!--.voter-info-->
 					
