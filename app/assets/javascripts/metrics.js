@@ -5,8 +5,9 @@
 
 $(document).ready(function(){
 	if( $('main.dashboard').hasClass('metrics') ) {
-		var timeframe = decodeURIComponent($.urlParam('timeframe')); 
-		if (timeframe != "") {
+		var parameters = $.urlParam('timeframe');
+		if (parameters.length) {
+			var timeframe = decodeURIComponent($.urlParam('timeframe')); 
 			$('input.'+timeframe).addClass("current");
 		}
 	}
