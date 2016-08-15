@@ -7,9 +7,13 @@
 			<div class="wrapper">
 
 				<h1><%= @document.name %></h1>
+
+				<% if admin_signed_in? %>
+				<%= link_to 'Delete', document_path(@document), method: :delete, data: { confirm: 'Are you sure?' } %>
+				<% end %>
+
 				<div class="language">Translated Langauge:<strong><%= @document.translated_language %></strong></div>
 				<div class="details">
-					<p>Percent translated: 80%</p>
 					<p>Submitted by: <%= @document.submitter.firstname %> <%= @document.submitter.lastname[0] %>.</p>
 					<p>Submitted on: <%= @document.created_at.strftime("%B %-d, %Y") %></p>
 				</div>
