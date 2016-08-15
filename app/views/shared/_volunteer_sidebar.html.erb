@@ -5,11 +5,9 @@
 	<div class="volunteer-dashboard">
 
 		<% if admin_signed_in? %>
-			<h1>Admin Dashboard</h1>
+		<h1>Admin Dashboard</h1>
 		<% else %>
-		
-		<h1>Volunteer Dashboard</h1>
-		
+		<h1>Volunteer Dashboard</h1>		
 		<% end %>
 
 	</div><!--.volunteer-dashboard-->
@@ -21,10 +19,11 @@
 		<a class="button <%= at_volunteer_list? ? "selected" : "pink" %>" href="<%= volunteers_path %>">Volunteers</a>
 		<a href="<%= organizations_path %>" class="button <%= at_organization_home? ? "selected" : "pink" %>">Organizations</a>
 		<a href="<%= metrics_path %>" class="button <%= at_metrics? ? "selected" : "pink" %>">Metrics</a>
-
 	<% else %>
-
 		<a href="<%= volunteers_home_path %>" class="button <%= at_volunteer_home? ? "selected" : "pink" %>">Getting Started</a>		
+	<% end %>
+
+	<% if approved_volunteer_signed_in? %>
 		<a href="<%= matches_path %>" class="button <%= at_matches? ? "selected" : "pink" %>">Your Matches</a>
 	<% end %>
 

@@ -6,7 +6,7 @@
 		<h1><%= t( 'voter_dashboard.menu.dashboard') %></h1>
 	</div><!--.voter-dashboard-->
 	
-	<% if @voter.present? && @voter.active? %>
+	<% if @voter.present? %>
 
 	<a href="<%= @voter.home_url%>" class="button <%= at_voter_home? ? "selected" : "pink" %>" ><%= t('voter_dashboard.menu.translator') %></a>
 
