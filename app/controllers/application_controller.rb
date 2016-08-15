@@ -14,9 +14,8 @@ class ApplicationController < ActionController::Base
 	end
 
 	def submit_feedback
-		subject = params[:subject]
-
-		# TODO: Send email message to admin with subject and feedback_message
+		feedback_data = feedback_sender.merge(:subject => params[:subject], :message => params[:message])
+		AdminNotifier.feedback(feedback_data).deliver_now
 
 		authenticate_render 'submit_feedback'
 	end
@@ -89,24 +88,22 @@ class ApplicationController < ActionController::Base
 	end
 
 	# Other helper methods
-	def feedback_message
+	def feedback_sender
 		if params[:firstname].present? && params[:lastname].present?
-			message = "Name: params[:firstname] params[:lastname]\n"
-			message += "Email: params[:email]\n" if params[:email].present?
-			message += "\nparams[:message]"
+			name = [ params[:firstname], params[:lastname] ].join(' ')
+			contact = params[:email] || 'Unknown'
 		elsif params[:voter_id]
 			voter = Voter.find params[:voter_id]
-			message = "Name: voter.firstname voter.lastname\n"
-			message += "Contact: voter.contact\n"
-			message += "\nparams[:message]"
+			name = [ voter.firstname, voter.lastname ].join(' ')
+			contact = voter.contact
 		elsif volunteer_signed_in?
 			volunteer = current_record
-			message = "Name: volunteer.firstname volunteer.lastname\n"
-			message += "Email: volunteer.email\n"
-			message += "\nparams[:message]"
+			name = [ volunteer.firstname, volunteer.lastname ].join(' ')
+			contact = voter.email
 		else
-			message = params[:message]
+			name = 'Unknown'
+			contact = 'Unknown'
 		end
-		message
+		{:name => name, :contact => contact}
 	end
 end
