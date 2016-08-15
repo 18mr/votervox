@@ -40,6 +40,9 @@ class Voter < ActiveRecord::Base
 	def active_match
 		self.matches.active.first
 	end
+	def declined_match
+		self.matches.voter_declined.first
+	end
 	def completed_match
 		self.matches.completed.last
 	end

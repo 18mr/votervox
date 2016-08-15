@@ -48,7 +48,8 @@
 				<% if @match.proposed? %>
 
 					<%= link_to t('voter_dashboard.matched.accept_button'), @match.voter_accept_url, class: "button accept" %>
-					<%= link_to t('voter_dashboard.matched.decline_button'), @match.voter_reject_url, class: "button decline" %>
+					<%= link_to t('voter_dashboard.matched.decline_button'), @match.voter_reject_url, class: "button decline",
+						data: { confirm: "Are you sure you'd like to decline this match?" } %>
 					<div class="clear-fix"></div>
 					<a class="request button lightbox-button" data-lightbox="request_time"><%= t('voter_dashboard.matched.reschedule_button')%></a>
 				<% end %>

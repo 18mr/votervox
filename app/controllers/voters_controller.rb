@@ -32,7 +32,7 @@ class VotersController < ApplicationController
 	end
 
 	def voter_home
-		@match = @voter.active_match
+		@match = @voter.active_match || @voter.declined_match
 		@completed = @voter.completed_match
 
 		if @match.present?
