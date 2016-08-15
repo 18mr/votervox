@@ -6,6 +6,7 @@ class RegistrationsController < Devise::RegistrationsController
 	end
 
 	def create
+		# TODO: Send signup confirmation message to volunteer
 		super
 	end
 

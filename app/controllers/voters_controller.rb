@@ -22,6 +22,7 @@ class VotersController < ApplicationController
 
 		if @voter.save
 			# TODO: Send signup confirmation message to voter
+			VoterNotifier.signup_confirmation(@voter).deliver_now if @voter.email_contact?
 			redirect_to @voter.home_url
 		else
 			@communication_options = Voter.communication_options

@@ -5,7 +5,7 @@ class Voter < ActiveRecord::Base
 	has_many :matches
 
 	COMMUNICATION_MODES = ['Text Message','Email']
-	COMFORT_LEVEL = ['Not comfortable','Slightly comfortable','Comfortable','Very comfortable']
+	COMFORT_LEVEL = ['1','2','3','4','5']
 
 	before_validation :format_phone
 

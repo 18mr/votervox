@@ -19,6 +19,8 @@ This repo contains the code for the VoterVOX application.
 
 * Set up your local <tt>.env</tt> file for use with Foreman, including the following config variables:
 
+  * <tt>HOST</tt> - The local host you're running your server on (e.g., 'localhost')
+
   * <tt>PORT</tt> - The port that the server should run on locally
 
   * <tt>S3_BUCKET_NAME</tt> - The name of the AWS S3 bucket used for resource storage
@@ -28,6 +30,10 @@ This repo contains the code for the VoterVOX application.
   * <tt>AWS_SECRET_ACCESS_KEY</tt> - Your AWS secret access key
 
   * <tt>AWS_REGION</tt> - Your AWS region
+
+  * <tt>SENDGRID_USERNAME</tt> - Your SendGrid username for email sending
+
+  * <tt>SENDGRID_PASSWORD</tt> - Your SendGrid password for email sending
 
 * Run <tt>foreman s</tt> to start the local server.
 

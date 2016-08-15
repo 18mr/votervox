@@ -101,8 +101,6 @@ vi:
       message:
         subject: "We're finding you a translator!"
         body1: |+
-          Hi Name,
-
           Thank you for registering to find help with your ballot through VoterVOX! We are working on finding you a translator who can help you with your ballot.
 
           Click here to visit your profile again and check out more voting resources.
@@ -126,8 +124,6 @@ vi:
       message:
         subject: "Meet your translator!"
         body1: |+
-          Hi Name,
-
           Great news -- we’ve found a volunteer who is ready to help you with your ballot.
 
           Your volunteer:

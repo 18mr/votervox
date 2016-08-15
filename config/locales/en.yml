@@ -101,11 +101,9 @@ en:
       message:
         subject: "We're finding you a translator!"
         body1: |+
-          Hi Name,
-
           Thank you for registering to find help with your ballot through VoterVOX! We are working on finding you a translator who can help you with your ballot.
 
-          Click here to visit your profile again and check out more voting resources.
+          Click below to visit your profile again and check out more voting resources:
         body2: |+
           We’ll be in touch soon with more information for you.
 
@@ -126,18 +124,14 @@ en:
       message:
         subject: "Meet your translator!"
         body1: |+
-          Hi Name,
-
           Great news -- we’ve found a volunteer who is ready to help you with your ballot.
 
           Your volunteer:
         body2: |+
-          Your translator is available to meet you in your neighborhood based on the times you provided. Click here to see their message and confirm your meetup time.
+          Your translator is available to meet you in your neighborhood based on the times you provided. Read their message here and confirm your meetup time using the link below.
 
           Your translator writes:
         body3: |+
-          You can also cancel your match here.
-
           Happy voting!
 
           The VoterVOX Team
@@ -159,12 +153,30 @@ en:
     canceled:
       title: "Unfortunately, your translator can no longer meet with you"
       prompt: "But we're looking for a new match now. We'll contact you when we find one"
+      message:
+        subject: "Your translator is no longer able to meet"
+        body: |+
+          Unfortunately, your translator can no longer meet with you. But we're looking for a new match now. We'll contact you when we find one.
+
+          The VoterVOX Team
+        sms: "Unfortunately, your translator can no longer meet with you. But we're looking for a new match now. We'll contact you when we find one."
     completed:
       title: "Your translation meetup is complete!"
       prompt: "If you'd like more help now or in the future, feel free to make another translator match request"
       button: "Submit a match request"
       feedback_prompt: "We'd love your feedback on your experiece with your translator, VoterVOX, and the ways we can improve"
       feedback_button: "Submit"
+      message:
+        subject: "Your translation meetup is complete!"
+        body1: |+
+          Your VoterVOX translator recorded that your meetup with them is now complete.
+
+          If you'd like more help now or in the future, feel free to make another translator match request here:
+        body2: |+
+          Happy voting!
+
+          The VoterVOX Team
+        sms: "Your translation meetup is complete! If you'd like more help now or in the future, feel free to make another translator match request here:"
     cancel_lightbox:
       title: "We're sorry to see you go"
       prompt: "Before you leave, can you let us know wy you no longer wish to use VoterVOX?"

@@ -30,12 +30,10 @@ class MatchesController < ApplicationController
 		@match = Match.find params[:id]
 		redirect_to :voluneers_home if !check_volunteer_match
 
-		if @match.voter.sms_contact?
-			# TODO: Send Twilio message to voter with params[:message]
-		else
-			# TODO: Send email message to voter with params[:message]
-		end
 		Interaction.create_proposal(:match_id => @match.id, :message => params[:message])
+
+		# TODO: Send Twilio message to voter with params[:message]
+		VoterNotifier.match_made(@match).deliver_now if @match.voter.email_contact?
 		redirect_to @match
 	end
 
@@ -43,6 +41,8 @@ class MatchesController < ApplicationController
 		@match = Match.find params[:id]
 		redirect_to :voluneers_home if !check_volunteer_match
 
+		# TODO: Send SMS message to voter about decline
+		VoterNotifier.match_declined(@match).deliver_now if @match.voter.email_contact?
 		@match.volunteer_decline!
 		@match.save
 		redirect_to matches_path
@@ -53,6 +53,9 @@ class MatchesController < ApplicationController
 		redirect_to :voluneers_home if !check_volunteer_match
 
 		Interaction.create_assistance(match_completion_params)
+		
+		# TODO: Send SMS message to voter about completion
+		VoterNotifier.match_completed(@match).deliver_now if @match.voter.email_contact?
 		@match.voter.update(:active => false)
 		@match.complete!
 		@match.save
@@ -74,6 +77,7 @@ class MatchesController < ApplicationController
 		@match = Match.find params[:id]
 		redirect_to :new_voter if !check_voter_match
 
+		# TODO: Send SMS and email to volunteer about acceptance
 		@match.accept!
 		@match.save
 		redirect_to @voter.home_url
@@ -83,6 +87,7 @@ class MatchesController < ApplicationController
 		@match = Match.find params[:id]
 		redirect_to :new_voter if !check_voter_match
 
+		# TODO: Send SMS and email to volunteer about rejection
 		@match.voter_decline!
 		@match.save
 		redirect_to @voter.home_url
