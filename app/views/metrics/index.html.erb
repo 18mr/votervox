@@ -36,11 +36,11 @@
 						<%= hidden_field_tag 'timeframe', 'custom' %>
 
 						<%= field_set_tag 'Start Date:' do %>
-							<%= text_field_tag 'start_date', @timeframe == 'custom' ? iso_format(@start_dt) : '', { :placeholder => 'YYYY-MM-DD', :class => 'datepicker' } %>
+							<%= text_field_tag 'start_date', @timeframe == 'custom' ? iso_format(@start_dt) : '', { :placeholder => 'YYYY-MM-DD', :class => 'datepicker', :id => "start_date" } %>
 						<% end %>
 
 						<%= field_set_tag 'End Date:' do %>
-							<%= text_field_tag 'end_date', @timeframe == 'custom' ? iso_format(@end_dt) : '', { :placeholder => 'YYYY-MM-DD', :class => 'datepicker' } %>
+							<%= text_field_tag 'end_date', @timeframe == 'custom' ? iso_format(@end_dt) : '', { :placeholder => 'YYYY-MM-DD', :class => 'datepicker', :id => "end_date" } %>
 						<% end %>
 
 						<button class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></button>

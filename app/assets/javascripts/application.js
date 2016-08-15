@@ -193,7 +193,6 @@ function getFilePath(){
 $(document).ready(function(){
   tooltip();
   mobileNav();
-  $( ".datepicker" ).datepicker();
   getFilePath();
   showMatches();
   showLightBox();

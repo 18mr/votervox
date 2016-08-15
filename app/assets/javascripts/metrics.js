@@ -6,6 +6,8 @@
 $(document).ready(function(){
 	if( $('main.dashboard').hasClass('metrics') ) {
 		var timeframe = decodeURIComponent($.urlParam('timeframe')); 
-		$('input.'+timeframe).addClass("current");
+		if (timeframe != "") {
+			$('input.'+timeframe).addClass("current");
+		}
 	}
 })
