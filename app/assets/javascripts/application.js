@@ -201,9 +201,12 @@ $(document).ready(function(){
   filterShow();
 
   //on homepage language select, submit form
-  $('#locale').change(function() {
-      this.form.submit();
-  });
+  if ( $('section.getting-started').has("form") ) {
+    $('#locale').change(function() {
+        this.form.submit();
+    });
+  }
+ 
 });
 
 

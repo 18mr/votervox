@@ -13,7 +13,6 @@ class DocumentsController < ApplicationController
 		@document = Document.new(document_params)
 
 		if @document.save
-			flash[:notice] = "Thank you for uploading your translated document!"
 			redirect_to @document
 		else
 			render 'new'

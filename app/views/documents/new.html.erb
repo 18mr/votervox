@@ -7,6 +7,7 @@
 			<div class="wrapper">
 
 			<h1>Add a Resource</h1>
+			<p>You can upload a PDF or DOC file.</p>
 
 			<%= form_for :document, url: documents_path, method: 'POST' do |f| %>
 
@@ -55,7 +56,7 @@
 				</div>
 
 				<div>
-					<%= f.label "Select Your File Upload", {:for => "document_file"} %>
+					<%= f.label "Select Your File Upload (pdf or doc)", {:for => "document_file"} %>
 					<%= f.file_field :file %>
 				</div>
 
