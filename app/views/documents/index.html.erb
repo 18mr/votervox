@@ -69,15 +69,22 @@
 				</div><!--.filter-boxes-->
 
 				<% @documents.each do |document| %>
-				<a class="document-box" href="<%= document_path(document) %>">
-					<header><%= document.name %></header>
+				<div class="document-box">
+					<a href="<%= document_path(document) %>">
+						<header><%= document.name %></header>
+					</a>
 					<div class="language">Translated Language:<strong><%= document.translated_language %></strong></div>
 					<div class="details">
 						<p>Percent translated: 80%</p>
 						<p>Submitted by: <%= document.submitter.firstname %> <%= document.submitter.lastname[0] %>.</p>
 						<p>Submitted on: <%= document.created_at.strftime("%B %-d, %Y") %></p>
 					</div>
-				</a><!--.document-box-->
+					<% if admin_signed_in? %>
+					<div class="actions">
+						<%= link_to 'Delete', document_path(document), method: :delete, data: { confirm: 'Are you sure?' } %>
+					</div>
+					<% end %>
+				</div><!--.document-box-->
 				<% end %>
 
 				<div class="clear-fix"></div><!--.clear-fix-->

@@ -19,12 +19,12 @@ class VolunteersController < ApplicationController
 
 		# Filter based on language and location
 		if @languages.present?
-			@pending_volunteers.reject!{ |v| (v.languages & @languages).empty? }
-			@approved_volunteers.reject!{ |v| (v.languages & @languages).empty? }
+			@pending_volunteers = @pending_volunteers.reject{ |v| (v.languages & @languages).empty? }
+			@approved_volunteers = @approved_volunteers.reject{ |v| (v.languages & @languages).empty? }
 		end
 		if @location.present?
-			@pending_volunteers.reject!{ |v| v.city != @location && v.state != @location }
-			@approved_volunteers.reject!{ |v| v.city != @location && v.state != @location }
+			@pending_volunteers = @pending_volunteers.reject{ |v| v.city != @location && v.state != @location }
+			@approved_volunteers = @approved_volunteers.reject{ |v| v.city != @location && v.state != @location }
 		end
 	end
 

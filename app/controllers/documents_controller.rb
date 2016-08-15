@@ -25,14 +25,14 @@ class DocumentsController < ApplicationController
 		@document = Document.find params[:id]
 		@document.update(document_status_params)
 
-		redirect_to volunteer_documents_path
+		redirect_to documents_path
 	end
 
 	def destroy
 		@document = Document.find params[:id]
 		@document.destroy
 
-		redirect_to volunteer_documents_path
+		redirect_to documents_path
 	end
 
 

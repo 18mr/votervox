@@ -9,7 +9,7 @@
 			<h1>VoterVOX Volunteers</h1>
 			<ul class="status">
 					<li><a href="#" class="pending-volunteers">Pending</a></li>
-					<li><a href="#" class="approved-volunteers">Approved</a></li>
+					<li><a href="#" class="approved-volunteers current">Approved</a></li>
 				</ul>
 				<div class='clear-fix'></div>
 			</div>
@@ -24,7 +24,7 @@
 
 			<div class="hide filters">
 				<div class="wrapper">
-					<%= form_tag documents_path, method: 'GET' do %>
+					<%= form_tag volunteers_path, method: 'GET' do %>
 						<fieldset class="languages">
 						<!--TODO: JS and backend coding to check that one checbox is filled out-->
 							<legend>Language</legend>
@@ -41,7 +41,7 @@
 
 							<label for="location">Location</label>
 							<%= text_field_tag 'location', @location, placeholder: "City, County, State or National" %>
-							<input class="button" type="button" value="Search">
+							<%= submit_tag 'Search', class: "button" %>
 
 						</fieldset>
 
@@ -117,7 +117,7 @@
 
 			<% @pending_volunteers.each do |volunteer| %>
 			
-			<div class="volunteer-box pending">
+			<div class="volunteer-box pending hide">
 
 				<div class="image">
 
