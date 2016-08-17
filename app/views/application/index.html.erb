@@ -1,7 +1,9 @@
 <section class="hero">
 
 	<div class="content">
-		<h1><%= t('homepage.tagline') %></h1>
+		<div class="hero-image"><img alt="Democracy in Every Language" src="/assets/democracy.png" /></div>
+		<h1 class="hide"><%= t('homepage.tagline') %></h1>
+		<div class="div-bar"></div>
 		<div class="tagline"><%= t('homepage.intro_text') %></div>
 	</div><!--.content-->
 	
@@ -26,27 +28,27 @@
 
 	<div class="wrapper">
 
-		<h2><%= t('homepage.title') %></h2>
+		<h2><%= t('homepage.title2') %></h2>
 
 		<div class="step">			
 
 			<div class="description">
 				<div class="number">1</div><!--.number-->
-				<%= t('homepage.step1') %>
+				<p><%= t('homepage.step1') %></p>
 			</div><!--.description-->
 
-			<img src="<% asset_path('persons.jpg')%>">
+			<img src="/assets/works-step1.png" class="float-right">
 
 			<div class="clear-fix"></div>
 
 		</div><!--.step-->
 
 		<div class="step">
-			<img src="<% asset_path('forms.jpg')%>" >
+			<img src="/assets/works-step2.png" class="float-left">
 
 			<div class="description">
 				<div class="number">2</div><!--.number-->
-				<%= t('homepage.step2') %>
+				<p><%= t('homepage.step2') %></p>
 			</div><!--.description-->
 
 			<div class="clear-fix"></div>
@@ -58,11 +60,11 @@
 			<div class="description">
 
 				<div class="number">3</div><!--.number-->
-				<%= t('homepage.step3') %>
+				<p><%= t('homepage.step3') %></p>
 
 			</div><!--.description-->
 
-			<img src="<% asset_path('persons.jpg')%>" class="float-right">
+			<img src="/assets/works-step3.png" class="float-right">
 
 			<div class="clear-fix"></div>
 

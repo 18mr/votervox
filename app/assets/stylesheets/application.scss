@@ -44,10 +44,11 @@ time, mark, audio, video, input, select, textarea {
 /* Colors */
 $pink: #e92484;
 $darkpink: #9D044E;
-$green: #32cd32;
-$lightgrey: #eee9e9; //#525252 is too dark
+$green: #8BC63E;
+$lightgrey: #f7f7f7;
 $darkgrey: #4a4a4a;
 $white: #fff;
+$grey: #313131;
 
 body {
 	background: #fff;
@@ -63,18 +64,20 @@ body {
  	text-align: center;
  	letter-spacing: 2px;
  	line-height: 1.3em;
+ 	color: $grey;
  }
 
  h1 {
- 	font-size: 32px;
- 	margin-bottom: 32px;
+ 	font-size: 28px;
+ 	line-height: 32px;
+ 	margin-bottom: 15px;
  }
  h2 {
  	font-size: 24px;
  	margin-bottom: 28px;
  }
  h3 {
- 	font-size: 23px;
+ 	font-size: 18px;
  	margin-bottom: 20px;
  }
  p {
@@ -106,15 +109,30 @@ body {
  	line-height: 28px;
  }
  input, select, textarea {
- 	margin-bottom: 20px;
- 	border: 2px solid $darkgrey;
+ 	margin-bottom: 30px;
+ 	border: 1px solid $grey;
  	border-radius: 6px;
  	font-size: 20px;
  	display: block;
  	width: 100%;
  	background-color: #fff;
- 	padding: 5px;
+ 	padding: 5px 10px;
  	height: 40px;
+ 	font-size: 15px;
+ 	font-family: 'Karla';
+ }
+
+ fieldset {
+ 	margin-bottom: 25px;
+ }
+
+ input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, input::placeholder, input:placeholder-shown {
+ 	font-family: 'Karla';
+ 	font-size: 40px;
+ }
+
+ input[type=password] {
+ 	margin-bottom: 10px;
  }
  select {
  	color: $darkgrey;
@@ -160,15 +178,17 @@ body {
 }
 button, input.button, a.button {
 	background-color: $pink;
-	margin-bottom: 15px;
 	height: 50px;
 	display: block;
 	width: 100%;
 	border: none;
 	box-shadow: 0px 2px 1px $darkpink;
 	color: #fff;
-	font-size: 20px;
 	border-radius: 6px;
+	font-size: 18px;
+	height: 40px;
+	width: 300px;
+	margin-bottom: 14px;
 	&:hover {
 		cursor: pointer;
 	}
@@ -176,7 +196,10 @@ button, input.button, a.button {
 a.button {
 	text-align: center;
 	padding-top: 11px;
-	font-size: 31px;
+	font-size: 18px;
+	height: 40px;
+	width: 300px;
+	margin-bottom: 14px;
 }
 button.btn-outline, input.btn-outline, a.btn-outline {
 	background-color: #fff;
@@ -212,6 +235,10 @@ hr {
 .float-left {
 	float: left;
 }
+.float-right {
+	float: right;
+}
+
 .float-right {
 	float: right;
 }
@@ -272,21 +299,24 @@ div.alert {
 .menu-icon {
 	color: #e92484;
 	border-radius: 10px;
-	border: 3px solid #e92484;
+	border: 2px solid #e92484;
 	float: right;
-	height: 40px;
-	width: 40px;
-	margin: 0px 10px 10px 0px;
+	height: 30px;
+	width: 30px;
+	margin: 2px 10px 10px 0px;
 	&:after {
 		display: inline-block;
 		content: "\2261";
 		font-size: 33px;
-		padding-left: 9px;
+		padding-left: 4px;
+		margin-top: -5px;
 	}
 	&.opened {
 		&:after{
 			content: "\00d7"; /* This will render the 'X' */
-			padding-left: 7px;
+			padding-left: 4px;
+			margin-top: -4px;
+			font-size: 30px;
 		}
 	}
 }
@@ -343,16 +373,17 @@ MOBILE STYLES
 	color: $pink;
 }
 a.brand {
-	width: 177px;
+	width: 140px;
 	height: 40px;
 	display: block;
 	float: left;
 	background: url('logo.png') no-repeat;
 	background-size: 100%;
 	text-indent: -9999px;
+	margin-left: 10px;
 }
 header{
-	min-height: 50px;
+	min-height: 46px;
 	background-color: #fff;
 	border-bottom: 3px solid $green;
 	.wrapper {
@@ -374,7 +405,7 @@ header{
 	nav.main {
 		border-top: 3px solid $green;
 		li {
-			font-size: 20px;
+			font-size: 18px;
 		}
 		a {
 			color: $pink;
@@ -384,8 +415,8 @@ header{
 		display: none;
 	}
 	li {
-		height: 53px;
-		border-bottom: 1px solid $darkgrey;
+		height: 50px;
+		border-bottom: 1px solid #CCC;
 		text-align: center;
 		padding-top: 16px;
 		&:last-of-type {
@@ -401,7 +432,7 @@ section, main {
 	}
 }
 section {
-	padding: 50px 0px;
+	padding: 60px 0px;
 	text-align: center;
 
 	&:nth-of-type(even){
@@ -417,9 +448,9 @@ section {
 
 body {
 	h2 {
-		margin-bottom: 20px;
+		margin-bottom: 50px;
 		line-height: 1em;
-		font-size: 30px;
+		font-size: 28px;
 		letter-spacing: 0px;
 	}
 	h1 {
@@ -428,7 +459,7 @@ body {
 	}
 }
 section.hero {
-	background: $pink url('hero-image.jpg') no-repeat;
+	background: $pink url('homepage.png') no-repeat;
 	background-size: cover;
 	color: #fff;
 	text-align: center;
@@ -444,44 +475,95 @@ section.hero {
 		line-height: 1.5em;
 	}
 
+	.hero-image {
+		width: 80%;
+		max-width: 350px;
+		margin: 0 auto 25px;
+
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	.div-bar {
+		border-bottom: 2px solid #fff;
+		width: 40px;
+		margin: 0px auto 20px;
+	}
+
 }
 
 section.getting-started {
 
 	label {
 		margin-bottom: 10px;
+		text-align: center;
 	}
 	select {
-		border: 2px solid $darkgrey;
+		border: 2px solid $pink;
+		font-size: 18px;
+		margin-bottom: 15px;
+	}
+
+	a.button {
+		font-size: 18px;
+		height: 40px;
+		width: 300px;
+		margin-bottom: 14px;
 	}
 }
 section.how-it-works {
+	background-color: #F9F9F9f;
 	div.step {
-		margin-bottom: 20px;
+		margin-bottom: 50px;
+
+		&:last-of-type {
+			margin-bottom: 0;
+		}
 		div.description {
-			width: 120px;
+			width: 50%;
 			display: inline-block;
 			text-align: left;
 			color: $darkgrey;
+
+			p {
+				line-height: 1.2em;
+			}
 		}
 	}
 	div.number {
 		background-color: $pink;
 		border-radius: 50%;
 		color: #fff;
-		height: 17px;
-		width: 17px;
-		font-size: 12px;
+		height: 21px;
+		width: 21px;
+		font-size: 13px;
 		line-height: 17px;
 		margin-bottom: 10px;
 		text-align: center;
+		padding-top: 2px;
 	}
+
+	.float-left, .float-right {
+		width: 45%;
+	}
+
+	.float-right {
+		margin-left: 5%;
+	}
+
+	.float-left {
+		margin-right: 5%;
+	}
+
 }
 /* Mobile Footer */
 
 footer {
 	background-color: $lightgrey;
 	border-top: 3px solid $darkgrey;
+	font-size: 13px;
 	div.wrapper {
 		> div {
 			padding: 16px 0px;
@@ -496,18 +578,19 @@ footer {
 	div.terms {
 		li {
 			margin-bottom: 10px;
+
+			&:last-of-type {
+				margin-bottom: 0px;
+			}
 		}
 	}
 }
 
 /*Sharing w/ Your Community Mobile */
 div.share-with-community {
-	div {
-		margin-bottom: 10px;
-	}
 	div.buttons {
 		width: 105px;
-		margin: 0 auto;
+		margin: 10px auto 0;
 		display: inline-block;
 		a {
 			height: 26px;
@@ -524,6 +607,11 @@ div.share-with-community {
 			}
 			i {
 				color: #fff;
+				font-size: 15px;
+			}
+
+			.fa-twitter {
+				margin: 1px 0 0 2px;
 			}
 		}
 	}
@@ -533,9 +621,6 @@ div.share-with-community {
 
 main {
 	padding: 55px 0px;
-	h1 {
-		margin-bottom: 15px;
-	}
 	h2 {
 		text-align: left;
 	}
@@ -552,14 +637,16 @@ main.page {
 div.pink-line {
 	line-height: 0.5;
 	text-align: center;
+	margin-bottom: 35px;
 	span {
 		display: inline-block;
 		position: relative;  
 		color: $pink;
 		h3 {
 			font-weight: 500;
-			margin-bottom: 30px;
+			margin-bottom: 5px;
 			background-color: #fff;
+			margin-top: -7px;
 		}
 		&:before, &:after {
 			content: "";
@@ -581,6 +668,12 @@ div.pink-line {
 	}
 }
 main.sign-up {
+
+	em {
+		font-size: 10px;
+		color: #666;
+		float: left;
+	}
 	
 	.float-left {
 		float: none;
@@ -588,15 +681,32 @@ main.sign-up {
 	
 	a.small, div.opt-in-language {
 		text-align: center;
-		font-size: 10px;
-		width: 100%;
+		font-size: 9px;
+		line-height: 14px;
+		width: 90%;
 		display: block;
-		margin-bottom: 40px;
+		margin: 0 auto 40px;
 	}
 	a.small, div.opt-in-language a {
 		text-decoration: underline;
-		
 	}
+
+	a.small {
+		margin-top: -20px;
+
+		&:nth-child(2n) {
+			margin-top: 0px;
+		}
+	}
+
+	.password {
+		margin-bottom: 30px;
+	}
+
+	br {
+		display: none;
+	}
+
 	div.opt-in-language {
 		color: $darkgrey;
 	}
@@ -664,10 +774,19 @@ main.log-in, main.forgot-password {
 		a{
 			display: block;
 			text-align: right;
-			margin-bottom: 10px;
+			margin: 10px 0;
 			text-decoration: underline;
-			color: $darkgrey;
+			color: #666;
+			font-size: 10px;
 		}
+
+		br {
+			display: none;
+		}
+	}
+
+	form {
+		margin-bottom: 25px;
 	}
 }
 
@@ -677,10 +796,10 @@ main.forgot-password {
 	div.pink-line {
 		span {
 			h3 {
-				font-size: 19px;
+				font-size: 15px;
 			}
 			&:after, &:before {
-				width: 26px;
+				width: 20px;
 			}
 		}
 		
