@@ -21,10 +21,10 @@
 	<header>
 		<div class="wrapper">
 			<a class="brand" href="<%= homepage_path %>">VoterVox Branding</a>
-			<div class="menu-icon mobile-only">
+			<div class="menu-icon mobile-menu">
 			</div>
-			<div class="clear-fix mobile-only"></div>
-			<nav class="tablet desktop main close">
+			<div class="clear-fix mobile-menu"></div>
+			<nav class="tablet-menu desktop main close">
 				<ul>
 					<% if volunteer_signed_in? %>
 						<li><a href="<%= volunteers_home_path %>">Getting Started</a></li>
@@ -75,9 +75,10 @@
 					<li>&copy; VoterVOX</li>
 					<li><a href="/privacy">Privacy Policy</a></li>
 					<li><a href="/terms">Terms</a></li>
+					<div class="clear-fix"></div>
 				</ul>
-				<div class="clear-fix"></div>
 			</div>
+			<div class="clear-fix"></div>
 
 
 

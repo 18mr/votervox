@@ -7,6 +7,7 @@
 			<h1><%= t('voter_dashboard.matched.title')%></h1>
 
 			<p><%= t('voter_dashboard.matched.subtitle')%></p>
+			<div class="divi-bar"></div>
 
 		</div><!--.wrapper-->
 
@@ -18,7 +19,7 @@
 
 			<img src="<%= @volunteer.profile_image.present? ? @volunteer.profile_image.url(:square) : asset_path('volunteer.jpg') %>">
 			<div class="details">
-				<h2><%= t('voter_dashboard.matched.volunteer.name')%>: <%= @volunteer.firstname %> <%= @volunteer.lastname %></h2>
+				<h2><%= @volunteer.firstname %> <%= @volunteer.lastname %></h2>
 				<hr />
 				<ul>
 				<% distance = @voter.volunteer_distance(@volunteer) %>
