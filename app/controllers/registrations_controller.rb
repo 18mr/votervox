@@ -6,8 +6,11 @@ class RegistrationsController < Devise::RegistrationsController
 	end
 
 	def create
-		# TODO: Send signup confirmation message to volunteer
 		super
+		if resource.save
+			VolunteerNotifier.signup_confirmation(resource).deliver_now
+			send_sms resource.phone, [t('volunteer_sms.signup_confirmation'), volunteers_home_path].join(' ')
+		end
 	end
 
 	def edit

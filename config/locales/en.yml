@@ -196,5 +196,10 @@ en:
     thanks_title: "Thank you for your feedback!"
     thanks_prompt: "It's so important in our work to make VoterVOX work for you"
     share: "Please share VoterVOX with your community."
+  volunteer_sms:
+    signup_confirmation: "Welcome to VoterVOX! We’re excited you’re here. If you’re ready to get started, click here to begin the orientation process:"
+    match_accepted: "has accepted your suggested time for helping with translation. Contact them to confirm a specific time and location at"
+    match_rejected: "declined assistance with translation. There are many other voters interested in getting help, though. See them here:"
+    match_time_change: "has accepted your match request, but asked to connect at a different time. See their message here:"
 
 

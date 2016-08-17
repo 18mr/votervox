@@ -10,6 +10,10 @@ gem 'pg'
 # Volunteer/admin authentication
 gem 'devise'
 
+# For address localization and distance handling
+gem 'google_places'
+gem 'geocoder'
+
 # Visit tracking
 gem 'ahoy_matey'
 
@@ -20,8 +24,8 @@ gem 'aws-sdk', '~> 2.3'
 # Content translation
 gem 'i18n-active_record', :require => 'i18n/active_record'
 
-# Distance calculations
-gem 'geocoder'
+# SMS functionality
+gem 'twilio-ruby'
 
 # Make requests to external APIs
 gem 'rest-client'
@@ -45,6 +49,3 @@ gem 'foreman'
 gem 'sass-rails'
 gem 'compass-rails'
 gem 'font-awesome-rails'
-
-# For Google Places AutoComplete
-gem 'google_places'
