@@ -22,7 +22,7 @@ class VotersController < ApplicationController
 
 		if @voter.save
 			sms_message = [t('voter_dashboard.request.message.sms'), full_url(@voter.home_url)].join(' ')
-			send_sms @voter.contact, sms_message if @voter.sms_contact?
+			VoterVoxSms.new.send @voter.contact, sms_message if @voter.sms_contact?
 			VoterNotifier.signup_confirmation(@voter).deliver_now if @voter.email_contact?
 			redirect_to @voter.home_url
 		else
@@ -54,7 +54,7 @@ class VotersController < ApplicationController
 	def cancel
 		@voter.update(:active => false)
 		@voter.matches.active.each do |match|
-			send_sms match.volunteer.phone, [match.voter.firstname, t('volunteer_sms.match_rejected'), matches_path].join(' ')
+			VoterVoxSms.new.send match.volunteer.phone, [match.voter.firstname, t('volunteer_sms.match_rejected'), full_url(matches_path)].join(' ')
 			match.voter_decline!
 			match.save
 		end

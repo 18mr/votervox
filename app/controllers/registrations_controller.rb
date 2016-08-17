@@ -8,8 +8,9 @@ class RegistrationsController < Devise::RegistrationsController
 	def create
 		super
 		if resource.save
+			sms_message = t('volunteer_sms.signup_confirmation', url: full_url(volunteers_home_path))
+			VoterVoxSms.new.send resource.phone, sms_message
 			VolunteerNotifier.signup_confirmation(resource).deliver_now
-			send_sms resource.phone, [t('volunteer_sms.signup_confirmation'), volunteers_home_path].join(' ')
 		end
 	end
 

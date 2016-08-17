@@ -90,18 +90,6 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
-	# Send SMS through Twilio
-	def send_sms phone, message
-	    account_sid = Rails.application.secrets.twilio_sid
-	    auth_token = Rails.application.secrets.twilio_token
-	    @client = Twilio::REST::Client.new account_sid, auth_token
-	    sms = @client.messages.create(
-			from: Rails.application.secrets.twilio_number,
-			to: phone,
-			body: message
-		)
-	end
-
 	# Other helper methods
 	def full_url path
 		['http://', ActionMailer::Base.default_url_options[:host], path].join('')
