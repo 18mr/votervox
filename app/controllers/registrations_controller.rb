@@ -6,8 +6,12 @@ class RegistrationsController < Devise::RegistrationsController
 	end
 
 	def create
-		# TODO: Send signup confirmation message to volunteer
 		super
+		if resource.save
+			sms_message = t('volunteer_sms.signup_confirmation', url: full_url(volunteers_home_path))
+			VoterVoxSms.new.send resource.phone, sms_message
+			VolunteerNotifier.signup_confirmation(resource).deliver_now
+		end
 	end
 
 	def edit

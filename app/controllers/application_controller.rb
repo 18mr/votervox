@@ -91,6 +91,9 @@ class ApplicationController < ActionController::Base
 	end
 
 	# Other helper methods
+	def full_url path
+		['http://', ActionMailer::Base.default_url_options[:host], path].join('')
+	end
 	def feedback_sender
 		if params[:firstname].present? && params[:lastname].present?
 			name = [ params[:firstname], params[:lastname] ].join(' ')

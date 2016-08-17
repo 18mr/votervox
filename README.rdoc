@@ -35,6 +35,12 @@ This repo contains the code for the VoterVOX application.
 
   * <tt>SENDGRID_PASSWORD</tt> - Your SendGrid password for email sending
 
+  * <tt>TWILIO_SID</tt> - Your Twilio account SID for SMS sending
+
+  * <tt>TWILIO_TOKEN</tt> - Your Twilio account token for SMS sending
+
+  * <tt>TWILIO_NUMBER</tt> - Your Twilio phone number for SMS sending
+
 * Run <tt>foreman s</tt> to start the local server.
 
 You should then be able to access the application at http://localhost:PORT.

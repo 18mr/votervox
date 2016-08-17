@@ -32,7 +32,13 @@ class MatchesController < ApplicationController
 
 		Interaction.create_proposal(:match_id => @match.id, :message => params[:message])
 
-		# TODO: Send Twilio message to voter with params[:message]
+		sms_message = [
+			t('voter_dashboard.matched.message.sms1'),
+			@match.volunteer.firstname,
+			t('voter_dashboard.matched.message.sms2'),
+			full_url(@match.voter.home_url)
+		].join(' ')
+		VoterVoxSms.new.send @match.voter.contact, sms_message if @match.voter.sms_contact?
 		VoterNotifier.match_made(@match).deliver_now if @match.voter.email_contact?
 		redirect_to @match
 	end
@@ -41,7 +47,8 @@ class MatchesController < ApplicationController
 		@match = Match.find params[:id]
 		redirect_to :voluneers_home if !check_volunteer_match
 
-		# TODO: Send SMS message to voter about decline
+		sms_message = t('voter_dashboard.canceled.message.sms')
+		VoterVoxSms.new.send @match.voter.contact, sms_message if @match.voter.sms_contact?
 		VoterNotifier.match_declined(@match).deliver_now if @match.voter.email_contact?
 		@match.volunteer_decline!
 		@match.save
@@ -53,8 +60,9 @@ class MatchesController < ApplicationController
 		redirect_to :voluneers_home if !check_volunteer_match
 
 		Interaction.create_assistance(match_completion_params)
-		
-		# TODO: Send SMS message to voter about completion
+
+		sms_message = [t('voter_dashboard.completed.message.sms'), full_url(@match.voter.home_url)].join(' ')
+		VoterVoxSms.new.send @match.voter.contact, sms_message if @match.voter.sms_contact?
 		VoterNotifier.match_completed(@match).deliver_now if @match.voter.email_contact?
 		@match.voter.update(:active => false)
 		@match.complete!
@@ -77,7 +85,9 @@ class MatchesController < ApplicationController
 		@match = Match.find params[:id]
 		redirect_to :new_voter if !check_voter_match
 
-		# TODO: Send SMS and email to volunteer about acceptance
+		sms_message = t('volunteer_sms.match_accepted', name: @match.voter.firstname, contact: @match.voter.contact)
+		VoterVoxSms.new.send @match.volunteer.phone, sms_message
+		VolunteerNotifier.match_accepted(@match).deliver_now
 		@match.accept!
 		@match.save
 		redirect_to @voter.home_url
@@ -87,7 +97,9 @@ class MatchesController < ApplicationController
 		@match = Match.find params[:id]
 		redirect_to :new_voter if !check_voter_match
 
-		# TODO: Send SMS and email to volunteer about rejection
+		sms_message = t('volunteer_sms.match_rejected', name: @match.voter.firstname, url: full_url(matches_path))
+		VoterVoxSms.new.send @match.volunteer.phone, sms_message
+		VolunteerNotifier.match_rejected(@match).deliver_now
 		@match.voter_decline!
 		@match.save
 		redirect_to @voter.home_url
@@ -97,8 +109,11 @@ class MatchesController < ApplicationController
 		@match = Match.find params[:id]
 		redirect_to :new_voter if !check_voter_match
 
-		# TODO: Send Twilio message to volunteer with params[:message]
 		Interaction.create_reschedule(:match_id => @match.id, :message => params[:message])
+
+		sms_message = t('volunteer_sms.match_time_change', name: @match.voter.firstname, url: full_url(match_path(@match)))
+		VoterVoxSms.new.send @match.volunteer.phone, sms_message
+		VolunteerNotifier.match_time_change(@match).deliver_now
 		@match.accept!
 		@match.save
 		redirect_to @voter.home_url
