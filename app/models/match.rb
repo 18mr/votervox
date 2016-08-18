@@ -24,6 +24,9 @@ class Match < ActiveRecord::Base
 	def voter_request_time_url
 		voter_url 'voter_request_time'
 	end
+	def languages
+		volunteer.languages & voter.languages
+	end
 
 	# Helper functions
 	def active?

@@ -66,8 +66,6 @@
 						<div class="details">Total # Languages Supported</div>
 						<div class="clear-fix"></div><!--.clear-fix-->
 					</div><!--.metric-box-->
-					<button class="btn-outline lightbox-button" data-lightbox="number_of_languages" >Breakdown by Language</button>
-
 				</div><!--.metric-->
 				<div class="metric">
 					<div class="metric-box">
@@ -87,13 +85,6 @@
 					<div class="metric-box">
 						<div class="number"><%= @metrics[:views_per_language] %></div>
 						<div class="details">Total # Views per Language</div>
-					</div><!--.metric-box-->
-					<button class="btn-outline lightbox-button" data-lightbox="number_of_views">Breakdown by Language</button>
-				</div><!--.metric-->
-				<div class="metric">
-					<div class="metric-box">
-						<div class="number">12</div>
-						<div class="details">Total # Languages Supported</div>
 					</div><!--.metric-box-->
 				</div><!--.metric-->
 			</div>
@@ -287,127 +278,17 @@
 <div id="number_of_volunteers" class="lightbox hide breakdown-language">
 	<div class="close-icon"></div>
 	<header>
-		<!--TODO: JS to populate title and use JS object to populate rest of lightbox data-->
 		<h1>Total # of Volunteers</h1>
 	</header>
+	<% @metrics[:volunteer_count_by_language].each do |language,count| %>
 	<div class="metric-box">
-		<div class="number">105</div>
-		<div class="language">Mandarin</div>
-		
+		<div class="number"><%= count %></div>
+		<div class="language"><%= language %></div>
 	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">78</div>
-		<div class="language">Cantonese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">64</div>
-		<div class="language">Mandarin</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">93</div>
-		<div class="language">Japanese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">91</div>
-		<div class="language">Tagalog</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">104</div>
-		<div class="language">Hmong</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">102</div>
-		<div class="language">Lao</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">84</div>
-		<div class="language">Vietnamese</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">57</div>
-		<div class="language">Punjabi</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">68</div>
-		<div class="language">Hindi</div>
-		
-	</div><!--.metric-box-->
+	<% end %>
 	<div class="clear-fix"></div>
 
 </div><!--.lightbox.breakdown-language#number_of_volunteers-->
-
-
-
-<div id="number_of_languages" class="lightbox hide breakdown-language">
-	<div class="close-icon"></div>
-	<header>
-		<h1>Total # of Languages</h1>
-	</header>
-	<div class="metric-box">
-		<div class="number">105</div>
-		<div class="language">Mandarin</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">78</div>
-		<div class="language">Cantonese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">64</div>
-		<div class="language">Mandarin</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">93</div>
-		<div class="language">Japanese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">91</div>
-		<div class="language">Tagalog</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">104</div>
-		<div class="language">Hmong</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">102</div>
-		<div class="language">Lao</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">84</div>
-		<div class="language">Vietnamese</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">57</div>
-		<div class="language">Punjabi</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">68</div>
-		<div class="language">Hindi</div>
-		
-	</div><!--.metric-box-->
-	<div class="clear-fix"></div>
-
-</div><!--.lightbox.breakdown-language#number_of_languages-->
 
 
 <div id="number_of_registrations" class="lightbox hide breakdown-language">
@@ -415,180 +296,28 @@
 	<header>
 		<h1>Total # of Registrations</h1>
 	</header>
+	<% @metrics[:registrations_by_language].each do |language,count| %>
 	<div class="metric-box">
-		<div class="number">105</div>
-		<div class="language">Mandarin</div>
-		
+		<div class="number"><%= count %></div>
+		<div class="language"><%= language %></div>
 	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">78</div>
-		<div class="language">Cantonese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">64</div>
-		<div class="language">Mandarin</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">93</div>
-		<div class="language">Japanese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">91</div>
-		<div class="language">Tagalog</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">104</div>
-		<div class="language">Hmong</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">102</div>
-		<div class="language">Lao</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">84</div>
-		<div class="language">Vietnamese</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">57</div>
-		<div class="language">Punjabi</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">68</div>
-		<div class="language">Hindi</div>
-		
-	</div><!--.metric-box-->
+	<% end %>
 	<div class="clear-fix"></div>
 
 </div><!--.lightbox.breakdown-language#number_of_registrations-->
 
-<div id="number_of_views" class="lightbox hide breakdown-language">
-	<div class="close-icon"></div>
-	<header>
-		<h1>Total # of Views</h1>
-	</header>
-	<div class="metric-box">
-		<div class="number">105</div>
-		<div class="language">Mandarin</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">78</div>
-		<div class="language">Cantonese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">64</div>
-		<div class="language">Mandarin</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">93</div>
-		<div class="language">Japanese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">91</div>
-		<div class="language">Tagalog</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">104</div>
-		<div class="language">Hmong</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">102</div>
-		<div class="language">Lao</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">84</div>
-		<div class="language">Vietnamese</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">57</div>
-		<div class="language">Punjabi</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">68</div>
-		<div class="language">Hindi</div>
-		
-	</div><!--.metric-box-->
-	<div class="clear-fix"></div>
-
-</div><!--.lightbox.breakdown-language#number_of_views-->
 
 <div id="active_volunteers" class="lightbox hide breakdown-language">
 	<div class="close-icon"></div>
 	<header>
 		<h1>Total # of Active Volunteers</h1>
 	</header>
+	<% @metrics[:active_volunteer_count_by_language].each do |language,count| %>
 	<div class="metric-box">
-		<div class="number">105</div>
-		<div class="language">Mandarin</div>
-		
+		<div class="number"><%= count %></div>
+		<div class="language"><%= language %></div>
 	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">78</div>
-		<div class="language">Cantonese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">64</div>
-		<div class="language">Mandarin</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">93</div>
-		<div class="language">Japanese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">91</div>
-		<div class="language">Tagalog</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">104</div>
-		<div class="language">Hmong</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">102</div>
-		<div class="language">Lao</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">84</div>
-		<div class="language">Vietnamese</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">57</div>
-		<div class="language">Punjabi</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">68</div>
-		<div class="language">Hindi</div>
-		
-	</div><!--.metric-box-->
+	<% end %>
 	<div class="clear-fix"></div>
 
 </div><!--.lightbox.breakdown-language#active_volunteers-->
@@ -598,58 +327,12 @@
 	<header>
 		<h1>Total # of New Volunteers</h1>
 	</header>
+	<% @metrics[:new_volunteer_count_by_language].each do |language,count| %>
 	<div class="metric-box">
-		<div class="number">105</div>
-		<div class="language">Mandarin</div>
-		
+		<div class="number"><%= count %></div>
+		<div class="language"><%= language %></div>
 	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">78</div>
-		<div class="language">Cantonese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">64</div>
-		<div class="language">Mandarin</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">93</div>
-		<div class="language">Japanese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">91</div>
-		<div class="language">Tagalog</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">104</div>
-		<div class="language">Hmong</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">102</div>
-		<div class="language">Lao</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">84</div>
-		<div class="language">Vietnamese</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">57</div>
-		<div class="language">Punjabi</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">68</div>
-		<div class="language">Hindi</div>
-		
-	</div><!--.metric-box-->
+	<% end %>
 	<div class="clear-fix"></div>
 
 </div><!--.lightbox.breakdown-language#new_volunteers-->
@@ -659,58 +342,12 @@
 	<header>
 		<h1>Average Time Spent</h1>
 	</header>
+	<% @metrics[:average_duration_by_language].each do |language,count| %>
 	<div class="metric-box">
-		<div class="number">105</div>
-		<div class="language">Mandarin</div>
-		
+		<div class="number"><%= count %></div>
+		<div class="language"><%= language %></div>
 	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">78</div>
-		<div class="language">Cantonese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">64</div>
-		<div class="language">Mandarin</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">93</div>
-		<div class="language">Japanese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">91</div>
-		<div class="language">Tagalog</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">104</div>
-		<div class="language">Hmong</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">102</div>
-		<div class="language">Lao</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">84</div>
-		<div class="language">Vietnamese</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">57</div>
-		<div class="language">Punjabi</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">68</div>
-		<div class="language">Hindi</div>
-		
-	</div><!--.metric-box-->
+	<% end %>
 	<div class="clear-fix"></div>
 
 </div><!--.lightbox.breakdown-language#avg_time_spent-->
@@ -720,58 +357,12 @@
 	<header>
 		<h1>Minimum Time Spent</h1>
 	</header>
+	<% @metrics[:min_duration_by_language].each do |language,count| %>
 	<div class="metric-box">
-		<div class="number">105</div>
-		<div class="language">Mandarin</div>
-		
+		<div class="number"><%= count %></div>
+		<div class="language"><%= language %></div>
 	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">78</div>
-		<div class="language">Cantonese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">64</div>
-		<div class="language">Mandarin</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">93</div>
-		<div class="language">Japanese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">91</div>
-		<div class="language">Tagalog</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">104</div>
-		<div class="language">Hmong</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">102</div>
-		<div class="language">Lao</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">84</div>
-		<div class="language">Vietnamese</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">57</div>
-		<div class="language">Punjabi</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">68</div>
-		<div class="language">Hindi</div>
-		
-	</div><!--.metric-box-->
+	<% end %>
 	<div class="clear-fix"></div>
 
 </div><!--.lightbox.breakdown-language#min_time_spent-->
@@ -781,58 +372,12 @@
 	<header>
 		<h1>Maximum Time Spent</h1>
 	</header>
+	<% @metrics[:max_duration_by_language].each do |language,count| %>
 	<div class="metric-box">
-		<div class="number">105</div>
-		<div class="language">Mandarin</div>
-		
+		<div class="number"><%= count %></div>
+		<div class="language"><%= language %></div>
 	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">78</div>
-		<div class="language">Cantonese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">64</div>
-		<div class="language">Mandarin</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">93</div>
-		<div class="language">Japanese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">91</div>
-		<div class="language">Tagalog</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">104</div>
-		<div class="language">Hmong</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">102</div>
-		<div class="language">Lao</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">84</div>
-		<div class="language">Vietnamese</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">57</div>
-		<div class="language">Punjabi</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">68</div>
-		<div class="language">Hindi</div>
-		
-	</div><!--.metric-box-->
+	<% end %>
 	<div class="clear-fix"></div>
 
 </div><!--.lightbox.breakdown-language#max_time_spent-->
@@ -842,58 +387,12 @@
 	<header>
 		<h1>Total # of Voters</h1>
 	</header>
+	<% @metrics[:voter_count_by_language].each do |language,count| %>
 	<div class="metric-box">
-		<div class="number">105</div>
-		<div class="language">Mandarin</div>
-		
+		<div class="number"><%= count %></div>
+		<div class="language"><%= language %></div>
 	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">78</div>
-		<div class="language">Cantonese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">64</div>
-		<div class="language">Mandarin</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">93</div>
-		<div class="language">Japanese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">91</div>
-		<div class="language">Tagalog</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">104</div>
-		<div class="language">Hmong</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">102</div>
-		<div class="language">Lao</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">84</div>
-		<div class="language">Vietnamese</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">57</div>
-		<div class="language">Punjabi</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">68</div>
-		<div class="language">Hindi</div>
-		
-	</div><!--.metric-box-->
+	<% end %>
 	<div class="clear-fix"></div>
 
 </div><!--.lightbox.breakdown-language#number_of_voters-->
@@ -903,58 +402,12 @@
 	<header>
 		<h1>Total # of New Voters</h1>
 	</header>
+	<% @metrics[:new_voter_count_by_language].each do |language,count| %>
 	<div class="metric-box">
-		<div class="number">105</div>
-		<div class="language">Mandarin</div>
-		
+		<div class="number"><%= count %></div>
+		<div class="language"><%= language %></div>
 	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">78</div>
-		<div class="language">Cantonese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">64</div>
-		<div class="language">Mandarin</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">93</div>
-		<div class="language">Japanese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">91</div>
-		<div class="language">Tagalog</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">104</div>
-		<div class="language">Hmong</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">102</div>
-		<div class="language">Lao</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">84</div>
-		<div class="language">Vietnamese</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">57</div>
-		<div class="language">Punjabi</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">68</div>
-		<div class="language">Hindi</div>
-		
-	</div><!--.metric-box-->
+	<% end %>
 	<div class="clear-fix"></div>
 
 </div><!--.lightbox.breakdown-language#new_voters-->
@@ -964,58 +417,12 @@
 	<header>
 		<h1>Total # of Completed Matches</h1>
 	</header>
+	<% @metrics[:completed_match_by_language].each do |language,count| %>
 	<div class="metric-box">
-		<div class="number">105</div>
-		<div class="language">Mandarin</div>
-		
+		<div class="number"><%= count %></div>
+		<div class="language"><%= language %></div>
 	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">78</div>
-		<div class="language">Cantonese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">64</div>
-		<div class="language">Mandarin</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">93</div>
-		<div class="language">Japanese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">91</div>
-		<div class="language">Tagalog</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">104</div>
-		<div class="language">Hmong</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">102</div>
-		<div class="language">Lao</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">84</div>
-		<div class="language">Vietnamese</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">57</div>
-		<div class="language">Punjabi</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">68</div>
-		<div class="language">Hindi</div>
-		
-	</div><!--.metric-box-->
+	<% end %>
 	<div class="clear-fix"></div>
 
 </div><!--.lightbox.breakdown-language#completed_matches-->
@@ -1025,58 +432,12 @@
 	<header>
 		<h1>Total # of Unmatched Voters</h1>
 	</header>
+	<% @metrics[:unmatched_voters_count_by_language].each do |language,count| %>
 	<div class="metric-box">
-		<div class="number">105</div>
-		<div class="language">Mandarin</div>
-		
+		<div class="number"><%= count %></div>
+		<div class="language"><%= language %></div>
 	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">78</div>
-		<div class="language">Cantonese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">64</div>
-		<div class="language">Mandarin</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">93</div>
-		<div class="language">Japanese</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">91</div>
-		<div class="language">Tagalog</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">104</div>
-		<div class="language">Hmong</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">102</div>
-		<div class="language">Lao</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">84</div>
-		<div class="language">Vietnamese</div>
-		
-	</div><!--.metric-box-->
-
-	<div class="metric-box">
-		<div class="number">57</div>
-		<div class="language">Punjabi</div>
-		
-	</div><!--.metric-box-->
-	<div class="metric-box">
-		<div class="number">68</div>
-		<div class="language">Hindi</div>
-		
-	</div><!--.metric-box-->
+	<% end %>
 	<div class="clear-fix"></div>
 
 </div><!--.lightbox.breakdown-language#unmatched_voters-->

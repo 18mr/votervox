@@ -19,7 +19,7 @@
 //return URL parameter values
 $.urlParam = function(name){
   var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-  return results[1] || 0;
+  return (results ? results[1] : 0);
 }
 // This example displays an address form, using the autocomplete feature
 // of the Google Places API to help users fill in the information.
