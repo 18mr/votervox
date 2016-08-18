@@ -230,7 +230,7 @@ hr {
 	display: block !important;
 }
 .hide {
-	display: none ;
+	display: none !important ;
 }
 .small {
 	font-size: 10px;
@@ -876,6 +876,11 @@ main.dashboard {
 
 	section.translator {
 		padding: 40px 0;
+
+		.details {
+			max-width: 400px;
+			margin: 0 auto;
+		}
 	}
 
 	section {
@@ -936,9 +941,12 @@ main.dashboard {
 			}
 		}
 		.voter-box, .volunteer-box {
-			border: 1px solid #000;
+			border: 2px solid $darkgrey;
 			text-align: center;
 			margin-bottom: 30px;
+			width: 90%;
+			max-width: 400px;
+			margin: 30px auto 40px;
 			h2, li {
 				text-align: center;
 			}
@@ -948,14 +956,20 @@ main.dashboard {
 			.voter-info, .volunteer-info {
 				padding: 20px 25px;
 				h2 {
-					margin-bottom: 10px;
+					margin-bottom: 17px;
 				}
 				hr {
 					margin-bottom: 17px;
 				}
 				li {
-					font-size: 13px;
-					margin-bottom: 8px;
+					font-size: 14px;
+					margin-bottom: 10px;
+					line-height: 19px;
+					text-align: left;
+
+					&:last-of-type {
+						margin-bottom: 0;
+					}
 				}
 
 			}
@@ -972,7 +986,7 @@ main.dashboard {
 			}
 			.actions {
 				border-top: 1px solid $darkgrey;
-				padding: 20px 25px;
+				padding: 20px 25px; 
 				background-color: $lightgrey;
 				a.btn-outline {
 					display: block;
@@ -981,11 +995,19 @@ main.dashboard {
 					margin-bottom: 16px;
 					height: auto;
 				}
+
+				a.btn-outline.decline {
+					margin: 20px auto 5px;
+					padding: 5px;
+				}
 			}
 			.accept, a.button.accept {
-				height: 30px;
 				margin: 0 auto 20px;
-				padding: 10px;
+				width: 100%;
+				padding: 11px 9px;
+				height: 40px;
+				min-height: 0;
+				font-size: 20px;
 			}
 			.decline, a.button.deactivate, button.deactivate {
 				font-size: 12px;
@@ -1130,15 +1152,40 @@ main.dashboard {
 			}
 		}
 	}
+
+	section.feedback-title {
+		p {
+			font-size: 14px;
+			line-height: 20px;
+		}
+	}
 	section.feedback {
+		width: 85%;
+		max-width: 330px;
+		border-bottom: none;
 		label {
 			margin-bottom: 10px;
 			margin-left: 10px;
 			font-size: 18px;
 		}
 		textarea {
-			padding: 10px 5px;
+			padding: 10px;
+			font-size: 15px;
+			margin-bottom: 0;
+		}
+
+		input {
+			margin-bottom: 0px;
+		}
+
+		input.button {
+			width: 100%;
+			padding: 11px 9px;
+			height: 40px;
+			min-height: 0;
 			font-size: 20px;
+			margin-bottom: 0;
+			font-family: 'Karla';
 		}
 	}
 	div.share-with-community {
@@ -1250,6 +1297,7 @@ main.dashboard {
 					border-radius: 4px;
 					border: 1px solid $darkgrey;
 					width: 100%;
+					margin-bottom: 20px;
 				}
 			}
 			legend {
@@ -1262,8 +1310,10 @@ main.dashboard {
 	section.stats {
 		background-color: $lightgrey;
 		color: $pink;
-		border-bottom: 2px solid $darkgrey;
+		border-bottom: 1px dashed $darkgrey;
+		border-top: 1px dashed $darkgrey;
 		padding: 10px 0;
+		margin-top: 20px;
 		.stat-info {
 			width: 50%;
 			float: left;
@@ -1271,7 +1321,7 @@ main.dashboard {
 			flex-direction: row;
 			border-right: 1px solid $darkgrey;
 			padding-right: 44px;
-			margin-bottom: 20px;
+			margin-bottom: 13px;
 			&:nth-of-type(2n) {
 				border-right: none;
 			}
@@ -1288,9 +1338,11 @@ main.dashboard {
 			text-align: left;
 			width: 33%;
 			padding-top: 10px;
+			font-size: 13px;
+			line-height: 14px;
 		}
 		.number {
-			font-size: 50px;
+			font-size: 42px;
 			text-align: left;
 			font-weight: 700;
 			text-align: right;
@@ -1309,6 +1361,7 @@ ul.status li {
 	padding-bottom: 10px;
 	a {
 		color: $pink;
+		font-size: 14px;
 		&.current {
 			color: $darkgrey;
 		}
@@ -1348,7 +1401,8 @@ main.match-contact.dashboard {
 	div.contact-box {
 		background-color: $white;
 		h2 {
-			font-size: 21px;
+			font-size: 19px;
+			margin: 10px 0 15px;
 		}
 		hr {
 			width: 95px;
@@ -1371,12 +1425,20 @@ main.match-contact.dashboard {
 				font-weight: 700;
 			}
 		}
+
+		input.button {
+			width: 100%;
+		}
+
+		textarea {
+			margin-bottom: 15px;
+		}
 	}
 	textarea {
 		padding: 10px;
 	}
 	> .wrapper {
-		width: 320px;
+		width: 90%;
 		margin: 0 auto;
 		.wrapper {
 			width: 100%;
@@ -1752,7 +1814,7 @@ main.metrics {
 	width: 48%;
 	margin-right: 4%;
 	float: left;
-	margin-bottom: 50px;
+	margin-bottom: 0px;
 	button {
 		font-size: 11px;
 		width: auto;
@@ -1772,7 +1834,7 @@ main.metrics {
 	margin-bottom: 10px;
 	.number {
 		background-color: $pink;
-		font-size: 50px;
+		font-size: 40px;
 		color: $white;
 		padding: 20px 12px;
 		font-weight: 700;
@@ -1910,6 +1972,8 @@ main.table {
 
 		div.terms {
 			float: right;
+			height: 100%;
+			border-bottom: none;
 			ul {
 				li {
 					float: left;
@@ -2097,6 +2161,7 @@ main.table {
 				&.selected {
 					color: $pink;
 					font-weight: 700;
+					border-bottom: 1px solid #fff !important;
 				}
 			}
 			a.brand {
@@ -2117,10 +2182,13 @@ main.table {
 				border-bottom: 1px solid $white;
 				font-weight: 500;
 				box-shadow: none;
-				width: 100%;
+				width: 101%;
 				&.selected {
 					background-color: $white;
 					color: $pink;
+					border-bottom: 1px solid #fff !important;
+					font-weight: 700;
+					border-right: 1px solid #fff;
 				}
 				&.pink {
 					background-color: $pink;
@@ -2190,6 +2258,8 @@ main.table {
 				}
 			}
 			.terms {
+				height: 100%;
+				border-bottom: none;
 				padding: 20px 0;
 				li {
 					text-align: center;
@@ -2235,7 +2305,7 @@ main.table {
 		}
 		section, section.voter-resources {
 			background-color: $white;
-			padding: 50px 0px;
+			padding: 0px 0px;
 		}
 		section.cancel-request {
 			border-bottom: none;
@@ -2247,6 +2317,11 @@ main.table {
 			a.btn-outline {
 				float: none;
 				display: inline;
+			}
+
+			.cancel-title {
+				font-size: 18px;
+				margin-bottom: 15px;
 			}
 		}
 		section.more-info {
@@ -2331,10 +2406,17 @@ main.table {
 				font-size: 20px;
 			}
 		}
-		section.feedback {
-			input, textarea {
-				width: 400px;
+		section.feedback-title {
+			p {
+				font-size: 15px;
+				line-height: 21px;
+				max-width: 400px;
 			}
+		}
+
+
+		section.feedback {
+			margin: 40px 0 0 20px;
 		}
 		section.stats {
 			border-top: 2px solid $darkgrey;
@@ -2406,6 +2488,7 @@ main.table {
 					input#location {
 						font-size: 14px;
 						height: auto;
+						margin-bottom: 50px;
 					}
 					input.button {
 						font-size: 15px;
@@ -2525,10 +2608,16 @@ main.table {
 			margin-right: 4%;
 		}
 		header {
-			font-size: 20px;
+			font-size: 22px;
 		}
-		div.language, div.details p {
-			font-size: 15px;
+		div.language {
+			font-size: 13px;
+			line-height: 16px;
+		}
+
+		div.details p {
+			font-size: 11px;
+			line-height: 15px;
 		}
 		
 	}
@@ -2686,7 +2775,10 @@ TABLET MENU
 		main.dashboard, section.voter-resources {
 			margin-left: 22%;
 			width: 78%;
-			
+		}
+
+		main.dashboard {
+			max-width: 900px;
 		}
 	}
 	/*Matches Desktop */
@@ -2769,9 +2861,10 @@ TABLET MENU
 					font-size: 16px;
 				}
 				button.decline {
-					margin: 20px 0 0px auto;
+					margin: 20px 0 0;
 					font-size: 12px;
 					height: auto;
+					padding: 5px;
 				}
 			}
 		}	
@@ -2877,11 +2970,16 @@ TABLET MENU
 	.document-box {
 		width: 30%;
 		margin-right: 5%;
+		margin-bottom: 40px;
 		&:nth-of-type(2n) {
 			margin-right: 5%;
 		}
 		&:nth-of-type(3n) {
 			margin-right: 5%;
+		}
+
+		&:nth-of-type(4n) {
+			margin-right: 0%;
 		}
 		div.details {
 			p {

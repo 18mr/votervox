@@ -107,7 +107,7 @@ function mobileNav() {
 function filterShow() {
   $('a.filters').click( function(){
     $('section.filters div.filters').toggleClass('hide');
-    $('i.fa').toggleClass('fa-caret-up').toggleClass('fa-caret-down');
+    $('i.search-fa').toggleClass('fa-caret-up').toggleClass('fa-caret-down');
   })
 }
 //filter Matches
