@@ -17,7 +17,8 @@
 
 		<section class="translator">
 
-			<img src="<%= @volunteer.profile_image.present? ? @volunteer.profile_image.url(:square) : asset_path('volunteer.jpg') %>">
+			<div class="translator-image"><img src="<%= @volunteer.profile_image.present? ? @volunteer.profile_image.url(:square) : asset_path('volunteer.jpg') %>">
+			</div>
 			<div class="details">
 				<h2><%= @volunteer.firstname %> <%= @volunteer.lastname %></h2>
 				<hr />

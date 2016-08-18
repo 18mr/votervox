@@ -3,24 +3,26 @@
 	<a class="brand" href="<%= homepage_path %>">VoterVox</a>
 
 	<div class="voter-dashboard">
-		<h1><%= t( 'voter_dashboard.menu.dashboard') %></h1>
+		<div class="green"><%= t( 'voter_dashboard.menu.dashboard') %></div>
 	</div><!--.voter-dashboard-->
 	
 	<% if @voter.present? %>
 
-	<a href="<%= @voter.home_url%>" class="button <%= at_voter_home? ? "selected" : "pink" %>" ><%= t('voter_dashboard.menu.translator') %></a>
+	<div class="voter-menu">
+		<a href="<%= @voter.home_url%>" class="button <%= at_voter_home? ? "selected" : "pink" %>" ><%= t('voter_dashboard.menu.translator') %></a>
 
-	<% else %>
+		<% else %>
 
-	<a href="<%= new_voter_path %>" class="button pink" ><%= t('voter_registration.title') %></a>
+		<a href="<%= new_voter_path %>" class="button pink" ><%= t('voter_registration.title') %></a>
 
-	<% end %>
+		<% end %>
 
-	<a href="<%= documents_path %>" class="button <%= at_documents_index? ? "selected" : "pink" %>"><%= t('voter_dashboard.menu.resources')%></a>
+		<a href="<%= documents_path %>" class="button <%= at_documents_index? ? "selected" : "pink" %>"><%= t('voter_dashboard.menu.resources')%></a>
 
-	<a class="button <%= at_feedback? ? "selected" : "pink" %>"  href="<%= feedback_path %>">
-		<%= t('voter_dashboard.menu.feedback')%>
-	</a>
+		<a class="button <%= at_feedback? ? "selected" : "pink" %>"  href="<%= feedback_path %>">
+			<%= t('voter_dashboard.menu.feedback')%>
+		</a>
+	</div>
 
 	<%= render "/shared/share_with_community" %>
 

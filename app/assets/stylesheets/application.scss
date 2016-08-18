@@ -49,6 +49,8 @@ $lightgrey: #f7f7f7;
 $darkgrey: #4a4a4a;
 $white: #fff;
 $grey: #313131;
+$grey1: #848484;
+$footergrey: #6A6A6A;
 
 body {
 	background: #fff;
@@ -257,9 +259,8 @@ div.notice {
 }
 div.alert {
 	text-align: center;
-    margin: 0 auto;
     width: auto;
-    font-size: 28px;
+    font-size: 20px;
     color: $darkpink;
     font-weight: 700;
 }
@@ -322,7 +323,7 @@ div.alert {
 	}
 }
 .close-icon {
-	height: 40px;
+	height: 0px;
 	width: 40px;
 	margin: 0px 10px 10px 0px;
     font-size: 31px;
@@ -345,11 +346,11 @@ MOBILE STYLES
 	display: none;
 }
 .pink-hr {
-	width: 100px;
+	width: 70px;
 	border-width: 1px;
 	color: $pink;
 	border-style: solid;
-	margin: 20px auto;
+	margin: 15px auto;
 }
 .grey-box, .black-box, .pink-box {
 	padding: 20px;
@@ -387,7 +388,7 @@ a.brand {
 header{
 	min-height: 46px;
 	background-color: #fff;
-	border-bottom: 3px solid $green;
+	border-bottom: 2px solid $green;
 	.wrapper {
 		margin-top: 10px;
 	}
@@ -400,13 +401,14 @@ header{
 		border-bottom: none;
 		font-size: 24px;
 		padding-top: 11px;
-		height: 40px;
+		height: 45px;
 		text-align: center;
 		font-family: 'Karla';
+		border-bottom: 2px solid #547923
 	}
 
 	nav.main {
-		border-top: 3px solid $green;
+		border-bottom: 2px solid #547923;
 		li {
 			font-size: 18px;
 		}
@@ -507,10 +509,6 @@ section.hero {
 		margin: 0px auto 20px;
 	}
 
-}
-
-.divi-bar {
-	border-bottom: 1px solid $grey;
 }
 
 section.getting-started {
@@ -829,7 +827,7 @@ main.forgot-password {
 main.dashboard {
 	padding: 0;
 	.wrapper {
-		width: 320px;
+		width: 90%;
 		margin: 0 auto;
 	}
 	>.wrapper {
@@ -857,15 +855,12 @@ main.dashboard {
 
 	section {
 		background-color: $white;
-		border-bottom: 1px solid $grey;
+		border-bottom: 1px dashed $grey;
 		text-align: left;
 		h1 {
 			text-align: left;
 			font-size: 32px;
 			line-height: 36px;
-		}
-		&:last-of-type {
-			border-bottom: none;
 		}
 
 		&.next-steps {
@@ -977,13 +972,14 @@ main.dashboard {
 		}
 	}
 	section.message {
+		padding: 50px 0 0;
 
 		h1 {
 			margin-bottom: 10px;
 		}
 		p {
 			font-size: 18px;
-			padding-bottom: 15px;
+			margin-bottom: 30px;
 		}
 		select {
 			min-width: 300px;
@@ -1024,10 +1020,14 @@ main.dashboard {
 			display: inline-block;
 		}
 	}
+
+	section {
+		width: 90%;
+		margin: 0 auto;
+	}
+
 	section.translator {
 		text-align: center;
-		width: 320px;
-		margin: 0 auto;
 		img {
 			margin-bottom: 20px;
 		}
@@ -1049,6 +1049,7 @@ main.dashboard {
 
 	section.available-times {
 		border-bottom: none;
+		padding: 40px 0 50px;
 		h2 {
 			text-align: center;
 			font-size: 22px;
@@ -1154,22 +1155,34 @@ main.dashboard {
 			font-size: 24px;
 		}
 	}
+
 	/*Voter Resources & Volunteers List (Admin Dashboard) Filters */
 	section.filters {
-		padding: 10px 0 20px 0;
+		padding: 10px 20px 10px;
 		background-color: $lightgrey;
+		width: 90%;
+		margin: 0 auto 0;
+
+		a {
+			font-size: 15px;
+		}
+
+		.fa {
+			margin-left: 10px;
+		}
 		div.filters {
 			.wrapper {
 				width: 300px;
 				margin: 0 auto;
 			}
 			fieldset {
-				margin-top: 30px;
+				margin-top: 15px;
+				margin-bottom: 10px;
 				label {
 					display: inline-block;
 					width: 49%;
-					margin-bottom: 10px;
-					font-size: 18px;
+					margin-bottom: 7px;
+					font-size: 16px;
 				}
 			}
 			fieldset.resource-type label {
@@ -1189,7 +1202,7 @@ main.dashboard {
 			}
 			legend {
 				font-weight: 700;
-				font-size: 20px;
+				font-size: 17px;
 				margin-bottom :10px;
 			}
 		}
@@ -1326,7 +1339,10 @@ main.voter-translator {
 	}
 }
 /* MOBILE Resources Pages*/
-main.dashboard.resources  {
+main.dashboard.resources, main.dashboard section.resources  {
+	padding: 10px 0 20px;
+	border-bottom: none;
+
 	> .wrapper {
 		width: 100%;
 	}
@@ -1423,8 +1439,9 @@ div.filter-box {
 		line-height: 1.3em;
 	}
 	div.language {
-		font-size: 16px;
+		font-size: 14px;
 		border-bottom: 1px solid #000;
+		color: $grey;
 		strong {
 			margin-left: 10px;
 		}
@@ -1432,7 +1449,9 @@ div.filter-box {
 	div.details {
 		p {
 			margin: 0;
-			color: $darkgrey;
+			color: $grey;
+			font-size: 12px;
+			line-height: 16px;
 		}
 	}
 	&:last-of-type {
@@ -1463,52 +1482,64 @@ div.green-overlay {
 	pointer-events: none;
 }
 div.light, div.lightbox {
-	width: auto;
-	margin: 15%;
+	width: 80%;
+	max-width: 370px;
+	margin: 0 15%;
 	background-color: #fff;
-	position: absolute;
+	position: fixed;
 	top: 20px;
 	left: -20px;
-	padding: 40px;
-	border: 3px solid #000;
+	padding: 40px 20px;
+	border: 2px solid #000;
 	text-align: center;
 	z-index: 100;
 
 	> h2 {
-		margin-top: 40px;
-		line-height: 1.2em;
+		margin: 0px;
+		line-height: 26px;
+		text-align: center;
+		font-size: 22px;
+		padding: 0 20px;
 	}
 	> p {
 		max-width: 300px;
 		margin: 0 auto;
-		font-size: 20px
+		font-size: 20px;
+	}
+
+	p {
+		margin-bottom: 0;
+		padding: 0 40px;
 	}
 	div.close-icon {
 		position: relative;
-		top: -31px;
-		left: 40px;
+		top: -38px;
+		right: -22px;
 		border: none;
 		color: $darkgrey;
 		margin: 0;
 		cursor: pointer;
+		font-weight: 300;
 		&:after {
 			padding: 0;
 		}
 	}
-}
-.contact-info {
-	padding: 15px;
-	width: 300px;
-	margin: 20px auto 0;
-	text-align: center;
-	color: #000;
-	p {
-		margin-bottom: 10px;
-	}
-	.phone-number {
-		font-size: 38px;
-		font-weight: 700;
-		word-wrap: break-word;
+
+	.contact-info {
+		padding: 15px;
+		width: 95%;
+		margin: 20px auto 0;
+		text-align: center;
+		color: #000;
+		p {
+			margin-bottom: 5px;
+			font-size: 15px;
+		}
+		.phone-number {
+			font-size: 37px;
+			font-weight: 700;
+			word-wrap: break-word;
+		}
 	}
 }
 main.dashboard.thank-you {
@@ -1835,7 +1866,7 @@ main.table {
 						padding-left: 10px;
 						color: $darkgrey;
 					}
-					&:first-of-type:after, &:last-of-type:after {
+					/*&:first-of-type:after,*/ &:last-of-type:after {
 						content: "";
 					}
 				}
@@ -2000,12 +2031,12 @@ main.table {
 			max-height: 100%;
 			overflow: auto;
 			bottom: 0;
-			border-right: 1px solid $darkgrey;
+			border-right: 1px solid $grey1;
 			color: $darkgrey;
 			> div, > a.button {
 				background-color: $lightgrey;
 				padding-left: 20px;
-				border-bottom: 1px solid $darkgrey;
+				border-bottom: 1px solid $grey1;
 				color: $darkgrey;
 				padding: 10px 20px;
 				display: block;
@@ -2016,7 +2047,7 @@ main.table {
 			}
 			a.brand {
 				display: block;
-				margin: 20px auto;
+				margin: 15px auto 5px;
 				float: none;
 				background-color: $white;
 			}
@@ -2024,12 +2055,13 @@ main.table {
 				height: auto;
 				font-size: 16px;
 				text-align: left;
-				padding: 20px;
+				padding: 20px 20px 17px;
 				border-radius: 0;
 				margin-bottom: 0;
 				border-bottom: 1px solid $white;
-				font-weight: 700;
+				font-weight: 500;
 				box-shadow: none;
+				width: 100%;
 				&.selected {
 					background-color: $white;
 					color: $pink;
@@ -2045,31 +2077,60 @@ main.table {
 				color: #fff;
 				text-transform: uppercase;
 				font-weight: 700;
-				padding: 20px 0;
+				padding: 8px 0 11px;
+				border-bottom: 2px solid #547923;
 				h1 {
 					font-size: 20px;
 					margin-bottom: 0;
 				}
+
+				.green {
+					background-color: $green;
+					color: $white;
+					text-transform: uppercase;
+					letter-spacing: 1px;
+					font-weight: 700;
+					border-bottom: none;
+					font-size: 16px;
+					line-height: 20px;
+					padding-top: 3px;
+					text-align: center;
+					font-family: 'Karla';
+					padding: 6px 7px 0;
+				}
 			}
+
+			.voter-menu {
+				padding: 0;
+				a:last-of-type {
+					border-bottom: 1px solid $darkpink;
+				}
+			}
+
 			.share-with-community {
 				float: none;
 				padding: 20px;
 				color: $darkgrey;
 				div {
-					color: $darkgrey;
-					font-size: 16px;
+					color: $footergrey;
+					font-size: 13px;
+					line-height: 17px;
 				}
 				div.buttons {
 					width: auto;
 				}
 				a {
-					height: auto;
+					height: 27px;
 					width: 27px;
-					padding: 2px;
-					border-radius: 2px;
+					padding-top: 5px;
+					border-radius: 5px;
 				}
 				i.fa:before {
-					font-size: 22px;
+					font-size: 15px;
+				}
+
+				.fa-facebook {
+					padding-top: 2px;
 				}
 			}
 			.terms {
@@ -2078,8 +2139,17 @@ main.table {
 					text-align: center;
 					padding: 5px;
 
+					a {
+						font-size: 13px;
+						color: $footergrey;
+					}
+
 				}
 			}
+		}
+
+		section.message {
+			padding: 0px 0 0;
 		}
 	}
 	ul.status li {
@@ -2092,10 +2162,14 @@ main.table {
 		width: 75%;
 		height: 100%;
 		margin-left: 25%;
-		padding: 0 70px;
+		padding: 60px 50px;
 		> .wrapper {
 			width: 100%;
 		}	
+
+		section {
+			width: 100%;
+		}
 		section, section.voter-resources {
 			background-color: $white;
 			padding: 50px 0px;
@@ -2127,8 +2201,6 @@ main.table {
 			}
 		}
 		section.message {
-			padding: 50px 0 20px;
-			border-bottom: 2px solid $darkgrey;
 			p {
 				font-size: 22px;
 			}
@@ -2137,20 +2209,46 @@ main.table {
 			padding: 30px 0px;
 		}
 		section.translator {
+			width: 100%;
+			padding: 50px 30px 50px;
+			.translator-image {
+				width: 33%;
+
+				img {
+					width: 100%;
+					height: auto;
+					max-width: 160px;
+				}
+			}
+
 			h2 {
-				margin-bottom: 20px;
+				margin-bottom: 12px;
 				font-size: 30px;
+				text-align: left;
+				margin-top: 5px;
 			}
 			hr {
-				margin: 0 0 20px;
+				margin: 0 0 15px 0px;
 			}
 			img, .details {
 				float: left;
 				margin-bottom: 0px;
 			}
+
+			li {
+				padding: 0;
+			}
 			.details {
 				margin-left: 20px;
 				text-align: left;
+				width: 60%;
+				float: left;
+
+				li {
+					font-size: 15px;
+					line-height: 18px;
+					margin-bottom: 4px;
+				}
 			}
 		}
 		section.available-times {
@@ -2165,7 +2263,7 @@ main.table {
 				font-size: 18px;
 			}
 			a.button {
-				width: 165px;
+				width: 172px;
 				font-size: 20px;
 			}
 		}
@@ -2195,13 +2293,13 @@ main.table {
 			}
 		}
 		section.filters {
-			background-color: $white;
+			width: 100%;
 			a.filters {
 				font-size: 18px;
 			}
 			div.filters {
 				.wrapper {
-					width: 90%;
+					width: 100%;
 					display: flex;
 					flex-direction: row;
 				}
@@ -2217,20 +2315,26 @@ main.table {
 				}
 				
 				fieldset.languages {
-					width: 49%;
+					width: 45%;
 					float: left;
 					flex: 2;
+					margin-right: 5%;
 					label {
 						width: 100%;
 					}
 				}
-				fieldset.resource-type, fieldset.location {
-					width: 25%;
+				fieldset.resource-type {
+					width: 50%;
 					float: left;
 					flex: 1;
+					margin-bottom: 50px;
+				}
+
+				fieldset.location {
 
 				}
 				fieldset.location {
+					width: 300px;
 					position: relative;
 					label {
 						font-size: 16px;
@@ -2663,11 +2767,54 @@ TABLET MENU
 	
 	/*Desktop Resources */
 
+	main.dashboard section.filters {
+		div.filters {
+			width: 98%;
+			margin: 0 auto;
+
+			fieldset {
+				margin-bottom: 5px;
+			}
+			fieldset.languages {
+				width: 28%;
+				float: left;
+				flex: 2;
+				margin-right: 5%;
+				margin-top: 0;
+				label {
+					width: 100%;
+				}
+			}
+			fieldset.resource-type {
+				width: 28%;
+				float: left;
+				flex: 1;
+				margin-bottom: 0px;
+				margin-top: 0;
+			}
+
+			fieldset.location {
+
+			}
+			fieldset.location {
+				width: 38%;
+				position: relative;
+
+				input.button {
+					width: 100%;
+					margin-top: 15px;
+				}
+			}
+
+		}
+	}
+
 	.document-box {
 		width: 30%;
 		margin-right: 5%;
 		&:nth-of-type(2n) {
-			margin-right: 5%;
+			margin-right: 3%;
+			margin-left: 2%;
 		}
 		&:nth-of-type(3n) {
 			margin-right: 0;
