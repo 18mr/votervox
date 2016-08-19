@@ -388,7 +388,7 @@ a.brand {
 	height: 40px;
 	display: block;
 	float: left;
-	background: url('logo.png') no-repeat;
+	background: url(<%= asset_path 'logo.png' %>) no-repeat;
 	background-size: 100%;
 	text-indent: -9999px;
 	margin-left: 10px;
@@ -488,7 +488,7 @@ body {
 	}
 }
 section.hero {
-	background: $pink url('homepage.png') no-repeat;
+	background: $pink url(<%= asset_path 'homepage.png' %>) no-repeat;
 	background-size: cover;
 	color: #fff;
 	text-align: center;

@@ -1,7 +1,7 @@
 <section class="hero">
 
 	<div class="content">
-		<div class="hero-image"><img alt="Democracy in Every Language" src="/assets/democracy.png" /></div>
+		<div class="hero-image"><img alt="Democracy in Every Language" src="<%= asset_path "democracy.png" %>" /></div>
 		<h1 class="hide"><%= t('homepage.tagline') %></h1>
 		<div class="div-bar"></div>
 		<div class="tagline"><%= t('homepage.intro_text') %></div>
@@ -40,14 +40,14 @@
 				<p><%= t('homepage.step1') %></p>
 			</div><!--.description-->
 
-			<img src="/assets/works-step1.png" class="float-right">
+			<img src="<%= asset_path "works-step1.png" %>" class="float-right">
 
 			<div class="clear-fix"></div>
 
 		</div><!--.step-->
 
 		<div class="step">
-			<img src="/assets/works-step2.png" class="float-left">
+			<img src="<%= asset_path "works-step2.png" %>" class="float-left">
 
 			<div class="description">
 				<div class="number">2</div><!--.number-->
@@ -67,7 +67,7 @@
 
 			</div><!--.description-->
 
-			<img src="/assets/works-step3.png" class="float-right">
+			<img src="<%= asset_path "works-step3.png" %>" class="float-right">
 
 			<div class="clear-fix"></div>
 
