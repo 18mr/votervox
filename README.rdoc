@@ -23,6 +23,8 @@ This repo contains the code for the VoterVOX application.
 
   * <tt>PORT</tt> - The port that the server should run on locally
 
+  * <tt>ADMIN_EMAIL</tt> - Email destination for feedback form submissions
+
   * <tt>S3_BUCKET_NAME</tt> - The name of the AWS S3 bucket used for resource storage
 
   * <tt>AWS_ACCESS_KEY_ID</tt> - Your AWS access key
@@ -40,6 +42,14 @@ This repo contains the code for the VoterVOX application.
   * <tt>TWILIO_TOKEN</tt> - Your Twilio account token for SMS sending
 
   * <tt>TWILIO_NUMBER</tt> - Your Twilio phone number for SMS sending
+
+  * <tt>ACTIONNETWORK_API_ROUTE</tt> - Base URL for Action Network API form submissions
+
+  * <tt>ACTIONNETWORK_API_KEY</tt> - Secret key for Action Network API form submissions
+
+  * <tt>ACTIONNETWORK_VOTER_FORM</tt> - Voter form API ID for Action Network submissions
+
+  * <tt>ACTIONNETWORK_VOLUNTEER_FORM</tt> - Volunteer form API ID for Action Network submissions
 
 * Run <tt>foreman s</tt> to start the local server.
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160815203200) do
+ActiveRecord::Schema.define(version: 20160819044111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -146,6 +146,7 @@ ActiveRecord::Schema.define(version: 20160815203200) do
     t.datetime "profile_image_updated_at"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "zip"
   end
 
   add_index "volunteers", ["email"], name: "index_volunteers_on_email", unique: true, using: :btree
@@ -168,6 +169,7 @@ ActiveRecord::Schema.define(version: 20160815203200) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "locale",             default: "en"
+    t.string   "zip"
   end
 
   add_foreign_key "documents", "volunteers", column: "submitter_id"

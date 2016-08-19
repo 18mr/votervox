@@ -21,9 +21,22 @@ class VotersController < ApplicationController
 		@voter = Voter.new(voter_params)
 
 		if @voter.save
+			# Notify voter
 			sms_message = [t('voter_dashboard.request.message.sms'), full_url(@voter.home_url)].join(' ')
 			VoterVoxSms.new.send @voter.contact, sms_message if @voter.sms_contact?
 			VoterNotifier.signup_confirmation(@voter).deliver_now if @voter.email_contact?
+
+			# Save record to ActionNetwork if voter has email
+			if @voter.email_contact?
+				voter_data = {
+					:firstname => @voter.firstname,
+					:lastname => @voter.lastname,
+					:email => @voter.contact,
+					:zip => @voter.zip
+				}
+				ActionNetwork.new.submit_form ENV['ACTIONNETWORK_VOTER_FORM'], voter_data
+			end
+
 			redirect_to @voter.home_url
 		else
 			@communication_options = Voter.communication_options
@@ -72,7 +85,7 @@ class VotersController < ApplicationController
 
 	def voter_params
 		params.require(:voter).permit(:firstname, :lastname, :communication_mode, :contact, :locale,
-			:address, :city, :state, :latitude, :longitude, {:languages => []}, :english_comfort, :first_time_voter)
+			:address, :city, :state, :zip, :latitude, :longitude, {:languages => []}, :english_comfort, :first_time_voter)
 	end
 
 	def determine_layout

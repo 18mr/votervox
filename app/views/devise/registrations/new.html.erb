@@ -42,9 +42,9 @@
       <%= f.hidden_field :longitude, { :id => "longitude", :class => "field" } %>
       <%= f.hidden_field :city, { :id => "locality", :class => "field" } %>
       <%= f.hidden_field :state, { :id => "administrative_area_level_1", :class => "field" } %>
+      <%= f.hidden_field :zip, { :id => "postal_code", :class => "field" } %>
       <input class="field" id="street_number" disabled="true" type="hidden"></input>
       <input class="field" id="route" disabled="true" type="hidden"></input>
-      <input class="field" id="postal_code" name="zipcode" disabled type="hidden"></input>
       <input class="field" id="country" name="country" disabled="true" type="hidden"></input>
 
       <%= f.label :"Are you volunteering through an organization?", { :for => "organization" } %>
