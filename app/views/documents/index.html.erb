@@ -70,7 +70,7 @@
 				<div class="document-box">
 					<a href="<%= document_path(document) %>">
 						<header><%= document.name %></header>
-					
+
 					<div class="language">Translated Language:<strong><%= document.translated_language %></strong></div>
 					<div class="details">
 						<p>Submitted by: <%= document.submitter.firstname %> <%= document.submitter.lastname[0] %>.</p>
@@ -80,6 +80,7 @@
 					<% if admin_signed_in? %>
 					<div class="actions">
 						<%= link_to 'Delete', document_path(document), method: :delete, data: { confirm: 'Are you sure?' } %>
+						<div class="clear-fix"></div>
 					</div>
 					<% end %>
 				</div><!--.document-box-->

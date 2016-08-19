@@ -70,16 +70,17 @@
 				<% end %>
 				<% if @requests.length == 0 %>
 				<div class="voter-box requested">
-					<h2>No Requested Matches</h2>
+					<h2 class="no-matches">You have no current requested matches</h2>
 				</div>
 				<% end %>
 
 				<% @accepted.each do |match| %>
 				<div class="voter-box accepted hide">
 					<div class="voter-info">
-						<h2><%= match.voter.firstname %> <%= match.voter.lastname %> <span class="accepted-tag desktop">Accepted</span></h2> 
-						<span class="accepted-tag mobile-only">Accepted</span>
+						<h2><%= match.voter.firstname %> <%= match.voter.lastname %>
 						<hr/> 
+						<span class="accepted-tag desktop">Accepted</span></h2> 
+						<span class="accepted-tag mobile-only">Accepted</span>
 						<ul>
 							<li><strong>City:</strong> <%= match.voter.city %></li>
 							<% distance = @volunteer.voter_distance(match.voter) %>
@@ -102,7 +103,7 @@
 				<% end %>
 				<% if @accepted.length == 0 %>
 				<div class="voter-box accepted hide">
-								<h2>No Accepted Matches</h2>
+								<h2 class="no-matches">You currently have no accepted matches</h2>
 				</div>
 				<% end %>
 
@@ -110,8 +111,8 @@
 				<div class="voter-box completed hide">
 					<div class="voter-info">
 						<h2><%= match.voter.firstname %> <%= match.voter.lastname %> <span class="completed-tag desktop">Completed</span></h2>
-						<span class="completed-tag mobile-only">Completed</span> 
 						<hr/>
+						<span class="completed-tag mobile-only">Completed</span> 
 						<ul>
 							<li><strong>City:</strong> <%= match.voter.city %></li>
 							<% distance = @volunteer.voter_distance(match.voter) %>
@@ -131,7 +132,7 @@
 				<% end %>
 				<% if @completed.length == 0 %>
 				<div class="voter-box completed hide">
-								<h2>No Completed Matches</h2>
+								<h2 class="no-matches">You currently have no completed matches</h2>
 				</div>
 				<% end %>
 

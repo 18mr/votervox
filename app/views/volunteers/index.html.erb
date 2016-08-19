@@ -19,7 +19,7 @@
 		<section class="filters">
 
 			<div class='wrapper'>
-				<a class="filters" href="#">Search Filters<i class="fa search-fa fa-caret-up" aria-hidden="true"></i></a>
+				<a class="filters" href="#">Search Filters<i class="fa search-fa fa-caret-down" aria-hidden="true"></i></a>
 			</div>
 
 			<div class="hide filters">
@@ -68,11 +68,10 @@
 
 				<div class="volunteer-info">
 
-					<span class="mobile-only accepted-tag">Accepted</span>
-
 					<h2><%= volunteer.firstname %> <%= volunteer.lastname %>, <%= organization_name volunteer %><span class="desktop accepted-tag">Accepted</span></h2> 
 
 					<hr/>
+					<span class="mobile-only accepted-tag">Accepted</span>
 
 					<ul>
 						<li><strong>City:</strong> <%= volunteer.city %></li>
@@ -92,7 +91,9 @@
 					<%= link_to 'Approve', approve_volunteer_path(volunteer), class: "button accept" %>
 					<% end %>
 
+					<div class="ban-volunteer">
 					<%= link_to 'Ban', ban_volunteer_path(volunteer), method: :get, class: "deactivate btn-outline", data: { confirm: 'Are you sure you want to ban this volunteer?' } %>
+				</div>
 
 					<% if !volunteer.admin? %>
 					<%= link_to 'Make Admin', make_admin_volunteer_path(volunteer), class: "btn-outline", method: :get,
