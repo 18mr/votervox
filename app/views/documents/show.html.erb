@@ -2,16 +2,18 @@
 
 	<div class="wrapper">
 	
-		<section class="message">
+		<section class="message resource-specific">
 
 			<div class="wrapper">
 
 				<h1><%= @document.name %></h1>
-
 				<% if admin_signed_in? %>
-				<%= link_to 'Delete', document_path(@document), method: :delete, data: { confirm: 'Are you sure?' } %>
+				<div class="actions delete-button">
+					<%= link_to 'Delete', document_path(@document), method: :delete, data: { confirm: 'Are you sure?' } %>
+				</div>
+				<div class="clear-fix"></div>
 				<% end %>
-
+				<div class="clear-fix"></div>
 				<div class="language">Translated Langauge:<strong><%= @document.translated_language %></strong></div>
 				<div class="details">
 					<p>Submitted by: <%= @document.submitter.firstname %> <%= @document.submitter.lastname[0] %>.</p>

@@ -29,7 +29,7 @@
 
 	<a href="<%= documents_path %>" class="button <%= at_documents_index? ? "selected" : "pink" %>" >Voter Resources</a>
 
-	<a href="<%= new_document_path %>" class="button <%= at_documents_new? ? "selected" : "pink" %>">Add a Translated Resource</a>
+	<a href="<%= new_document_path %>" class="button add-menu <%= at_documents_new? ? "selected" : "pink" %>">Add a Translated Resource</a>
 
 	<% if !admin_signed_in? %>
 
@@ -38,8 +38,7 @@
 		</a>
 
 	<% end %>
-
-	<%= link_to('Logout', destroy_volunteer_session_path, :method => :delete, class: "button") %>
+		<%= link_to('Logout', destroy_volunteer_session_path, :method => :delete, class: "button logout") %>
 
 	<%= render "/shared/share_with_community" %>
 

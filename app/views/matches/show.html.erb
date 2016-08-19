@@ -3,16 +3,17 @@
 			
 			<section class="match-results">
 				<div class="wrapper">
-					<h1>Voter Match</h1>
+					<h1>Your Voter Match</h1>
 
 					<div class="voter-box">
 						<div class="top-container">
 							<div class="voter-info">
-								<h2><%= @voter.firstname %> <%= @voter.lastname %> <span class="desktop accepted-tag">Accepted</span></h2>
+								<h2><%= @voter.firstname %> <%= @voter.lastname %>
+									<hr/>
+								<span class="desktop accepted-tag">Accepted</span></h2>
 								<% if @match.accepted? %>
 									<span class="accepted-tag mobile-only">Accepted</span>
 								<% end %>
-								<hr/>
 								<ul>
 									<li><strong>City:</strong> <%= @voter.city %></li>
 									<% distance = @voter.volunteer_distance(@volunteer) %>
@@ -29,12 +30,6 @@
 									<% end %>
 								</ul>
 							</div><!--.voter-info-->
-							<div class="actions desktop">
-								<% if @match.accepted? %>
-									<%= link_to "Match Completed", "#", { :class => "lightbox-button button accept", :"data-lightbox" => "accepted"} %>
-									<%= link_to 'Decline', decline_match_path(@match), method: :get, data: { confirm: 'Are you sure you want to decline this match?' }, class: "btn-outline decline" %>
-								<% end %>
-							</div>
 							<div class="clear-fix"></div>
 						</div>
 					
@@ -52,7 +47,7 @@
 								<% end %>
 								<hr/>
 								<h2>The next step:</h2>
-								<p>Contact <%= @voter.firstname %> to confirm specific time and location.</p>
+								<p class="next-contact">Contact <%= @voter.firstname %> to confirm specific time and location.</p>
 								<div class="black-box contact-info">
 									<p><%= @voter.firstname %>'s Contact Information:</p>
 									<div class="phone-number"><%= @voter.contact %></div>
@@ -68,15 +63,16 @@
 								<% end %>
 
 							<% else %>
-								<hr/>
+							<div class="original-message">
 								<p>Your original message:</p>
 								<div class="grey-box">
-									<em><%= @proposal.message %></em>
+									<p><em><%= @proposal.message %></em></p>
 								</div><!--.grey-box-->
+							</div>
 							<% end %>
 						</div><!--.wrapper-->
 					</div><!--.contact-box-->
-					<div class="actions mobile">
+					<div class="actions">
 						<% if @match.accepted? %>
 							<%= link_to "Match Completed", "#", { :class => "lightbox-button button accept", :"data-lightbox" => "accepted"} %>
 						<% end %>
