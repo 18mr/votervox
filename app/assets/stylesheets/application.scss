@@ -215,6 +215,10 @@ button.btn-outline, input.btn-outline, a.btn-outline {
 	cursor: pointer;
 }
 
+.logout {
+	border-bottom: 2px solid $grey !important;
+}
+
 strong {
 	font-weight: 700;
 }
@@ -967,15 +971,21 @@ main.dashboard {
 		.voter-box, .volunteer-box {
 			border: 2px solid $darkgrey;
 			text-align: center;
-			margin-bottom: 30px;
 			width: 90%;
 			max-width: 400px;
-			margin: 30px auto 40px;
+			margin: 50px auto 0;
 			h2, li {
 				text-align: center;
 			}
 			.image {
-				padding: 20px 25px 0;
+				padding: 30px 0 0 35px;
+				width: 40%;
+				float: left;
+
+				img {
+					width: 100%;
+					height: auto;
+				}
 			}
 			.voter-info, .volunteer-info {
 				padding: 30px 35px;
@@ -985,6 +995,10 @@ main.dashboard {
 					margin-bottom: 9px;
 					font-size: 24px;
 					line-height: 28px;
+					width: 55%;
+					float: right;
+					text-align: left;
+					margin-top: 10px;
 				}
 				hr {
 					margin: 18px auto 16px;
@@ -1400,10 +1414,18 @@ main.dashboard {
 			padding-right: 10px;
 		}
 	}
+
+	.list-volunters {
+		ul.status {
+			margin-bottom:10px;
+		}
+	}
 	
 	section.match-results {
+		border: none;
+		padding: 0 0 70px;;
 		ul.status {
-			margin-bottom: 20px;
+			margin-bottom: 5px;
 		}
 	}
 }
@@ -1434,6 +1456,10 @@ main.matches {
 	section.message {
 		padding: 50px 0 10px;
 	}	
+}
+
+.divi-bar {
+	border-bottom: 1px dashed $grey;
 }
 
 /*Voter Single Match Contact Mobile Styling */
@@ -1983,7 +2009,8 @@ section.download {
 		padding: 10px 40px;
 	}
 }
-section.organizations {
+main.dashboard section.organizations {
+	border: none;
 	hr {
 		width: 100%;
 	}
@@ -1995,9 +2022,10 @@ section.organizations {
 	}
 	a.button {
 		display: inline-block;
-		font-size: 26px;
+		font-size: 16px;
 		width: auto;
 		min-height: 0;
+		padding: 10px 25px;
 	}
 }
 //Translations Table Styling 
@@ -2305,7 +2333,7 @@ main.table {
 				border-bottom: 1px solid $white;
 				font-weight: 500;
 				box-shadow: none;
-				width: 101%;
+				width: 100%;
 				&.selected {
 					background-color: $white;
 					color: $pink;
@@ -2319,6 +2347,12 @@ main.table {
 				}
 			}
 
+			a.button.pink.add-menu {
+				font-size: 13px;
+				line-height: 16px;
+				padding-left: 30px;
+			}
+
 			div.voter-dashboard, div.volunteer-dashboard, div.admin-dashboard {
 				background-color: $green;
 				color: #fff;
@@ -2326,6 +2360,7 @@ main.table {
 				font-weight: 700;
 				padding: 3px 0 6px;
 				border-bottom: 2px solid #547923;
+
 				h1 {
 					font-size: 20px;
 					margin-bottom: 0;
@@ -2400,6 +2435,10 @@ main.table {
 		section.message {
 			padding: 0px 0 0;
 		}
+
+		section.completed-title {
+			padding: 0px 0 50px;
+		}
 	}
 	ul.status li {
 		padding: 0;
@@ -2413,9 +2452,10 @@ main.table {
 		width: 75%;
 	}
 
-	section.match-results, section.organizations, .metrics section, section.add-resource {
+	section.match-results, section.organizations, .metrics section, section.add-resource, section.match-results.approved {
 		/*Remove Extra Padding*/
 		padding: 0;
+		border-bottom: none;
 	}
 
 	main.dashboard {
@@ -2913,12 +2953,10 @@ TABLET MENU
 			.voter-box, .volunteer-box {
 				width: 45%;
 				float: left;
-				margin-right: 5%;
-				margin-bottom: 20px;
-
+				margin-right: 0%;
 
 				&:nth-child(2n) {
-					margin-right: 0;
+					margin-right: 5%;
 				}
 			}
 		}
@@ -3023,7 +3061,7 @@ TABLET MENU
 					margin: 0 0 15px;
 				}
 				.voter-info, .volunteer-info, .image, .actions {
-					background-color: $white;
+					background-color: $lightgrey;
 					/*border: none;
 					padding: 0;*/
 				}
@@ -3042,7 +3080,7 @@ TABLET MENU
 					flex: 1;
 				}*/
 				.image {
-					margin-right: 20px;
+					margin-right: 0px;
 				}
 				.actions {
 					/*position: absolute;

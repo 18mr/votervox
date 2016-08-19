@@ -1,6 +1,6 @@
 <main class="dashboard">
 
-	<div class="wrapper">
+	<div class="wrapper list-volunteers">
 
 		<section class="message">
 		
@@ -8,10 +8,11 @@
 
 			<h1>VoterVOX Volunteers</h1>
 			<ul class="status">
-					<li><a href="#" class="pending-volunteers">Pending</a></li>
-					<li><a href="#" class="approved-volunteers current">Approved</a></li>
-				</ul>
+				<li><a href="#" class="pending-volunteers">Pending</a></li>
+				<li><a href="#" class="approved-volunteers current">Approved</a></li>
 				<div class='clear-fix'></div>
+			</ul>
+			<div class='clear-fix'></div>
 			</div>
 
 		</section><!--.message-->
@@ -68,10 +69,10 @@
 
 				<div class="volunteer-info">
 
-					<h2><%= volunteer.firstname %> <%= volunteer.lastname %>, <%= organization_name volunteer %><span class="desktop accepted-tag">Accepted</span></h2> 
-
+					<h2><%= volunteer.firstname %> <%= volunteer.lastname %>, <%= organization_name volunteer %></h2> 
+					<div class="clear-fix"></div>
 					<hr/>
-					<span class="mobile-only accepted-tag">Accepted</span>
+					<span class="accepted-tag">Accepted</span>
 
 					<ul>
 						<li><strong>City:</strong> <%= volunteer.city %></li>
@@ -109,7 +110,7 @@
 
 			<div class="volunteer-box approved hide">
 
-				<h2>No Approved Volunteers</h2>
+				<h2 class="no-matches">No Approved Volunteers</h2>
 
 			</div>
 
@@ -164,7 +165,7 @@
 			<% if @pending_volunteers.length == 0 %>
 
 			<div class="volunteer-box pending hide">
-				<h2>No Pending Volunteers</h2>
+				<h2 class="no-matches">No Pending Volunteers</h2>
 			</div>
 
 			<% end %>

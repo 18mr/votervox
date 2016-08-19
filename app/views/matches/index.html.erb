@@ -77,10 +77,10 @@
 				<% @accepted.each do |match| %>
 				<div class="voter-box accepted hide">
 					<div class="voter-info">
-						<h2><%= match.voter.firstname %> <%= match.voter.lastname %>
+						<h2><%= match.voter.firstname %> <%= match.voter.lastname %></h2>
 						<hr/> 
-						<span class="accepted-tag desktop">Accepted</span></h2> 
-						<span class="accepted-tag mobile-only">Accepted</span>
+
+						<span class="accepted-tag">Accepted</span>
 						<ul>
 							<li><strong>City:</strong> <%= match.voter.city %></li>
 							<% distance = @volunteer.voter_distance(match.voter) %>

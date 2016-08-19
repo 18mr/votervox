@@ -9,6 +9,7 @@
 					<li><a class="completed-matches" href="#">Completed Matches - Voters Helped</a></li>
 					<div class="clear-fix"></div>
 				</ul>
+				<div class="divi-bar"></div>
 
 				<% @unmatched.each do |voter| %>
 
@@ -32,7 +33,7 @@
 				<% if @unmatched.length == 0 %>
 
 				<div class="voter-box unmatched">
-					<h2>No Unmatched Voters</h2>
+					<h2  class="no-matches">No Unmatched Voters</h2>
 				</div>
 
 				<% end %>
@@ -61,7 +62,7 @@
 				<% if @matched.length == 0 %>
 
 				<div class="voter-box matched hide">
-					<h2>No Matched Voters</h2>
+					<h2 class="no-matches">No Matched Voters</h2>
 				</div>
 
 				<% end %>
@@ -92,7 +93,7 @@
 				<% if @completed.length == 0 %>
 
 				<div class="voter-box completed hide">
-					<h2>No Completed Matches</h2>
+					<h2 class="no-matches">No Completed Matches</h2>
 				</div>
 
 				<% end %>
