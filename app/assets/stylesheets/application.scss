@@ -88,6 +88,7 @@ body {
  }
 
  a, input[type="submit"] {
+ 	-webkit-appearance:none;
  	text-decoration: none;
  	color: $darkgrey;
  	:hover {
@@ -95,7 +96,7 @@ body {
  		pointer-events: default;
  	}
  	&.current {
- 		color: $darkgrey;
+ 		color: $darkgrey !important;
  		font-weight: 700;
  	}
  	&.current:hover {
@@ -236,7 +237,7 @@ hr {
 	display: block !important;
 }
 .hide {
-	display: none !important ;
+	display: none ;
 }
 .small {
 	font-size: 10px;
@@ -394,10 +395,10 @@ a.brand {
 	margin-top: 2px;
 }
 header{
-	min-height: 46px;
 	background-color: #fff;
 	.wrapper {
 		margin-top: 10px;
+		border-bottom: 2px solid $green;
 	}
 	.green {
 		background-color: $green;
@@ -435,6 +436,10 @@ header{
 			border-bottom: none;
 		}
 	}
+}
+
+.dashboard header .wrapper {
+	border-bottom: 0;
 }
 
 section, main {
@@ -906,6 +911,7 @@ main.dashboard {
 
 		&.next-steps {
 			padding-left: 20px;
+			border-bottom: 0;
 			h2 {
 				color: $pink;
 				font-size: 21px;
@@ -951,7 +957,7 @@ main.dashboard {
 				margin-bottom: 10px;
 			}
 		}
-		.volunteer-box.approved {
+		.volunteer-box.approved, .volunteer-box.pending {
 			background-color: $lightgrey;
 			.actions {
 				.ban-volunteer {
@@ -1015,6 +1021,13 @@ main.dashboard {
 					}
 				}
 
+			}
+
+			.voter-info {
+				h2 {
+					width: 100%;
+					float: none;
+				}
 			}
 			a.button {
 				padding: 5px;
@@ -1336,7 +1349,7 @@ main.dashboard {
 		}
 		div.filters {
 			.wrapper {
-				width: 300px;
+				width: 100%;
 				margin: 0 auto;
 			}
 			fieldset {
@@ -1361,8 +1374,12 @@ main.dashboard {
 				input#location {
 					border-radius: 4px;
 					border: 1px solid $darkgrey;
-					width: 100%;
+					width: 230px;
 					margin-bottom: 20px;
+				}
+
+				input.button {
+					width: 230px;
 				}
 			}
 			legend {
@@ -1425,7 +1442,29 @@ main.dashboard {
 		border: none;
 		padding: 0 0 70px;;
 		ul.status {
-			margin-bottom: 5px;
+		}
+
+		.hide {
+			display: none !important;
+		}
+	}
+
+	.metric {
+		width: 48%;
+		margin-right: 4%;
+		float: left;
+		margin-bottom: 0px;
+		button {
+			font-size: 11.5px;
+			width: auto;
+			padding: 3px 10px;
+			height: auto;
+			border-width: 1px;
+			box-shadow: 0px 1px 0px $darkpink;
+			margin-top: -10px;
+		}
+		&:nth-of-type(2n){
+			margin-right: 0px;
 		}
 	}
 }
@@ -1733,7 +1772,7 @@ div.filter-box {
 
 div.green-overlay {
 	background-color: $green;
-	opacity: 0.1;
+	opacity: 0.3;
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -1837,7 +1876,7 @@ main.dashboard.getting-started {
 
 main.metrics {
 	div.timeframe-selection {
-		margin-bottom: 30px;
+		margin-bottom: 15px;
 		input {
 			display: inline;
 			width: auto;
@@ -1866,6 +1905,10 @@ main.metrics {
 			}
 		}
 	}
+
+	.message {
+		margin-bottom: 40px;
+	}
 	section, .breakdown-language {
 		border: none;
 		padding: 0 0 50px;
@@ -1892,7 +1935,9 @@ main.metrics {
 			left: 35px;
 		}
 		.search {
-			margin-bottom: 30px;
+			margin-bottom: 0px;
+			width: 271px;
+			margin: 5px auto 0;
 			fieldset {
 				float: left;
 				margin-right: 3%;
@@ -1905,11 +1950,19 @@ main.metrics {
 				margin-bottom: 0;
 			}
 			input {
-				font-size: 17px;
-				width: 132px;
+				font-size: 14px;
+				width: 110px;
 			}
 			button.search-icon {
-				margin-top: 20px;
+				margin-top: 18px;
+				height: 29px;
+				padding: 0 10px;
+				.fa {
+					font-size: 15px;
+				}
+			}
+			legend {
+				font-size: 12px;
 			}
 		}
 	}
@@ -1921,11 +1974,16 @@ main.metrics {
 .lightbox.breakdown-language {
 	margin: 0;
 	top: 68px;
-	left: 75px;
-	position: fixed;
+	position: absolute;
+	left: 10%;
 	header {
 		min-height: 0;
 		border-bottom: none;
+
+		h1 {
+			font-size: 20px;
+			margin-bottom: 20px;
+		}
 	}
 	ul {
 		min-height: 20px;
@@ -1948,7 +2006,9 @@ main.metrics {
 		}
 	}
 	.metric-box {
-		height: 153px;
+		height: 136px;
+		max-width: 250px;
+		margin: 0 auto 30px;
 		.language {
 			font-size: 15px;
 			font-weight: 700;
@@ -1959,28 +2019,12 @@ main.metrics {
 		padding: 10px 0;
 	}
 }
-.metric {
-	width: 48%;
-	margin-right: 4%;
-	float: left;
-	margin-bottom: 0px;
-	button {
-		font-size: 11px;
-		width: auto;
-		padding: 2px 5px;
-		height: auto;
-		border-width: 1px;
-		box-shadow: 0px 2px 0px $darkpink;
-	}
-	&:nth-of-type(2n){
-		margin-right: 0px;
-	}
-}
+
 .metric-box {
-	height: 182px;
+	height: 155px;
 	text-align: center;
 	border: 2px solid $darkgrey;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	.number {
 		background-color: $pink;
 		font-size: 40px;
@@ -1988,9 +2032,21 @@ main.metrics {
 		padding: 20px 12px;
 		font-weight: 700;
 		border-bottom: 1px solid $darkgrey;
+		height: 80px;
 	}
 	.details {
-		padding: 20px;
+		padding: 10px 20px;
+		font-size: 13px;
+		line-height: 17px;
+		background-color: $lightgrey;
+		display: table;
+		height: 71px;
+
+		.details-align {
+			display: table-cell;
+			vertical-align: middle;
+			text-align: center;
+		}
 	}
 }
 section.download {
@@ -2292,6 +2348,10 @@ main.table {
 
 	body.dashboard {
 
+		header .wrapper {
+			border-bottom: 0;
+		}
+
 		aside {
 			height: 100%;
 			width: 25%;
@@ -2443,7 +2503,7 @@ main.table {
 	ul.status li {
 		padding: 0;
 		border: none;
-		margin-bottom: 7px;
+		margin-bottom: 10px;
 	}
 
 	section.voter-resources {
@@ -2659,6 +2719,7 @@ main.table {
 						font-size: 14px;
 						height: auto;
 						margin-bottom: 50px;
+						width: 100%;
 					}
 					input.button {
 						font-size: 15px;
@@ -2802,9 +2863,6 @@ main.table {
 
 		section {
 			padding: 0px 0px 50px;
-			.wrapper {
-				width: 340px;
-			}
 			div.search, div.timeframe-selection {
 				margin-bottom: 30px;
 			}
@@ -3208,7 +3266,7 @@ TABLET MENU
 					font-size: 17px;
 					line-height: 17px;
 					&.current {
-						color: $darkgrey;
+						color: $darkgrey !important;
 					}
 				}
 				form:first-of-type {

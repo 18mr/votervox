@@ -8,8 +8,8 @@
 
 			<h1>VoterVOX Volunteers</h1>
 			<ul class="status">
-				<li><a href="#" class="pending-volunteers">Pending</a></li>
-				<li><a href="#" class="approved-volunteers current">Approved</a></li>
+				<li><a href="#" class="pending-volunteers current">Pending</a></li>
+				<li><a href="#" class="approved-volunteers">Approved</a></li>
 				<div class='clear-fix'></div>
 			</ul>
 			<div class='clear-fix'></div>
@@ -61,7 +61,7 @@
 
 			<% @approved_volunteers.each do |volunteer| %>
 
-			<div class="volunteer-box approved">
+			<div class="volunteer-box approved hide">
 
 				<div class="image">
 					<img src="<%= volunteer.profile_image.present? ? volunteer.profile_image.url(:square) : asset_path('volunteer.jpg') %>">
@@ -118,7 +118,7 @@
 
 			<% @pending_volunteers.each do |volunteer| %>
 			
-			<div class="volunteer-box pending hide">
+			<div class="volunteer-box pending">
 
 				<div class="image">
 
@@ -127,10 +127,10 @@
 				</div><!--.image-->
 
 				<div class="volunteer-info">
-
-					<span class="mobile-only accepted-tag">Pending</span>
 					<h2><%= volunteer.firstname %> <%= volunteer.lastname %>, <%= organization_name volunteer %></h2> 
+					<div class="clear-fix"></div>
 					<hr/>
+					<span class="mobile-only accepted-tag">Pending</span>
 					<ul>
 						<li><strong>City:</strong> <%= volunteer.city %></li>
 						<li><strong>Languages Spoken:</strong> <%= volunteer.languages.join(', ') %></li>
@@ -149,9 +149,12 @@
 					<%= link_to 'Approve', approve_volunteer_path(volunteer), class: "button accept" %>
 					<% end %>
 
-					<%= link_to 'Ban', ban_volunteer_path(volunteer), method: :get, class: "deactivate btn-outline", data: { confirm: 'Are you sure you want to ban this volunteer?' } %>
+					<div class="ban-volunteer">
+						<%= link_to 'Ban', ban_volunteer_path(volunteer), method: :get, class: "deactivate btn-outline", data: { confirm: 'Are you sure you want to ban this volunteer?' } %>
+					</div>
 
 					<% if !volunteer.admin? %>
+
 					<%= link_to 'Make Admin', make_admin_volunteer_path(volunteer), class: "btn-outline", method: :get,
 						data: { confirm: 'Are you sure you want to make this volunteer an administrator?' } %>
 					<% end %>

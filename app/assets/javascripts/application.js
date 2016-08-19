@@ -134,6 +134,22 @@ function showMatches(){
     $('div.requested.voter-box, div.accepted.voter-box').addClass('hide');
   });
 }
+
+//Metrics Time Selection
+function showTime(){
+  $('input.week').click( function(e){
+    $(this).addClass('current');
+    $('input.month, input.all_time').removeClass('current');
+  });
+  $('input.month').click( function(e){
+    $(this).addClass('current');
+    $('input.week, input.all_time').removeClass('current');
+  });
+  $('input.all_time').click( function(e){
+    $(this).addClass('current');
+    $('input.month, input.week').removeClass('current');
+  });
+}
 //lightbox display with data attribute lightbox
 function showLightBox() {
   $('.lightbox-button').click( function(e){
@@ -168,6 +184,7 @@ $(document).ready(function(){
   showLightBox();
   closeLightBox();
   filterShow();
+  showTime();
 
   //on homepage language select, submit form
   if ( $('section.getting-started').has("form") ) {

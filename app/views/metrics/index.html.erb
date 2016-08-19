@@ -13,14 +13,14 @@
 						<%= hidden_field_tag 'start_date', 1.week.ago %>
 						<%= hidden_field_tag 'end_date', 1.second.ago %>
 						<%= hidden_field_tag 'timeframe', 'week' %>
-						<%= submit_tag 'Last Week', class: "week" %>
+						<%= submit_tag 'This Week', class: "week" %>
 					<% end %>
 
 					<%= form_tag metrics_path, method: 'GET' do %>
 						<%= hidden_field_tag 'start_date', 1.month.ago %>
 						<%= hidden_field_tag 'end_date', 1.second.ago %>
 						<%= hidden_field_tag 'timeframe', 'month' %>
-						<%= submit_tag 'Last Month', class: "month" %>
+						<%= submit_tag 'This Month', class: "month" %>
 					<% end %>
 
 					<%= form_tag metrics_path, method: 'GET' do %>
@@ -63,28 +63,36 @@
 				<div class="metric">
 					<div class="metric-box">
 						<div class="number"><%= @metrics[:language_count] %></div>
-						<div class="details">Total # Languages Supported</div>
+						<div class="details">
+							<div class="details-align">Total # Languages Supported</div>
+						</div>
 						<div class="clear-fix"></div><!--.clear-fix-->
 					</div><!--.metric-box-->
 				</div><!--.metric-->
 				<div class="metric">
 					<div class="metric-box">
 						<div class="number"><%= @metrics[:site_visitors] %></div>
-						<div class="details">Total # Site Visitors</div>
+						<div class="details">
+							<div class="details-align">Total # Site Visitors</div>
+						</div>
 					</div><!--.metric-box-->
 				</div><!--.metric-->
 
 				<div class="metric">
 					<div class="metric-box">
 						<div class="number"><%= @metrics[:registrations] %></div>
-						<div class="details">Total # of VoterVOX Registrations</div>
+						<div class="details">
+							<div class="details-align">Total # of VoterVOX Registrations</div>
+						</div>
 					</div><!--.metric-box-->
 					<button class="btn-outline lightbox-button" data-lightbox="number_of_registrations">Breakdown by Language</button>
 				</div><!--.metric-->
 				<div class="metric">
 					<div class="metric-box">
 						<div class="number"><%= @metrics[:views_per_language] %></div>
-						<div class="details">Total # Views per Language</div>
+						<div class="details">
+							<div class="details-align">Total # Views per Language</div>
+						</div>
 					</div><!--.metric-box-->
 				</div><!--.metric-->
 			</div>
@@ -106,8 +114,9 @@
 					<div class="metric-box">
 
 						<div class="number"><%= @metrics[:volunteer_count] %></div>
-						<div class="details">Total # of Volunteers</div>
-
+						<div class="details">
+							<div class="details-align">Total # of Volunteers</div>
+						</div>
 					</div><!--.metric-box-->
 
 					<button class="btn-outline lightbox-button" data-lightbox="number_of_volunteers">Breakdown by Language</button>
@@ -119,8 +128,9 @@
 					<div class="metric-box">
 
 						<div class="number"><%= @metrics[:active_volunteer_count] %></div>
-						<div class="details">Total # Active Volunteers</div>
-
+						<div class="details">
+							<div class="details-align">Total # Active Volunteers</div>
+						</div>
 					</div><!--.metric-box-->
 
 					<button class="btn-outline lightbox-button" data-lightbox="active_volunteers">Breakdown by Language</button>
@@ -132,8 +142,9 @@
 					<div class="metric-box">
 
 						<div class="number"><%= @metrics[:new_volunteer_count] %></div>
-						<div class="details">Total # of New Volunteers</div>
-
+						<div class="details">
+							<div class="details-align">Total # of New Volunteers</div>
+						</div>
 					</div><!--.metric-box-->
 
 					<button class="btn-outline lightbox-button" data-lightbox="new_volunteers">Breakdown by Language</button>
@@ -145,8 +156,9 @@
 					<div class="metric-box">
 
 						<div class="number"><%= @metrics[:average_duration] %></div>
-						<div class="details">Avg Total Time Spent with a Voter</div>
-
+						<div class="details">
+							<div class="details-align">Avg Total Time Spent with a Voter</div>
+						</div>
 					</div><!--.metric-box-->
 
 					<button class="btn-outline lightbox-button" data-lightbox="avg_time_spent">Breakdown by Language</button>
@@ -158,8 +170,9 @@
 					<div class="metric-box">
 
 						<div class="number"><%= @metrics[:min_duration] %></div>
-						<div class="details">Min. Total Time Spent with a Voter</div>
-
+						<div class="details">
+							<div class="details-align">Min. Total Time Spent with a Voter</div>
+						</div>
 					</div><!--.metric-box-->
 
 					<button class="btn-outline lightbox-button" data-lightbox="min_time_spent">Breakdown by Language</button>
@@ -171,7 +184,9 @@
 					<div class="metric-box">
 
 						<div class="number"><%= @metrics[:max_duration] %></div>
-						<div class="details">Max. Total Time Spent with a Voter</div>
+						<div class="details">
+							<div class="details-align">Max. Total Time Spent with a Voter</div>
+						</div>
 
 					</div><!--.metric-box-->
 
@@ -198,8 +213,9 @@
 					<div class="metric-box">
 
 						<div class="number"><%= @metrics[:voter_count] %></div>
-						<div class="details">Total # of Voters</div>
-						
+						<div class="details">
+							<div class="details-align">Total # of Voters</div>
+						</div>
 					</div><!--.metric-box-->
 
 					<button class="btn-outline lightbox-button" data-lightbox="number_of_voters">Breakdown by Language</button>
@@ -211,8 +227,9 @@
 					<div class="metric-box">
 
 						<div class="number"><%= @metrics[:active_match_count] %></div>
-						<div class="details">Total # Active Matches</div>
-
+						<div class="details">
+							<div class="details-align">Total # Active Matches</div>
+						</div>
 					</div><!--.metric-box-->
 
 				</div><!--.metric-->
@@ -222,8 +239,9 @@
 					<div class="metric-box">
 
 						<div class="number"><%= @metrics[:new_voter_count] %></div>
-						<div class="details">Total # New Voters</div>
-
+						<div class="details">
+							<div class="details-align">Total # New Voters</div>
+						</div>
 					</div><!--.metric-box-->
 
 					<button class="btn-outline lightbox-button" data-lightbox="new_voters">Breakdown by Language</button>
@@ -234,7 +252,9 @@
 
 					<div class="metric-box">
 						<div class="number"><%= @metrics[:completed_match_count] %></div>
-						<div class="details">Total # of Completed Matches</div>
+						<div class="details">
+							<div class="details-align">Total # of Completed Matches</div>
+						</div>
 					</div><!--.metric-box-->
 
 					<button class="btn-outline lightbox-button" data-lightbox="completed_matches">Breakdown by Language</button>
@@ -245,7 +265,9 @@
 
 					<div class="metric-box">
 						<div class="number"><%= @metrics[:unmatched_voter_count] %></div>
-						<div class="details">Total # of Voters Without Matches</div>
+						<div class="details">
+							<div class="details-align">Total # of Voters Without Matches</div>
+						</div>
 					</div><!--.metric-box-->
 
 					<button class="btn-outline lightbox-button" data-lightbox="unmatched_voters">Breakdown by Language</button>
