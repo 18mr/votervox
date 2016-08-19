@@ -159,7 +159,7 @@ body {
  	font-size: 14px;
  	line-height: 20px;
  	display: block;
- 	color: $darkgrey;
+ 	color: $grey;
  	line-height: 1.2em;
  	text-align: left;
  }
@@ -702,6 +702,7 @@ main.sign-up {
 		font-size: 10px;
 		color: #666;
 		float: left;
+		margin: -4px 0 4px;
 	}
 	
 	.float-left {
@@ -774,12 +775,18 @@ div.fileinputs {
 
 div.fakefile {
 	position: absolute;
-	top: 0px;
+	top: 22px;
 	left: 0px;
 	z-index: 1;
 	width: 100%;
+
 	input {
 		margin-bottom: 10px;
+	}
+
+	button.btn-outline {
+		font-size: 16px;
+		border-bottom: 2px solid $darkpink;
 	}
 }
 
@@ -2264,9 +2271,12 @@ main.table {
 		div.passwords {
 			position: relative;
 			div.confirm-password {
-				position: absolute;
 				bottom: 0;
 				right: 0;
+
+				label {
+					margin-bottom: 15px; 
+				}
 			}
 		}
 		input.file {
@@ -2276,6 +2286,7 @@ main.table {
 		}
 		div.fakefile {
 			width: 100%;
+			top: 28px;
 			input {
 				width: 60%;
 				margin-right: 5%;
@@ -2334,7 +2345,8 @@ main.table {
 	div.pink-line {
 		span {
 			h3 {
-				font-size: 24px;
+				font-size: 20px;
+				margin-top: -8px;
 			}
 			&:after, &:before {
 				width: 33px;
