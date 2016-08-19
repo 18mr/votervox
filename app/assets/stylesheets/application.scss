@@ -3023,10 +3023,10 @@ TABLET MENU
 			.voter-box, .volunteer-box {
 				width: 45%;
 				float: left;
-				margin-right: 0%;
+				margin-right: 5%;
 
 				&:nth-child(2n) {
-					margin-right: 5%;
+					margin-right: 0%;
 				}
 			}
 		}
