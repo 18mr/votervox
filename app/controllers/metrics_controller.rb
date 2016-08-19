@@ -58,9 +58,7 @@ class MetricsController < ApplicationController
 		language_duration_map = interactions.select{ |i| i.duration > 0 }.map do |interaction|
 			interaction.match.languages.map{ |l| {:label => l, :value => interaction.duration} }
 		end
-		puts "Duration stats:" + language_duration_map.to_json
 		language_durations = aggregate_hashes(language_duration_map.flatten)
-		puts "Duration processed:" + language_durations.to_json
 
 		{
 			:language_count => language_list.count,
