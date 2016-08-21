@@ -2,6 +2,7 @@ class Volunteer < ActiveRecord::Base
 	scope :active, -> { where("status in (0,1)") }
 	scope :unapproved, -> { where("status = 0") }
 	scope :approved, -> { where("status = 1") }
+	scope :banned, -> { where("status = 2") }
 
 	belongs_to :organization
 	has_many :matches

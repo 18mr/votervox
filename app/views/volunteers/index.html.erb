@@ -10,6 +10,7 @@
 			<ul class="status">
 				<li><a href="#" class="pending-volunteers current">Pending</a></li>
 				<li><a href="#" class="approved-volunteers">Approved</a></li>
+				<li><a href="#" class="banned-volunteers">Banned</a></li>
 				<div class='clear-fix'></div>
 			</ul>
 			<div class='clear-fix'></div>
@@ -169,6 +170,48 @@
 
 			<div class="volunteer-box pending hide">
 				<h2 class="no-matches">No Pending Volunteers</h2>
+			</div>
+
+			<% end %>
+
+			<% @banned_volunteers.each do |volunteer| %>
+			
+			<div class="volunteer-box banned">
+
+				<div class="image">
+
+					<img src="<%= volunteer.profile_image.present? ? volunteer.profile_image.url(:square) : asset_path('volunteer.jpg') %>">
+
+				</div><!--.image-->
+
+				<div class="volunteer-info">
+					<h2><%= volunteer.firstname %> <%= volunteer.lastname %>, <%= organization_name volunteer %></h2> 
+					<div class="clear-fix"></div>
+					<hr/>
+					<span class="mobile-only accepted-tag">Banned</span>
+					<ul>
+						<li><strong>City:</strong> <%= volunteer.city %></li>
+						<li><strong>Languages Spoken:</strong> <%= volunteer.languages.join(', ') %></li>
+						<li><strong>Phone Number:</strong> <%= volunteer.phone %></li>
+						<li><strong>Email Address:</strong> <%= volunteer.email %></li>
+					</ul>
+
+				</div><!--.voter-info-->
+
+				<div class="actions">
+					
+					<%= link_to 'Unban', approve_volunteer_path(volunteer), class: "button accept" %>
+
+				</div><!--.actions-->
+				
+			</div><!--.volunteer-box-->
+
+			<% end %>
+
+			<% if @banned_volunteers.length == 0 %>
+
+			<div class="volunteer-box banned hide">
+				<h2 class="no-matches">No Banned Volunteers</h2>
 			</div>
 
 			<% end %>

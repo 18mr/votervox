@@ -12,19 +12,23 @@ class VolunteersController < ApplicationController
 		if current_org.nil?
 			@pending_volunteers = Volunteer.unapproved
 			@approved_volunteers = Volunteer.approved
+			@banned_volunteers = Volunteer.banned
 		else
 			@pending_volunteers = current_org.volunteers.unapproved
 			@approved_volunteers = current_org.volunteers.approved
+			@banned_volunteers = current_org.volunteers.banned
 		end
 
 		# Filter based on language and location
 		if @languages.present?
 			@pending_volunteers = @pending_volunteers.reject{ |v| (v.languages & @languages).empty? }
 			@approved_volunteers = @approved_volunteers.reject{ |v| (v.languages & @languages).empty? }
+			@banned_volunteers = @banned_volunteers.reject{ |v| (v.languages & @languages).empty? }
 		end
 		if @location.present?
 			@pending_volunteers = @pending_volunteers.reject{ |v| v.city != @location && v.state != @location }
 			@approved_volunteers = @approved_volunteers.reject{ |v| v.city != @location && v.state != @location }
+			@banned_volunteers = @banned_volunteers.reject{ |v| v.city != @location && v.state != @location }
 		end
 	end
 
