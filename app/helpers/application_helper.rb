@@ -10,21 +10,19 @@ module ApplicationHelper
 	end
 	
 	# Language helpers
-	def language_options_english
-		I18n.available_locales.map{ |lang| [t('locale_name', locale: lang), lang.to_s] }.sort_by(&:first)
-	end
-	def language_options
-		language_options_english.reject{ |l| l.last == 'en' }
+	def translation_options
+		active_languages = I18n.available_locales.select{ |lang| t('enabled', locale: lang) == 'true' }
+		active_languages.map{ |lang| [t('locale_name', locale: lang), lang.to_s] }.sort_by(&:first)
 	end
 	def language_list
-		language_options.map(&:first)
+		YAML.load_file('config/languages.yml')["languages"]
 	end
 	def chosen_language(user,language)
 	  user.languages.nil? ? false : user.languages.include?(language)
 	end
 
 	def slugify name
-		name.gsub(/ /,'_').downcase
+		name.gsub(/[()]/,'').gsub(/ /,'_').downcase
 	end
 	def iso_format date
 		date.strftime("%Y-%m-%d")

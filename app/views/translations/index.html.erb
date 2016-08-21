@@ -4,6 +4,21 @@
 
     <h1>Translations for <%= t('locale_name', locale: @locale) %></h1>
 
+    <% if translation_for_key(@translations, 'enabled').present? %>
+      <% enabled = translation_for_key(@translations, 'enabled') %>
+      <% form_url = locale_translation_path(:id => enabled.id) %>
+    <% else %>
+      <% enabled = Translation.new(locale: @locale, key: 'enabled', value: 'false') %>
+      <% form_url = locale_translations_path %>
+    <% end %>
+    <%= form_for enabled, url: form_url do |form| %>
+      <span>Translation State: <%= enabled.value == 'false' ? 'Disabled' : 'Enabled' %></span>
+      <%= form.hidden_field :locale %>
+      <%= form.hidden_field :key %>
+      <%= form.hidden_field :value, { :value => enabled.value == 'false' ? 'true' : 'false' } %>
+      <%= form.submit enabled.value == 'false' ? 'Enable' : 'Disable', class: "button" %>
+    <% end %>
+
     <table>
       <thead>
         <tr>
@@ -15,6 +30,7 @@
       </thead>
       <tbody>
         <% translation_keys.each do |key| %>
+          <% next if key == 'enabled' %>
           <% translation = translation_for_key(@translations, key) %>
           <tr id="<%= key %>">
             <td><%= key %></td>
