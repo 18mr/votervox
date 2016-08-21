@@ -8,6 +8,7 @@ class MetricsController < ApplicationController
 		@start_dt = params[:start_date].to_date rescue 1.week.ago
 		@end_dt = params[:end_date].to_date rescue 1.second.ago
 		@timeframe = params[:timeframe]
+		@languages = language_list
 		@metrics = metrics_data
 
 		respond_to do |format|
@@ -16,6 +17,10 @@ class MetricsController < ApplicationController
 			end
 			format.json do
 				render json: @metrics
+			end
+			format.csv do
+				headers['Content-Disposition'] = "attachment; filename=\"votervox_metrics.csv\""
+				headers['Content-Type'] ||= 'text/csv'
 			end
 		end
 	end
@@ -81,13 +86,13 @@ class MetricsController < ApplicationController
 			:voter_count => voters.count,
 			:voter_count_by_language => count_occurrences(voter_languages),
 			:active_match_count => active_matches.count,
-			:active_match_by_language => count_occurrences(active_match_languages),
+			:active_match_count_by_language => count_occurrences(active_match_languages),
 			:new_voter_count => new_voters.count,
 			:new_voter_count_by_language => count_occurrences(new_voter_languages),
 			:completed_match_count => completed_matches.count,
-			:completed_match_by_language => count_occurrences(completed_match_languages),
+			:completed_match_count_by_language => count_occurrences(completed_match_languages),
 			:unmatched_voter_count => unmatched_voters.count,
-			:unmatched_voters_count_by_language => count_occurrences(unmatched_voter_langauges)
+			:unmatched_voter_count_by_language => count_occurrences(unmatched_voter_langauges)
 		}
 	end
 
