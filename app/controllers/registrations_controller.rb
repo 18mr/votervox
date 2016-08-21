@@ -9,7 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
 		super
 		if resource.save
 			# Notify volunteer
-			sms_message = t('volunteer_sms.signup_confirmation', url: full_url(volunteers_home_path))
+			sms_message = t('volunteer_sms.signup_confirmation', locale: 'en', url: full_url(volunteers_home_path))
 			VoterVoxSms.new.send resource.phone, sms_message
 			VolunteerNotifier.signup_confirmation(resource).deliver_now
 
