@@ -19,12 +19,11 @@
 //return URL parameter values
 $.urlParam = function(name){
   var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-
   if (results !== null) {
     return results[1] || 0;
   }
   return false;
-//Trying to get date-picker selection to work, not able to select a date to populate textfield
+//returning false if there are no URL parameters to prevent a console error
 }
 // This example displays an address form, using the autocomplete feature
 // of the Google Places API to help users fill in the information.
@@ -190,7 +189,9 @@ $(document).ready(function(){
   closeLightBox();
   filterShow();
   showTime();
-  $('input#start_date').datepicker();
+  $('input.datepicker').datepicker({
+    dateFormat: "yy-mm-dd"
+  });
 
   //on homepage language select, submit form
   if ( $('section.getting-started').has("form") ) {
