@@ -318,8 +318,9 @@ div.alert {
 		display: inline-block;
 		content: "\2261";
 		font-size: 33px;
-		padding-left: 4px;
-		margin-top: -5px;
+		padding-left: 5px;
+		margin-top: -3px;
+		width: 17px;
 	}
 	&.opened {
 		&:after{
@@ -1804,7 +1805,7 @@ div.light, div.lightbox {
 	max-width: 370px;
 	margin: 0 15%;
 	background-color: #fff;
-	position: absolute;
+	position: fixed;
 	top: 40px;
 	left: -20px;
 	padding: 40px 20px;
@@ -2837,7 +2838,6 @@ main.table {
 	div#light, div.light {
 		width: 400px;
 		margin-left: 43%;
-		margin-top: 129px;
 	}
 	/*Tablet Resources */
 	main.dashboard {
@@ -3079,7 +3079,7 @@ TABLET MENU
 				font-size: 24px;
 			}
 			> div.wrapper {
-				width: 330px;
+				width: 100%;
 				margin: 0 auto;
 			}
 		}

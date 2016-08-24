@@ -19,11 +19,7 @@
 //return URL parameter values
 $.urlParam = function(name){
   var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-  if (results !== null) {
-    return results[1] || 0;
-  }
-  return false;
-//returning false if there are no URL parameters to prevent a console error
+  return (results ? results[1] : 0 );
 }
 // This example displays an address form, using the autocomplete feature
 // of the Google Places API to help users fill in the information.
@@ -92,7 +88,6 @@ function mobileNav() {
     e.preventDefault();
     var menu = $(this);
     var opened = $(this).hasClass('opened');
-    console.log(opened);
     if ( !opened ) {
       $('header nav').slideDown(1000, function(){
         menu.addClass('opened');
@@ -115,27 +110,19 @@ function filterShow() {
   })
 }
 //filter Matches
+
 function showMatches(){
-  $('a.requested-voters').click( function(e){
+  $('a.matches-toggle').click( function(e){
     e.preventDefault();
+    //highlight the selected toggle
+    $('.matches-toggle').removeClass('current');
     $(this).addClass('current');
-    $('a.accepted-voters, a.completed-matches').removeClass('current');
-    $('div.requested.voter-box').removeClass('hide');
-    $('div.accepted.voter-box, div.completed.voter-box').addClass('hide');
-  });
-  $('a.accepted-voters').click( function(e){
-    e.preventDefault();
-    $(this).addClass('current');
-    $('a.requested-voters, a.completed-matches').removeClass('current');
-    $('div.accepted.voter-box').removeClass('hide');
-    $('div.requested.voter-box, div.completed.voter-box').addClass('hide');
-  });
-  $('a.completed-matches').click( function(e){
-    e.preventDefault();
-    $(this).addClass('current');
-    $('a.accepted-voters, a.requested-voters').removeClass('current');
-    $('div.completed.voter-box').removeClass('hide');
-    $('div.requested.voter-box, div.accepted.voter-box').addClass('hide');
+    //show the selected voter types and hide the rest using data-voters attribute
+    var matchesType = $(this).attr('data-matches');
+    if ($('#'+matchesType).length) {
+      $('.voter-boxes').addClass('hide');
+      $('#'+ matchesType).removeClass('hide');
+    }
   });
 }
 
@@ -189,6 +176,8 @@ $(document).ready(function(){
   closeLightBox();
   filterShow();
   showTime();
+  showVoters();
+  showVolunteers();
   $('input.datepicker').datepicker({
     dateFormat: "yy-mm-dd"
   });

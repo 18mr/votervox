@@ -4,99 +4,111 @@
 			<div class="wrapper">
 				<h1>VoterVOX Voters</h1>
 				<ul class="status">
-					<li><a class="unmatched-voters current" href="#">Unmatched Voters</a></li>
-					<li><a class="matched-voters" href="#">Matched Voters</a></li>
-					<li><a class="completed-matches" href="#">Completed Matches - Voters Helped</a></li>
+					<li><a class="voters-toggle" href="#" data-voters="unmatched">Unmatched Voters</a></li>
+					<li><a class="voters-toggle" data-voters="matched" href="#">Matched Voters</a></li>
+					<li><a class="voters-toggle" href="#" data-voters="completed">Completed Matches - Voters Helped</a></li>
 					<div class="clear-fix"></div>
 				</ul>
 				<div class="divi-bar"></div>
 
-				<% @unmatched.each do |voter| %>
+				<div id="unmatched" class="hide voter-boxes">
 
-				<div class="voter-box unmatched">
-					<div class="voter-info">
-						<h2><%= voter.firstname %> <%= voter.lastname %></h2>
-						<hr/>
-						<ul>
-							<li><strong>Email/Phone:</strong> <%= voter.contact %></li>
-							<% first_time_voter = voter.first_time_voter %>
-							<li><strong>First Time Voter: </strong><%= first_time_voter ? 'yes' : 'no'%></li><li><strong>City:</strong> <%= voter.city %></li>
-							<li><strong>Languages:</strong> <%= voter.languages.join(', ') %></li>
-							<li><strong>English Proficiency:</strong> <%= voter.english_comfort %> </li>
-						</ul>
-					</div><!--.voter-info-->
-					
-				</div><!--.voter-box-->
+					<% @unmatched.each do |voter| %>
 
-				<% end %>
+					<div class="voter-box">
+						<div class="voter-info">
+							<h2><%= voter.firstname %> <%= voter.lastname %></h2>
+							<hr/>
+							<ul>
+								<li><strong>Email/Phone:</strong> <%= voter.contact %></li>
+								<% first_time_voter = voter.first_time_voter %>
+								<li><strong>First Time Voter: </strong><%= first_time_voter ? 'yes' : 'no'%></li><li><strong>City:</strong> <%= voter.city %></li>
+								<li><strong>Languages:</strong> <%= voter.languages.join(', ') %></li>
+								<li><strong>English Proficiency:</strong> <%= voter.english_comfort %> </li>
+							</ul>
+						</div><!--.voter-info-->
+						
+					</div><!--.voter-box-->
 
-				<% if @unmatched.length == 0 %>
+					<% end %>
+					<% if @unmatched.length == 0 %>
 
-				<div class="voter-box unmatched">
-					<h2  class="no-matches">No Unmatched Voters</h2>
-				</div>
+						<div class="voter-box">
+							<h2  class="no-matches">No Unmatched Voters</h2>
+						</div>
 
-				<% end %>
+					<% end %>
+				</div><!--#unmatched.voter-boxes-->
 
-				<% @matched.each do |voter| %>
+				
 
-				<div class="voter-box matched hide">
-					<div class="voter-info">
-						<h2><%= voter.firstname %> <%= voter.lastname %></h2>
-						<hr/>
-						<ul>
-							<li><strong>Email/Phone:</strong> <%= voter.contact %></li>
-							<% first_time_voter = voter.first_time_voter %>
-							<li><strong>First Time Voter: </strong><%= first_time_voter ? 'yes' : 'no'%></li>
-							<li><strong>City:</strong> <%= voter.city %></li>
-							<li><strong>Languages:</strong> <%= voter.languages.join(', ') %></li>
-							<li><strong>English Proficiency:</strong> <%= voter.english_comfort %> </li>
+				<div id="matched" class="hide voter-boxes">
+					<% @matched.each do |voter| %>
 
-						</ul>
-					</div><!--.voter-info-->
-					
-				</div><!--.voter-box-->
+					<div class="voter-box">
+						<div class="voter-info">
+							<h2><%= voter.firstname %> <%= voter.lastname %></h2>
+							<hr/>
+							<ul>
+								<li><strong>Email/Phone:</strong> <%= voter.contact %></li>
+								<% first_time_voter = voter.first_time_voter %>
+								<li><strong>First Time Voter: </strong><%= first_time_voter ? 'yes' : 'no'%></li>
+								<li><strong>City:</strong> <%= voter.city %></li>
+								<li><strong>Languages:</strong> <%= voter.languages.join(', ') %></li>
+								<li><strong>English Proficiency:</strong> <%= voter.english_comfort %> </li>
 
-				<% end %>
+							</ul>
+						</div><!--.voter-info-->
+						
+					</div><!--.voter-box-->
 
-				<% if @matched.length == 0 %>
+					<% end %>
+					<% if @matched.length == 0 %>
 
-				<div class="voter-box matched hide">
-					<h2 class="no-matches">No Matched Voters</h2>
-				</div>
+					<div class="voter-box">
+						<h2 class="no-matches">No Matched Voters</h2>
+					</div><!--.matched-->
 
-				<% end %>
+					<% end %>
+				</div><!--#matched.voter-boxes-->
 
-				<% @completed.each do |voter| %>
 
-				<div class="voter-box completed hide">
-					<div class="voter-info">
-						<h2><%= voter.firstname %> <%= voter.lastname %></h2>
-						<hr/>
-						<ul>
-							<li><strong>Email/Phone:</strong> <%= voter.contact %></li>
-							<li><strong>First Time Voter: </strong><%= voter.first_time_voter %></li>
-							<li><strong>City:</strong> <%= voter.city %></li>
-							<li><strong>Languages:</strong> <%= voter.languages.join(', ') %></li>
-							<li><strong>English Proficiency:</strong> <%= voter.english_comfort %> </li>
-							<% first_time_voter = voter.first_time_voter %>
-							<% if first_time_voter %>
-								<li><strong>First Time Voter</strong></li>
-							<% end %>
-						</ul>
-					</div><!--.voter-info-->
-					
-				</div><!--.voter-box-->
+				
 
-				<% end %>
+				<div id="completed" class="hide voter-boxes">
+					<% @completed.each do |voter| %>
 
-				<% if @completed.length == 0 %>
+					<div class="voter-box">
+						<div class="voter-info">
+							<h2><%= voter.firstname %> <%= voter.lastname %></h2>
+							<hr/>
+							<ul>
+								<li><strong>Email/Phone:</strong> <%= voter.contact %></li>
+								<li><strong>First Time Voter: </strong><%= voter.first_time_voter %></li>
+								<li><strong>City:</strong> <%= voter.city %></li>
+								<li><strong>Languages:</strong> <%= voter.languages.join(', ') %></li>
+								<li><strong>English Proficiency:</strong> <%= voter.english_comfort %> </li>
+								<% first_time_voter = voter.first_time_voter %>
+								<% if first_time_voter %>
+									<li><strong>First Time Voter</strong></li>
+								<% end %>
+							</ul>
+						</div><!--.voter-info-->
+						
+					</div><!--.voter-box-->
 
-				<div class="voter-box completed hide">
-					<h2 class="no-matches">No Completed Matches</h2>
-				</div>
+					<% end %>
+					<% if @completed.length == 0 %>
 
-				<% end %>
+						<div class="voter-box">
+							<h2 class="no-matches">No Completed Matches</h2>
+						</div>
+
+					<% end %>
+
+				</div><!--#completed.voter-boxes-->
+
+				
 
 			</div><!--.wrapper-->
 
