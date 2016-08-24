@@ -28,113 +28,122 @@
 			<div class="wrapper">
 				<h1>Your Matches</h1>
 				<ul class="status">
-					<li><a class="requested-voters current" href="#">Your Matches</a></li>
-					<li><a class="accepted-voters" href="#">Accepted Matches</a></li>
-					<li><a class="completed-matches" href="#">Completed Matches</a></li>
+					<li><a class="matches-toggle" href="#" data-matches="requested">Your Matches</a></li>
+					<li><a class="matches-toggle" href="#" data-matches="accepted">Accepted Matches</a></li>
+					<li><a class="matches-toggle" href="#" data-matches="completed">Completed Matches</a></li>
 					<div class="clear-fix"></div>
 				</ul>
 
-				<% @requests.each do |voter| %>
+				<div id="requested" class="hide voter-boxes">
+					<% @requests.each do |voter| %>
 
-				<div class="voter-box requested">
-					<div class="voter-info">
-						<h2><%= voter.firstname %> <%= voter.lastname %></h2>
-						<hr/>
-						<ul>
-							<li><strong>City:</strong> <%= voter.city %></li>
-							<% distance = @volunteer.voter_distance(voter) %>
-							<% unless distance.nil? || distance.nan? %>
-							<li><strong>Proximity to You:</strong> <%= distance %></li>
+					<div class="voter-box">
+						<div class="voter-info">
+							<h2><%= voter.firstname %> <%= voter.lastname %></h2>
+							<hr/>
+							<ul>
+								<li><strong>City:</strong> <%= voter.city %></li>
+								<% distance = @volunteer.voter_distance(voter) %>
+								<% unless distance.nil? || distance.nan? %>
+								<li><strong>Proximity to You:</strong> <%= distance %></li>
+								<% end %>
+								<li><strong>Requested Language(s):</strong> <%= voter.languages.join(', ') %></li>
+								<li><strong>English Proficiency:</strong> <%= voter.english_comfort %></li>
+								<% first_time_voter = voter.first_time_voter %>
+								<% if first_time_voter %>
+								<li><strong>First Time Voter</strong></li>
+								<% end %>
+							</ul>
+						</div><!--.voter-info-->
+						<div class="actions">
+							<%= form_for :match, url: matches_path, method: 'POST' do |f| %>
+								<%= f.hidden_field :voter_id, :value => voter.id %>
+								<%= f.submit 'Accept', class: "button accept" %>
 							<% end %>
-							<li><strong>Requested Language(s):</strong> <%= voter.languages.join(', ') %></li>
-							<li><strong>English Proficiency:</strong> <%= voter.english_comfort %></li>
-							<% first_time_voter = voter.first_time_voter %>
-							<% if first_time_voter %>
-							<li><strong>First Time Voter</strong></li>
+							
+							<%= form_for :match, url: matches_path, method: 'POST' do |f| %>
+								<%= f.hidden_field :voter_id, :value => voter.id %>
+								<%= f.hidden_field :status, :value => MatchesHelper::STATUS_VOLUNTEER_DECLINED %>
+								<%= f.submit 'Decline', class: "btn-outline decline" %>
 							<% end %>
-						</ul>
-					</div><!--.voter-info-->
-					<div class="actions">
-						<%= form_for :match, url: matches_path, method: 'POST' do |f| %>
-							<%= f.hidden_field :voter_id, :value => voter.id %>
-							<%= f.submit 'Accept', class: "button accept" %>
-						<% end %>
+						</div><!--.actions-->
+					</div><!--.voter-box-->
+					<% end %>
+
+					<% if @requests.length == 0 %>
+					<div class="voter-box">
+						<h2 class="no-matches">You have no current requested matches</h2>
+					</div>
+					<% end %>
+				</div><!--#requested.voter-boxes-->
+
+				<div id="accepted" class="hide voter-boxes">
+
+					<% @accepted.each do |match| %>
+					<div class="voter-box">
+						<div class="voter-info">
+							<h2><%= match.voter.firstname %> <%= match.voter.lastname %></h2>
+							<hr/> 
+
+							<span class="accepted-tag">Accepted</span>
+							<ul>
+								<li><strong>City:</strong> <%= match.voter.city %></li>
+								<% distance = @volunteer.voter_distance(match.voter) %>
+								<% unless distance.nil? || distance.nan? %>
+								<li><strong>Proximity to You:</strong> <%= distance %></li>
+								<% end %>
+								<li><strong>Requested Language:</strong> <%= match.voter.languages.join(', ') %></li>
+								<li><strong>English Proficiency:</strong> <%= match.voter.english_comfort %></li>
+								<% first_time_voter = match.voter.first_time_voter %>
+								<% if first_time_voter %>
+									<li><strong>First Time Voter</strong></li>
+								<% end %>
+							</ul>
+						</div><!--.voter-info-->
+						<div class="actions">
+							<%= link_to 'View Match', match_path(match), class: "button accept" %>
+							<%= link_to 'Decline', decline_match_path(match), method: :get, data: { confirm: 'Are you sure you want to decline this match?' }, class: "btn-outline decline" %>
+						</div><!--.actions-->
+					</div><!--.voter-box-->
+					<% end %>
+					<% if @accepted.length == 0 %>
+					<div class="voter-box">
+									<h2 class="no-matches">You currently have no accepted matches</h2>
+					</div>
+					<% end %>
+				</div><!--#accepted.voter-boxes-->
+
+				<div id="completed" class="hide voter-boxes">
+					<% @completed.each do |match| %>
+					<div class="voter-box">
+						<div class="voter-info">
+							<h2><%= match.voter.firstname %> <%= match.voter.lastname %> <span class="completed-tag desktop">Completed</span></h2>
+							<hr/>
+							<span class="completed-tag mobile-only">Completed</span> 
+							<ul>
+								<li><strong>City:</strong> <%= match.voter.city %></li>
+								<% distance = @volunteer.voter_distance(match.voter) %>
+								<% unless distance.nil? || distance.nan? %>
+								<li><strong>Proximity to You:</strong> <%= distance %></li>
+								<% end %>
+								<li><strong>Requested Language:</strong> <%= match.voter.languages.join(', ') %></li>
+								<li><strong>English Proficiency:</strong> <%= match.voter.english_comfort %></li>
+								<% first_time_voter = match.voter.first_time_voter %>
+								<% if first_time_voter %>
+									<li><strong>First Time Voter</strong></li>
+								<% end %>
+							</ul>
+						</div><!--.voter-info-->
 						
-						<%= form_for :match, url: matches_path, method: 'POST' do |f| %>
-							<%= f.hidden_field :voter_id, :value => voter.id %>
-							<%= f.hidden_field :status, :value => MatchesHelper::STATUS_VOLUNTEER_DECLINED %>
-							<%= f.submit 'Decline', class: "btn-outline decline" %>
-						<% end %>
-					</div><!--.actions-->
-				</div><!--.voter-box-->
-				<% end %>
-				<% if @requests.length == 0 %>
-				<div class="voter-box requested">
-					<h2 class="no-matches">You have no current requested matches</h2>
-				</div>
-				<% end %>
+					</div><!--.voter-box-->
+					<% end %>
+					<% if @completed.length == 0 %>
+					<div class="voter-box">
+						<h2 class="no-matches">You currently have no completed matches</h2>
+					</div>
+					<% end %>
+				</div><!--#completed.voter-boxes-->
 
-				<% @accepted.each do |match| %>
-				<div class="voter-box accepted hide">
-					<div class="voter-info">
-						<h2><%= match.voter.firstname %> <%= match.voter.lastname %></h2>
-						<hr/> 
-
-						<span class="accepted-tag">Accepted</span>
-						<ul>
-							<li><strong>City:</strong> <%= match.voter.city %></li>
-							<% distance = @volunteer.voter_distance(match.voter) %>
-							<% unless distance.nil? || distance.nan? %>
-							<li><strong>Proximity to You:</strong> <%= distance %></li>
-							<% end %>
-							<li><strong>Requested Language:</strong> <%= match.voter.languages.join(', ') %></li>
-							<li><strong>English Proficiency:</strong> <%= match.voter.english_comfort %></li>
-							<% first_time_voter = match.voter.first_time_voter %>
-							<% if first_time_voter %>
-								<li><strong>First Time Voter</strong></li>
-							<% end %>
-						</ul>
-					</div><!--.voter-info-->
-					<div class="actions">
-						<%= link_to 'View Match', match_path(match), class: "button accept" %>
-						<%= link_to 'Decline', decline_match_path(match), method: :get, data: { confirm: 'Are you sure you want to decline this match?' }, class: "btn-outline decline" %>
-					</div><!--.actions-->
-				</div><!--.voter-box-->
-				<% end %>
-				<% if @accepted.length == 0 %>
-				<div class="voter-box accepted hide">
-								<h2 class="no-matches">You currently have no accepted matches</h2>
-				</div>
-				<% end %>
-
-				<% @completed.each do |match| %>
-				<div class="voter-box completed hide">
-					<div class="voter-info">
-						<h2><%= match.voter.firstname %> <%= match.voter.lastname %> <span class="completed-tag desktop">Completed</span></h2>
-						<hr/>
-						<span class="completed-tag mobile-only">Completed</span> 
-						<ul>
-							<li><strong>City:</strong> <%= match.voter.city %></li>
-							<% distance = @volunteer.voter_distance(match.voter) %>
-							<% unless distance.nil? || distance.nan? %>
-							<li><strong>Proximity to You:</strong> <%= distance %></li>
-							<% end %>
-							<li><strong>Requested Language:</strong> <%= match.voter.languages.join(', ') %></li>
-							<li><strong>English Proficiency:</strong> <%= match.voter.english_comfort %></li>
-							<% first_time_voter = match.voter.first_time_voter %>
-							<% if first_time_voter %>
-								<li><strong>First Time Voter</strong></li>
-							<% end %>
-						</ul>
-					</div><!--.voter-info-->
-					
-				</div><!--.voter-box-->
-				<% end %>
-				<% if @completed.length == 0 %>
-				<div class="voter-box completed hide">
-								<h2 class="no-matches">You currently have no completed matches</h2>
-				</div>
-				<% end %>
 				<div class="clear-fix"></div>
 
 			</div><!--.wrapper-->

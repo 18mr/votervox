@@ -110,27 +110,19 @@ function filterShow() {
   })
 }
 //filter Matches
+
 function showMatches(){
-  $('a.requested-voters').click( function(e){
+  $('a.matches-toggle').click( function(e){
     e.preventDefault();
+    //highlight the selected toggle
+    $('.matches-toggle').removeClass('current');
     $(this).addClass('current');
-    $('a.accepted-voters, a.completed-matches').removeClass('current');
-    $('div.requested.voter-box').removeClass('hide');
-    $('div.accepted.voter-box, div.completed.voter-box').addClass('hide');
-  });
-  $('a.accepted-voters').click( function(e){
-    e.preventDefault();
-    $(this).addClass('current');
-    $('a.requested-voters, a.completed-matches').removeClass('current');
-    $('div.accepted.voter-box').removeClass('hide');
-    $('div.requested.voter-box, div.completed.voter-box').addClass('hide');
-  });
-  $('a.completed-matches').click( function(e){
-    e.preventDefault();
-    $(this).addClass('current');
-    $('a.accepted-voters, a.requested-voters').removeClass('current');
-    $('div.completed.voter-box').removeClass('hide');
-    $('div.requested.voter-box, div.accepted.voter-box').addClass('hide');
+    //show the selected voter types and hide the rest using data-voters attribute
+    var matchesType = $(this).attr('data-matches');
+    if ($('#'+matchesType).length) {
+      $('.voter-boxes').addClass('hide');
+      $('#'+ matchesType).removeClass('hide');
+    }
   });
 }
 
@@ -184,6 +176,8 @@ $(document).ready(function(){
   closeLightBox();
   filterShow();
   showTime();
+  showVoters();
+  showVolunteers();
   $('input.datepicker').datepicker({
     dateFormat: "yy-mm-dd"
   });
