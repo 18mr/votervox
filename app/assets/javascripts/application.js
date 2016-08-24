@@ -19,11 +19,7 @@
 //return URL parameter values
 $.urlParam = function(name){
   var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-  if (results !== null) {
-    return results[1] || 0;
-  }
-  return false;
-//returning false if there are no URL parameters to prevent a console error
+  return (results ? results[1] : 0 );
 }
 // This example displays an address form, using the autocomplete feature
 // of the Google Places API to help users fill in the information.
@@ -92,7 +88,6 @@ function mobileNav() {
     e.preventDefault();
     var menu = $(this);
     var opened = $(this).hasClass('opened');
-    console.log(opened);
     if ( !opened ) {
       $('header nav').slideDown(1000, function(){
         menu.addClass('opened');
