@@ -1,4 +1,4 @@
-<main class="table">
+<main class="table translations">
 
   <div class="wrapper">
 
@@ -22,10 +22,10 @@
     <table>
       <thead>
         <tr>
-          <th>Translation Key</th>
-          <th>English Version</th>
-          <th><%= t('locale_name', locale: @locale) %> Translation</th>
-          <th>Actions</th>
+          <th class="row-id">Translation Key</th>
+          <th class="row-en">English Version</th>
+          <th class="row-trans"><%= t('locale_name', locale: @locale) %> Translation</th>
+          <th class="row-action">Actions</th>
         </tr>
       </thead>
       <tbody>

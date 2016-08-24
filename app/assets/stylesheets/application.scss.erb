@@ -260,7 +260,6 @@ div.notice {
 	background-color: #fff;
 	color: $darkgrey;
 	font-size: 13px;
-	margin: 20px auto 0;
 	width: auto;
 	font-style: italic;
 }
@@ -2106,26 +2105,69 @@ main.dashboard section.organizations {
 }
 //Translations Table Styling 
 main.table {
+	table-layout: fixed;
 	.wrapper {
-		width: 100%;
+		width: 95%;
+	}
+
+	input.button {
+		width: 150px;
+		height: 30px;
+		margin-top: 10px;
+		margin-bottom: 30px;
+	}
+
+	a.button {
+		width: 80px;
+		height: 25px;
+		font-size: 13px;
+		padding-top: 2px;
+		margin: 5px auto;
+		border: 2px solid $pink;
+		background-color: #fff;
+		color: $pink;
+	}
+
+	h1 {
+		margin-bottom: 30px;
 	}
 	table {
 		border: 2px solid $darkgrey;
+		width: 100%;
+
+		.row-id {
+			width: 10%;
+		}
+
+		.row-en, .row-trans {
+			width: 40%;
+		}
+
+		.row-action {
+			width: 10%;
+		}
 		th, td {
 			padding: 10px;
+			word-wrap: break-word;
+			font-size: 15px;
+			line-height: 19px;
 		}
 		tr {
 			border-bottom: 1px solid $darkgrey;
 			td, th {
 				border-right: 1px solid $darkgrey;
 			}
+
+			td:first-of-type {
+			font-size: 12px;
+		}
 		}
 		th {
 			background-color: $pink;
 			opacity: 0.8;
 			color: $white;
 			font-weight: 700;
-			font-size: 20px;
+			font-size: 16px;
 		}
 	}
 }
@@ -2861,7 +2903,7 @@ main.table {
 		padding-top: 25px;
 	}
 	div.filter-box {
-		width: 130px;
+		width: 150px;
 	}
 	.document-box {
 		width: 48%;
@@ -2944,9 +2986,13 @@ main.table {
 	/* Translations Tablet*/
 	main.table {
 		.wrapper {
-			width: 640px;
+			width: 90%;
 			margin: 0 auto;
 		}
+
+		input.button {
+		font-size: 15px;
+	}
 	}
 }
 
@@ -3325,7 +3371,8 @@ TABLET MENU
 	}
 	main.table {
 		.wrapper {
-			width: 980px;
+			width: 90%;
+			max-width: 1020px;
 		}
 	}
 }

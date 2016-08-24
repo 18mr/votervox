@@ -167,6 +167,7 @@ function getFilePath(){
      });
 }
 
+
 $(document).ready(function(){
   tooltip();
   mobileNav();
@@ -201,5 +202,16 @@ $( window ).resize(function() {
   if ( windowWidth >= 640 && hiddenNav ) {
     $('header nav').removeClass('hide');
   }
+});
+
+// Creat Popup
+function createPopup(url) {
+  return window.open(url,'login','toolbar=0,status=0,width=640,height=480');
+}
+
+// Use popup windows for links with 'popup-link' class
+$('.popup-link').click(function() {
+  createPopup(this.href);
+  return false;
 });
 

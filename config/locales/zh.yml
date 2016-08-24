@@ -41,7 +41,7 @@ zh:
       lastname: "Last Name"
       communication_type: "What is your preferred form of communication?"
       contact: "Your contact information"
-      contact_placeholder: "Contact Information (phone number or email address)"
+      contact_placeholder: "Phone number or Email Address"
       phone: "Phone Number"
       email: "Email Address"
       address: "Your Home Address"
