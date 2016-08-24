@@ -257,12 +257,12 @@ hr {
 }
 div.notice {
 	text-align: center;
-	background-color: $lightgrey;
+	background-color: #fff;
 	color: $darkgrey;
-	font-size: 28px;
-	margin: 0 auto;
+	font-size: 13px;
+	margin: 20px auto 0;
 	width: auto;
-	font-weight: 700;
+	font-style: italic;
 }
 div.alert {
 	text-align: center;
@@ -296,12 +296,13 @@ div.alert {
 	margin-left: 5px;
 	color: #aaa;
 	background-color: #fff;
-	border: 3px solid #aaa;
+	border: 1px solid #aaa;
 	border-radius: 50%;
-	height: 20px;
-	width: 20px;
+	height: 16px;
+	width: 16px;
 	text-align: center;
 	display: inline-block;
+	font-size: 10px;
 }
 /* ICONS */
 
@@ -591,7 +592,7 @@ section.how-it-works {
 
 footer {
 	background-color: $lightgrey;
-	border-top: 3px solid $darkgrey;
+	border-top: 2px solid $darkgrey;
 	font-size: 13px;
 	div.wrapper {
 		> div {
@@ -603,6 +604,10 @@ footer {
 				border-bottom: none;
 			}
 		}
+
+		.terms {
+			border-bottom: none;
+	}
 	}
 	div.terms {
 		li {
@@ -698,10 +703,16 @@ div.pink-line {
 }
 main.sign-up {
 
+	label[for="volunteer_password"] {
+		width: 70px;
+		float: left;
+	}
+
 	em {
 		font-size: 10px;
 		color: #666;
 		float: left;
+		margin-top: 3px;
 	}
 	
 	.float-left {
@@ -771,7 +782,7 @@ fieldset.languages, fieldset.resource-type, fieldset.location {
 div.fileinputs {
 	position: relative;
 	label {
-		display: none;
+		
 	}
 }
 
@@ -783,6 +794,11 @@ div.fakefile {
 	width: 100%;
 	input {
 		margin-bottom: 10px;
+	}
+
+	button.btn-outline {
+		font-size: 15px;
+		border-bottom: 2px solid $darkpink;
 	}
 }
 
@@ -2112,6 +2128,7 @@ main.table {
 		}
 	}
 }
+
 /********************
  TABLET 
 *********************/
@@ -2254,7 +2271,7 @@ main.table {
 		}
 	}
 	main {
-		padding: 100px 0;
+		padding: 60px 0;
 	}
 	main.sign-up {
 		div.float-left {
@@ -2294,14 +2311,27 @@ main.table {
 			width: 275px;
 			margin: 0 auto 20px;
 		}
+		.tooltip-hover {
+			width: 18px;
+			height: 18px;
+		}
+
 		.tooltip {
 			width: 275px;
 			top: -46px;
 			left: 102px;
 		}
 		label, legend {
-			font-size: 19px;
+			font-size: 15px;
 		}
+
+		label[for="volunteer_password"] {
+			width: 80px; 
+		}
+
+		em {
+		margin-top: 6px;
+	}
 
 		legend {
 			margin-bottom: 10px;
