@@ -20,6 +20,9 @@ class ApplicationController < ActionController::Base
 		authenticate_render 'submit_feedback'
 	end
 
+	def absentee_registration
+	end
+
 	def about
 	end
 
