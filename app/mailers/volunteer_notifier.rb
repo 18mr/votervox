@@ -1,6 +1,6 @@
 class VolunteerNotifier < ApplicationMailer
 	def signup_confirmation volunteer
-		@url = full_url '/volunteers/home'
+		@url = volunteers_url
 		@firstname = volunteer.firstname
 		mail(:to => volunteer.email, :subject => "Welcome to VoterVOX!")
 	end
@@ -21,9 +21,23 @@ class VolunteerNotifier < ApplicationMailer
 	end
 
 	def match_rejected match
-		@url = full_url '/matches'
+		@url = matches_url
 		@firstname = match.volunteer.firstname
 		@voter_name = match.voter.firstname
 		mail(:to => match.volunteer.email, :subject => "#{@voter_name} has declined translation assistance")
+	end
+
+	def new_matches volunteer, voters
+		@url = matches_url
+		@voters = voters
+		@firstname = volunteer.firstname
+		mail(:to => volunteer.email, :subject => "New voter matches near you")
+	end
+
+	def completion_check volunteer, match
+		@url = match_url(match)
+		@voter = match.voter
+		@firstname = volunteer.firstname
+		mail(:to => volunteer.email, :subject => "Is your translation match complete?")
 	end
 end
