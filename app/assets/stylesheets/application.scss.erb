@@ -721,7 +721,7 @@ main.sign-up {
 	
 	a.small, div.opt-in-language {
 		text-align: center;
-		font-size: 9px;
+		font-size: 10px;
 		line-height: 14px;
 		width: 90%;
 		display: block;
@@ -864,18 +864,18 @@ section.voter-resources {
 	border-bottom: 0;
 	background-color: $lightgrey;
 	h2 {
-		font-size: 23px;
-		line-height: 28px;
+		font-size: 20px;
+		line-height: 25px;
 		margin-bottom: 15px;
 		text-align: left;
-		max-width: 400px;
+		max-width: 350px;
 	}
 
 	a.button {
 		padding: 11px 9px;
 		height: 40px;
 		min-height: 0;
-		font-size: 20px;
+		font-size: 18px;
 		margin-bottom: 0;
 
 	}
@@ -904,8 +904,26 @@ main.dashboard {
 		padding: 14px;
 	}
 	section.message {
-		padding: 50px 0 0;
+		padding: 50px 0 25px;
 		border-bottom: 1px dashed $grey;
+	}
+	.view-profile {
+		margin: 50px auto 0;
+
+		p {
+			margin-bottom: 5px;
+			font-size: 13px;
+			line-height: 17px;
+		}
+
+		input {
+			margin-bottom: 10px;
+			max-width: 300px;
+		}
+
+		p:last-of-type {
+			margin-bottom: 0;
+		}
 	}
 
 	section.translator {
@@ -930,7 +948,6 @@ main.dashboard {
 
 		&.next-steps {
 			padding-left: 20px;
-			border-bottom: 0;
 			h2 {
 				color: $pink;
 				font-size: 21px;
@@ -1139,7 +1156,7 @@ main.dashboard {
 		}
 	}
 	section.message {
-		padding: 50px 0 0;
+		padding: 50px 0 25px;
 
 		h1 {
 			margin-bottom: 15px;
@@ -2586,6 +2603,10 @@ main.table {
 		margin-left: 25%;
 		padding: 60px 50px;
 		width: 75%;
+	}
+
+	section.document-show {
+		border: none !important;
 	}
 
 	section.match-results, section.organizations, .metrics section, section.add-resource, section.match-results.approved {

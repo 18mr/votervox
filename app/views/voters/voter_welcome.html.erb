@@ -23,17 +23,13 @@
 					<li><%= t('voter_dashboard.request.step3')%></li>
 					<li><%= t('voter_dashboard.request.step4')%></li>
 				</ul>
-			</div>
 
-		</section><!--.next-steps-->
+				<div class="view-profile">
 
-		<section class="more-info">
-
-			<div class="wrapper">
-
-				<p><%= t('voter_dashboard.request.profile_link')%></p>
-				<input type="text" value="http://votervox.org<%= @voter.home_url%>">
-				<p>(You will also find this link in your confirmation email).</p>
+					<p><%= t('voter_dashboard.request.profile_link')%></p>
+					<input type="text" value="http://votervox.org<%= @voter.home_url%>">
+					<p>(You will also find this link in your confirmation email).</p>
+				</div><!-- .view-profile -->
 
 			</div><!--.wrapper-->
 
