@@ -42,10 +42,11 @@ class Volunteer < ActiveRecord::Base
 		return 1 if state == voter.state
 		return 0
 	end
-	def match_requests
-		# Find language matches, exclude rejected matches, and sort by quality
+	def match_requests quality_threshold=0
+		# Find language matches, exclude rejected and low-quality matches, and sort by quality
 		matches = Voter.unmatched.select{ |v| self.language_match v }
 		matches.reject!{ |m| self.matches.declined.map(&:voter_id).include? m.id }
+		matches.reject!{ |m| self.match_quality(m) < quality_threshold }
 		matches.sort{ |a, b| self.match_quality(b) <=> self.match_quality(a) }
 	end
 

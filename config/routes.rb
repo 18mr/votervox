@@ -52,6 +52,7 @@ Rails.application.routes.draw do
   get '/', to: 'application#index', as: 'homepage'
   get '/feedback', to: 'application#feedback', as: 'feedback'
   post '/submit_feedback', to: 'application#submit_feedback', as: 'submit_feedback'
+  get '/absentee-registration', to: 'application#absentee_registration', as: 'absentee_registration'
   get '/about', to: 'application#about', as: 'about'
   get '/privacy', to: 'application#privacy_policy', as: 'privacy_policy'
   get '/terms', to: 'application#terms_of_service', as: 'terms_of_service'

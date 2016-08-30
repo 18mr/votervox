@@ -1,0 +1,13 @@
+Hi <%= @firstname %>,<br/><br/>
+
+We wanted to let you know there are voters looking for translation help near you. Here are few:<br/><br/>
+
+<% @voters.each do |voter| %>
+- <%= voter.firstname %> <%= voter.lastname %> in <%= voter.city %>, <%= voter.state %>, seeking help in <%= voter.languages.join(', ') %><br/>
+<% end %>
+<br/>
+
+You can click <%= link_to 'here', @url %> to choose a match to assist with voting translations.<br/><br/>
+
+All the best,<br/>
+The VoterVOX Team

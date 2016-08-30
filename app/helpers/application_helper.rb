@@ -50,4 +50,7 @@ module ApplicationHelper
 	def at_feedback?
 		controller_name == 'application' && (action_name == 'feedback' || action_name == 'submit_feedback')
 	end
+	def at_absentee_ballot?
+		controller_name == 'application' && (action_name == 'absentee_registration')
+	end
 end
