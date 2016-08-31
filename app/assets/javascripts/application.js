@@ -149,6 +149,10 @@ function showLightBox() {
     if ($('#'+lightboxID).length) {
       $('#'+lightboxID).removeClass('hide');
       $('.green-overlay').removeClass('hide');
+      //if user clicks on green overlay it will hide all lightboxes 
+      $('.green-overlay').click(function(){ 
+        $('.lightbox, .green-overlay').addClass('hide');
+      })
       $('html, body').animate({
         scrollTop: $("html, body").offset().top
       }, 1000);
