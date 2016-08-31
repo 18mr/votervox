@@ -17,9 +17,8 @@
 
 		<% end %>
 
-		<a href=<%= absentee_registration_path %> class="button <%= at_absentee_ballot? ? "selected" : "pink" %>">Absentee Registration</a>
-
 		<a href="<%= documents_path %>" class="button <%= at_documents_index? ? "selected" : "pink" %>"><%= t('voter_dashboard.menu.resources')%></a>
+		<a href=<%= absentee_registration_path %> class="button <%= at_absentee_ballot? ? "selected" : "pink" %>">Absentee Registration</a>
 
 		<a class="button <%= at_feedback? ? "selected" : "pink" %>"  href="<%= feedback_path %>">
 			<%= t('voter_dashboard.menu.feedback')%>

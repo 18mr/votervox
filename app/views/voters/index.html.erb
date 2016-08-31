@@ -4,14 +4,14 @@
 			<div class="wrapper">
 				<h1>VoterVOX Voters</h1>
 				<ul class="status">
-					<li><a class="voters-toggle" href="#" data-voters="unmatched">Unmatched Voters</a></li>
+					<li><a class="voters-toggle current" href="#" data-voters="unmatched">Unmatched Voters</a></li>
 					<li><a class="voters-toggle" data-voters="matched" href="#">Matched Voters</a></li>
 					<li><a class="voters-toggle" href="#" data-voters="completed">Completed Matches - Voters Helped</a></li>
 					<div class="clear-fix"></div>
 				</ul>
 				<div class="divi-bar"></div>
 
-				<div id="unmatched" class="hide voter-boxes">
+				<div id="unmatched" class="voter-boxes">
 
 					<% @unmatched.each do |voter| %>
 

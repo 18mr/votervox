@@ -1089,7 +1089,7 @@ main.dashboard {
 				min-height: 0;
 				font-size: 20px;
 			}
-			.decline, a.button.deactivate, button.deactivate {
+			.decline, a.button.deactivate, button.deactivate, {
 				font-size: 12px;
 				height: 22px;
 				border-width: 1px;
@@ -1110,7 +1110,7 @@ main.dashboard {
 
 		}
 
-		.requested, .completed, .accepted {
+		#requested, #completed, #accepted, #banned, #pending, #approved, #unmatched, #matched {
 			.no-matches {
 				padding: 25px;
 				font-size: 20px;
@@ -1479,13 +1479,17 @@ main.dashboard {
 		float: left;
 		margin-bottom: 0px;
 		button {
-			font-size: 11.5px;
+			font-size: 10px;
 			width: auto;
 			padding: 3px 10px;
 			height: auto;
 			border-width: 1px;
-			box-shadow: 0px 1px 0px $darkpink;
+			box-shadow: 0px 1px 0px #666;
 			margin-top: -10px;
+			letter-spacing: 0px;
+			margin-bottom: 40px;
+			border: 1px solid #989898;
+			color: #989898;
 		}
 		&:nth-of-type(2n){
 			margin-right: 0px;
@@ -1944,6 +1948,8 @@ main.metrics {
 			background-color: $lightgrey;
 			h3 {
 				margin: 0;
+				font-size: 18px;
+				text-transform: uppercase;
 			}
 		}
 		&:first-of-type {
@@ -1960,8 +1966,8 @@ main.metrics {
 		}
 		.search {
 			margin-bottom: 0px;
-			width: 271px;
-			margin: 5px auto 0;
+			width: 273px;
+			margin: 20px 0 5px;
 			fieldset {
 				float: left;
 				margin-right: 3%;
@@ -1983,6 +1989,7 @@ main.metrics {
 				padding: 0 10px;
 				.fa {
 					font-size: 15px;
+					margin-bottom: 5px;
 				}
 			}
 			legend {
@@ -1992,6 +1999,25 @@ main.metrics {
 	}
 	section.overall-metrics {
 		padding-top: 0;
+	}
+
+	section.download {
+		padding-top: 50px;
+
+		span {
+			font-size: 14px;
+			text-align: right;
+			margin-bottom: 10px;
+		}
+
+		a.button {
+			width: 100px;
+			font-size: 13px;
+			min-height: 30px;
+			margin-right: 0;
+			float: right;
+			padding: 9px 14px 8px;
+		}
 	}
 }
 
@@ -2039,8 +2065,13 @@ main.metrics {
 			padding: 20px 5px;
 		}
 	}
-	.download {
+	section.download {
 		padding: 10px 0;
+		margin-top: 30px;
+
+		span {
+			text-align: right;
+		}
 	}
 }
 
@@ -2060,11 +2091,12 @@ main.metrics {
 	}
 	.details {
 		padding: 10px 20px;
-		font-size: 13px;
+		font-size: 14px;
 		line-height: 17px;
 		background-color: $lightgrey;
 		display: table;
 		height: 71px;
+		width: 100%;
 
 		.details-align {
 			display: table-cell;
@@ -2520,6 +2552,7 @@ main.table {
 					text-align: center;
 					font-family: 'Karla';
 					padding: 6px 7px 0;
+					margin-right: -1px;
 				}
 			}
 
@@ -2952,11 +2985,18 @@ main.table {
 			}
 		}
 
+		.search fieldset {
+			margin-bottom: 10px;
+		}
+
 	}
 	.lightbox.breakdown-language {
-		width: 630px;
-		top: 5px;
+		max-width: 84%;
+		width: 800px;
+		top: 20px;
 		left: 5px;
+		left: 8%;
+		right: 8%;
 		padding: 30px;
 		.close-icon {
 			left: 26px;
@@ -2979,7 +3019,6 @@ main.table {
 			width: 400px;
 			float: right;
 			span, button {
-				display: inline-block;
 				font-size: 14px;
 			}
 			span {
@@ -3363,6 +3402,7 @@ TABLET MENU
 				float: right;
 				width: 52%;
 				max-width: 326px;
+				margin-top: 0px;
 
 			}
 
@@ -3370,12 +3410,6 @@ TABLET MENU
 		div.download-report {
 			width: 500px;
 			float: right;
-			span, button {
-				display: inline-block;
-			}
-			span {
-				margin: 0 28px 0 0;
-			}
 		}
 	}
 	main.table {

@@ -149,6 +149,9 @@ function showLightBox() {
     if ($('#'+lightboxID).length) {
       $('#'+lightboxID).removeClass('hide');
       $('.green-overlay').removeClass('hide');
+      $('html, body').animate({
+        scrollTop: $("html, body").offset().top
+      }, 1000);
     }
   });
 }
@@ -159,6 +162,8 @@ function closeLightBox() {
     $('.green-overlay').addClass('hide');
   })
 }
+
+
 /* FILE UPLOAD - get filename that will be uploaded and display in fake placeholder field*/
 function getFilePath(){
      $('input[type=file]').change(function () {

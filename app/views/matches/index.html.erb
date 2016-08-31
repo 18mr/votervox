@@ -28,13 +28,13 @@
 			<div class="wrapper">
 				<h1>Your Matches</h1>
 				<ul class="status">
-					<li><a class="matches-toggle" href="#" data-matches="requested">Your Matches</a></li>
+					<li><a class="matches-toggle current" href="#" data-matches="requested">Your Matches</a></li>
 					<li><a class="matches-toggle" href="#" data-matches="accepted">Accepted Matches</a></li>
 					<li><a class="matches-toggle" href="#" data-matches="completed">Completed Matches</a></li>
 					<div class="clear-fix"></div>
 				</ul>
 
-				<div id="requested" class="hide voter-boxes">
+				<div id="requested" class="voter-boxes">
 					<% @requests.each do |voter| %>
 
 					<div class="voter-box">

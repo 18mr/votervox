@@ -8,7 +8,7 @@
 
 			<h1>VoterVOX Volunteers</h1>
 			<ul class="status">
-				<li><a href="#" class="volunteers-toggle" data-volunteers="pending">Pending</a></li>
+				<li><a href="#" class="volunteers-toggle current" data-volunteers="pending">Pending</a></li>
 				<li><a href="#" class="volunteers-toggle" data-volunteers="approved">Approved</a></li>
 				<li><a href="#" class="volunteers-toggle" data-volunteers="banned">Banned</a></li>
 				<div class='clear-fix'></div>
@@ -99,8 +99,10 @@
 					</div>
 
 						<% if !volunteer.admin? %>
+						<div class="ban-volunteer">
 						<%= link_to 'Make Admin', make_admin_volunteer_path(volunteer), class: "btn-outline", method: :get,
 							data: { confirm: 'Are you sure you want to make this volunteer an administrator?' } %>
+						</div>
 						<% end %>
 					</div><!--.actions-->
 					
@@ -119,7 +121,7 @@
 				<% end %>
 			</div><!--#approved.volunteer-boxes-->
 
-			<div id="pending" class="volunteer-boxes hide">
+			<div id="pending" class="volunteer-boxes">
 				<% @pending_volunteers.each do |volunteer| %>
 				
 				<div class="volunteer-box">
