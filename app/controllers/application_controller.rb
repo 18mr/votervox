@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	def absentee_registration
+		authenticate_render 'absentee_registration'
 	end
 
 	def about
