@@ -1,0 +1,206 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+tl:
+  locale_name: "Tagalog"
+  enabled: false
+  homepage:
+    tagline: "Democracy in Every Language"
+    intro_text: "VoterVOX connects volunteers and individuals who need help voting in their language."
+    title: "Get Started"
+    prompt: "Select your language"
+    voter_button: "Find a Translator"
+    volunteer_button: "Be a Translator"
+    title2: "How VoterVOX Works"
+    step1: "VoterVOX pairs a volunteer translator with a voter who needs help"
+    step2: "A local VoterVOX volunteer translator meets with a voter to help them understand their ballot"
+    step3: "Local VoterVOX volunteers share their knowledge with each other to make translation easier for everyone"
+  voter_registration:
+    title: "Find a Translator"
+    subtitle: "Registration"
+    form:
+      firstname: "First Name"
+      lastname: "Last Name"
+      communication_type: "What is your preferred form of communication?"
+      contact: "Your contact information"
+      contact_placeholder: "Phone number or Email Address"
+      phone: "Phone Number"
+      email: "Email Address"
+      address: "Your Home Address"
+      languages: "Which languages do you speak?"
+      english_comfort: "How comfortable are you with English? (1 - Very uncomfortable, 5 - Very comfortable)"
+      first_time_voter: "Are you a first-time voter?"
+    button: "Sign Up"
+    disclaimer: "By signing up, you are opting in to occasional communication from 18MR.org."
+  volunteer_registration:
+    title: "Be a Translator"
+    subtitle: "Registration"
+    login: "Already Signed Up? Log in"
+    form:
+      firstname: "First Name"
+      lastname: "Last Name"
+      phone: "Phone Number"
+      email: "Email Address"
+      address: "Your Home Address"
+      organization: "Are you volunteering through an Organization?"
+      languages: "Language(s) you speak proficiently?"
+      profile_image: "Upload a photo of yourself (optional)"
+      profile_button: "Select an Image"
+      first_time_voter: "Are you a first-time voter?"
+      password: "Password"
+      confirm_password: "Confirm Password"
+    button: "Sign Up"
+    disclaimer: "By signing up, you are opting in to occasional communication from 18MR.org."
+  volunteer_login:
+    form:
+      email: "Email Address"
+      password: "Password"
+    button: "Login"
+    sign_up: "Don't have an account? Create on here"
+    forgot_password: "Forgot your password? Click here"
+  forgot_password:
+    title: "Translator"
+    subtitle: "Forgot your password"
+    button: "Send Reset Link"
+    login: "Remember your password? Login here."
+  voter_dashboard:
+    menu:
+      dashboard: "Voter Dashboard"
+      translator: "Your Translator"
+      resources: "Voter Resources"
+      feedback: "Give Feedback"
+      share: "Share with your community"
+    request:
+      title: "Your translator request has been submitted!"
+      steps_title: "Your Next Steps"
+      step1: "Step 1: You will be contacted once a translator match has been made."
+      step2: "Step 2: Set a date, time and meet up location with your translator."
+      step3: "Step 3: Meet with your translator and get your voting questions answered."
+      step4: "Step 4: Vote!"
+      profile_link: "To view your profile, use this link:"
+      cancel: "Cancel Your Request"
+      resource_title: "Feel free to check out our Voter Resources in the meantime"
+      button: "Voter Resources"
+      message:
+        subject: "We're finding you a translator!"
+        body1: |+
+          Thank you for registering to find help with your ballot through VoterVOX! We are working on finding you a translator who can help you with your ballot.
+
+          Click below to visit your profile again and check out more voting resources:
+        body2: |+
+          We’ll be in touch soon with more information for you.
+
+          The VoterVOX Team
+        sms: "Thx for registering! We will text when we find a translator for you. Revisit your profile at"
+    matched:
+      title: "You've been matched!"
+      subtitle: "Here's Your Translator"
+      volunteer:
+        name: "Name"
+        city: "City"
+        proximity: "Proximity to you"
+        languages: "Language(s) Spoken"
+      contact: "Available Times"
+      accept_button: "Accept"
+      decline_button: "Decline"
+      reschedule_button: "Request a Different Time"
+      message:
+        subject: "Meet your translator!"
+        body1: |+
+          Great news -- we’ve found a volunteer who is ready to help you with your ballot.
+
+          Your volunteer:
+        body2: |+
+          Your translator is available to meet you in your neighborhood based on the times you provided. Read their message here and confirm your meetup time using the link below.
+
+          Your translator writes:
+        body3: |+
+          Happy voting!
+
+          The VoterVOX Team
+        sms1: "We found you a translator!"
+        sms2: "is available in your neighborhood to help you with your ballot. To get going, meet your translator and confirm your meetup here:"
+    accepted:
+      title1: "You've accepted"
+      title2: "as your translator"
+      prompt1: "The next step:"
+      prompt2: "will contact you to confirm a time and location"
+      contact: "Contact Information"
+    declined:
+      title: "We're sorry this match won't work for you"
+      prompt: "But we're looking for a new match now. We'll contact you when we find one"
+    reschedule:
+      title: "Request a different time with your translator"
+      prompt: "Write your date and time preferences here"
+      button: "Contact"
+    canceled:
+      title: "Unfortunately, your translator can no longer meet with you"
+      prompt: "But we're looking for a new match now. We'll contact you when we find one"
+      message:
+        subject: "Your translator is no longer able to meet"
+        body: |+
+          Unfortunately, your translator can no longer meet with you. But we're looking for a new match now. We'll contact you when we find one.
+
+          The VoterVOX Team
+        sms: "Unfortunately, your translator can no longer meet with you. But we're looking for a new match now. We'll contact you when we find one."
+    completed:
+      title: "Your translation meetup is complete!"
+      prompt: "If you'd like more help now or in the future, feel free to make another translator match request"
+      button: "Submit a match request"
+      feedback_prompt: "We'd love your feedback on your experiece with your translator, VoterVOX, and the ways we can improve"
+      feedback_button: "Submit"
+      message:
+        subject: "Your translation meetup is complete!"
+        body1: |+
+          Your VoterVOX translator recorded that your meetup with them is now complete.
+
+          If you'd like more help now or in the future, feel free to make another translator match request here:
+        body2: |+
+          Happy voting!
+
+          The VoterVOX Team
+        sms: "Your translation meetup is complete! If you'd like more help now or in the future, feel free to make another translator match request here:"
+    cancel_lightbox:
+      title: "We're sorry to see you go"
+      prompt: "Before you leave, can you let us know wy you no longer wish to use VoterVOX?"
+      answer1: "I no longer need a translator"
+      answer2: "I feel uncomfortable meeting with someone in person"
+      answer3: "My family/friend has offered to translate to me"
+      activate_title: "Nevermind, I'd like a translator match"
+      button: "Submit a Match Request"
+  feedback:
+    title: "VoterVOX Feedback"
+    prompt: "We built VoterVOX for you. That's why we'd love any feedback you have on how we can improve VoterVOX, what else you'd like, or what you enjoyed"
+    form:
+      firstname: "First Name"
+      lastname: "Last Name"
+      email: "Email Address"
+      feedback: "Your Feedback to VoterVOX"
+    thanks_title: "Thank you for your feedback!"
+    thanks_prompt: "It's so important in our work to make VoterVOX work for you"
+    share: "Please share VoterVOX with your community."
+  volunteer_sms:
+    signup_confirmation: "Welcome to VoterVOX! We’re excited you’re here. If you’re ready to get started, click here to begin the orientation process: %{url}"
+    match_accepted: "%{name} has accepted your suggested time for helping with translation. Contact them to confirm a specific time and location at %{contact}"
+    match_rejected: "%{name} declined assistance with translation. There are many other voters interested in getting help, though. See them here: %{url}"
+    match_time_change: "%{name} has accepted your match request, but asked to connect at a different time. See their message here: %{url}"
+
+
