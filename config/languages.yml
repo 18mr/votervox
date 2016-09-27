@@ -1,18 +1,20 @@
 languages:
 - Arabic
+- Bahasa Indonesia
+- Bahasa Melayu
 - Bengali/Bangla
 - Cantonese
-- Spanish
+- Farsi
 - Gujarati
 - Hindi
 - Hmong
-- Mandarin
-- Mien
-- Bahasa Indonesia
 - Japanese
 - Khmer
 - Korean
-- Bahasa Melayu
-- Thai
+- Mandarin
+- Mien
+- Spanish
 - Tagalog
+- Thai
+- Urdu
 - Vietnamese
