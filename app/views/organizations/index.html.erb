@@ -7,7 +7,7 @@
 			<h1>List of Organizations</h1>
 
 			<ul>
-				<% @organizations.each do |organization| %>
+				<% @organizations.sort_by(&:name).each do |organization| %>
 				<li>
 				<%= organization.name %> <%= link_to 'Delete', organization_path(organization), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-outline decline" %>
 				</li>

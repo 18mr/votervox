@@ -56,15 +56,21 @@
 							</ul>
 						</div><!--.voter-info-->
 						<div class="actions">
+							<% if @volunteer.approved? %>
+
 							<%= form_for :match, url: matches_path, method: 'POST' do |f| %>
 								<%= f.hidden_field :voter_id, :value => voter.id %>
 								<%= f.submit 'Accept', class: "button accept" %>
 							<% end %>
-							
+
 							<%= form_for :match, url: matches_path, method: 'POST' do |f| %>
 								<%= f.hidden_field :voter_id, :value => voter.id %>
 								<%= f.hidden_field :status, :value => MatchesHelper::STATUS_VOLUNTEER_DECLINED %>
 								<%= f.submit 'Decline', class: "btn-outline decline" %>
+							<% end %>
+
+							<% else %>
+							<p><em>Your approval is in process. Please check back to accept matches!</em></p>
 							<% end %>
 						</div><!--.actions-->
 					</div><!--.voter-box-->
