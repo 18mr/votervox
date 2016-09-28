@@ -27,6 +27,9 @@ class ApplicationController < ActionController::Base
 	def about
 	end
 
+	def community_guidelines
+	end
+
 	def privacy_policy
 	end
 
