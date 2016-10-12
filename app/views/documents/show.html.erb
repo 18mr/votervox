@@ -14,7 +14,7 @@
 				<div class="clear-fix"></div>
 				<% end %>
 				<div class="clear-fix"></div>
-				<div class="language">Translated Langauge:<strong><%= @document.translated_language %></strong></div>
+				<div class="language">Translated Language:<strong><%= @document.translated_language %></strong></div>
 				<div class="details">
 					<p>Submitted by: <%= @document.submitter.firstname %> <%= @document.submitter.lastname[0] %>.</p>
 					<p>Submitted on: <%= @document.created_at.strftime("%B %-d, %Y") %></p>
@@ -29,7 +29,7 @@
 				<!--.pdf or word or other document rendering-->
 
 				<% if @document.file.present? %>
-				<iframe src="http://docs.google.com/gview?url=<%= @document.file.url %>&embedded=true" style="width: 100%; height:600px" frameborder="0"></iframe>
+				<iframe src="https://docs.google.com/gview?url=<%= @document.file.url %>&embedded=true" style="width: 100%; height:600px" frameborder="0"></iframe>
 				<% else %>
 				<p>Sorry, this document appears to be missing!</p>
 				<% end %>
