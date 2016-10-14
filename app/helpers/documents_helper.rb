@@ -3,7 +3,7 @@ module DocumentsHelper
 		['English','Spanish']
 	end
 	def resource_type_list
-		['Ballot','Voter Guide','State Ballot','Issues']
+		['Ballot','Voter Guide','State Ballot','Issues','Voting Rights']
 	end
 	def document_location_list
 		['City','County','State','National']
