@@ -22,6 +22,7 @@
 vi:
   locale_name: "Vietnamese"
   enabled: false
+  direction: "ltr"
   homepage:
     tagline: "Democracy in Every Language"
     intro_text: "VoterVOX connects volunteers and individuals who need help voting in their language."
