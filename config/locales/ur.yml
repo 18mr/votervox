@@ -19,8 +19,8 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-id:
-  locale_name: "Bahasa Indonesia"
+ur:
+  locale_name: "Urdu"
   enabled: false
   direction: "ltr"
   homepage:
