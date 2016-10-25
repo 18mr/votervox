@@ -99,6 +99,11 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     errbase (0.0.3)
     erubis (2.7.0)
+    factory_girl (4.7.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.7.0)
+      factory_girl (~> 4.7.0)
+      railties (>= 3.0.0)
     ffi (1.9.14)
     font-awesome-rails (4.6.3.1)
       railties (>= 3.2, < 5.1)
@@ -262,6 +267,7 @@ DEPENDENCIES
   compass-rails
   database_cleaner
   devise
+  factory_girl_rails (~> 4.0)
   font-awesome-rails
   foreman
   geocoder

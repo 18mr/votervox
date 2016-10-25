@@ -39,6 +39,7 @@ group :test do
   gem 'capybara'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 # For environment variables
