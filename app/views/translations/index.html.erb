@@ -35,7 +35,7 @@
           <tr id="<%= key %>">
             <td><%= key %></td>
             <td><%= t(key, locale: 'en') %></td>
-            <td><%= translation.nil? ? I18n.t(key, locale: @locale) : translation.value %></td>
+            <td class="<%= t('direction', locale: @locale) %>"><%= translation.nil? ? I18n.t(key, locale: @locale) : translation.value %></td>
             <td>
               <% if translation.nil? %>
                 <%= link_to "Edit", new_locale_translation_url(@locale, key: key), class: "button" %>

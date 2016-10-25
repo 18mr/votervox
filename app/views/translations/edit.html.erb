@@ -1,6 +1,6 @@
-<main class="page">
+<main class="page <%= t('direction') %>">
 
-	<div class="wrapper">
+	<div class="wrapper <%= t('direction', locale: @locale) %>">
 		<%= form_for @translation, url: locale_translation_path do |form| %>
 		  <%= form.label :locale %> <%= form.text_field :locale, readonly: true %>
 		  <%= form.label :key %> <%= form.text_field :key, readonly: true %>
