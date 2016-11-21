@@ -44,8 +44,8 @@ class Match < ActiveRecord::Base
 	def matches_volunteer? volunteer_id
 		self.volunteer_id == volunteer_id
 	end
-	def matches_voter? volunteer_id
-		self.voter_id == volunteer_id
+	def matches_voter? voter_id
+		self.voter_id == voter_id
 	end
 
 	# Status update functions
