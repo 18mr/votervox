@@ -21,6 +21,9 @@ FactoryGirl.define do
 		factory :banned_volunteer do
 			status 2
 		end
+		factory :unapproved_volunteer do
+			status 0
+		end
 		factory :admin do
 			status 1
 			admin true
