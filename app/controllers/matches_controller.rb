@@ -28,7 +28,7 @@ class MatchesController < ApplicationController
 
 	def message
 		@match = Match.find params[:id]
-		redirect_to :voluneers_home if !check_volunteer_match
+		redirect_to :volunteers_home if !check_volunteer_match
 
 		Interaction.create_proposal(:match_id => @match.id, :message => params[:message])
 
@@ -45,7 +45,7 @@ class MatchesController < ApplicationController
 
 	def decline
 		@match = Match.find params[:id]
-		redirect_to :voluneers_home if !check_volunteer_match
+		redirect_to :volunteers_home if !check_volunteer_match
 
 		sms_message = t('voter_dashboard.canceled.message.sms')
 		VoterVoxSms.new.send @match.voter.contact, sms_message if @match.voter.sms_contact?
@@ -57,7 +57,7 @@ class MatchesController < ApplicationController
 
 	def complete
 		@match = Match.find params[:id]
-		redirect_to :voluneers_home if !check_volunteer_match
+		redirect_to :volunteers_home if !check_volunteer_match
 
 		Interaction.create_assistance(match_completion_params)
 
