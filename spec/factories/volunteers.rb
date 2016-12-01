@@ -28,7 +28,6 @@ FactoryGirl.define do
     			interaction0 = create(:interaction, :match => match)
     			interaction1 = create(:reschedule_contact, :match => match)
     			interaction2 = create(:assistant_contact, :match => match)
-
 			end
 		end
 		factory :banned_volunteer do
