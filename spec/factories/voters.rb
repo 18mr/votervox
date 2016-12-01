@@ -5,6 +5,8 @@ FactoryGirl.define do
 		communication_mode "Text Message"
 		sequence(:contact) { |n| "123-456-789#{n % 10}" }
 		address "1 Main Street, San Francisco, CA 94107"
+		city "San Francisco"
+		state "CA"
 		latitude "37.7806904"
 		longitude "-122.38922001"
 		languages ['Mandarin','Tagalog']
@@ -12,8 +14,7 @@ FactoryGirl.define do
 		active true
 		factory :matched_voter do
 			after(:create) do |voter, evaluator|
-				volunteer = create(:volunteer, :address => "3601 Deer Hill Road, Lafayette, CA 94549",
-									:latitude => "37.89318", :longitude => "-122.1268296")
+				volunteer = create(:volunteer)
                 match = create(:match, volunteer: volunteer, voter: voter, status: 1 )
 			end
 		end
