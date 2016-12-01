@@ -38,7 +38,7 @@ class Volunteer < ActiveRecord::Base
 		Geocoder::Calculations.distance_between [self.latitude, self.longitude], [voter.latitude, voter.longitude] rescue nil
 	end
 	def match_quality voter
-		return 2 if city == voter.city && state = voter.state
+		return 2 if city == voter.city && state == voter.state
 		return 1 if state == voter.state
 		return 0
 	end
