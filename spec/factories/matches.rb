@@ -15,5 +15,10 @@ FactoryGirl.define do
 		factory :completed do
 			status 4
 		end
+		after(:create) do |match,evaluator|
+			interaction0 = create(:interaction, :match => match)
+			interaction1 = create(:reschedule_contact, :match => match)
+			interaction2 = create(:assistant_contact, :match => match)
+    	end
 	end
 end

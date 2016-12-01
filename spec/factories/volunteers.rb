@@ -24,10 +24,7 @@ FactoryGirl.define do
 			status 1
 			after(:create) do |volunteer, evaluator|
 				voter = create(:voter, :languages => ["Mandarin", "Hindi"])
-                match = create(:match, volunteer: volunteer, voter: voter, status: 3 )
-    			interaction0 = create(:interaction, :match => match)
-    			interaction1 = create(:reschedule_contact, :match => match)
-    			interaction2 = create(:assistant_contact, :match => match)
+                match = create(:match, volunteer: volunteer, voter: voter, status: 1 )
 			end
 		end
 		factory :banned_volunteer do
