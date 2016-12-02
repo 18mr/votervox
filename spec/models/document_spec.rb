@@ -3,6 +3,14 @@ require 'rails_helper'
 RSpec.describe Document, type: :model do
 	before(:each) do
 	end
+	#paperclip tests http://www.rubydoc.info/gems/paperclip/Paperclip/Shoulda/Matchers
+	it { should have_attached_file(:file) }
+	  it { should validate_attachment_presence(:file) }
+	  it { should validate_attachment_content_type(:file).
+	                allowing('application/pdf', 'application/msword').
+	                rejecting('text/plain', 'text/xml', 'image/png', 'image/gif') }
+	  it { should validate_attachment_size(:file).
+	                less_than(5.megabytes) }
 
 	it "can be created with correct fields" do
 		expect( FactoryGirl.build(:document) ).to be_valid
