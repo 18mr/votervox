@@ -5,7 +5,7 @@ RSpec.describe Interaction, type: :model do
 	end
 
 	it "can be created with correct fields" do
-		expect( FactoryGirl.build(:interaction) ).to be_valid
+		expect( FactoryGirl.build(:interaction)).to be_valid
 	end
 	it "to propose meeting time with voter sets the contact type to 0" do
 		match = FactoryGirl.create(:match)

@@ -2,7 +2,7 @@ FactoryGirl.define do
 	factory :volunteer do
 		firstname "Jane"
 		lastname "Cho"
-		sequence(:email) { |n| "jcho#{n}@example.com" }
+		sequence(:email) { |n| "jcho#{rand(1000).to_s}@example.com" }
 		sequence(:phone) { |n| "123-456-789#{n % 10}" }
 		address "3601 Deer Hill Road, Lafayette, CA 94549"
 		city "Lafayette"
