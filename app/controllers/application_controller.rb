@@ -112,7 +112,7 @@ class ApplicationController < ActionController::Base
 		elsif volunteer_signed_in?
 			volunteer = current_record
 			name = [ volunteer.firstname, volunteer.lastname ].join(' ')
-			contact = voter.email
+			contact = volunteer.email
 		else
 			name = 'Unknown'
 			contact = 'Unknown'
