@@ -92,16 +92,16 @@
 					<div class="actions">
 						
 						<% if volunteer.unapproved? %>
-						<%= link_to 'Approve', approve_volunteer_path(volunteer), class: "button accept" %>
+						<%= link_to 'Approve', approve_volunteer_path(volunteer), method: :patch, class: "button accept" %>
 						<% end %>
 
 						<div class="ban-volunteer">
-						<%= link_to 'Ban', ban_volunteer_path(volunteer), method: :get, class: "deactivate btn-outline", data: { confirm: 'Are you sure you want to ban this volunteer?' } %>
+						<%= link_to 'Ban', ban_volunteer_path(volunteer), method: :patch, class: "deactivate btn-outline", data: { confirm: 'Are you sure you want to ban this volunteer?' } %>
 					</div>
 
 						<% if !volunteer.admin? %>
 						<div class="ban-volunteer">
-						<%= link_to 'Make Admin', make_admin_volunteer_path(volunteer), class: "btn-outline", method: :get,
+						<%= link_to 'Make Admin', make_admin_volunteer_path(volunteer), class: "btn-outline", method: :patch,
 							data: { confirm: 'Are you sure you want to make this volunteer an administrator?' } %>
 						</div>
 						<% end %>
@@ -154,16 +154,16 @@
 					<div class="actions">
 						
 						<% if volunteer.unapproved? %>
-						<%= link_to 'Approve', approve_volunteer_path(volunteer), class: "button accept" %>
+						<%= link_to 'Approve', approve_volunteer_path(volunteer), method: :patch, class: "button accept" %>
 						<% end %>
 
 						<div class="ban-volunteer">
-							<%= link_to 'Ban', ban_volunteer_path(volunteer), method: :get, class: "deactivate btn-outline", data: { confirm: 'Are you sure you want to ban this volunteer?' } %>
+							<%= link_to 'Ban', ban_volunteer_path(volunteer), method: :patch, class: "deactivate btn-outline", data: { confirm: 'Are you sure you want to ban this volunteer?' } %>
 						</div>
 
 						<% if !volunteer.admin? %>
 
-						<%= link_to 'Make Admin', make_admin_volunteer_path(volunteer), class: "btn-outline", method: :get,
+						<%= link_to 'Make Admin', make_admin_volunteer_path(volunteer), class: "btn-outline", method: :patch,
 							data: { confirm: 'Are you sure you want to make this volunteer an administrator?' } %>
 						<% end %>
 
@@ -210,7 +210,7 @@
 
 					<div class="actions">
 						
-						<%= link_to 'Unban', approve_volunteer_path(volunteer), class: "button accept" %>
+						<%= link_to 'Unban', approve_volunteer_path(volunteer), method: :patch, class: "button accept" %>
 
 					</div><!--.actions-->
 					

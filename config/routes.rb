@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   devise_for :volunteers, :path => 'volunteer', :controllers => {:registrations => "registrations"}
   resources :volunteers, :only => [:index] do
     member do
-      get 'approve'
-      get 'ban'
-      get 'make_admin'
+      patch 'approve'
+      patch 'ban'
+      patch 'make_admin'
     end
   end
   get '/volunteers/home', to: 'volunteers#home', as: 'volunteers_home'
