@@ -48,6 +48,33 @@ RSpec.describe VolunteersController, type: :controller do
 			expect(assigns(:approved_volunteers)).to eq ( approved_volunteers )
 			expect(assigns(:banned_volunteers)).to eq( banned_volunteers )
 		end
+		it "filters based on languages selected" do
+			organization = FactoryGirl.create(:organization, :name => "ShareProgress")
+			banned_volunteers = FactoryGirl.create_list(:banned_volunteer, 2, :organization => organization, :languages => ['Cantonese'])
+			approved_volunteers  = FactoryGirl.create_list(:approved_volunteer, 2, :organization => organization, :languages => ['Cantonese'])
+			pending_volunteers = FactoryGirl.create_list(:volunteer, 3, :organization => organization, :languages => ['Cantonese'])
+			@admin.organization = organization
+			@admin.save
+
+			get :index, :languages => ['Cantonese']
+			expect(assigns(:pending_volunteers)).to eq( pending_volunteers )
+			expect(assigns(:approved_volunteers)).to eq ( approved_volunteers )
+			expect(assigns(:banned_volunteers)).to eq( banned_volunteers )
+		end
+
+		it "filters based on location selected" do
+			organization = FactoryGirl.create(:organization, :name => "ShareProgress")
+			banned_volunteers = FactoryGirl.create_list(:banned_volunteer, 2, :organization => organization, :city => 'Portland', :state => 'OR')
+			approved_volunteers  = FactoryGirl.create_list(:approved_volunteer, 2, :organization => organization, :city => 'Portland', :state => 'OR')
+			pending_volunteers = FactoryGirl.create_list(:volunteer, 2, :organization => organization, :city => 'Portland', :state => 'OR')
+			@admin.organization = organization
+			@admin.save
+
+			get :index, :location => "Portland"
+			expect(assigns(:pending_volunteers)).to eq( pending_volunteers )
+			expect(assigns(:approved_volunteers)).to eq ( approved_volunteers )
+			expect(assigns(:banned_volunteers)).to eq( banned_volunteers )
+		end
 	end
 
 	describe "PATCH #approve" do
