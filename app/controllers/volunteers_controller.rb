@@ -17,7 +17,7 @@ class VolunteersController < ApplicationController
 			@pending_volunteers = current_org.volunteers.unapproved
 			@approved_volunteers = current_org.volunteers.approved
 			@banned_volunteers = current_org.volunteers.banned
-		end
+å		end
 
 		# Filter based on language and location
 		if @languages.present?
@@ -65,7 +65,8 @@ class VolunteersController < ApplicationController
 	end
 
 	protected
-
+	
+	#only allow changes for admins with the same organization as the volunteer
 	def matching_volunteer?
 		current_org.nil? || current_org == @volunteer.organization
 	end
