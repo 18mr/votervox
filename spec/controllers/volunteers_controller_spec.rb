@@ -5,7 +5,6 @@ RSpec.describe VolunteersController, type: :controller do
 	before(:each) do
 		@admin = FactoryGirl.create(:admin, :email => "admin@example.com")
 		sign_in @admin
-		
 	end
 
 	describe "GET #index" do
@@ -19,27 +18,34 @@ RSpec.describe VolunteersController, type: :controller do
 			expect(response).to render_template('index')
 			expect(response).to render_template("layouts/volunteer")
 		end
-		it "assigns correct variables for the view" do
-			get :index
-			organization = FactoryGirl.create(:organization, :name => "ShareProgress")
-			@admin.organization = organization
-			@admin.save
-			pending = FactoryGirl.create_list(:volunteer, 3, :organization => organization, :status => 0)
-			banned = FactoryGirl.create_list(:banned_volunteer, 2, :organization => organization)
-			approved  = FactoryGirl.create_list(:banned_volunteer, 2, :organization => organization)
-			# can't seem to get these variables to match what's in the view if current_org is not nil
-			# puts organization.volunteers.unapproved.to_json
-			# puts pending.to_json
-			# expect(assigns(:pending_volunteers)).to eq( pending)
-			# expect(assigns(:approved_volunteers)).to eq( approved )
-			# expect(assigns(:banned_volunteers)).to eq( banned )
-			pending_volunteers = Volunteer.unapproved
-			approved_volunteers = Volunteer.approved
-			banned_volunteers = Volunteer.banned
+		it "assigns correct variables for the view when admin has no org" do	
+			#remove organization from admin
 			@admin.organization = nil
 			@admin.save
+
+			@pending_volunteers = Volunteer.unapproved
+			@approved_volunteers = Volunteer.approved
+			@banned_volunteers = Volunteer.banned
+
+			get :index
+
+			expect(assigns(:pending_volunteers)).to eq( @pending_volunteers )
+			expect(assigns(:approved_volunteers)).to eq( @approved_volunteers )
+			expect(assigns(:banned_volunteers)).to eq( @banned_volunteers )
+		end
+		it "assigns correct variables for the view when admin has org assigned" do
+			organization = FactoryGirl.create(:organization, :name => "ShareProgress")
+			banned_volunteers = FactoryGirl.create_list(:banned_volunteer, 2, :organization => organization)
+			approved_volunteers  = FactoryGirl.create_list(:approved_volunteer, 2, :organization => organization)
+			pending_volunteers = FactoryGirl.create_list(:volunteer, 3, :organization => organization)
+			#assign admin to the same org as all the newly created volunteers
+			@admin.organization = organization
+			@admin.save
+			get :index
+			#add @admin to approved volunteers array
+			approved_volunteers.push(@admin)
 			expect(assigns(:pending_volunteers)).to eq( pending_volunteers )
-			expect(assigns(:approved_volunteers)).to eq( approved_volunteers )
+			expect(assigns(:approved_volunteers)).to eq ( approved_volunteers )
 			expect(assigns(:banned_volunteers)).to eq( banned_volunteers )
 		end
 	end
