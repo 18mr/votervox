@@ -13,7 +13,6 @@ class MatchesController < ApplicationController
 
 	def create
 		@match = Match.new(match_params)
-
 		if @match.save
 			if @match.active?
 				redirect_to @match
@@ -28,24 +27,25 @@ class MatchesController < ApplicationController
 
 	def message
 		@match = Match.find params[:id]
-		redirect_to :volunteers_home if !check_volunteer_match
+		redirect_to :volunteers_home and return if !check_volunteer_match
 
 		Interaction.create_proposal(:match_id => @match.id, :message => params[:message])
-
 		sms_message = [
 			t('voter_dashboard.matched.message.sms1'),
 			@match.volunteer.firstname,
 			t('voter_dashboard.matched.message.sms2'),
 			full_url(@match.voter.home_url)
 		].join(' ')
+
 		VoterVoxSms.new.send @match.voter.contact, sms_message if @match.voter.sms_contact?
 		VoterNotifier.match_made(@match).deliver_now if @match.voter.email_contact?
+		
 		redirect_to @match
 	end
 
 	def decline
 		@match = Match.find params[:id]
-		redirect_to :volunteers_home if !check_volunteer_match
+		redirect_to :volunteers_home and return if !check_volunteer_match
 
 		sms_message = t('voter_dashboard.canceled.message.sms')
 		VoterVoxSms.new.send @match.voter.contact, sms_message if @match.voter.sms_contact?
@@ -57,7 +57,7 @@ class MatchesController < ApplicationController
 
 	def complete
 		@match = Match.find params[:id]
-		redirect_to :volunteers_home if !check_volunteer_match
+		redirect_to :volunteers_home and return if !check_volunteer_match
 
 		Interaction.create_assistance(match_completion_params)
 
@@ -73,7 +73,7 @@ class MatchesController < ApplicationController
 	def show
 		@match = Match.find params[:id]
 		redirect_to :volunteers_home if !check_volunteer_match
-
+		
 		@proposal = @match.interactions.proposals.first
 		@reschedule = @match.interactions.reschedules.first
 		@voter = @match.voter
@@ -83,7 +83,7 @@ class MatchesController < ApplicationController
 	### VOTER ROUTES
 	def voter_accept
 		@match = Match.find params[:id]
-		redirect_to :new_voter if !check_voter_match
+		redirect_to :new_voter and return if !check_voter_match
 
 		sms_message = t('volunteer_sms.match_accepted', locale: 'en', name: @match.voter.firstname, contact: @match.voter.contact)
 		VoterVoxSms.new.send @match.volunteer.phone, sms_message
@@ -95,7 +95,7 @@ class MatchesController < ApplicationController
 
 	def voter_reject
 		@match = Match.find params[:id]
-		redirect_to :new_voter if !check_voter_match
+		redirect_to :new_voter and return if !check_voter_match
 
 		sms_message = t('volunteer_sms.match_rejected', locale: 'en', name: @match.voter.firstname, url: full_url(matches_path))
 		VoterVoxSms.new.send @match.volunteer.phone, sms_message
@@ -107,7 +107,7 @@ class MatchesController < ApplicationController
 
 	def voter_request_time
 		@match = Match.find params[:id]
-		redirect_to :new_voter if !check_voter_match
+		redirect_to :new_voter and return if !check_voter_match
 
 		Interaction.create_reschedule(:match_id => @match.id, :message => params[:message])
 
