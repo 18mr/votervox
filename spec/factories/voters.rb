@@ -3,7 +3,7 @@ FactoryGirl.define do
 		firstname "Tim"
 		lastname "Wang"
 		communication_mode "Text Message"
-		sequence(:contact) { |n| "123-456-789#{n % 10}" }
+		sequence(:contact) { |n| "123-456-#{ '%04d' % rand(9999).to_s}" }
 		address "1 Main Street, San Francisco, CA 94107"
 		city "San Francisco"
 		state "CA"
